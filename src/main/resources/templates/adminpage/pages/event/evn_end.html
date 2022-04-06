@@ -1,0 +1,68 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<head><div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/style.css">
+    <link rel="stylesheet" href="/adminpage/lib/css/event/evn_end.css">
+    <script src="/adminpage/app/event/evn_end.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="contwrap">
+                    <div class="event">
+                        <p class="title">이벤트</p>
+                    </div>
+                    <div class="event_wrap">
+                        <table class="event_kind">
+                            <colgroup>
+                                <col width="333">
+                                <col width="333">
+                                <col width="333">
+                            </colgroup>
+                            <tr>
+                                <th><a href="/pages/admin/evn_ing">진행중 이벤트</a></th>
+                                <th class="current_list"><a href="/pages/admin/evn_end">종료된 이벤트</a></th>
+                                <th><a href="/pages/admin/evn_win">당첨자 발표</a></th>
+                            </tr>
+                        </table>
+                        <table class="event_list" id="itemList">
+                            <colgroup>
+                                <col width="100">
+                                <col width="400">
+                                <col width="260">
+                                <col width="140">
+                            </colgroup>
+                            <tr>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>이벤트 기간</th>
+                                <th>등록일</th>
+                            </tr>
+                            <tr v-for="dto in itemList">
+                                <td>{{dto.evIndex}}</td>
+                                <td class="list_tit"><a :href=`/pages/admin/evn_view/${dto.evIndex}`>{{dto.evTitle}}</a></td>
+                                <td>{{dto.evStartDay.substr(0,10)}} ~ {{dto.evEndDay.substr(0,10)}}</td>
+                                <td>{{dto.evRegdate.substr(0,10)}}</td>
+                            </tr>
+                        </table>
+                        <a href="/pages/admin/evn_write" class="notice_write"><input type="button" value="작성하기"></a>
+                        <div class="footer">
+                            <div class="center">
+                                <table id="showPage">
+                                    <tr>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

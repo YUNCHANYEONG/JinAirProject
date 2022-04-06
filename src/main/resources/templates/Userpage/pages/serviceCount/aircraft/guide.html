@@ -1,0 +1,354 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/aircraft/guide.css">
+<script src="/userpage/app/serviceCount/aircraft/guide.js"></script>
+<!-- head.html 끝-->
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="discount">
+                    <p class="title_img"></p>
+                    <p class="discount_title">기내 여행 가이드</p>
+                    <p class="title_sub">진에어를 이용하시면,<br>
+                        젊고 참신하고 색다른 감각을 느끼실 수 있습니다.</p>
+                </div>
+                <div class="discount_kind">
+                    <table>
+                        <tr>
+                            <th class="dis_mobile cursor">기내 서비스 안내</th>
+                            <th class="dis_guide cursor">기내 휴대용 전자기기</th>
+                            
+                        </tr>
+                    </table>
+                </div>
+                <!--제휴 카드-->
+                <div class="guide">
+                    <div class="guidewrapper">
+                        <div class="guide_box1">
+                            <p>휴대용 전자기기(PED : Portable Electronic Device)란 배터리 또는 전기로 전원을 공급하는 손에 쥐고 사용이 가능한 가볍고 작은 전자기기 입니다.</p>
+                        </div>
+                        <div class="guide_box2">
+                            <p class="guide_title">휴대용 전자기기 이용안내</p>
+                            <p class="guide_contents">비행 탑승 모드로 설정한 휴대용 전자기기는 비행 전 구간에서 사용하실 수 있습니다. 단, 운항 상황에 따라 승무원의 요청 시에는 사용이 제한될 수 있습니다.</p>
+                            <div>
+                                <div class="guide_box2_wrapper1">
+                                    <div class="guide_box2_img1"></div>
+                                    <p>스마트폰/태블릿PC (비행기 모드), MP3, 게임기 등</p>
+                                </div>
+                                <div class="guide_box2_wrapper2">
+                                    <div class="guide_box2_img2"></div>
+                                    <p>라디오, TV, 워키토키 등 무선통신장비</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="guide_box3">
+                            <p class="guide_title">기내 사용금지 및 제한 기기</p>
+                            <p class="guide_contents">항공기 안전을 위하여 기내에서 사용 제한된 기기는 아래와 같습니다.</p>
+                            <table>
+                                <colgroup>
+                                    <col width="300">
+                                    <col width="">
+                                </colgroup>
+                                <tr>
+                                    <td>구분</td>
+                                    <td>대상 전자 기기</td>
+                                </tr>
+                                <tr>
+                                    <td>상시 사용 금지</td>
+                                    <td>
+                                        <p class="tableinner_text">	
+                                            AM/FM 라디오, 텔레비전 (휴대용 TV 수신기)</p>
+                                        <p class="tableinner_text">케이블로 연결하여 사용하는 컴퓨터/게임기의 주변장치 (프린터, 팩스 등)</p>
+                                        <p class="tableinner_text">무선 조종 장난감</p>
+                                        <p class="tableinner_text">Transmitter (상업용 또는 아마추어용 무선 송수신기, Walkie-talkies 등)</p>
+                                        <p class="tableinner_text">VHF Scanner Receiver</p>
+                                        <p class="tableinner_text">무선 마우스 (블루투스 통신방식이 아닌 무선 방식)</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>항공기 Door Open 시 사용 가능</td>
+                                    <td>
+                                        <p class="tableinner_text">외선사용 GPS 수신기 (GPS receivers utilizing external wire)</p>
+                                        <p class="tableinner_text">쌍방 통신용 무선 호출기</p>
+                                        <p class="tableinner_text">무선 통신기능이 켜진 PDA, 스마트기기(Smart Phone, Tablet PC, e-Reader등) 및 휴대 전화기 등</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>상시 사용 가능</td>
+                                    <td>
+                                        <p class="tableinner_text">인공 심장 박동기, 보청기, Electronic Nerve Stimulator, 기타 인공 장기</p>
+                                        <p class="tableinner_text">사전 허가된 생명 보조 장치나 의료 지원 장치</p>
+                                        <p class="tableinner_text">휴대용 음성녹음기, 전기면도기, 전자시계, 개인 소음 방지용 Headphone</p>
+                                        <p class="tableinner_text">회사가 설치한 전자장비 (예시 : IFE System, 위성전화, Video 장비)</p>
+                                        <p class="tableinner_text">외선 미사용 GPS 수신기, 수신 전용 무선 호출기</p>
+                                        <p class="tableinner_text">무선 통신 기능이 꺼진(비행기 탑승 모드)PDA, 스마트 기기</p>
+                                        <p class="tableinner_text">전자게임기, 블루투스 통신 방식 기기, Laptop Computer</p>
+                                        <p class="tableinner_text">Electronic Camera(Film/Digital), 비디오, 카메라/재생기</p>
+                                        <p class="tableinner_text">CD/MD/MP3 Players, Digital Cassette Players or Recorders</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p class="guide_sub">휴대용 전자기기는 무선통신기능을 Off 한 상태(비행기탑승모드 or Airplane Mode)로 항공기 내에서 항상 사용하실 수 있으며 통화 및 문자전송은 항공기가 목적지에 착륙하여</p>
+                            <p class="guide_sub1">활주로를 벗어난 시점부터 사용 가능함을 안내 드립니다. 단, 운항 상황에 따라 승무원의 요청 시에는 사용이 제한될 수 있습니다.</p>
+                            <p class="guide_sub">휴대용 전자기기는 지상이동 및 이착륙 시에는 좌석 앞 주머니에 보관하셔야 하며 좌석 앞 주머니에 넣을 수 없는 크기나 무게의 전자기기(대형 노트북)는 별도로 인가된 보관장소에</p>
+                            <p class="guide_sub1">보관하여야 합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile">
+                    <div class="mobilewrapper">
+                        <div class="mobile_box1">
+                            <p>진에어 객실 승무원을 지니(Jini)라고 불러주세요! 고객이 원하는 것은 어디서든 최선을 다하여 서비스 하겠습니다.</p>
+                        </div>
+                        <div class="mobile_box2">
+                            <p class="mobile_title">국내선 기내 서비스 목록</p>
+                            <p class="mobile_contents">현재 코로나19 기내 감염 예방을 위해 한시적으로 음료 및 스낵 판매를 중지하였으며, 기내에서는 모든 식음료 취식을 자제하여 주시기 바랍니다.</p>
+                            <p class="mobile_contents">진에어에서만 만나보실 수 있는 CI 상품 및 홈쇼핑 제품은 기내에서 구매하실 수 있습니다.</p>
+                        </div>
+                        <div class="mobile_box3">
+                            <p class="mobile_title">국제선 기내 서비스 목록</p>
+                            <div class="mobile_box3_wrap">
+                                <div class="m_box1">
+                                    <div class="m_box_img m_box1_img"></div>
+                                    <p class="m_box1_title">무료 기내식</p>
+                                    <p class="m_box1_sub">Complimentary Meal</p>
+                                </div>
+                                <div class="m_box1">
+                                    <div class="m_box_img m_box2_img"></div>
+                                    <p class="m_box1_title">음료</p>
+                                    <p class="m_box1_sub">Beverage</p>
+                                </div>
+                                <div class="m_box1">
+                                    <div class="m_box_img m_box3_img"></div>
+                                    <p class="m_box1_title">기내판매</p>
+                                    <p class="m_box1_sub">Duty free sales</p>
+                                </div>
+                                <div class="m_box1">
+                                    <div class="m_box_img m_box4_img"></div>
+                                    <p class="m_box1_title">사전주문유료기내식</p>
+                                    <p class="m_box1_sub">Pre-order meals</p>
+                                </div>
+                                <div class="m_box1">
+                                    <div class="m_box_img m_box5_img"></div>
+                                    <p class="m_box1_title">딜라이트 라운지 서비스</p>
+                                    <p class="m_box1_sub">Delight Lounge Service</p>
+                                </div>
+                            </div>
+                            <table>
+                                <tr>
+                                    <td colspan="3">비행시간 3시간 미만</td>
+                                </tr>
+                                <tr>
+                                    <td>노선</td>
+                                    <td>출/도착지</td>
+                                    <td>기내서비스</td>
+                                </tr>
+                                <tr>
+                                    <td>도쿄, 타이베이</td>
+                                    <td>인천 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>삿포로, 오키나와</td>
+                                    <td>인천/부산 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>후쿠오카</td>
+                                    <td>인천 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>기타큐슈</td>
+                                    <td>인천/부산 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>오사카</td>
+                                    <td>인천/부산 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>상하이</td>
+                                    <td>제주 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>시안</td>
+                                    <td>제주 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>우시</td>
+                                    <td>부산 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">비행시간 3시간 이상</td>
+                                </tr>
+                                <tr>
+                                    <td>노선</td>
+                                    <td>출/도착지</td>
+                                    <td>기내서비스</td>
+                                </tr>
+                                <tr>
+                                    <td>홍콩, 마카오, 코타 키나발루, 하노이, 비엔티안, 푸켓, 조호르바루</td>
+                                    <td>인천 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>방콕, 클락, 다낭, 세부, 괌</td>
+                                    <td>인천/부산 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>케언스, 호놀룰루</td>
+                                    <td>인천 왕복</td>
+                                    <td>
+                                        <div class="img_party">
+                                            <img src="/userpage/lib/img/guide_img1.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img2.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img3.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img4.png" alt="">
+                                            <img src="/userpage/lib/img/guide_img5.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p class="mobile_box3_subtext">생수는 무료로 제공되나, 맥주나 양주, 스낵 & 상품은 유료이며, 현금 및 카드로 결제가 가능합니다. (직불카드, 체크카드, 기프트 카드, 하이브리드 카드는 사용하실 수 없음을 양지 바랍니다.)</p>
+                            <p class="mobile_box3_subtext">운영 사정에 따라 일부 전세기 운항편에서는 지니 키즈밀, 유상 스낵 & 상품 등의 서비스가 운영되지 않을 수 있습니다.</p>
+                            <p class="mobile_box3_subtext">주류 및 스낵 & 상품 서비스를 원하시는 분은 승무원에게 말씀해 주십시오.</p>
+                            <p class="mobile_box3_subtext">노선에 따라 이용 가능한 서비스 및 상품의 종류에 제한이 있으므로 상세 안내를 참조해 주시기 바랍니다.</p>
+                            <p class="mobile_box3_subtext">기내식 알레르기 알림 : 특정식품에 대한 알레르기 또는 유사증상이 있는 승객께서는 반드시 메뉴를 확인하여 주시기 바랍니다.</p>
+                            <p class="mobile_box3_subtext">땅콩 알레르기 알림 : 진에어에서 제공하는 기내식은 실제 땅콩을 사용하지 않았더라도 조리 과정에서 땅콩성분이 함유된 식용유, 식재료 등이 포함될 수 있으며, 다른 승객의 소지 및 취식을 제한할</p>
+                            <p class="mobile_box3_subtext1"> 수 없습니다. 이에 땅콩 알레르기 혹은 유사 증상이 있으신 승객께서는 여행 가능여부를 의사와 상의하여 주시기 바랍니다.</p>
+                        </div>
+                        <div class="mobile_box4">
+                            <p class="mobile_title">기내 환경 등</p>
+                            <p class="mobile4_subtitle">기내온도</p>
+                            <p class="mobile4_content">기내온도는 23~25도로 유지되어 선선한 편이므로 얇은 소재의 긴 소매 상/하의를 권장 드립니다.</p>
+                            <p class="mobile4_subtitle">기내습도 및 기압</p>
+                            <p class="mobile4_content">기내습도는 15% 내외로 상당히 건조한 편입니다. 피부 및 눈, 코 등이 건조해져 불편함을 느끼실 수 있으니 기내에서는 수분을 수시로 보충하여 주시기 바라며, 눈의 건조나</p>
+                            <p class="mobile4_content1">염증 예방을 위해 렌즈보다는 안경 착용을 권장 드립니다.</p>
+                            <p class="mobile4_content">순항중인 항공기내의 기압은 보통의 건강하신 분들께는 큰 영향이 없겠으나, 이착륙 시의 기압변화로 간혹 귀가 멍멍해지는 경우에는 가볍게 턱을 움직이시거나</p>
+                            <p class="mobile4_content1">물을 드시는 것을 권장 드립니다.</p>
+                            <p class="mobile4_content">기내에는 비상시에 사용이 가능 한 연고, 반창고, 진통제, 소화제 등 각종 상비약이 비치되어 있습니다. 기타 불편한 점이 있으시면 승무원에게 도움을 요청하여 주시기</p>
+                            <p class="mobile4_content1"> 바랍니다.</p>
+                            <p class="mobile4_subtitle">안전한 여행을 위한 가이드</p>
+                            <p class="mobile4_content">‘항공보안법’에 따라 항공기 안에서의 불법 행위는 엄격히 금지되어 있습니다.</p>
+                            <p class="mobile4_subcontent">항공기 안에서의 불법 행위란?</p>
+                            <p class="mobile4_subinnercontent">승무원 폭행, 협박, 업무 방해 행위</p>
+                            <p class="mobile4_subinnercontent">성적 수치심 유발 행위</p>
+                            <p class="mobile4_subinnercontent">흡연 행위, 출입문/탈출구 등 기기 조작 행위</p>
+                            <p class="mobile4_subinnercontent">폭언 등 소란 행위 및 음주로 인한 위해 행위 등</p>
+                        </div>
+                    </div>
+                    <p class="mobile4_notice">이상의 불법 행위 적발 시, 최대 5년 이하 징역 (폭행, 협박 등) 또는 500만원 이하의 벌금(흡연행위, 성적 수치심 유발행위 등)이 부과될 수 있사오니 유의하여 주시기 바랍니다.</p>
+                </div>
+            </div>
+        </div>
+        <!-- container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <div class="modal"></div>
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+</body>
+</html>

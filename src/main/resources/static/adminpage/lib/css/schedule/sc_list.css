@@ -1,0 +1,213 @@
+
+#container > .contents > .contwrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#container > .contents > .contwrap .title{ 
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+#container > .contents > .contwrap > .btn_top{
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+#container > .contents > .contwrap > .btn_top input[type="button"]{
+    width: 120px;
+    height: 30px;
+    background-color:#BDD600;
+    border-radius: 2px;
+    clear: both;
+    border: 0;
+    margin-right: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    top: 7px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+#container > .contents > .contwrap > .btn_top input[type="button"]:last-child{
+    margin-right: 0;
+}
+#container > .contents > .contwrap > .contents_main{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+#container > .contents > .contwrap > .contents_main table{
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    text-align: center;
+}
+#container > .contents > .contwrap > .contents_main tr:first-child{
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #ccc;
+}
+#container > .contents > .contwrap > .contents_main tr {
+    height: 40px;
+}
+#container > .contents > .contwrap > .contents_main tr:first-child td{
+    width: 145px;
+}
+#container > .contents .btn_box{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    margin-right: 50px;
+}
+#container > .contents .btn_box input[type="button"]{
+    width: 140px;
+    height: 30px;
+    background-color:#BDD600;
+    border-radius: 2px;
+    clear: both;
+    border: 0;
+    font-size: 0.8rem;
+    margin-right: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+    /* 모달 */
+.modal_container{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+.modal_container .modal input[type="text"]{
+    margin-left: 20px;
+    width: 140px;
+    height: 30px;
+    margin-right: 20px;
+}
+.modal_container .modal{
+    width: 600px;
+    height: 300px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+    border: 3px solid #BDD600;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal_container .modal table tr {
+    height: 60px;
+}
+.modal_container .modal table th {
+    text-align: left;
+    width: 72px;
+    margin: 5px;
+}
+.modal_container .modal table td {
+    text-align: center;
+    margin: 5px;
+}
+.modal_container .modal input{
+    width: 140px;
+    height: 30px;
+    font-weight: 600;
+    border: 2px solid gray;
+    border-radius: 4px;
+    text-indent: 5px;
+    outline: none;
+}
+.modal_container .modal select{
+    width: 140px;
+    height: 30px;
+    margin-left: 20px;
+    font-weight: 600;
+    border: 2px solid gray;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.modal_container .modal .btn_modal{
+    display: flex;
+    justify-content: center;
+}
+.modal_container .modal input[type="button"]{
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    border: 0;
+    border-radius: 2px ;
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.modal_container .modal input[type="submit"].modal_search{
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    border: 0;
+    border-radius: 2px ;
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.modal_container .modal input[type="button"].modal_cancel{
+    background-color: white;
+    border: 3px solid #BDD600;
+}
+.footer{
+    margin-top: 40px;
+    width: 100%;
+    height: 30px;
+}
+.footer > .center{
+    display: flex;
+    justify-content: center;
+}
+.footer table{
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.footer table td{
+    width: 35px;
+    height: 40px;
+    border: 1px solid rgb(187, 187, 187);
+    background-color: #fff;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.pages {
+    background-color : #fff;
+    color : #444;
+    cursor : pointer;
+}
+
+#showPage > td:hover {
+    background-color: #BDD600;
+    color: white;
+}
+
+.firstPage1, .firstPage2, .lastPage1, .lastPage2 {
+    cursor: pointer;
+}

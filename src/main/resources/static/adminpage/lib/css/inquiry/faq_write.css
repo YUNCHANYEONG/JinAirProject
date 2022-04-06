@@ -1,0 +1,106 @@
+#container > .contents > .con_wrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#container > .contents .title{ 
+    font-size: 1.4rem; 
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+#container .contents .contents_top{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+#container > .contents .contents_main select{
+    width: 85%;
+    height: 30px;
+}
+
+#faqTitle {
+    width: 100%;
+}
+
+#container > .contents .contents_main table {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-collapse: collapse;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    background-color: #fff;
+}
+#container > .contents .contents_main tr{
+    height: 40px;
+}
+#container > .contents .contents_main tr:first-child{
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #ccc;
+}
+#container > .contents .contents_main table tr td{
+    width: 150px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+#container > .contents .contents_main table tr td:nth-child(1){
+    width: 13%;
+}
+#container > .contents .contents_main table tr td:nth-child(2){
+    text-align: left;
+    width: 74%;
+}
+#container > .contents .contents_main table tr td:nth-child(3){
+    width: 13%;
+}
+#container > .contents .contents_main input[type="text"]{
+    width: 90%;
+    height: 30px;
+    text-indent: 10px;
+}
+#container > .contents .contents_main textarea{
+    width: 98%;
+    height: 270px;
+    margin-top: 10px;
+    border: 1px solid rgb(199, 199, 199);
+    outline: none;
+    padding: 5px;
+    margin-bottom: 10px;
+    resize: none;
+}
+#container > .contents .contents_bottom{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+}
+#container > .contents .contents_bottom .faq_btn_add{
+    display: flex;
+}
+#container > .contents .contents_bottom .faq_btn_add input{
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    background-color: #BDD600;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 5px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+
+#writeFaq {
+    border: 3px solid #BDD600 !important;;
+    background-color: white !important;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+
+

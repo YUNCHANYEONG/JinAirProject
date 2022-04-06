@@ -1,0 +1,67 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <script src="/userpage/app/optional/activity/activity.js"></script>
+    <link rel="stylesheet" href="/userpage/lib/css/optional/activity/activity.css"/>
+    <link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi">
+    <!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="discount">
+                <p class="title_img"></p>
+                <p class="discount_title">액티비티</p>
+                <p class="title_sub">다양한 액티비티 상품을<br>할인된 가격에 미리 예약하세요.</p>
+            </div>
+            <div class="img_jinitv"></div>
+            <div class="activity_wrap">
+                <div class="activity_box">
+                    <div class="korea">국내</div>
+                    <div class="oversee">해외</div>
+                    <div class="img_klook"></div>
+                    <p class="activity_boxtitle">클룩</p>
+                    <div class="notice_box">
+                        <p>최대 60% 할인 혜택으로<br>
+                            최저가 보장에 e-티켓으로 쉽고<br>
+                            간편하게 예약하세요.</p>
+                    </div>
+                    <a href="https://www.klook.com/ko/promo/jinairon?aff_adid=100885&aff_af_wid=8227&aid=8227&utm_medium=affiliate-alwayson&utm_source=non-network&utm_campaign=8227&utm_term=&utm_content=" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+                <div class="activity_box">
+                    <div class="oversee_jp">해외(일본)</div>
+                    <div class="img_donki"></div>
+                    <p class="activity_boxtitle">돈키호테</p>
+                    <div class="notice_box">
+                        <p>일본 여행 시 필수! 온라인 쿠폰 받고<br>
+                            일본 최대의 디스카운트 스토어에서<br>
+                            최대 2,000엔 할인 받으세요.</p>
+                    </div>
+                    <a href="https://www.yokosojapanpass.com/donki_fuel/public/coupon/index/0010789" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal"></div>
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+</body>
+</html>

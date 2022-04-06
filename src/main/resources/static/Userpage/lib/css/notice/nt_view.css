@@ -1,0 +1,149 @@
+/* container */
+.cursor {
+    cursor: pointer;
+}
+#container {
+    margin-top: 100px;
+    margin-bottom: 150px;
+}
+#container > .contentswrap {
+    width: 1180px;
+    padding: 30px;
+    margin: auto;
+    letter-spacing: 0.8px;
+}
+
+#container > .contentswrap .title {
+    font-size: 22px;
+}
+
+#container > .contentswrap .title > h2 {
+    color: #661e43;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+#container > .contentswrap .title > span {
+    font-weight: 500;
+}
+
+.sns {
+    margin-top: 50px;
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 0px 15px;
+}
+
+.sns .snsIcon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.sns .twitter {
+    background: url(/userpage/lib/img/twitter.png) no-repeat center;
+    background-size: 70%;
+    margin-right: 10px;
+}
+
+.sns .facebook {
+    background: url(/userpage/lib/img/facebook.png) no-repeat center;
+    background-size: 100%;
+}
+
+.contents {
+    width: 100%;
+}
+
+.contents .noticeT {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    white-space: pre-line;
+    word-break: break-all;
+}
+
+.contents .noticeT th {
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.contents .noticeT td.content {
+    padding: 30px 20px;
+    vertical-align: top;
+    padding-bottom: 180px;
+    border-bottom: 1px solid black;
+}
+
+.contents .noticeT td.content p {
+    width: 100%;
+    white-space: pre-line;
+    word-break: break-all;
+}
+
+.jinTxt {
+    display: inline-block;
+    position: absolute;
+    padding-top: 50px;
+    left: 20px;
+    width: 100%;
+    color: #00BBF4;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+
+#notiPriv, #notiNext {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-weight: 500;
+}
+
+#notiPriv td, #notiNext td {
+    height: 60px;
+    padding: 10px;
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    font-weight: 600;
+}
+
+#notiPriv td {
+    border-bottom: none;
+}
+
+#notiPriv th, #notiNext th {
+    border-top: 0.5px solid #661e43;
+    border-bottom: 0.5px solid #661e43;
+    padding: 10px;
+}
+
+#notiPriv th {
+    border-bottom: none;
+}
+
+.listWrap {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.listWrap .listButt {
+    width: 230px;
+    height: 60px;
+    border: none;
+    background-color: #BDD600;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}

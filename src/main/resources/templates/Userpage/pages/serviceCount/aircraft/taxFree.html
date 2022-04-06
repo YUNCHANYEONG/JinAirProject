@@ -1,0 +1,154 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/aircraft/taxFree.css">
+<script src="/userpage/app/serviceCount/aircraft/taxFree.js"></script>
+<!-- head.html 끝-->
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="discount">
+                    <p class="title_img"></p>
+                    <p class="discount_title">기내 면세품</p>
+                    <p class="title_sub">기내 구입 또는 사전 인터넷 예약으로<br>면세품 쇼핑을 즐기세요.</p>
+                </div>
+                <div class="jini_store">
+                    <a target="_blank" href="https://jinair.koreanairdfs.com/prd/listCategory.do?prntCtgrId=51" class="img_tax_wrap">
+                        <div class="img_tax"></div>
+                    </a>
+                    <div class="jini_notice">
+                        <div class="jini_left">
+                            <div class="jini_box_left">
+                                <p>면세품</p>
+                            </div>
+                        </div>
+                        <div class="jini_right">
+                            <p class="jini_store_title">기내 면세품 안내</p>
+                            <p class="jini_store_titlesub">빠질 수 없는 여행의 재미 쇼핑, 진에어에서는 국제선 이용고객을 위해 면세품을 편리하게 구입하실 수 있도록 기내에서 면세품을 판매하고 있습니다.</p>
+                            <p class="jini_content">기내 면세품 구매 시 별도의 한도액은 없으나 입국 국가별 면세 허용량을 준수하시기 바랍니다. (참고 : 주요 국가 면세 허용량, 2018년 4월</p>
+                            <p class="jini_contentetc">기준)</p>
+                            <p class="jini_content">기내 면세품은 현금, 신용카드로 결제 가능합니다. 신용카드는 한 카드당 USD $1,500 (원화 150만 원) 한도 내 구입 가능 합니다.</p>
+                            <p class="jini_contentsub">현금 결제 시 지불 가능 통화 : 한국 원 (￦), 미국 달러 ($), 일본 엔 (¥), 유럽 유로 (€), 중국 위안 (¥,元)</p>
+                            <p class="jini_contentsub">국내 전용 신용카드 결제 가능 통화 : 한국 원 (￦)</p>
+                            <p class="jini_contentsub">해외 겸용 신용카드 결제 가능 통화 : 한국 원 (￦), 미국 달러 ($)</p>
+                            <p class="jini_contentsub">결제 불가 카드 : 타인 명의 카드, 직불 카드, 체크 카드, 비자(VISA) 일렉트론 카드</p>
+                            <p class="jini_contentsub">법령에 따라 현금영수증 발급은 어려움을 양지 부탁 드립니다. (법인세법 시행 규칙 제 79조 2항)</p>
+                            <table>
+                                <tr>
+                                    <td colspan="3">기내 면세품 결제 안내</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>현금 결제</td>
+                                    <td>카드 결제</td>
+                                </tr>
+                                <tr>
+                                    <td>결제 가능</td>
+                                    <td>한국 원 (￦)
+                                        미국 달러 ($)
+                                        일본 엔 (¥)
+                                        유럽 유로 (€)
+                                        중국 위안 (¥,元)</td>
+                                    <td>신 용 카 드
+                                        (국내 전용 : 원화(￦)만 가능)
+                                        (해외 겸용 : 원화(￦), 달러 ($))</td>
+                                </tr>
+                                <tr>
+                                    <td>결제 불가</td>
+                                    <td colspan="2">타인 명의 카드
+                                        직불 카드
+                                        체크 카드
+                                        비자(VISA) 일렉트론 카드</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">- 한 카드당 $1,500 (또는 원화 금액) 한도 내 구입 가능</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="jini_notice2">
+                    <p class="jini_store_title">사전예약주문 안내</p>
+                    <p class="jini_content">사전예약주문은 해외 여행을 하기 전에 원하는 면세품을 미리 주문하고, 해당편 항공기 기내에서 주문품을 전달받는 방법으로, 품절 등으로 원하는 상품을 구입하지 못하는 불편함이 없는 편리한 제도입니다.</p>
+                    <p class="jini_content">인터넷/귀국편 사전주문서/전화/FAX 등 다양한 방법으로 주문 하실 수 있습니다.</p>
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                인터넷 사전예약주문
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>주문 방법</td>
+                            <td><input type="button" value="주문하기" onclick="window.open('https://jinair.koreanairdfs.com/prd/listCategory.do;jsessionid=072A58B25EBE138F417607F42ED1AC5E?prntCtgrId=51')"></td>
+                        </tr>
+                        <tr>
+                            <td>주문 가능 시간</td>
+                            <td>항공편 출발 72시간 전까지 예약가능</td>
+                        </tr>
+                        <tr>
+                            <td>수령 및 결제 방법</td>
+                            <td>탑승편 기내 승무원으로부터 주문품을 수령 및 결제</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                인터넷 사전예약주문
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>주문 방법</td>
+                            <td>출발편 기내좌석에 비치되어 있는 귀국편 예약주문서를 작성 후 승무원에게 제출</td>
+                        </tr>
+                        <tr>
+                            <td>주문 가능 시간</td>
+                            <td>출발편이 현지에 도착하여 72시간 이후 출발하는 항공편에 한해 주문 가능<br>
+                                한국-일본/한국-중국 노선의 경우 48시간 이후 출발 항공편도 가능</td>
+                        </tr>
+                        <tr>
+                            <td>수령 및 결제 방법</td>
+                            <td>국편 기내에서 승무원에게 주문내역서를 제출하신 후, 주문품을 수령 및 결제</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                전화/FAX 주문
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>주문 가능 시간</td>
+                            <td>월 ~ 토요일 : 08:30 ~ 17:30 / 일요일 및 공휴일 : 휴무</td>
+                        </tr>
+                        <tr>
+                            <td>전화번호<br>
+                                (수신자 부담)</td>
+                            <td>한국: 080-656-4545 / 한국 외 지역 : 국제전화연결번호+8000-656-4545 (한국지역 국가번호 82 필요 없음)</td>
+                        </tr>
+                        <tr>
+                            <td>FAX</td>
+                            <td>한국 : 02-2656-6586 / 한국 외 지역 : 82-2-2656-6586</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+    <div class="modal"></div>
+</body>
+</html>

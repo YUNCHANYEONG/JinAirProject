@@ -1,0 +1,107 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/cm/cm_detail.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- head.html -->
+<body>
+<div id="wrap">
+    <div th:replace="/adminpage/fragment/header :: header"></div>
+    <div id="container">
+        <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+        <div class="contents">
+            <div class="cm_detail_box">
+                <div class="title_wrap">
+                    <p id="cm_detail_title">고객 상세정보</p>
+                </div>
+                <div class="cm_detail" id="memberDetail">
+                    <table>
+                        <colgroup>
+                            <col width="20%">
+                            <col width="30%">
+                            <col width="20%">
+                            <col width="30%">
+                        </colgroup>
+                        <tr>
+                            <th>고유번호</th>
+                            <td>{{memberDetail.memIndex}}</td>
+                            <th>우편번호</th>
+                            <td>{{memberDetail.memZipcode}}</td>
+                        </tr>
+                        <tr>
+                            <th>아이디</th>
+                            <td>{{memberDetail.memUserid}}</td>
+                            <th>주소</th>
+                            <td>{{memberDetail.memAddress1}}</td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호</th>
+                            <td>-</td>
+                            <th>상세주소</th>
+                            <td>{{memberDetail.memAddress2}}</td>
+                        </tr>
+                        <tr>
+                            <th>성명(KOR)</th>
+                            <td>{{memberDetail.memKorFirstName}} {{memberDetail.memKorLastName}}</td>
+                            <th>가입일자</th>
+                            <td id="regDate"></td>
+                        </tr>
+                        <tr>
+                            <th>성명(ENG)</th>
+                            <td>{{memberDetail.memEngFirstName}} {{memberDetail.memEngLastName}}</td>
+                            <th>이메일</th>
+                            <td>{{memberDetail.memEmail}}</td>
+                        </tr>
+                        <tr>
+                            <th>성별</th>
+                            <td>{{memberDetail.memGender}}</td>
+                            <th>이메일 수신동의</th>
+                            <td id="isEmailAgree"></td>
+                        </tr>
+                        <tr>
+                            <th>생년월일</th>
+                            <td>{{memberDetail.memBirth}}</td>
+                            <th>SNS/앱 푸시 동의</th>
+                            <td id="isSnsAgree"></td>
+                        </tr>
+                        <tr>
+                            <th>국적</th>
+                            <td>{{memberDetail.memPassport}}</td>
+                            <th>예약 비행기</th>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th>거주국가</th>
+                            <td>{{memberDetail.memNation}}</td>
+                            <th>나비 포인트</th>
+                            <td>
+                                <input type="text" name="point" id="point" value="" readonly/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td>{{memberDetail.memHp}}</td>
+                            <th>쿠폰</th>
+                            <td>
+                                <input type="text" name="coupon" id="coupon" value="" readonly/>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="form_btn">
+                        <button class="toList">
+                        <a :href=`/pages/admin/cmList`>목록</a>
+                        </button>
+                        <button class="toUpdate">
+                        <a :href=`/pages/admin/cm_list/cm_modify/${memberDetail.memIndex}`>고객 정보 수정</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/adminpage/app/cm/cm_detail.js"></script>
+</body>
+</html>

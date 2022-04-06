@@ -1,0 +1,60 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<link rel="stylesheet" href="/adminpage/lib/css/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js" integrity="sha512-yadYcDSJyQExcKhjKSQOkBKy2BLDoW6WnnGXCAkCoRlpHGpYuVuBqGObf3g/TdB86sSbss1AOP4YlGSb6EKQPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div class="sidebar" th:fragment="leftmenu(code, menuList)">
+    <nav>
+        <th:block th:each="entry : ${menuList}">
+        <ul>
+            <p th:class="${entry.id}">
+                <a th:href="${entry.url}">
+                    <span th:text="${entry.title}"></span>
+                </a>
+            </p>
+            <th:block th:if="${entry.id == 'nav2'}">
+            <li th:each="submenu : ${schedule}">
+                    <a th:href="${submenu.url}">
+                        <span th:text="${submenu.title}"></span>
+                    </a>
+            </li>
+            </th:block>
+            <th:block th:if="${entry.id == 'nav3'}">
+                <li th:each="submenu : ${reservation}">
+                    <a th:href="${submenu.url}">
+                        <span th:text="${submenu.title}"></span>
+                    </a>
+                </li>
+            </th:block>
+            <th:block th:if="${entry.id == 'nav5'}">
+                <li th:each="submenu : ${item}">
+                    <a th:href="${submenu.url}">
+                        <span th:text="${submenu.title}"></span></a>
+                </li>
+            </th:block>
+            <th:block th:if="${entry.id == 'nav7'}">
+                <li th:each="submenu : ${inquiry}">
+                    <a th:href="${submenu.url}">
+                        <span th:text="${submenu.title}"></span></a>
+                </li>
+            </th:block>
+            <th:block th:if="${entry.id == 'nav9'}">
+                <li th:each="submenu : ${point}">
+                    <a th:href="${submenu.url}">
+                        <span th:text="${submenu.title}"></span></a>
+                </li>
+            </th:block>
+            <th:block th:if="${entry.id == 'nav10'}">
+                <li th:each="submenu : ${coupon}">
+                    <a th:href="${submenu.url}">
+                        <span th:text="${submenu.title}"></span></a>
+                </li>
+            </th:block>
+        </ul>
+        </th:block>
+    </nav>
+
+    <a href="/pages/index" id="toUser">홈페이지</a>
+</div>
+</html>

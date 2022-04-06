@@ -1,0 +1,81 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<script src="/userpage/app/optional/rentcar/rentcar.js"></script>
+<link rel="stylesheet" href="/userpage/lib/css/optional/rentcar/rentcar.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi"><!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="discount">
+                <p class="title_img"></p>
+                <p class="discount_title">차량 서비스</p>
+                <p class="title_sub">스마트한 진에어 고객에게 드리는<br>스마트한 드라이빙 혜택 입니다.</p>
+            </div>
+            <div class="img_jinitv"></div>
+            <div class="activity_wrap">
+                <div class="activity_box">
+                    <div class="korea">국내</div>
+                    <div class="img_sk"></div>
+                    <p class="activity_boxtitle">SK 렌터카</p>
+                    <div class="notice_box">
+                        <p>제주부터 내륙까지! 비수기 기준 최대<br>80% 할인을 누려보세요..</p>
+                    </div>
+                    <a href="https://www.skcarrental.com/rent/frame/wps/reservation.do?corpNm=jinAir&corpCd=&result=0000&resultMessage=ok" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+                <div class="activity_box">
+                    <div class="korea">국내</div>
+                    <div class="oversee">해외</div>
+                    <div class="img_rentalcars"></div>
+                    <p class="activity_boxtitle">Rentalcars.com</p>
+                    <div class="notice_box">
+                        <p>전세계 53,000개 이상의 지점에서<br>최저가로 렌터카를 예약하세요.</p>
+                    </div>
+                    <a href="https://www.rentalcars.com/?affiliateCode=jinair&adplat=jinimall&preflang=ko" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+                <div class="activity_box">
+                    <div class="korea">국내</div>
+                    <div class="oversee">해외</div>
+                    <div class="img_hertz"></div>
+                    <p class="activity_boxtitle">Hertz</p>
+                    <div class="notice_box2">
+                        <p>전 세계 No.1 렌터카 브랜드, 허츠렌터<br>카! 진에어 회원 전용 요금 및 진행중인<br>이벤트를 지금 바로 확인해보세요.</p>
+                    </div>
+                    <a href="https://jinair.happartners.com/index.php/booking/plantrip" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+                <div class="activity_box">
+                    <div class="korea">국내</div>
+                    <div class="img_tagogayo"></div>
+                    <p class="activity_boxtitle">타고가요</p>
+                    <div class="notice_box2">
+                        <p>요금/차종 비교해 골라타는 공항 밴<br>집에서 공항, 공항에서 집까지 도착!<br>상시최대 30% 할인가로 예약하세요.</p>
+                    </div>
+                    <a href="https://tagogayo.co.kr/?ali=jinair15" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal"></div>
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+</body>
+</html>

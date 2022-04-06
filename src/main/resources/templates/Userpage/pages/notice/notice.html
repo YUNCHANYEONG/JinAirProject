@@ -1,0 +1,68 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/notice/notice.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi">
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="title">
+                <h2>공지사항</h2>
+                <span>진에어의 다양한 소식을 알려드립니다.</span>
+            </div>
+            <div class="searchWrap">
+                <input type="text" id="searchBox" class="cursor" name="searchBox" placeholder="검색어를 입력하세요.">
+                <input type="button" class="searchButt cursor" id="searchNoti" value="검색">
+            </div>
+            <div class="contents">
+                <table class="noticeT" id="notiList">
+                    <colgroup>
+                        <col width = 10%>
+                        <col width = 60%>
+                        <col width = 30%>
+                    </colgroup>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>등록일</th>
+                    </tr>
+                    <tr v-for="noti in notiList">
+                        <td>{{ noti.noIndex }}</td>
+                        <td style="text-align: left"><a :href=`/pages/notice/nt_view/${noti.noIndex}`>{{ noti.noTitle }}</a></td>
+                        <td>{{ noti.noRegdate.substr(0, 10) }}</td>
+                    </tr>
+                </table>
+                <div class="footer">
+                    <div class="center">
+                        <table>
+                            <tr id="showPage">
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+</body>
+<script src="/userpage/app/notice/notice.js"></script>
+
+</html>

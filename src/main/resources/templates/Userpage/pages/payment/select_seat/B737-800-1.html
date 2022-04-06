@@ -1,0 +1,685 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/adminpage/app/seatadd.js"></script>
+    <link rel="stylesheet" href="/userpage/lib/css/payment/extras_test.css">
+</head>
+<!--좌석 선택 랩-->
+<div class="select_seat_wrap select_seat_wrap1" th:fragment="B737-800-1" id="8B737-800-1">
+<!--    <input type="checkbox" class="nation" value="국내" checked>국내-->
+<!--    <input type="checkbox" class="nation" value="일본/중국 본토" checked>일본/중국본토-->
+<!--    <input type="checkbox" class="nation" value="홍콩/마카오/대만/러시아" checked>홍콩/마카오/대만/러시아-->
+<!--    <input type="checkbox" class="nation" value="동남아/대양주" checked>동남아/대양주-->
+<!--    <input type="checkbox" class="nation" value="호주/미주" checked>호주/미주-->
+<!--    <input type="checkbox" class="apid" value="B737800" checked>B737800-->
+<!--    <select>-->
+<!--        <option value="JiniSt">지니 스트레치</option>-->
+<!--        <option value="JiniFs">지니 패스트</option>-->
+<!--        <option value="JiniEE">비상구열</option>-->
+<!--        <option value="JiniSA">스탠다드A</option>-->
+<!--        <option value="JiniSB">스탠다드B</option>-->
+<!--    </select>-->
+    <div class="select_seat select_seat1 B737_800">
+        <div class="top_toilet_area toilet_area">
+            <img src="/userpage/lib/img/toilet.png" alt="" height="60px">
+        </div>
+        <div class="top_exit_area exit_area">
+            <p class="exit1">비상구</p>
+            <p class="exit2">비상구</p>
+        </div>
+        <div class="seat_column seat">
+            <div class="left_seat">
+                <p class="A">A</p>
+                <p class="B">B</p>
+                <p class="C">C</p>
+            </div>
+            <div class="right_seat">
+                <p class="D">D</p>
+                <p class="E">E</p>
+                <p class="F">F</p>
+            </div>
+        </div>
+        <div class="top_seats seats">
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A28" value="8A28" class="SSC">
+                    <label for="8A28" class="seat_sel box3">A28</label>
+                    <input type="checkbox" id="8B28" value="8B28" class="SSC">
+                    <label for="8B28" class="seat_sel box3">B28</label>
+                    <input type="checkbox" id="8C28" value="8C28" class="SSC">
+                    <label for="8C28" class="seat_sel box3">C28</label>
+                </div>
+                <div class="row">28</div>
+                <div class="right_seat">
+                    <label class="seat_sel"></label>
+                    <label class="seat_sel"></label>
+                    <label class="seat_sel"></label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A29" value="8A29" class="SSC">
+                    <label for="8A29" class="seat_sel box2">A29</label>
+                    <input type="checkbox" id="8B29" value="8B29" class="SSC">
+                    <label for="8B29" class="seat_sel box2">B29</label>
+                    <input type="checkbox" id="8C29" value="8C29" class="SSC">
+                    <label for="8C29" class="seat_sel box2">C29</label>
+                </div>
+                <div class="row">29</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D29" value="8D29" class="SSC">
+                    <label for="8D29" class="seat_sel box1">D29</label>
+
+                    <input type="checkbox" id="8E29" value="8E29" class="SSC">
+                    <label for="8E29" class="seat_sel box1">E29</label>
+
+                    <input type="checkbox" id="8F29" value="8F29" class="SSC">
+                    <label for="8F29" class="seat_sel box1">F29</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A30" value="8A30" class="SSC">
+                    <label for="8A30" class="seat_sel box2">A30</label>
+                    <input type="checkbox" id="8B30" value="8B30" class="SSC">
+                    <label for="8B30" class="seat_sel box2">B30</label>
+                    <input type="checkbox" id="8C30" value="8C30" class="SSC">
+                    <label for="8C30" class="seat_sel box2">C30</label>
+                </div>
+                <div class="row">30</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D30" value="8D30" class="SSC">
+                    <label for="8D30" class="seat_sel box2">D30</label>
+                    <input type="checkbox" id="8E30" value="8E30" class="SSC">
+                    <label for="8E30" class="seat_sel box2">E30</label>
+                    <input type="checkbox" id="8F30" value="8F30" class="SSC">
+                    <label for="8F30" class="seat_sel box2">F30</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A31" value="8A31" class="SSC">
+                    <label for="8A31" class="seat_sel box2">A31</label>
+                    <input type="checkbox" id="8B31" value="8B31" class="SSC">
+                    <label for="8B31" class="seat_sel box2">B31</label>
+                    <input type="checkbox" id="8C31" value="8C31" class="SSC">
+                    <label for="8C31" class="seat_sel box2">C31</label>
+                </div>
+                <div class="row">31</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D31" value="8D31" class="SSC">
+                    <label for="8D31" class="seat_sel box2">D31</label>
+                    <input type="checkbox" id="8E31" value="8E31" class="SSC">
+                    <label for="8E31" class="seat_sel box2">E31</label>
+                    <input type="checkbox" id="8F31" value="8F31" class="SSC">
+                    <label for="8F31" class="seat_sel box2">F31</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A32" value="8A32" class="SSC">
+                    <label for="8A32" class="seat_sel box2">A32</label>
+                    <input type="checkbox" id="8B32" value="8B32" class="SSC">
+                    <label for="8B32" class="seat_sel box2">B32</label>
+                    <input type="checkbox" id="8C32" value="8C32" class="SSC">
+                    <label for="8C32" class="seat_sel box2">C32</label>
+                </div>
+                <div class="row">32</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D32" value="8D32" class="SSC">
+                    <label for="8D32" class="seat_sel box2">D32</label>
+                    <input type="checkbox" id="8E32" value="8E32" class="SSC">
+                    <label for="8E32" class="seat_sel box2">E32</label>
+                    <input type="checkbox" id="8F32" value="8F32" class="SSC">
+                    <label for="8F32" class="seat_sel box2">F32</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A33" value="8A33" class="SSC">
+                    <label for="8A33" class="seat_sel box5">A33</label>
+                    <input type="checkbox" id="8B33" value="8B33" class="SSC">
+                    <label for="8B33" class="seat_sel box5">B33</label>
+                    <input type="checkbox" id="8C33" value="8C33" class="SSC">
+                    <label for="8C33" class="seat_sel box5">C33</label>
+                </div>
+                <div class="row">33</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D33" value="8D33" class="SSC">
+                    <label for="8D33" class="seat_sel box5">D33</label>
+                    <input type="checkbox" id="8E33" value="8E33" class="SSC">
+                    <label for="8E33" class="seat_sel box5">E33</label>
+                    <input type="checkbox" id="8F33" value="8F33" class="SSC">
+                    <label for="8F33" class="seat_sel box5">F33</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A34" value="8A34" class="SSC">
+                    <label for="8A34" class="seat_sel box5">A34</label>
+                    <input type="checkbox" id="8B34" value="8B34" class="SSC">
+                    <label for="8B34" class="seat_sel box5">B34</label>
+                    <input type="checkbox" id="8C34" value="8C34" class="SSC">
+                    <label for="8C34" class="seat_sel box5">C34</label>
+                </div>
+                <div class="row">34</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D34" value="8D34" class="SSC">
+                    <label for="8D34" class="seat_sel box5">D34</label>
+                    <input type="checkbox" id="8E34" value="8E34" class="SSC">
+                    <label for="8E34" class="seat_sel box5">E34</label>
+                    <input type="checkbox" id="8F34" value="8F34" class="SSC">
+                    <label for="8F34" class="seat_sel box5">F34</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A35" value="8A35" class="SSC">
+                    <label for="8A35" class="seat_sel box5">A35</label>
+                    <input type="checkbox" id="8B35" value="8B35" class="SSC">
+                    <label for="8B35" class="seat_sel box5">B35</label>
+                    <input type="checkbox" id="8C35" value="8C35" class="SSC">
+                    <label for="8C35" class="seat_sel box5">C35</label>
+                </div>
+                <div class="row">35</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D35" value="8D35" class="SSC">
+                    <label for="8D35" class="seat_sel box5">D35</label>
+                    <input type="checkbox" id="8E35" value="8E35" class="SSC">
+                    <label for="8E35" class="seat_sel box5">E35</label>
+                    <input type="checkbox" id="8F35" value="8F35" class="SSC">
+                    <label for="8F35" class="seat_sel box5">F35</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="right_seat">
+                    <input type="checkbox" id="8A36" value="8A36" class="SSC">
+                    <label for="8A36" class="seat_sel box5">A36</label>
+                    <input type="checkbox" id="8B36" value="8B36" class="SSC">
+                    <label for="8B36" class="seat_sel box5">B36</label>
+                    <input type="checkbox" id="8C36" value="8C36" class="SSC">
+                    <label for="8C36" class="seat_sel box5">C36</label>
+                </div>
+                <div class="row">36</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D36" value="8D36" class="SSC">
+                    <label for="8D36" class="seat_sel box5">D36</label>
+                    <input type="checkbox" id="8E36" value="8E36" class="SSC">
+                    <label for="8E36" class="seat_sel box5">E36</label>
+                    <input type="checkbox" id="8F36" value="8F36" class="SSC">
+                    <label for="8F36" class="seat_sel box5">F36</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="right_seat">
+                    <input type="checkbox" id="8A37" value="8A37" class="SSC">
+                    <label for="8A37" class="seat_sel box5">A37</label>
+                    <input type="checkbox" id="8B37" value="8B37" class="SSC">
+                    <label for="8B37" class="seat_sel box5">B37</label>
+                    <input type="checkbox" id="8C37" value="8C37" class="SSC">
+                    <label for="8C37" class="seat_sel box5">C37</label>
+                </div>
+                <div class="row">37</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D37" value="8D37" class="SSC">
+                    <label for="8D37" class="seat_sel box5">D37</label>
+                    <input type="checkbox" id="8E37" value="8E37" class="SSC">
+                    <label for="8E37" class="seat_sel box5">E37</label>
+                    <input type="checkbox" id="8F37" value="8F37" class="SSC">
+                    <label for="8F37" class="seat_sel box5">F37</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="right_seat">
+                    <input type="checkbox" id="8A38" value="8A38" class="SSC">
+                    <label for="8A38" class="seat_sel box5">A38</label>
+                    <input type="checkbox" id="8B38" value="8B38" class="SSC">
+                    <label for="8B38" class="seat_sel box5">B38</label>
+                    <input type="checkbox" id="8C38" value="8C38" class="SSC">
+                    <label for="8C38" class="seat_sel box5">C38</label>
+                </div>
+                <div class="row">38</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D38" value="8D38" class="SSC">
+                    <label for="8D38" class="seat_sel box5">D38</label>
+                    <input type="checkbox" id="8E38" value="8E38" class="SSC">
+                    <label for="8E38" class="seat_sel box5">E38</label>
+                    <input type="checkbox" id="8F38" value="8F38" class="SSC">
+                    <label for="8F38" class="seat_sel box5">F38</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="right_seat">
+                    <input type="checkbox" id="8A39" value="8A39" class="SSC">
+                    <label for="8A39" class="seat_sel box6">A39</label>
+                    <input type="checkbox" id="8B39" value="8B39" class="SSC">
+                    <label for="8B39" class="seat_sel box6">B39</label>
+                    <input type="checkbox" id="8C39" value="8C39" class="SSC">
+                    <label for="8C39" class="seat_sel box6">C39</label>
+                </div>
+                <div class="row">39</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D39" value="8D39" class="SSC">
+                    <label for="8D39" class="seat_sel box6">D39</label>
+                    <input type="checkbox" id="8E39" value="8E39" class="SSC">
+                    <label for="8E39" class="seat_sel box6">E39</label>
+                    <input type="checkbox" id="8F39" value="8F39" class="SSC">
+                    <label for="8F39" class="seat_sel box6">F39</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A40" value="8A40" class="SSC">
+                    <label for="8A40" class="seat_sel box6">A40</label>
+                    <input type="checkbox" id="8B40" value="8B40" class="SSC">
+                    <label for="8B40" class="seat_sel box6">B40</label>
+                    <input type="checkbox" id="8C40" value="8C40" class="SSC">
+                    <label for="8C40" class="seat_sel box6">C40</label>
+                </div>
+                <div class="row">40</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D40" value="8D40" class="SSC">
+                    <label for="8D40" class="seat_sel box6">D40</label>
+                    <input type="checkbox" id="8E40" value="8E40" class="SSC">
+                    <label for="8E40" class="seat_sel box6">E40</label>
+                    <input type="checkbox" id="8F40" value="8F40" class="SSC">
+                    <label for="8F40" class="seat_sel box6">F40</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A41" value="8A41" class="SSC">
+                    <label for="8A41" class="seat_sel box6">A41</label>
+                    <input type="checkbox" id="8B41" value="8B41" class="SSC">
+                    <label for="8B41" class="seat_sel box6">B41</label>
+                    <input type="checkbox" id="8C41" value="8C41" class="SSC">
+                    <label for="8C41" class="seat_sel box6">C41</label>
+                </div>
+                <div class="row">41</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D41" value="8D41" class="SSC">
+                    <label for="8D41" class="seat_sel box6">D41</label>
+                    <input type="checkbox" id="8E41" value="8E41" class="SSC">
+                    <label for="8E41" class="seat_sel box6">E41</label>
+                    <input type="checkbox" id="8F41" value="8F41" class="SSC">
+                    <label for="8F41" class="seat_sel box6">F41</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="middel_exit_area1 exit_area">
+            <p class="exit1">비상구</p>
+            <p class="exit2">비상구</p>
+        </div>
+        <div class="middle_seats seats">
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A42" value="8A42" class="SSC">
+                    <label for="8A42" class="seat_sel box4">A42</label>
+                    <input type="checkbox" id="8B42" value="8B42" class="SSC">
+                    <label for="8B42" class="seat_sel box4">B42</label>
+                    <input type="checkbox" id="8C42" value="8C42" class="SSC">
+                    <label for="8C42" class="seat_sel box4">C42</label>
+                </div>
+                <div class="row">42</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D42" value="8D42" class="SSC">
+                    <label for="8D42" class="seat_sel box4">D42</label>
+                    <input type="checkbox" id="8E42" value="8E42" class="SSC">
+                    <label for="8E42" class="seat_sel box4">E42</label>
+                    <input type="checkbox" id="8F42" value="8F42" class="SSC">
+                    <label for="8F42" class="seat_sel box4">F42</label>
+                </div>
+            </div>
+        </div>
+        <div class="middel_exit_area2 exit_area">
+            <p class="exit1">비상구</p>
+            <p class="exit2">비상구</p>
+        </div>
+        <div class="top_seats seats">
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A43" value="8A43" class="SSC">
+                    <label for="8A43" class="seat_sel box3">A43</label>
+                    <input type="checkbox" id="8B43" value="8B43" class="SSC">
+                    <label for="8B43" class="seat_sel box3">B43</label>
+                    <input type="checkbox" id="8C43" value="8C43" class="SSC">
+                    <label for="8C43" class="seat_sel box3">C43</label>
+                </div>
+                <div class="row">43</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D43" value="8D43" class="SSC">
+                    <label for="8D43" class="seat_sel box3">D43</label>
+                    <input type="checkbox" id="8E43" value="8E43" class="SSC">
+                    <label for="8E43" class="seat_sel box3">E43</label>
+                    <input type="checkbox" id="8F43" value="8F43" class="SSC">
+                    <label for="8F43" class="seat_sel box3">F43</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A44" value="8A44" class="SSC">
+                    <label for="8A44" class="seat_sel box6">A44</label>
+                    <input type="checkbox" id="8B44" value="8B44" class="SSC">
+                    <label for="8B44" class="seat_sel box6">B44</label>
+                    <input type="checkbox" id="8C44" value="8C44" class="SSC">
+                    <label for="8C44" class="seat_sel box6">C44</label>
+                </div>
+                <div class="row">44</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D44" value="8D44" class="SSC">
+                    <label for="8D44" class="seat_sel box6">D44</label>
+                    <input type="checkbox" id="8E44" value="8E44" class="SSC">
+                    <label for="8E44" class="seat_sel box6">E44</label>
+                    <input type="checkbox" id="8F44" value="8F44" class="SSC">
+                    <label for="8F44" class="seat_sel box6">F44</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A45" value="8A45" class="SSC">
+                    <label for="8A45" class="seat_sel box6">A45</label>
+                    <input type="checkbox" id="8B45" value="8B45" class="SSC">
+                    <label for="8B45" class="seat_sel box6">B45</label>
+                    <input type="checkbox" id="8C45" value="8C45" class="SSC">
+                    <label for="8C45" class="seat_sel box6">C45</label>
+                </div>
+                <div class="row">45</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D45" value="8D45" class="SSC">
+                    <label for="8D45" class="seat_sel box6">D45</label>
+                    <input type="checkbox" id="8E45" value="8E45" class="SSC">
+                    <label for="8E45" class="seat_sel box6">E45</label>
+                    <input type="checkbox" id="8F45" value="8F45" class="SSC">
+                    <label for="8F45" class="seat_sel box6">F45</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A46" value="8A46" class="SSC">
+                    <label for="8A46" class="seat_sel box6">A46</label>
+                    <input type="checkbox" id="8B46" value="8B46" class="SSC">
+                    <label for="8B46" class="seat_sel box6">B46</label>
+                    <input type="checkbox" id="8C46" value="8C46" class="SSC">
+                    <label for="8C46" class="seat_sel box6">C46</label>
+                </div>
+                <div class="row">46</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D46" value="8D46" class="SSC">
+                    <label for="8D46" class="seat_sel box6">D46</label>
+                    <input type="checkbox" id="8E46" value="8E46" class="SSC">
+                    <label for="8E46" class="seat_sel box6">E46</label>
+                    <input type="checkbox" id="8F46" value="8F46" class="SSC">
+                    <label for="8F46" class="seat_sel box6">F46</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A47" value="8A47" class="SSC">
+                    <label for="8A47" class="seat_sel box6">A47</label>
+                    <input type="checkbox" id="8B47" value="8B47" class="SSC">
+                    <label for="8B47" class="seat_sel box6">B47</label>
+                    <input type="checkbox" id="8C47" value="8C47" class="SSC">
+                    <label for="8C47" class="seat_sel box6">C47</label>
+                </div>
+                <div class="row">47</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D47" value="8D47" class="SSC">
+                    <label for="8D47" class="seat_sel box6">D47</label>
+                    <input type="checkbox" id="8E47" value="8E47" class="SSC">
+                    <label for="8E47" class="seat_sel box6">E47</label>
+                    <input type="checkbox" id="8F47" value="8F47" class="SSC">
+                    <label for="8F47" class="seat_sel box6">F47</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A48" value="8A48" class="SSC">
+                    <label for="8A48" class="seat_sel box6">A48</label>
+                    <input type="checkbox" id="8B48" value="8B48" class="SSC">
+                    <label for="8B48" class="seat_sel box6">B48</label>
+                    <input type="checkbox" id="8C48" value="8C48" class="SSC">
+                    <label for="8C48" class="seat_sel box6">C48</label>
+                </div>
+                <div class="row">48</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D48" value="8D48" class="SSC">
+                    <label for="8D48" class="seat_sel box6">D48</label>
+                    <input type="checkbox" id="8E48" value="8E48" class="SSC">
+                    <label for="8E48" class="seat_sel box6">E48</label>
+                    <input type="checkbox" id="8F48" value="8F48" class="SSC">
+                    <label for="8F48" class="seat_sel box6">F48</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A49" value="8A49" class="SSC">
+                    <label for="8A49" class="seat_sel box6">A49</label>
+                    <input type="checkbox" id="8B49" value="8B49" class="SSC">
+                    <label for="8B49" class="seat_sel box6">B49</label>
+                    <input type="checkbox" id="8C49" value="8C49" class="SSC">
+                    <label for="8C49" class="seat_sel box6">C49</label>
+                </div>
+                <div class="row">49</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D49" value="8D49" class="SSC">
+                    <label for="8D49" class="seat_sel box6">D49</label>
+                    <input type="checkbox" id="8E49" value="8E49" class="SSC">
+                    <label for="8E49" class="seat_sel box6">E49</label>
+                    <input type="checkbox" id="8F49" value="8F49" class="SSC">
+                    <label for="8F49" class="seat_sel box6">F49</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A50" value="8A50" class="SSC">
+                    <label for="8A50" class="seat_sel box6">A50</label>
+                    <input type="checkbox" id="8B50" value="8B50" class="SSC">
+                    <label for="8B50" class="seat_sel box6">B50</label>
+                    <input type="checkbox" id="8C50" value="8C50" class="SSC">
+                    <label for="8C50" class="seat_sel box6">C50</label>
+                </div>
+                <div class="row">50</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D50" value="8D50" class="SSC">
+                    <label for="8D50" class=" seat_sel box6">D50</label>
+                    <input type="checkbox" id="8E50" value="8E50" class="SSC">
+                    <label for="8E50" class=" seat_sel box6">E50</label>
+                    <input type="checkbox" id="8F50" value="8F50" class="SSC">
+                    <label for="8F50" class=" seat_sel box6">F50</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A51" value="8A51" class="SSC">
+                    <label for="8A51" class=" seat_sel box6">A51</label>
+                    <input type="checkbox" id="8B51" value="8B51" class="SSC">
+                    <label for="8B51" class=" seat_sel box6">B51</label>
+                    <input type="checkbox" id="8C51" value="8C51" class="SSC">
+                    <label for="8C51" class=" seat_sel box6">C51</label>
+                </div>
+                <div class="row">51</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D51" value="8D51" class="SSC">
+                    <label for="8D51" class="seat_sel box6">D51</label>
+                    <input type="checkbox" id="8E51" value="8E51" class="SSC">
+                    <label for="8E51" class="seat_sel box6">E51</label>
+                    <input type="checkbox" id="8F51" value="8F51" class="SSC">
+                    <label for="8F51" class="seat_sel box6">F51</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A52" value="8A52" class="SSC">
+                    <label for="8A52" class="seat_sel box6">A52</label>
+                    <input type="checkbox" id="8B52" value="8B52" class="SSC">
+                    <label for="8B52" class="seat_sel box6">B52</label>
+                    <input type="checkbox" id="8C52" value="8C52" class="SSC">
+                    <label for="8C52" class="seat_sel box6">C52</label>
+                </div>
+                <div class="row">52</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D52" value="8D52" class="SSC">
+                    <label for="8D52" class="seat_sel box6">D52</label>
+                    <input type="checkbox" id="8E52" value="8E52" class="SSC">
+                    <label for="8E52" class="seat_sel box6">E52</label>
+                    <input type="checkbox" id="8F52" value="8F52" class="SSC">
+                    <label for="8F52" class="seat_sel box6">F52</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A53" value="8A53" class="SSC">
+                    <label for="8A53" class="seat_sel box6">A53</label>
+                    <input type="checkbox" id="8B53" value="8B53" class="SSC">
+                    <label for="8B53" class="seat_sel box6">B53</label>
+                    <input type="checkbox" id="8C53" value="8C53" class="SSC">
+                    <label for="8C53" class="seat_sel box6">C53</label>
+                </div>
+                <div class="row">53</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D53" value="8D53" class="SSC">
+                    <label for="8D53" class="seat_sel box6">D53</label>
+                    <input type="checkbox" id="8E53" value="8E53" class="SSC">
+                    <label for="8E53" class="seat_sel box6">E53</label>
+                    <input type="checkbox" id="8F53" value="8F53" class="SSC">
+                    <label for="8F53" class="seat_sel box6">F53</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A54" value="8A54" class="SSC">
+                    <label for="8A54" class="seat_sel box6">A54</label>
+                    <input type="checkbox" id="8B54" value="8B54" class="SSC">
+                    <label for="8B54" class="seat_sel box6">B54</label>
+                    <input type="checkbox" id="8C54" value="8C54" class="SSC">
+                    <label for="8C54" class="seat_sel box6">C54</label>
+                </div>
+                <div class="row">54</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D54" value="8D54" class="SSC">
+                    <label for="8D54" class="seat_sel box6">D54</label>
+                    <input type="checkbox" id="8E54" value="8E54" class="SSC">
+                    <label for="8E54" class="seat_sel box6">E54</label>
+                    <input type="checkbox" id="8F54" value="8F54" class="SSC">
+                    <label for="8F54" class="seat_sel box6">F54</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A55" value="8A55" class="SSC">
+                    <label for="8A55" class="seat_sel box6">A55</label>
+                    <input type="checkbox" id="8B55" value="8B55" class="SSC">
+                    <label for="8B55" class="seat_sel box6">B55</label>
+                    <input type="checkbox" id="8C55" value="8C55" class="SSC">
+                    <label for="8C55" class="seat_sel box6">C55</label>
+                </div>
+                <div class="row">55</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D55" value="8D55" class="SSC">
+                    <label for="8D55" class="seat_sel box6">D55</label>
+                    <input type="checkbox" id="8E55" value="8E55" class="SSC">
+                    <label for="8E55" class="seat_sel box6">E55</label>
+                    <input type="checkbox" id="8F55" value="8F55" class="SSC">
+                    <label for="8F55" class="seat_sel box6">F55</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A56" value="8A56" class="SSC">
+                    <label for="8A56" class="seat_sel box6">A56</label>
+                    <input type="checkbox" id="8B56" value="8B56" class="SSC">
+                    <label for="8B56" class="seat_sel box6">B56</label>
+                    <input type="checkbox" id="8C56" value="8C56" class="SSC">
+                    <label for="8C56" class="seat_sel box6">C56</label>
+                </div>
+                <div class="row">56</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D56" value="8D56" class="SSC">
+                    <label for="8D56" class="seat_sel box6">D56</label>
+                    <input type="checkbox" id="8E56" value="8E56" class="SSC">
+                    <label for="8E56" class="seat_sel box6">E56</label>
+                    <input type="checkbox" id="8F56" value="8F56" class="SSC">
+                    <label for="8F56" class="seat_sel box6">F56</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A57" value="8A57" class="SSC">
+                    <label for="8A57" class="seat_sel box6">A57</label>
+                    <input type="checkbox" id="8B57" value="8B57" class="SSC">
+                    <label for="8B57" class="seat_sel box6">B57</label>
+                    <input type="checkbox" id="8C57" value="8C57" class="SSC">
+                    <label for="8C57" class="seat_sel box6">C57</label>
+                </div>
+                <div class="row">57</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D57" value="8D57" class="SSC">
+                    <label for="8D57" class="seat_sel box6">D57</label>
+                    <input type="checkbox" id="8E57" value="8E57" class="SSC">
+                    <label for="8E57" class="seat_sel box6">E57</label>
+                    <input type="checkbox" id="8F57" value="8F57" class="SSC">
+                    <label for="8F57" class="seat_sel box6">F57</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A58" value="8A58" class="SSC">
+                    <label for="8A58" class="seat_sel box6">A58</label>
+                    <input type="checkbox" id="8B58" value="8B58" class="SSC">
+                    <label for="8B58" class="seat_sel box6">B58</label>
+                    <input type="checkbox" id="8C58" value="8C58" class="SSC">
+                    <label for="8C58" class="seat_sel box6">C58</label>
+                </div>
+                <div class="row">58</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D58" value="8D58" class="SSC">
+                    <label for="8D58" class="seat_sel box6">D58</label>
+                    <input type="checkbox" id="8E58" value="8E58" class="SSC">
+                    <label for="8E58" class="seat_sel box6">E58</label>
+                    <input type="checkbox" id="8F58" value="8F58" class="SSC">
+                    <label for="8F58" class="seat_sel box6">F58</label>
+                </div>
+            </div>
+            <div class="seat">
+                <div class="left_seat">
+                    <input type="checkbox" id="8A59" value="8A59" class="SSC">
+                    <label for="8A59" class="seat_sel box6">A59</label>
+                    <input type="checkbox" id="8B59" value="8B59" class="SSC">
+                    <label for="8B59" class="seat_sel box6">B59</label>
+                    <input type="checkbox" id="8C59" value="8C59" class="SSC">
+                    <label for="8C59" class="seat_sel box6">C59</label>
+                </div>
+                <div class="row">59</div>
+                <div class="right_seat">
+                    <input type="checkbox" id="8D59" value="8D59" class="SSC">
+                    <label for="8D59" class="seat_sel box6">D59</label>
+                    <input type="checkbox" id="8E59" value="8E59" class="SSC">
+                    <label for="8E59" class="seat_sel box6">E59</label>
+                    <input type="checkbox" id="8F59" value="8F59" class="SSC">
+                    <label for="8F59" class="seat_sel box6">F59</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom_toilet_area toilet_area"><img src="./img/toilet.png" alt=""><img
+                src="/userpage/lib/img/toilet.png" alt=""></div>
+        <div class="bottom_exit_area exit_area">
+            <p class="exit1">비상구</p>
+            <p class="exit2">비상구</p>
+        </div>
+    </div>
+    <!--좌석 배치도-->
+    <div class="seat_map">
+        <div class="move_map">
+            <div class="location">
+            </div>
+        </div>
+    </div>
+    <input type="button" class="cursor select_comp" value="선택완료">
+</div>
+<!--좌석 배치도 끝-->
+<!--좌석선택랩 1 끝-->
+</html>

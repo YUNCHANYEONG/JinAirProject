@@ -1,0 +1,161 @@
+#container > .contents > .contwrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+    height: 800px;
+}
+.contents > .contwrap > .search{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+.contents > .contwrap > .search > .title{
+    font-size: 1.4rem; 
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+
+.searchName {
+    height: 30px;
+}
+
+.searchName .korN > div {
+    vertical-align: middle;
+}
+
+.searchName p {
+    margin-bottom: 5px;
+}
+
+.search_butt {
+    width: 40px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #BDD600;
+}
+
+.searchbox {
+    margin: 0 5px;
+    width: 80px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #f2f2f2;
+}
+
+.searchbox:first-child {
+    width: 120px;
+}
+
+#res_korFirstName {
+    margin-right: 5px;
+}
+
+
+.rs_list {
+    width: 100%;
+}
+.rs_list > table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+.rs_list > table th {
+    height: 50px;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+.rs_list > table td {
+    height: 40px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.rs_list > table td > .firstN {
+    padding: 0px;
+    text-align: center;
+}
+.rs_list > table td > .kfirstN {
+    margin-right: 150px;
+    font-weight: 400;
+}
+.rs_list > table td > .efirstN {
+    margin-right: 100px;
+    font-weight: 400;
+}
+.rs_list > table:nth-child(2) {
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.rs_list > table:nth-child(2) th {
+    vertical-align: middle;
+    border-top: 1px solid #ccc;
+}
+.rs_list > table:nth-child(2) td {
+    height: 33px;
+    border-top: 1px solid #ccc;
+}
+.rs_list > table:nth-child(2) .lefttd {
+    border-right: 1px solid #ccc;
+}
+.rs_list > table:nth-child(2) td input[type=radio] {
+    margin: 5px;
+}
+
+
+
+/* 모달창 예약자 조회 */
+#modal_issearch {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#modal_issearch > #modal_issearch_content {
+    width: 500px;
+    height: 300px;
+    margin: 0 auto 30px;
+    padding-top: 30px;
+    border-radius: 5px;
+    border: 3px solid #BDD600;
+    background-color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+#modal_issearch_title {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+#modal_issearch > #modal_issearch_content button {
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+#modal_issearch h3 {
+    margin-bottom: 7px;
+}
+
+#modal_issearch p.text {
+    width: 60%;
+    margin: 0 auto;
+}

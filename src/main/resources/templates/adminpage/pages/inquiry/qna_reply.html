@@ -1,0 +1,54 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/inquiry/qna_reply.css">
+<script src="/adminpage/app/inquiry/qna_main.js"></script>
+<script src="/adminpage/app/inquiry/qna_reply.js"></script>
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <div class="title">
+                        <p>Q&A 세부내용</p>
+                    </div>
+                    <div class="qustion_table">
+                        <table class="itemList">
+                            <tr>
+                                <td>{{itemList.qnaTitle}}</td>
+                                <td class="user_name">작성자 : {{itemList.qnaUserName}}</td>
+                                <td>등록일 : {{itemList.qnaRegdate.substr(0,10)}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><textarea name="" id="" readonly >{{itemList.qnaContent}}</textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="answer_table">
+                        <form th:id="form">
+                            <table>
+                                <tr>
+                                    <td><input type="text" th:name="qaTitle" th:id="qaTitle" th:class="qaTitle"></td>
+                                </tr>
+                                <tr>
+                                    <td><textarea th:name="qaContent" th:id="qaContent" th:class="qaContent"></textarea></td>
+                                </tr>
+                            </table>
+                            <div class="footer">
+                                <a onclick=history.back() class="list"><input type="button" value="취소"></a>
+                                <a class="reply"><input type="button" value="답변등록" class="qa_btn"></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

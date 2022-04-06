@@ -1,0 +1,139 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/optional/lounge.css">
+<script src="/userpage/app/serviceCount/optional/lounge.js"></script>
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="discount">
+                    <p class="title_img"></p>
+                    <p class="discount_title">번들 서비스</p>
+                    <p class="title_sub">별도로 구입 가능한 부가서비스(사전좌석지정, 사전구매수하물, 라운지이용권, 스낵팩)를<br>
+                        하나로 묶어 개별 구매 시보다 더욱 저렴하게 판매하는 서비스입니다.</p>
+                </div>
+                <div class="discount_kind">
+                    <table>
+                        <tr>
+                            <th class="dis_bundle cursor" onclick="location.href='./bundle'">번들 서비스 안내</th>
+                            <th class="dis_lounge cursor">라운지 이용권 안내</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="lounge">
+                    <div class="loungewrapper">
+                        <div class="loungebox1">
+                            <p class="loungebox_title">라운지 이용권 안내</p>
+                            <p class="loungebox_content">인천국제공항 출발 국제선 이용 시 ‘라운지 플러스 번들’ 구매를 통해 (스카이 허브 라운지 이용권 + 사전좌석지정 + 전용 체크인 카운터) 서비스를 이용하실 수 있습니다.</p>
+                            <p class="loungebox_title">스카이허브 라운지 주요 서비스</p>
+                            <div class="login_footer">
+                                <input type="radio" name="slide" id="slide01" checked>
+                                <input type="radio" name="slide" id="slide02">
+                                <input type="radio" name="slide" id="slide03">
+                                <div class="list_wrap">
+                                    <ul class="login_fad_list">
+                                        <li>
+                                            <a>
+                                                <label for="slide03" class="left"></label>
+                                                <img src="/userpage/lib/img/img_lounge_01.jpg" alt="1" >
+                                                <label for="slide02" class="right"></label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a><label for="slide01" class="left"></label><img src="/userpage/lib/img/img_lounge_02.jpg" alt="2"><label for="slide03" class="right"></label></a>
+                                        </li>
+                                        <li>
+                                            <a><label for="slide02" class="left"></label><img src="/userpage/lib/img/img_lounge_03.jpg" alt="3"><label for="slide01" class="right"></label></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <table class="inchenairport">
+                                    <tr>
+                                        <td>인천국제공항<br>제 1터미널 서편</td>
+                                        <td>인천국제공항<br>제 1터미널 동편</td>
+                                        <td>인천국제공항<br>탑승동</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>식음료</p>
+                                            <p>휴게시설</p>
+                                            <p>전화/팩스</p>
+                                            <p>TV/신문/잡지/인터넷</p>
+                                        </td>
+                                        <td>
+                                            <p>식음료</p>
+                                            <p>휴게시설</p>
+                                            <p>샤워실</p>
+                                            <p>전화/팩스</p>
+                                            <p>TV/신문/잡지/인터넷</p>
+                                        </td>
+                                        <td>
+                                            <p>식음료</p>
+                                            <p>휴게시설</p>
+                                            <p>샤워실</p>
+                                            <p>전화/팩스</p>
+                                            <p>TV/신문/잡지/인터넷</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p class="loungebox_title">위치 안내</p>
+                                <div class="img_lounge"></div>
+                                <p class="loungebox_con">제 1 여객터미널 서편 4F: 42번 GATE 맞은 편</p>
+                                <p class="loungebox_con">제 1 여객터미널 동편 4F: 11번 GATE 맞은 편</p>
+                                <p class="loungebox_con loungebox_conmargin">탑승동 중앙 4F : 115번 GATE</p>
+                                <p class="loungebox_title">운영 시간</p>
+                                <p class="loungebox_con">제 1 여객터미널 서편 4F : 07:00 ~ 22:00 <span>(07:00 ~ 19:30 운영시간 변경)</span></p>
+                                <p class="loungebox_con">제 1 여객터미널 동편 4F : 24시간 운영 (06:00 ~ 07:00, 21:30 ~ 22:00 브레이크 타임) <span>(한시적 운영중단)</span></p>
+                                <p class="loungebox_con">탑승동 4F: 07:00 ~ 22:00 <span>(한시적 운영중단)</span></p>
+                                <p class="loungebox_sub">라운지 사정으로 인하여 이용시간 변경 및 제한이 있을 수 있으니, 사전에 확인하여 주시기 바랍니다. (032-743-4811)</p>
+                                <p class="loungebox_title">이용 방법 안내</p>
+                                <p class="loungebox_contstep"><span>STEP1.</span> 홈페이지 및 모바일을 통해 항공권 구매 시 ‘라운지 플러스 번들’ 구매</p>
+                                <p class="loungebox_contstep"><span>STEP2.</span> 웹/모바일 체크인 혹은 전용 카운터 이용하여 수속</p>
+                                <p class="loungebox_contstep"><span>STEP3.</span> 라운지 입장 시 탑승권 제시</p>
+                                <p class="loungebox_contstep"><span>STEP4.</span> 라운지 이용</p>
+                            </div>
+                        </div>
+                        <div class="bundlebox2">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>유의</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">라운지 이용 유의사항</p>
+                                <p class="jini_store_content">출발 당일 진에어 탑승권과 사용자명이 일치하여야 이용 가능하며, 본인 확인을 위해 유효한 여권을 소지하여 주시기 바랍니다.</p>
+                                <p class="jini_store_content_sub">또한, 탑승권 및 여권정보가 라운지에 제공 될 수 있습니다.</p>
+                                <p class="jini_store_content">성인/소아/유아 연령 기준은 진에어 항공권 예매 시 기준에 준합니다.</p>
+                                <p class="jini_store_content">라운지가 만석인 경우 대기시간이 발생할 수 있사오니, 이점 미리 양해 부탁드립니다.</p>
+                                <p class="jini_store_content">라운지 서비스 실제 운용은 스카이허브에서 제공하며, 운영상의 책임은 스카이허브 (032-743-4811)에 있습니다.</p>
+                                <p class="jini_store_content">라운지 사정으로 인하여 이용시간 변경 및 제한이 있을 수 있으니, 사전에 확인하여 주시기 바랍니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <div class="modal"></div>
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+</body>
+</html>

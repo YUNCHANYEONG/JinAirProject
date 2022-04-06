@@ -1,0 +1,53 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/style.css">
+<link rel="stylesheet" href="/adminpage/lib/css/notice/nt_view.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap" id="noticeView">
+                    <div class="search">
+                        <p class="title">공지사항 목록(상세)</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <th style="text-align: left;" id="ntTitle">{{ noticeView.noTitle }}</th>
+                            <th>등록일 {{ noticeView.noRegdate.substr(0, 10) }}</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: right; padding-right: 20px; padding-top: 0.5%; font-size: 12px">첨부파일 [
+                                <a :href=`/api/notify/download/${noticeView.noIndex}` download="">{{ noticeView.noFileOriname }}</a>
+                             ]</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ><textarea style="resize: none;" readonly>{{ noticeView.noContents }}</textarea></td>
+                        </tr>
+                    </table>
+                    <div class="footer">
+                        <a :href=`/pages/admin/nt_modify/${noticeView.noIndex}` class="btn_notice btn_write"><input type="button" value="수정"></a>
+                        <span  class="btn_notice btn_delete"><input type="button" value="삭제" class="modal_btn"></span>
+                        <a href="/pages/admin/notice" class="btn_notice btn_list"><input type="button" value="목록"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal_container">
+        <div class="modal">
+            <p>정말 게시글을 삭제 하시겠습니까?</p>
+            <div class="box_wrap">
+                <input type="button" value="취소" class="btn_cancel">
+                <input type="button" value="삭제" class="btn_del" id="delete">
+            </div>
+        </div>
+    </div>
+    <script src="/adminpage/app/notice/nt_view.js"></script>
+</body>
+</html>

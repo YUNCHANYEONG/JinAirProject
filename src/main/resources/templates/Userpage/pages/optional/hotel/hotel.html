@@ -1,0 +1,73 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<script src="/userpage/app/optional/hotel/hotel.js"></script>
+<link rel="stylesheet" href="/userpage/lib/css/optional/hotel/hotel.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>   // 메뉴
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi"><!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+<!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+<!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="discount">
+                <p class="title_img"></p>
+                <p class="discount_title">호텔</p>
+                <p class="title_sub">진에어 회원 전용<br>호텔 할인 혜택을 확인 해보세요.</p>
+            </div>
+            <div class="img_jinitv"></div>
+            <div class="activity_wrap">
+                <div class="activity_box">
+                    <div class="korea">국내</div>
+                    <div class="oversee">해외</div>
+                    <div class="img_booking"></div>
+                    <p class="activity_boxtitle">부킹닷컴</p>
+                    <div class="notice_box">
+                        <p>예약 수수료 없는 전 세계 인기 숙소를<br>한 눈에 살펴보세요.</p>
+                    </div>
+                    <a href="https://sp.booking.com/index.ko.html?aid=1486529&lang=ko" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+                <div class="activity_box">
+                    <div class="korea">국내</div>
+                    <div class="oversee">해외</div>
+                    <div class="img_hotels"></div>
+                    <p class="activity_boxtitle">호텔스컴바인</p>
+                    <div class="notice_box">
+                        <p>국내외 주요 여행사이트의 가격을 모아<br>한눈에 비교하세요.</p>
+                    </div>
+                    <a href="https://www.hotelscombined.co.kr/?languageCode=KO" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+                <div class="activity_box">
+                    <div class="korea">국내</div>
+                    <div class="oversee">해외</div>
+                    <div class="img_trip"></div>
+                    <p class="activity_boxtitle">트립닷컴</p>
+                    <div class="notice_box2">
+                        <p>전세계 숙소, 렌터카, 액티비티 등 여행<br>에 필요한 모든 것을 한 번에 예약하고<br> 스마트하게 여행하세요.</p>
+                    </div>
+                    <a href="https://kr.trip.com/hotels?locale=ko-KR&allianceid=1307583&sid=4088763" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal"></div>
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+</body>
+</html>

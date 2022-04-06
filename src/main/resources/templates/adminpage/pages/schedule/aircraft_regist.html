@@ -1,0 +1,41 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/schedule/aircrift_regist.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <body>
+        <div id="wrap">
+            <div th:replace="/adminpage/fragment/header :: header"></div>
+            <div id="container">
+                <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+                <div class="contents">
+                    <div class="contwrap">
+                        <p class="title">항공기 신규 등록</p>
+                            <div class="contents_main">
+                                <table>
+                                    <tr>
+                                        <td>항공기타입</td>
+                                        <td>항공기이름</td>
+                                        <td>좌석수</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="airplane_type" id="apType"></td>
+                                        <td><input type="text" class="airplane_name" id="apName"></td>
+                                        <td><input type="text" class="airplane_seat" id="apSeatSum"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="btn_box">
+                                <input type="button" value="취소" onclick="history.back()">
+                                <input type="submit" id="regist" value="등록"/>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+<script src="/adminpage/app/schedule/aircraft_list.js"></script>
+</html>

@@ -1,0 +1,271 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/optional/bundle.css">
+<script src="/userpage/app/serviceCount/optional/bundle.js"></script>
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="discount">
+                    <p class="title_img"></p>
+                    <p class="discount_title">번들 서비스</p>
+                    <p class="title_sub">별도로 구입 가능한 부가서비스(사전좌석지정, 사전구매수하물, 라운지이용권, 스낵팩)를<br>
+                        하나로 묶어 개별 구매 시보다 더욱 저렴하게 판매하는 서비스입니다.</p>
+                </div>
+                <div class="discount_kind">
+                    <table>
+                        <tr>
+                            <th class="dis_bundle cursor">번들 서비스 안내</th>
+                            <th class="dis_lounge cursor" onclick="location.href='./lounge'">라운지 이용권 안내</th>
+                        </tr>
+                    </table>
+                </div>
+                <!--제휴 카드-->
+                <div class="bundle">
+                    <div class="bundlewrapper">
+                        <div class="bundlebox1">
+                            <p class="bundlebox_title">번들 서비스 구성</p>
+                            <table class="composition">
+                                <colgroup>
+                                    <col width="220">
+                                    <col width="300">
+                                    <col width="300">
+                                    <col width="300">
+                                </colgroup>
+                                <tr>
+                                    <td>구성</td>
+                                    <td>스마트</td>
+                                    <td>스마트플러스</td>
+                                    <td>라운지플러스</td>
+                                </tr>
+                                <tr>
+                                    <td><p>사전좌석지정</p><input type="button" value="좌석배치도"class="seatmap_butt">
+                                    </td>
+                                    <td>지니스탠다드 A/B</td>
+                                    <td>전 좌석</td>
+                                    <td>전 좌석</td>
+                                </tr>
+                                <tr>
+                                    <td>추가 혜택</td>
+                                    <td>스낵팩<br>(웨이퍼롤+콜라)</td>
+                                    <td>사전초과수하물<br>(미주노선: 1PC<br>그 외 노선: 5KG)</td>
+                                    <td><p>스카이허브라운지 이용권</p><input type="button" value="이용안내" onclick="location.href='/pages/index/lounge'"></td>
+                                </tr>
+                                <tr>
+                                    <td>제공 서비스</td>
+                                    <td>무료 기내식/수하물</td>
+                                    <td>무료 기내식/수하물<br>수하물 우선하기</td>
+                                    <td>무료 기내식/수하물<br>전용 체크인 카운터</td>
+                                </tr>
+                            </table>
+                            <p class="bundlebox_title">번들 요금</p>
+                            <table class="price">
+                                <colgroup>
+                                    <col width="220">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="80">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="80">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="80">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="2">국가 및 지역</td>
+                                    <td colspan="3">스마트</td>
+                                    <td colspan="3">스마트플러스</td>
+                                    <td colspan="3">라운지플러스</td>
+                                </tr>
+                                <tr>
+                                    <td>개별 요금</td>
+                                    <td>번들 요금</td>
+                                    <td>할인율</td>
+                                    <td>개별 요금</td>
+                                    <td>번들 요금</td>
+                                    <td>할인율</td>
+                                    <td>개별 요금</td>
+                                    <td>번들 요금</td>
+                                    <td>할인율</td>
+                                </tr>
+                                <tr>
+                                    <td>일본/중국본토</td>
+                                    <td>9,000</td>
+                                    <td>7,000</td>
+                                    <td>22%</td>
+                                    <td>49,000</td>
+                                    <td>35,000</td>
+                                    <td>29%</td>
+                                    <td>60,800</td>
+                                    <td>40,000</td>
+                                    <td>34%</td>
+                                </tr>
+                                <tr>
+                                    <td>홍콩/마카오/대만/러시아</td>
+                                    <td>11,000</td>
+                                    <td>7,000</td>
+                                    <td>27%</td>
+                                    <td>69,000</td>
+                                    <td>45,000</td>
+                                    <td>35%</td>
+                                    <td>70,800</td>
+                                    <td>45,000</td>
+                                    <td>36%</td>
+                                </tr>
+                                <tr>
+                                    <td>동남아</td>
+                                    <td>14,000</td>
+                                    <td>11,000</td>
+                                    <td>21%</td>
+                                    <td>89,000</td>
+                                    <td>50,000</td>
+                                    <td>44%</td>
+                                    <td>85,800</td>
+                                    <td>55,000</td>
+                                    <td>36%</td>
+                                </tr>
+                                <tr>
+                                    <td>대양주</td>
+                                    <td>14,000</td>
+                                    <td>11,000</td>
+                                    <td>21%</td>
+                                    <td>79,000</td>
+                                    <td>50,000</td>
+                                    <td>37%</td>
+                                    <td>85,800</td>
+                                    <td>55,000</td>
+                                    <td>36%</td>
+                                </tr>
+                                <tr>
+                                    <td>호주/미주</td>
+                                    <td>17,000</td>
+                                    <td>13,000</td>
+                                    <td>24%</td>
+                                    <td>199,000</td>
+                                    <td>100,000</td>
+                                    <td>50%</td>
+                                    <td>125,800</td>
+                                    <td>80,000</td>
+                                    <td>36%</td>
+                                </tr>
+                            </table>
+                            <p class="exchange_rate">통화 별 환율 기준 : KRW1,000 = USD 1 = JPY 100 = CNY 7 = HKD 8 = MOP 8 = TWD 30 = THB 35 = MYR4 = PHP 50 = VND 24,000 = AUD 1.4</p>
+                            <p class="bundlebox_title">번들 상품 구매절차</p>
+                            <div class="procedure">
+                                <div class="procedure_box">
+                                    <div class="procedure_1_img procedure_box_img"></div>
+                                    <p><span>STEP1.</span>원하는 여정 및 운임 선택</p>
+                                </div>
+                                <div class="procedure_box">
+                                    <div class="procedure_2_img procedure_box_img"></div>
+                                    <p><span>STEP2.</span>운임 선택 시 서비스 선택</p>
+                                </div>
+                                <div class="procedure_box">
+                                    <div class="procedure_3_img procedure_box_img"></div>
+                                    <p><span>STEP3.</span>탑승객 정보 및 예매자 정보 입력</p>
+                                </div>
+                                <div class="procedure_box">
+                                    <div class="procedure_4_img procedure_box_img"></div>
+                                    <p><span>STEP4.</span>좌석지정 및 추가 부가 서비스 신청</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bundlebox2">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>신청</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">신청 방법</p>
+                                <p class="jini_store_content">홈페이지/APP 으로 항공권 구매 시, 동시에 신청 (단독 신청/추후 신청/ 변경 /취소 후 재 구매 불가)</p>
+                                <p class="jini_store_content">번들에 포함되지 않는 서비스 및 좌석은 항공권 구매 시 부가 서비스 선택 단계에서 추가 신청</p>
+                                <p class="jini_store_content">비행시간이 짧은 단거리 노선은 번들 서비스 이용 불가</p>
+                                <p class="jini_store_content_sub">(인천-후쿠오카, 인천/부산-기타큐슈, 부산-오사카, 제주-상하이)
+                                </p>
+                                <p class="jini_store_content">번들서비스 이용 가능 노선임에도 구매 창 (번들 상품 구매 절차 STEP2) 미 표출 시 구매 불가</p>
+                                <p class="jini_store_content">항공기 출발 24시간 전까지 구매 가능</p>
+                            </div>
+                        </div>
+                        <div class="bundlebox3">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>유의</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">유의 사항</p>
+                                <p class="jini_store_content">출발 24시간 이내에는 취소가 불가능하며, 항공권 취소 시에도 번들 요금은 환불되지 않습니다.</p>
+                                <p class="jini_store_content">항공권 변경 또는 취소 시 구매하신 번들 서비스는 자동 환불 처리 됩니다.</p>
+                                <p class="jini_store_content">번들 서비스는 항공권과 분리되어 단독 환불 가능하나 번들 서비스 내 아이템 별 개별 환불은 불가합니다.</p>
+                                <p class="jini_store_content_sub">(추가로 번들에 포함되지 않은 좌석 추가 구매 시 번들 서비스로 제공되는 좌석의 개별 환불은 불가합니다.)</p>
+                                <p class="jini_store_content">번들의 ‘수하물 우선하기‘ 및 ‘전용체크인카운터＇의 경우, 추가로 제공되는 서비스로 출발 당일 현장 상황에 따라 미제공 될 수</p>
+                                <p class="jini_store_content_sub">있으며, 이에 따른 일부 금액 환불은 불가합니다.</p>
+                                <p class="jini_store_content">스낵팩 구성품의 변경은 불가합니다. (단, 구성품 부족 시 동일 가격 지정된 다른 제품 제공)</p>
+                                <p class="jini_store_content">결제 완료 후 초과 수하물 추가 구매 경로:</p>
+                                <p class="jini_store_sub">스마트 번들, 라운지 플러스 번들 : 마이페이지, 고객서비스센터</p>
+                                <p class="jini_store_sub">스마트 플러스 번들 : 고객서비스센터</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--좌석배치도 모달창-->
+                <div id="modal_seatmap_wrap">
+                    <div class="modal_seatmap_wrap">
+                        <div class="modal_title">
+                            <p class="tit_text">
+                                좌석배치도
+                            </p>
+                            <p class="close">
+                                <img src="/userpage/lib/img/close.png" alt="닫기" class="cursor" width="35px">
+                            </p>
+                        </div>
+                        <div class="modal_content_wrap">
+                            <div class="modal_menu_wrap">
+                                <div id="modal_menu1" class="modal_menu">B777-200ER</div>
+                                <div id="modal_menu2" class="modal_menu">B737-800</div>
+                                <div id="modal_menu3" class="modal_menu">B737-900</div>
+                            </div>
+
+                            <div id="modal_content1" class="modal_content">
+                                <img src="/userpage/lib/img/seatmap1.png" alt="B777-200ER" class="seatmap_img">
+                            </div>
+
+                            <div id="modal_content2" class="modal_content">
+                                <img src="/userpage/lib/img/seatmap2.png" alt="B737-800" class="seatmap_img">
+                            </div>
+
+                            <div id="modal_content3" class="modal_content">
+                                <img src="/userpage/lib/img/seatmap3.png" alt="B737-900" class="seatmap_img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--좌석배치도 모달창 끝-->
+            </div>
+        </div>
+        <!-- container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <div class="modal"></div>
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+</body>
+</html>

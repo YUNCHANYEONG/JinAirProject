@@ -1,0 +1,72 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/inquiry/qna_main.css">
+<script src="/adminpage/app/inquiry/qna_main.js"></script>
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <div class="title">
+                        <p>Q&A 목록</p>
+                    </div>
+                    <div class="contents_top">
+                        <div class="selecter">
+                            <select>
+                                <option>전체</option>
+                                <option>기내홈쇼핑</option>
+                                <option>칭송</option>
+                                <option>불만</option>
+                                <option>문의요청</option>
+                                <option>제언</option>
+                            </select>
+                        </div> 
+                        <div class="btn_top">
+                            <input type="text" placeholder="검색어를 입력하세요" class="searchQna">
+                            <input type="button" value="검색" class="btn_searchQna">
+                        </div>
+                    </div>
+                    <div class="contents_main">
+                        <table>
+                            <tr class="conatainsss">
+                                <td>번호</td>
+                                <td>제목</td>
+                                <td>작성자</td>
+                                <td>답변여부</td>
+                                <td>등록일</td>
+                            </tr>
+                            <tbody id="itemList">
+                                <tr v-for="dto in itemList.slice().reverse()">
+                                    <td>{{dto.qnaIndex}}</td>
+                                    <td>
+                                        <a :href=`/pages/admin/qna_view/${dto.qnaIndex}`>{{dto.qnaTitle}}</a></td>
+                                    <td>{{dto.qnaUserName}}</td>
+                                    <td>{{dto.qnaIsans}}</td>
+                                    <td>{{dto.qnaRegdate.substr(0,10)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="footer">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage">
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

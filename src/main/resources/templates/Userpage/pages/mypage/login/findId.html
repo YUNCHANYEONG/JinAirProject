@@ -1,0 +1,56 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<script src="/userpage/app/index/index.js"></script>
+<link rel="stylesheet" href="/userpage/lib/css/mypage/findIdPw.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>   // 메뉴
+<!-- head 끝 -->
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="result_container">
+                <div class="result_title">
+                    <p>아이디/비밀번호 찾기</p>
+                </div>
+                <div class="result_main">
+                    <p>입력하신 정보와 일치하는</p>
+                    <p>아이디 정보는 다음과 같습니다.</p>
+                </div>
+                <div>
+                    <table>
+                        <tr class="bb">
+                            <th>이름</th>
+                            <td><span th:text="${member.memKorFirstName}+${#strings.substring(member.memKorLastName, 0, #strings.length(member.memKorLastName)-1)}"></span>*</td>
+                        </tr>
+                        <tr>
+                            <th>아이디</th>
+                            <td><span th:text="${#strings.toUpperCase(#strings.substring(member.memUserid, 0 , #strings.length(member.memUserid)-2))}"></span>**</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn">
+                    <input type="button" value="로그인" onclick="location.href='/pages/login'">
+                    <input type="button" value="메인" onclick="location.href='/pages/index'">
+                </div>
+            </div>
+        </div>
+        <!--container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <div class="modal">
+    </div>
+</body>
+</html>

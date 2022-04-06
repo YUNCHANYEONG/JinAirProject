@@ -1,0 +1,113 @@
+
+#container > .contents > .contwrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#container > .contents .title{ 
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+} 
+.contents > .contwrap > .search{
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+.contents > .contwrap > .search > .title{
+    font-size: 1.1rem; 
+    font-weight: 700;
+    display: inline;
+    align-self:flex-start;
+} 
+.contents > .contwrap > .search{
+    display: flex;
+    justify-content: space-between;
+}
+.contents > .contwrap > .search .search_box input[type="text"]{
+    width: 180px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid grey;
+    text-indent: 10px;
+    font-size: 12px;
+    font-weight: bolder;
+    color: black;
+    position: relative;
+    bottom: 1px;
+    outline: none;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+.contents > .contwrap > .search .search_box input[type="button"]{
+    text-align: center;
+    width: 40px;
+    height: 30px;
+    border: 1px solid #BDD600;
+    border-radius: 2px;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    margin-left: 5px;
+}
+
+
+.contents > .contwrap > table{
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    border-collapse: collapse;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+.contents > .contwrap > table tr{
+    height: 40px;
+}
+.contents > .contwrap > table tr:nth-child(1){
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #ccc;
+}
+.footer{
+    margin-top: 40px;
+    width: 100%;
+    height: 30px;
+}
+.footer > .center{
+    display: flex;
+    justify-content: center;
+}
+.footer table{
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.footer table td{
+    width: 35px;
+    height: 40px;
+    border: 1px solid rgb(187, 187, 187);
+    background-color: #fff;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.pages {
+    background-color : #fff;
+    color : #444;
+    cursor : pointer;
+}
+
+#showPage > td:hover {
+    background-color: #BDD600;
+    color: white;
+}
+
+.firstPage1, .firstPage2, .lastPage1, .lastPage2 {
+    cursor: pointer;
+}

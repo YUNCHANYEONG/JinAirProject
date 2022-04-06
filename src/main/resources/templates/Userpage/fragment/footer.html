@@ -1,0 +1,202 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<div class="footer" th:fragment="footer">
+    <div id="footerCont">
+        <!--푸터-->
+        <div id="foot_topwraper">
+            <div id="foot_top">
+                <!--위쪽 푸터-->
+                <div id="top_menu">
+                    <!--상단메뉴 컨테이너-->
+                    <div class="menu_wrap">
+                        <!--첫번째 메뉴-->
+                        <p class="men_tit"><a href="">회사안내</a></p>
+                        <!--메뉴 타이틀-->
+                        <ul class="horiz">
+                            <!--하위 메뉴 컨테이너-->
+                            <li><a href="/pages/notice/notice">공지사항</a></li>
+                            <li><a href="">채용정보</a></li>
+                            <li><a href="">CEO인사말</a></li>
+                            <li><a href="">기업개요</a></li>
+                            <li><a href="">기업지배구조</a></li>
+                            <li><a href="">윤리경영</a></li>
+                            <li><a href="">CI소개</a></li>
+                            <li><a href="">항공기 소개</a></li>
+                            <li><a href="">투자정보</a></li>
+                            <li><a href="">화물운송</a></li>
+                            <li><a href="">홍보센터</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu_wrap">
+                        <!--두번째 메뉴-->
+                        <p class="men_tit">
+                            <a href="">약관 및 안내</a>
+                        </p>
+                        <!--메뉴 타이틀-->
+                        <ul class="horiz">
+                            <!--하위 메뉴 컨테이너-->
+                            <li class="f_black">
+                                <a href=""><b>개인정보 처리방침</b></a>
+                            </li>
+                            <li><a href="">홈페이지 이용약관</a></li>
+                            <li>
+                                <a href="">여객운송약관 및 기타 고지사항</a>
+                            </li>
+                            <li>
+                                <a href="">항공교통이용자 서비스 계획</a>
+                            </li>
+                            <li><a href="">피해구제계획</a></li>
+                            <li>
+                                <a href="">e-티켓 확인증 법적 고지문</a>
+                            </li>
+                            <li><a href="">사이트맵</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu_wrap">
+                        <!--세번째 메뉴-->
+                        <p class="men_tit"><a href="">고객서비스</a></p>
+                        <!--메뉴 타이틀-->
+                        <ul class="horiz">
+                            <!--하위 메뉴 컨테이너-->
+                            <li><a href="/pages/index/faqList">자주 묻는 질문(FAQ)</a></li>
+                            <li><a href="/pages/index/addQna">고객의 말씀(Q&A)</a></li>
+                            <li><a
+                                    href="/pages/index/baggage?directId=findbaggage">기내
+                                유실물 찾기</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--상단메뉴 컨테이너 끝-->
+            </div>
+            <!--위쪽푸터 끝-->
+        </div>
+        <div id="foot_bottwraper">
+            <div id="foot_bott">
+                <!--아래쪽 푸터-->
+                <div id="bott_menu">
+                    <!--하단메뉴 컨테이너-->
+                    <div id="app_ico">
+                        <!--apple icon-->
+                        <ul class="Sicon">
+                            <!--sns icon-->
+                            <li>
+                                <a href="">
+                                    <p class="twit circle">
+                                        트위터
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <p class="faceb circle">
+                                        페이스북
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <p class="youtub circle">
+                                        유튜브
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <p class="insta circle">
+                                        인스타
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <p class="blog circle">
+                                        블로그
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="Aicon">
+                            <!--app icon-->
+                            <li class="Aicon_txt">APP 다운로드</li>
+                            <li>
+                                <a href=""><img src="/userpage/lib/img/ico_apple.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="/userpage/lib/img/google.PNG" alt="" /></a>
+                            </li>
+                        </ul>
+                        <ul class="site">
+                            <li>
+                                <a href="">
+                                    <p class="sit circle">
+                                        대리점 사이트
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="Aicon_txt">
+                                대리점 사이트 바로가기
+                            </li>
+                        </ul>
+                    </div>
+                    <!--apple icon 끝-->
+                    <div id="news">
+                        <!--뉴스레터-->
+                        <ul>
+                            <li class="sub_txt">뉴스레터 신청</li>
+                        </ul>
+                        <ul class="mail_box">
+                            <li>
+                                <input type="text" placeholder="Email Address" />
+                            </li>
+                            <li><input type="submit" /></li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img src="/userpage/lib/img/ico_isms.png" alt="인증" />
+                            </li>
+                        </ul>
+                    </div>
+                    <!--뉴스레터 끝-->
+                    <div id="info">
+                        <!--정보-->
+                        <ul>
+                            <li>
+                                <b>고객서비스센터 1600-6200,
+                                    02-6099-1200</b>
+                                <p class="pdiv">
+                                    업무시간 오전 08:00~오후 19:00
+                                </p>
+                            </li>
+                            <li class="small_txt">
+                                (주)진에어
+                                <p class="pdiv">대표이사 최정호</p>
+                                <p class="pdiv">
+                                    사업자등록번호 121-81-89086
+                                </p>
+                                <p class="pdiv">
+                                    통신판매업 신고번호 : 제2008-서울
+                                    강서-0408
+                                </p>
+                            </li>
+                            <li class="small_txt">
+                                주소 : 서울시 강서구 공항대로 453
+                                <p class="pdiv"></p>
+                                개인정보보호책임자 : 이광
+                            </li>
+                            <li class="small_txt">
+                                Copyright © JIN AIR. All Rights
+                                Reserved.
+                            </li>
+                        </ul>
+                    </div>
+                    <!--정보 끝-->
+                </div>
+                <!--하단메뉴 컨테이너 끝-->
+            </div>
+            <!--아래쪽 푸터 끝-->
+        </div>
+    </div>
+</div>
+</html>

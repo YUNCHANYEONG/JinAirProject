@@ -1,0 +1,59 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<head><div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/event/evn_edit.css">
+    <script src="/adminpage/app/event/evn_edit_win.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="contwrap">
+                    <div class="event_wrap">
+                        <div class="event">
+                            <p class="title">이벤트 수정</p>
+                        </div>
+                        <div class="event_edit">
+                            <table>
+                                <colgroup>
+                                    <col style="width:85%;">
+                                    <col style="width:15%;">
+                                </colgroup>
+                                <tr>
+                                    <th class="botbor"><input type="text" class="tit" th:value="${eventWinApiResponse.evTitle}" id="title">
+                                    <th class="right botbor">등록일 <p class="wrdate" th:id="wrdate" th:text="${#strings.substring(eventWinApiResponse.evRegdate,0,10)}"></p></th>
+                                    <input type="hidden" th:value="${eventWinApiResponse.evRegdate}" th:id="wrdate1">
+                                </tr>
+                                <tr>
+                                    <td class="content_txt" colspan="2">
+                                        <textarea  name="event_content" class="event_content" th:text="${eventWinApiResponse.evContent}" id="event_content"></textarea>
+                                        <input type="hidden" th:value="${eventWinApiResponse.evContent}" th:id="event_content">
+                                        <p class="bottT">Fly, better fly Jin Air</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="footer">
+                                <input type="button" value="뒤로" class="butt canc_btn" onclick="history.back()">
+                                <input type="button" value="수정 완료" class="butt edit_btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modal_isedit">
+                <div id="modal_isedit_content">
+                    <div id="modal_isedit_title"><p class="text">이벤트수정을 하시겠습니까?</p></div>
+                    <div>
+                        <input type="button" class="modal_isedit_btn uncomplete" value="취소">
+                        <input type="button" class="modal_isedit_btn complete" value="수정">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/schedule/sc_list.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <body>
+        <div id="wrap">
+            <div th:replace="/adminpage/fragment/header :: header"></div>
+            <div id="container">
+                <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+                <div class="contents">
+                    <div class="contwrap">
+                        <div class="btn_top">
+                            <p class="title">운항 스케줄 조회</p>
+                            <div>
+                                <input type="button" value="조건 조회" class="btn_search">
+                                <input type="button" value="운항 스케줄 등록" onclick="location.href='/pages/admin/scheduleRegist'">
+                            </div>
+                        </div>
+                        <div class="contents_main">
+                            <table id="itemList">
+                                <tr>
+                                    <td>항공편명</td>
+                                    <td>출발 일자</td>
+                                    <td>출발지</td>
+                                    <td>출발시간</td>
+                                    <td>도착지</td>
+                                    <td>도착시간</td>
+                                </tr>
+                                <tr v-for="dto in itemList">
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${dto.schIndex}`>{{dto.schAirplaneName}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${dto.schIndex}` id="startDay">{{dto.schDepartureDate.substr(0,10)}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${dto.schIndex}`>{{dto.schDeparturePoint}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${dto.schIndex}`>{{dto.schStartTime.substr(11,16)}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${dto.schIndex}`>{{dto.schArrivalPoint}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${dto.schIndex}`>{{dto.schArrivalDate.substr(11,16)}}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage">
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- 모달 창-->
+        <div class="modal_container">
+            <div class="modal">
+                <table>
+                    <tr>
+                        <th>항공타입</th>
+                        <td><select id="schAirplaneType"></select></td>
+                        <td colspan="2"><input type="button" id="findName" value="조회"></td>
+                    </tr>
+                    <tr>
+                        <th>항공기명</th>
+                        <td><select id="schAirplaneName"></select></td>
+                        <th>출발날짜</th>
+                        <td><input type="date" id="schDepartureDate"></td>
+                    </tr>
+                    <tr>
+                        <th>출발지</th>
+                        <td><select id="schDeparturePoint"></select></td>
+                        <th>도착지</th>
+                        <td><select id="schArrivalPoint"></select></td>
+                    </tr>
+                </table>
+                <div class="btn_modal">
+                    <input type="button" value="취소" class="modal_cancel">
+                    <input type="button" value="검색" class="modal_search" >
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/adminpage/app/schedule/sc_list.js"></script>
+</html>

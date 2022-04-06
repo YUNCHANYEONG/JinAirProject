@@ -1,0 +1,1542 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/mypage/Mypage_getReservationDetail.css">
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <input type="hidden" id="memid" th:value="${memberApiResponse.memIndex}">
+            <input type="hidden" id="reIndex1" th:value="${reserveApiResponse[0].reIndex}">
+            <input type="hidden" id="reTripKind" th:value="${reserveApiResponse[0].reTripKind}">
+            <input type="hidden" id="rePeopleType" th:value="${reserveApiResponse[0].rePeopleType}">
+            <input type="hidden" id="reSchStartTime" th:value="${reserveApiResponse[0].reSchStartTime}">
+            <input type="hidden" id="reSchStartTime2" th:value="${reserveApiResponse[1].reSchStartTime}">
+            <div class="mypage_main w_1160">
+                <div class="mypage_menu">
+                    <p>마이<br>페이지</p>
+                    <ul>
+                        <li class="booking"><a href="/pages/index/mypageMain">예약조회/변경/취소</a></li>
+                        <li class="mypoint"><a href="/pages/index/mypagePoint">나의 나비포인트</a><div class="mypoint_sum"><span><strong id="point"></strong>p</span></div></li>
+                        <li class="coupon">
+                            <a href="/pages/index/mypageCoupons">나의 할인쿠폰</a>
+                            <div class="mycoupon_sum">
+                                <span id="coupon"></span>
+                            </div>
+                        </li>
+                        <li class="qna"><a href="/pages/index/mypageQna">나의 Q&A</a></li>
+                        <li class="edit"><a href="#">회원정보 수정</a></li>
+                    </ul>
+                </div>
+                <div class="menu_title">
+                    <p>예약조회/변경/취소</p>
+                </div>
+                <div class="reserve_info">
+                    <div class="page_top">
+                        <h2>예약정보</h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>예약일</th>
+                            <td th:text="${#strings.substring(reserveApiResponse[0].reRegdate,0, 10)}"></td>
+                            <th>예약번호</th>
+                            <td th:text="${reserveApiResponse[0].reReserNum}"></td>
+                        </tr>
+                        <tr>
+                            <th>상태</th>
+                            <td>확약</td>
+                            <th>탑승객</th>
+                            <td><span id="person_cnt" th:text="${reserveApiResponse[0].rePeopleType}"></span></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                여정1
+                                <p th:text="${reserveApiResponse[0].reSchName}"></p>
+                            </th>
+                            <td colspan="3" class="info">
+                                <div class="in_bl">
+                                    <span id="go_area1" th:text="${reserveApiResponse[0].reSchDepPoint}"></span>
+                                    <p id="godate">[출발]<span th:text="${#strings.substring(reserveApiResponse[0].reSchStartTime,0, 10)}"></span> [<span th:text="${#strings.substring(reserveApiResponse[0].reSchStartTime,11, 16)}"></span>]</p>
+                                </div>
+                                <span class="arrow">
+                                    <img src="/userpage/lib/img/right_arrow.PNG" alt="에서">
+                                </span>
+                                <div class="in_bl">
+                                    <span id="arr_area1" th:text="${reserveApiResponse[0].reSchArrPoint}"></span>
+                                    <p>[도착]<span th:text="${#strings.substring(reserveApiResponse[0].reSchEndTime,0, 10)}"></span> [<span th:text="${#strings.substring(reserveApiResponse[0].reSchEndTime,11, 16)}"></span>]</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ifOnewayD">
+                            <th>
+                                여정2
+                                <p th:text="${reserveApiResponse[1].reSchName}"></p>
+                            </th>
+                            <td colspan="3" class="info">
+                                <div class="in_bl">
+                                    <span th:text="${reserveApiResponse[1].reSchDepPoint}"></span>
+                                    <p>[출발]<span th:text="${#strings.substring(reserveApiResponse[1].reSchStartTime,0, 10)}"></span> [<span th:text="${#strings.substring(reserveApiResponse[1].reSchStartTime,11, 16)}"></span>]</p>
+                                </div>
+                                <span class="arrow">
+                                    <img src="/userpage/lib/img/right_arrow.PNG" alt="에서">
+                                </span>
+                                <div class="in_bl">
+                                    <span th:text="${reserveApiResponse[1].reSchArrPoint}"></span>
+                                    <p>[도착]<span th:text="${#strings.substring(reserveApiResponse[1].reSchEndTime,0, 10)}"></span> [<span th:text="${#strings.substring(reserveApiResponse[1].reSchEndTime,11, 16)}"></span>]</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="user_info">
+                    <h2>탑승객 정보</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>성명</th>
+                                <th>구분</th>
+                                <th>성별</th>
+                                <th>생년월일</th>
+                                <th>국적</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="memberDetail" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                <td>[[${dto.reFirstName}]][[${dto.reLastName}]]</td>
+                                <td th:class="'rePeopleType'+${i.index}"></td>
+                                <td th:text="${dto.reGender}"></td>
+                                <td th:class="'reBirth'+${i.index}">[[${dto.reBirth}]]</td>
+                                <td th:text="${dto.reNation}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 운임 정보-->
+                <div class="fare_wrap">
+                    <h2>운임정보</h2>
+                    <div class="fare_info borderT">
+                        <div class="jour_wrap">
+                            <div class="tot">
+                                <p class="txt">총 운임</p>
+                                <p class="price_wrap"><span class="cul">KRW</span><span class="price finalPrice"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="fare_info_T">
+                        <colgroup>
+                            <col width="85%">
+                            <col width="15%">
+                        </colgroup>
+                        <tr class="borderB">
+                            <td>항공운임</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price planePrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래" class="arr_bott arr_bott1 cursor">
+                                        <img src="/userpage/lib/img/arr_top.png" alt="위" class="arr_top arr_top1 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add1">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price" th:class="trip1BP"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="ifOnewayD">
+                                        <td>구간 2 : <span th:text="${reserveApiResponse[1].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[1].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price" th:class="trip2BP"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="borderB">
+                            <td class="borderB">유류할증료</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price oilPrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                             class="arr_bott arr_bott2 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                            alt="위" class="arr_top arr_top2 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add2">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price">5,000</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="ifOnewayD">
+                                        <td>구간 2 : <span th:text="${reserveApiResponse[1].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[1].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price">5,000</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="borderB">
+                            <td>세금</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price taxPrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                             class="arr_bott arr_bott3 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                            alt="위" class="arr_top arr_top3 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add3">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price">4,000</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="ifOnewayD">
+                                        <td>구간 2 : <span th:text="${reserveApiResponse[1].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[1].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price">4,000</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- 운임 규정-->
+                <div class="infobox">
+                    <ul>
+                        <li class="infoboxli1">
+                            여정 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span>
+                        </li>
+                        <li class="infoboxli2 ifOnewayD">
+                            여정 2 : <span th:text="${reserveApiResponse[1].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[1].reSchArrPoint}"></span>
+                        </li>
+                    </ul>
+                    <div class="bbsbox1">
+                        <table class="bbsList1">
+                            <colgroup>
+                                <col width="20%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="al">운임종류</th>
+                                    <td class="al">지니</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="al">예약변경</th>
+                                    <td class="al">~ 61일 전 : 편도 당 KRW 1,000 징수<br>
+                                        60일 전 ~ 31일 전 : 편도 당 KRW 3,000 징수<br>
+                                        30일 전 ~ 15일 전 : 편도 당 KRW 4,000 징수<br>
+                                        14일 전 ~ 2일 전 : 편도 당 KRW 8,000 징수<br>
+                                        1일 전 ~ 출발시간 전 : 편도 당 KRW 10,000 징수<br>
+                                        출발시간 이후(NO-SHOW) : 편도 당 KRW 15,000 징수<br> (예약부도 위약금 포함)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="al">환불</th>
+                                    <td class="al">~ 61일 전 : 편도 당 KRW 1,000 징수<br>
+                                        60일 전 ~ 31일 전 : 편도 당 KRW 3,000 징수<br>
+                                        30일 전 ~ 15일 전 : 편도 당 KRW 4,000 징수<br>
+                                        14일 전 ~ 2일 전 : 편도 당 KRW 8,000 징수<br>
+                                        1일 전 ~ 출발시간 전 : 편도 당 KRW 10,000 징수<br>
+                                        출발시간 이후(NO-SHOW) : 편도 당 KRW 15,000 징수<br> (예약부도 위약금 포함)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bbsbox2">
+                        <table class="bbsList2">
+                            <colgroup>
+                                <col width="20%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="al">운임종류</th>
+                                    <td class="al">지니</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="al">예약변경</th>
+                                    <td class="al">~ 61일 전 : 편도 당 KRW 1,000 징수<br>
+                                        60일 전 ~ 31일 전 : 편도 당 KRW 3,000 징수<br>
+                                        30일 전 ~ 15일 전 : 편도 당 KRW 4,000 징수<br>
+                                        14일 전 ~ 2일 전 : 편도 당 KRW 8,000 징수<br>
+                                        1일 전 ~ 출발시간 전 : 편도 당 KRW 10,000 징수<br>
+                                        출발시간 이후(NO-SHOW) : 편도 당 KRW 15,000 징수<br> (예약부도 위약금 포함)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="al">환불</th>
+                                    <td class="al">~ 61일 전 : 편도 당 KRW 1,000 징수<br>
+                                        60일 전 ~ 31일 전 : 편도 당 KRW 3,000 징수<br>
+                                        30일 전 ~ 15일 전 : 편도 당 KRW 4,000 징수<br>
+                                        14일 전 ~ 2일 전 : 편도 당 KRW 8,000 징수<br>
+                                        1일 전 ~ 출발시간 전 : 편도 당 KRW 10,000 징수<br>
+                                        출발시간 이후(NO-SHOW) : 편도 당 KRW 15,000 징수<br> (예약부도 위약금 포함)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- 운임 규정 끝 -->
+                    <!--부가서비스 확인-->
+                    <div class="service_wrap">
+                        <h2>부가서비스</h2>
+                        <table class="service_T">
+                            <colgroup>
+                                <col width="85%">
+                                <col width="15%">
+                            </colgroup>
+                            <tr>
+                                <td class="borderT">총 운임</td>
+                                <td class="borderT">
+                                    <div class="td_wrap">
+                                        <span class="cul">KRW</span><span class="price subFinalprice"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>사전좌석지정</td>
+                                <td>
+                                    <div class="td_wrap">
+                                        <span class="cul">KRW</span>
+                                        <span class="price seatPrice"></span>
+                                        <span class="arrow">
+                                            <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                 class="arr_bott arr_bott4 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                                alt="위" class="arr_top arr_top4 cursor">
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="datail_add datail_add4">
+                                <td colspan="2" class="detail_td">
+                                    <table class="detail_T detail1_T">
+                                        <colgroup>
+                                            <col width="40%">
+                                            <col width="45%">
+                                            <col width="15%">
+                                        </colgroup>
+                                        <tr>
+                                            <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                            <td c><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                            <td th:class="'seat1D'+${i.index}">[[${dto.reSeatDetail}]]</td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price" th:class="'seat1P'+${i.index}">[[${dto.reSeatPrice}]]</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="ifOnewayD">
+                                            <td>구간 2 : <span th:text="${reserveApiResponse[1].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[1].reSchArrPoint}"></span></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                            <td c><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                            <td th:class="'seat2D'+${i.index}">[[${dto.reSeatDetail}]]</td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price" th:class="'seat2P'+${i.index}">[[${dto.reSeatPrice}]]</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>초과수하물</td>
+                                <td>
+                                    <div class="td_wrap">
+                                        <span class="cul">KRW</span>
+                                        <span class="price BaggPrice"></span>
+                                        <span class="arrow">
+                                            <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                 class="arr_bott arr_bott5 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                                alt="위" class="arr_top arr_top5 cursor">
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="datail_add datail_add5">
+                                <td colspan="2" class="detail_td">
+                                    <table class="detail_T detail1_T">
+                                        <colgroup>
+                                            <col width="40%">
+                                            <col width="45%">
+                                            <col width="15%">
+                                        </colgroup>
+                                        <tr>
+                                            <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                            <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                            <input type="hidden" th:value="${dto.reBaggageidx}" th:class="'reBaggageidx1'+${i.index}">
+                                            <td th:class="'bagg1KG'+${i.index}"></td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price" th:class="'bagg1P'+${i.index}"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="ifOnewayD">
+                                            <td>구간 2 : <span th:text="${reserveApiResponse[1].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[1].reSchArrPoint}"></span></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                            <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                            <input type="hidden" th:value="${dto.reBaggageidx}" th:class="'reBaggageidx2'+${i.index}">
+                                            <td th:class="'bagg2KG'+${i.index}"></td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price" th:class="'bagg2P'+${i.index}"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>여행보험</td>
+                                <td>
+                                    <div class="td_wrap">
+                                        <span class="cul">KRW</span>
+                                        <span class="price InsuPrice"></span>
+                                        <span class="arrow">
+                                            <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                 class="arr_bott arr_bott6 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                                alt="위" class="arr_top arr_top6 cursor">
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="datail_add datail_add6">
+                                <td colspan="2" class="detail_td">
+                                    <table class="detail_T detail1_T">
+                                        <colgroup>
+                                            <col width="40%">
+                                            <col width="45%">
+                                            <col width="15%">
+                                        </colgroup>
+                                        <tr>
+                                            <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                            <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                            <input type="hidden" th:value="${dto.reInsuranceidx}" th:class="'reInsuranceidx1'+${i.index}">
+                                            <td th:class="'Insu1Tp'+${i.index}"></td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price" th:class="'Insu1P'+${i.index}"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="ifOnewayD">
+                                            <td>구간 2 : <span th:text="${reserveApiResponse[1].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[1].reSchArrPoint}"></span></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                            <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                            <input type="hidden" th:value="${dto.reInsuranceidx}" th:class="'reInsuranceidx2'+${i.index}">
+                                            <td th:class="'Insu2Tp'+${i.index}"></td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price" th:class="'Insu2P'+${i.index}"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--부가서비스 확인 끝-->
+                    <div class="pay_info">
+                        <h2>결제정보</h2>
+                        <table>
+                            <tr>
+                                <th>[[${reserveApiResponse[0].rePayment}]]</th>
+                                <td>카카오페이</td>
+                                <th>상세정보</th>
+                                <td>606045XXXXXX0646</td>
+                            </tr>
+                            <tr>
+                                <th>승인번호</th>
+                                <td>06116075</td>
+                                <th>구매일</th>
+                                <td>[[${#strings.substring(reserveApiResponse[0].reRegdate, 0, 10)}]]</td>
+                            </tr>
+                            <tr>
+                                <th>결제금액</th>
+                                <td>KRW <span class="realPayPrice"></span></td>
+                                <td colspan="2">
+                                    <button>
+                                        <img src="/userpage/lib/img/printer.png" alt="프린터">
+                                        영수증 인쇄
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="to_main">
+                        <p class="modal_text reser_change_btn">항공권 변경</p>
+                        <p class="modal_text reser_cancel_btn">항공권 취소/환불</p>
+                        <p class="modal_text sub_service_btn">부가서비스 취소/환불</p>
+                        <p class="modal_text trip_btn">여행보험 가입</p>
+                        <p><a href="/pages/index/mypageMain">처음으로</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <div class="modal">
+    </div>
+    <div class="pwcheck_modal">
+        <form action="#" method="post">
+            <div class="pwcheck_title">
+                <p>비밀번호 확인</p>
+            </div>
+            <div class="pwcheck_box">
+                <p>고객님의 개인정보를 소중하게 보호하려고 노력하고 있으며,<br>회원님의 동의 없이는 회원정보를 제공하지 않습니다.</p>
+                <p>비밀번호 입력 <input type="password"></p>
+                <div class="btn">
+                    <input type="button" class="btn_agree" value="확인"
+                        onclick="location.href='/pages/index/mypageEdit'">
+                    <input type="button" class="btn_cancel" value="취소">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="reser_change">
+        <div class="modal_title">
+            <p>예약 변경 안내</p>
+        </div>
+        <div class="main_box">
+            <ul>
+                <li>- 예약 변경 시 운임 규정에 따라 수수료가 발생할 수 있습니다.</li>
+                <li>초과수하물을 제외한 부가서비스는 자동 취소되오니 다시 구매하여 주시기 바랍니다. (취소 기한 내에만 환불 가능)</li>
+                <li>여정 변경 시 기존에 신청한 자동체크인 서비스도 함께 취소됩니다.</li>
+                <li>가족할인/기업우대 등의 추가할인을 받으신 이후 예약을 분리하는 경우에는</li>
+                <li>할인 조건 미충족으로 인해 예약변경이 불가하거나 수속 시 추가 금액이 징수 될 수 있습니다.</li>
+                <li>일부 승객 선택 시 예약이 분리되어 진행됩니다.</li>
+            </ul>
+            <div class="modal_table">
+                <div class="modal_btn">
+                    <p class="change_ticket">항공권 변경</p>
+                    <p class="btn_cancel">취소</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="false_modal">
+        <div class="false_modal_box">
+            <p>예약변경 및 취소할 탑승객 및 여정을 선택하십시오.</p>
+            <div class="modal_btn">
+                <p class="confirm_btn">확인</p>
+            </div>
+        </div>
+    </div>
+    <div class="reser_cancel">
+        <div class="modal_title">
+            <p>예약 취소/환불 안내</p>
+        </div>
+        <div class="main_box">
+            <ul>
+                <li>- 항공권 환불 시 운임 규정에 따라 환불위약금이 발생할 수 있습니다.</li>
+                <li>환불위약금은 편도 여정 기준으로 부과됩니다. (왕복 여정인 경우, 가는편 및 오는편에 각각 부과됩니다.)</li>
+                <li>비정상상황으로 인해 기존 예약변경수수료 1회 면제하신 이후에는 환불위약금 면제는 불가합니다.</li>
+                <li>국제선 항공권 출발 여정을 탑승하지 않았을 경우 부분 환불은 불가하며, 전체 여정을 환불해야 합니다.</li>
+                <li>항공권 환불 시, 구매하신 부가서비스도 함께 환불됩니다. 단, 취소 시점에 따라 부가서비스 환불이 불가할 수 있습니다.</li>
+                <li>* 사전좌석지정/초과수하물/번들 : 출발 24시간 이내 환불 불가</li>
+                <li>* 기내식/유상판매 : 72시간 이내 환불 불가</li>
+            </ul>
+            <div class="modal_table">
+                <div class="modal_btn">
+                    <p class="next_ticket">다음</p>
+                    <p class="btn_cancel">취소</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="false_modal">
+        <div class="false_modal_box">
+            <p>예약변경 및 취소할 탑승객 및 여정을 선택하십시오.</p>
+            <div class="modal_btn">
+                <p class="confirm_btn">확인</p>
+            </div>
+        </div>
+    </div>
+    <div class="sub_service">
+        <div class="w590">
+            <p>부가서비스 취소/환불 안내</p>
+        </div>
+        <div class="h1000">
+            <ul>
+                <li>- 번들의 '수하물 우선하기' 및 '전용체크인카운터'의 경우, 추가로 제공되는 서비스로 출발 당일 현장 상황에 따라 미제공 될 수 있으며, 이에 따른 일부 금액 환불은
+                    불가합니다.</li>
+                <li>- 신청하신 부가서비스의 변경은 불가하오니 취소 후 재구매 하시기 바랍니다.<br>(단, 번들의 경우 항공권과 동시 구매되기 때문에 별도로 취소 후 재구매가 불가합니다.)
+                </li>
+                <li>- 사전좌석지정 서비스와 함께 자동체크인을 신청하신 경우, 사전좌석지정 서비스 취소 시 해당 구간의 자동체크인 서비스도 함께 취소됩니다.</li>
+                <li>- 부가서비스 신청 및 취소 가능 기간은 다음과 같습니다.</li>
+                <li>(단, 번들의 경우 10월 25일 이후 탑승편 부, 이전 탑승편은 안내페이지 참조)</li>
+                <li>* 사전좌석지정/초과수하물/번들 : 출발 24시간 이내 환불 불가</li>
+                <li>* 기내식/유상판매 : 72시간 이내 환불 불가</li>
+            </ul>
+            <p>* 취소<br>
+                사전좌석지정/초과수하물/번들 : 출발 24시간 이내 환불 불가<br>
+                기내식/유상판매 : 72시간 이내 환불 불가<br>
+                여행보험 :<br>
+                항공 여정 출발 24시간 전 까지: [마이페이지]-[상세 조회]-[부가서비스 구매/취소] 또는 [여행보험 취소]<br>
+                항공 여정 출발 24시간 전 부터: Chubb여행보험 콜센터 (1666-5075) 통해 변경 문의 및 환불 가능<br>
+                (평일 업무시간: 09:00~18:00 / 주말, 공휴일 제외)<br>
+                ※ 여행보험 관련 보다 자세한 문의는 여행보험 관련문의는 Chubb여행보험 콜센터 1666-5075에 문의하시기 바랍니다<br>
+                ※ 기존 보험 계약을 해지하고 새로운 보험 계약을 체결하는 경우 보험인수가 거절되거나, 보험료가 인상될 수 있으며, 보장내용 (면책기간 재적용 등)이 달라질 수 있습니다.</p>
+            <strong>단, 이벤트 기간내에 할인이 적용된 부가서비스 요금은 환불이 불가합니다.</strong>
+            <div class="modal_btn">
+                <p class="cancel_service">취소/환불</p>
+                <p class="btn_cancel">취소</p>
+            </div>
+        </div>
+        <div class="false_modal">
+            <div class="false_modal_box">
+                <p>예약변경 및 취소할 탑승객 및 여정을 선택하십시오.</p>
+                <div class="modal_btn">
+                    <p class="confirm_btn">확인</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="trip_modal">
+        <div class="modal_title">
+            <p>여행자보험 가입규약 및 개인정보 제3자 제공 동의</p>
+        </div>
+        <div class="main_box">
+            <h2>단체(취급)여행보험 가입규약</h2>
+            <ul>
+                <li>- 진에어는 보험계약자를 진에어로, 피보험자 및 보험수익자를 여객 탑승객 또는 <br>진에어 온라인 회원으로 하는 단체(취급)여행보험계약을 체결할 수 있습니다.</li>
+                <li>- 단, 보험금의 종류가 사망보험금인 경우에는 보험수익자를 피보험자의 법정상속인으로 합니다.</li>
+                <li>- 여객 탑승객 또는 진에어 온라인 회원은 제1항의 보험계약에 따른 담보항목 및 내용을 진에어가 제공하는 범주 내에서 자유롭게 선택할 수 있으며 보험료를 직접 보험회사에
+                    납부하여야 합니다.</li>
+                <li>- 제3항에 따라 보험회사에 보험료를 직접 납부한 경우, 회원은 계약자의 권리를 행사할 수 있습니다.</li>
+                <li>- 보험계약에 관한 세부내용은 보험회사가 제공하는 보험약관에 따릅니다.</li>
+            </ul>
+            <input type="checkbox" id="check1" class="check1"><label for="check1">동의</label>
+            <div class="nth2h2">
+                <h2>단체 여행보험계약의 체결 및 이행을 위한 개인정보 제3자 제공</h2>
+                <ul>
+                    <li>- 제공목적: 단체 여행보험계약의 체결 및 이행</li>
+                    <li>- 제공항목: 예약번호, 여행일, 여행지, 성함, 생년월일, 성별, 전화번호, 이메일</li>
+                    <li>- 보유기간: 개인정보를 제공받는 자의 이용목적을 달성할 때까지(최대 거래종료 후 5년까지)</li>
+                </ul>
+                <input type="checkbox" id="check2" class="check2"><label for="check2">동의</label>
+            </div>
+            <div class="footer_text">
+                <p>* 항공권 예약 정보상 생년월일 정보가 존재하지 않는 고객의 경우 보험 가입 진행이 원활하지 않을 수 있습니다.</p>
+                <p>진에어 마이페이지>예약조회>예약정보 상단의 [탑승객정보 입력] 진행 또는 보험 가입 사이트 이동 후<br> 가입인원 추가 및 피보험자 정보 입력 진행을 통하여 보험 가입을
+                    원하시는 고객님의 정보를 입력하여 주시기 바랍니다.</p>
+            </div>
+            <div class="modal_btn">
+                <p class="confirm_btn cursor">동의 후 가입</p>
+                <p class="btn_cancel cursor">취소</p>
+            </div>
+        </div>
+        <div class="trip_false_modal">
+            <div class="false_modal_box">
+                <p>위 내용을 확인 후 동의하셔야<br>
+                    다음 단계 진행이 가능합니다.</p>
+                <div class="modal_btn">
+                    <p class="confirm_btn">확인</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--일정 수정 모달창-->
+    <div id="modal_edit_jour_wrap">
+        <div class="edit_jour_wrap">
+            <div class="modal_edit_close">
+                <img class="modal_edit_close_btn cursor" src="/userpage/lib/img/x_icon.png" alt="닫기">
+            </div>
+            <div class="radio_wrap">
+                <input type="radio" value="왕복" id="round" class="cursor" name="tripType" checked>
+                <label for="round" class="cursor">왕복</label>
+                <input type="radio" value="편도" id="oneway" class="cursor" name="tripType">
+                <label for="oneway" class="cursor">편도</label>
+                <input type="radio" value="다구간" id="multi" class="cursor" name="tripType">
+                <label for="multi" class="cursor">다구간</label>
+            </div>
+            <!-- 왕복 레이어 -->
+            <div class="round_wrap">
+                <table class="modal_table">
+                    <tr>
+                        <td>
+                            <div class="person_type w_120 in_bl">
+                                <div class="person_layerbtn">
+                                    <strong class="person_num" name="person_num" th:text="${reserveApiResponse[0].rePeopleType}"></strong>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="go_select in_bl">
+                                <div class="go_layerbtn">
+                                <span class="go_select_opt"><input type="text" value="출발지" readonly
+                                                                   class="go_select_optt go_default"></span>
+                                </div>
+                                <div class="go_layer">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="arrive_select in_bl">
+                                <div class="arrive_layerbtn">
+                                <span class="arrive_select_opt">
+                                    <input type="text" value="도착지" readonly
+                                           class="arrive_select_optt arrive_default">
+                                </span>
+                                </div>
+                                <div class="arrive_layer">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="go_date in_bl">
+                                <div class="go_date_layerbtn">
+                                <span class="go_date_select_opt"><input type="text" value="가는날" readonly
+                                                                        class="go_date_select_optt go_date_default"></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="come_date in_bl">
+                                <div class="come_date_layerbtn">
+                                <span class="come_date_select_opt"><input type="text" value="오는날" readonly
+                                                                          class="come_date_select_optt"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 편도 레이어 -->
+            <div class="oneway_wrap">
+                <table class="modal_table">
+                    <tr>
+                        <td>
+                            <div class="person_type w_120 in_bl">
+                                <div class="person_layerbtn">
+                                    <strong class="person_num" name="person_num" th:text="${reserveApiResponse[0].rePeopleType}"></strong>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="go_select in_bl">
+                                <div class="go_layerbtn">
+                                <span class="go_select_opt"><input type="text" value="출발지" readonly
+                                                                   class="go_select_optt go_default"></span>
+                                </div>
+                                <div class="go_layer">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="arrive_select in_bl">
+                                <div class="arrive_layerbtn">
+                                <span class="arrive_select_opt">
+                                    <input type="text" value="도착지" readonly
+                                           class="arrive_select_optt arrive_default">
+                                </span>
+                                </div>
+                                <div class="arrive_layer">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="go_date2 in_bl">
+                                <div class="go_date_layerbtn">
+                                <span class="go_date_select_opt"><input type="text" value="가는날" readonly
+                                                                        class="go_date_select_optt go_date_default"></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 다구간 레이어 -->
+            <div class="multi_wrap">
+                <table class="modal_table">
+                    <tr>
+                        <td>
+                            <div class="person_type w_120 in_bl">
+                                <div class="person_layerbtn">
+                                    <strong class="person_num" name="person_num" th:text="${reserveApiResponse[0].rePeopleType}"></strong>
+                                </div>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="go_select in_bl">
+                                <div class="go_layerbtn">
+                                <span class="go_select_opt"><input type="text" value="출발지" readonly
+                                                                   class="go_select_optt"></span>
+                                </div>
+                                <div class="go_layer">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="arrive_select in_bl">
+                                <div class="arrive_layerbtn">
+                                <span class="arrive_select_opt">
+                                    <input type="text" value="도착지" readonly class="arrive_select_optt">
+                                </span>
+                                </div>
+                                <div class="arrive_layer">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="go_date2 in_bl">
+                                <div class="go_date_layerbtn">
+                                <span class="go_date_select_opt"><input type="text" value="가는날" readonly
+                                                                        class="go_date_select_optt"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="go_select in_bl">
+                                <div class="go_layerbtn2">
+                                <span class="go_select_opt2"> <input type="text" value="출발지" readonly
+                                                                     class="go_select_optt2"></span>
+                                </div>
+                                <div class="go_layer2">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="arrive_select2 in_bl">
+                                <div class="arrive_layerbtn2">
+                                <span class="arrive_select_opt2"><input type="text" value="도착지" readonly
+                                                                        class="arrive_select_optt2"></span>
+                                </div>
+                                <div class="arrive_layer2">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="go_date3 in_bl">
+                                <div class="go_date_layerbtn2">
+                                <span class="go_date_select_opt2"> <input type="text" value="가는날" readonly
+                                                                          class="go_date_select_optt2"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="update_submit">
+                <a th:class="searchClick">조회</a>
+            </div>
+        </div>
+    </div>
+    <!--일정 수정 모달창 끝-->
+    <!-- 달력 -->
+    <div class="cal">
+        <div class="calwrapper">
+            <div class="caltop">
+                <p class="whatday">가는날</p>
+                <p class="cal_right">다음 3개월</p>
+            </div>
+            <table>
+                <tr>
+                    <td>일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td>토</td>
+                </tr>
+            </table>
+            <div class="calinner">
+                <div class="calscroll">
+                    <iframe src="/pages/index/cal" frameborder="0" id="ifm"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+    </div>
+    <div class="cal2">
+        <div class="calwrapper">
+            <div class="caltop">
+                <p class="whatday">가는날</p>
+                <p class="cal_right">다음 3개월</p>
+            </div>
+            <table>
+                <tr>
+                    <td>일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td>토</td>
+                </tr>
+            </table>
+            <div class="calinner">
+                <div class="calscroll">
+                    <iframe src="/pages/index/onewaycal" frameborder="0" id="ifm1"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+    </div>
+    <div class="cal3">
+        <div class="calwrapper">
+            <div class="caltop">
+                <p class="whatday">가는날</p>
+                <p class="cal_right">다음 3개월</p>
+            </div>
+            <table>
+                <tr>
+                    <td>일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td>토</td>
+                </tr>
+            </table>
+            <div class="calinner">
+                <div class="calscroll">
+                    <iframe src="/pages/index/multical" frameborder="0" id="ifm2"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+    </div>
+</body>
+<script src="/userpage/app/mypage/Mypage_getReservationDetail.js"></script>
+</html>

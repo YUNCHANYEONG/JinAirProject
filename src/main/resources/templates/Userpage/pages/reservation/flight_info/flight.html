@@ -1,0 +1,551 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/reservation/flight_info/flight.css">
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="discount">
+                    <p class="title_img"></p>
+                    <p class="discount_title">운항 정보</p>
+                    <p class="title_sub">진에어의 노선별 스케줄과 실시간 운항 상태를 확인하실 수 있습니다.</p>
+                </div>
+                <div class="discount_kind">
+                    <table>
+                        <tr>
+                            <th class="dis_schedule cursor">스케줄 조회</th>
+                            <th class="dis_departure cursor">출도착 안내</th>
+                            <th class="dis_route cursor">취항 노선 안내</th>
+                        </tr>
+                    </table>
+                </div>
+                <!--운항 스케줄 조회-->
+                <div class="schedule">
+                    <div class="schedule_wrapper">
+                        <div class="sc_search">
+                            <input type="radio" id="between" name="howWay" value="" checked>
+                            <label for="between">왕복</label>
+                            <input type="radio" id="oneway" name="howWay" value="">
+                            <label for="oneway">편도</label>
+                            <!-- 왕복 -->
+                            <div class="sc_search_between sc_search_bw">
+                                <div>
+                                    <div class="go_back_airport">
+                                        <div class="go_select_opt">
+                                            <input type="text" value="출발지" readonly class="go_select_optt" id="goPointB">
+                                        </div>
+                                        <div class="arrive_select_opt">
+                                            <input type="text" value="도착지" readonly class="arrive_select_optt" id="comePointB">
+                                        </div>
+                                    </div>
+                                    <div class="go_back_date">
+                                        <div class="go_date_select_opt">
+                                            <input type="text" value="가는날" readonly class="go_date_select_optt" id="goDateB">
+                                        </div>
+                                        <div class="come_date_select_opt">
+                                            <input type="text" value="오는날" readonly class="come_date_select_optt" id="comeDateB">
+                                        </div>
+                                    </div>
+                                    <span><input type="button" value="조회" id="betweenSearch" class="search_btn"></span>
+                                </div>
+                            </div>
+                            <!-- 편도 -->
+                            <div class="sc_search_between sc_search_oneway">
+                                <div>
+                                    <div class="go_back_airport">
+                                        <div class="go_select_opt">
+                                            <input type="text" value="출발지" readonly class="go_select_optt" id="goPointOW">
+                                        </div>
+                                        <div class="arrive_select_opt">
+                                            <input type="text" value="도착지" readonly class="arrive_select_optt" id="comePointOW">
+                                        </div>
+                                    </div>
+                                    <div class="go_back_date2">
+                                        <div class="go_date_select_opt2">
+                                            <input type="text" value="가는날" readonly class="go_date_select_optt2" id="goDateOW">
+                                        </div>
+                                    </div>
+                                    <span><input type="button" value="조회" class="search_btn" id="onewaySearch"></span>
+                                </div>
+                            </div>
+                            <div class="go_select in_bl">
+                                <div class="go_layer">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="go_select in_bl">
+                                    <div class="go_layer1">
+                                        <div class="KOR in_bl">
+                                            <h3>한국</h3>
+                                            <ul>
+                                                <li><a>서울/인천(ICN)</a></li>
+                                                <li><a>서울/김포(GMP)</a></li>
+                                                <li><a>부산(PUS)</a></li>
+                                                <li><a>제주(CJU)</a></li>
+                                                <li><a>청주(CJJ)</a></li>
+                                                <li><a>광주(KWJ)</a></li>
+                                                <li><a>대구(TAE)</a></li>
+                                                <li><a>여수(RSU)</a></li>
+                                                <li><a>울산(USN)</a></li>
+                                                <li><a>포항(KPO)</a></li>
+                                                <li><a>원주(WJU)</a></li>
+                                                <li><a>군산(KUV)</a></li>
+                                                <li><a>사천(HIN)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="ENA in_bl">
+                                            <h3>동북아</h3>
+                                            <ul>
+                                                <li><a>도쿄/나리타(NRT)</a></li>
+                                                <li><a>오사카/간사이(KIX)</a></li>
+                                                <li><a>후쿠오카(FUK)</a></li>
+                                                <li><a>삿포로(CTS)</a></li>
+                                                <li><a>오키나와(OKA)</a></li>
+                                                <li><a>기타큐슈(KKJ)</a></li>
+                                                <li><a>상하이/푸동(PVG)</a></li>
+                                                <li><a>시안(XIY)</a></li>
+                                                <li><a>홍콩(HKG)</a></li>
+                                                <li><a>마카오(MFM)</a></li>
+                                                <li><a>타이베이/타오위안(TPE)</a></li>
+                                                <li><a>칭다오(TAO)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="ESA in_bl">
+                                            <h3>동남아</h3>
+                                            <ul>
+                                                <li><a>방콕(BKK)</a></li>
+                                                <li><a>푸껫(HKT)</a></li>
+                                                <li><a>치앙마이(CNX)</a></li>
+                                                <li><a>세부(CEB)</a></li>
+                                                <li><a>클락(CRK)</a></li>
+                                                <li><a>보라카이/칼리보(KLO)</a></li>
+                                                <li><a>다낭(DAD)</a></li>
+                                                <li><a>하노이(HAN)</a></li>
+                                                <li><a>비엔티안(VTE)</a></li>
+                                                <li><a>코타 키나발루(BKI)</a></li>
+                                                <li><a>조호르바루(JHB)</a></li>
+                                                <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="OCE in_bl">
+                                            <h3>대양주</h3>
+                                            <ul>
+                                                <li><a>괌(GUM)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="USA in_bl">
+                                            <h3>미주</h3>
+                                            <ul>
+                                                <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sc_search_text">오늘을 기준으로 361일 이내 출발하는 항공편에 대하여 조회하실 수 있습니다.</p>
+                        <p class="sc_search_text">선택하신 출발일이 포함된 주간 스케줄을 조회하실 수 있습니다.</p>
+                        <p class="sc_search_text">항공 스케줄은 정부인가 조건이며, 예고없이 변경될 수 있습니다.</p>
+                        <!--결과-->
+                        <div class="result_wrapper" id="itemList">
+                            <div class="result_kind">
+                                <table class="result_table">
+                                    <tr>
+                                        <th class="dis_go cursor" id="dis_go">
+                                            <span class="goPoint"></span>-<span class="comePoint"></span>
+                                        </th>
+                                        <th class="dis_back cursor" id="dis_back">
+                                            <span class="comePoint"></span>-<span class="goPoint"></span>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="result_wrapper">
+                                <div class="result_top">
+                                    <a href=""><p class="result_top_left"></p></a>
+                                    <p class="result_top_name"><span class="goDate"></span>스케줄</p>
+                                    <a href=""><p class="result_top_right"></p></a>
+                                </div>
+                                <table>
+                                    <colgroup>
+                                        <col width="70">
+                                        <col width="300">
+                                        <col width="80">
+                                        <col width="80">
+                                        <col width="100">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>번호</th>
+                                            <th>항공권</th>
+                                            <th>출발시간</th>
+                                            <th>도착시간</th>
+                                            <th>출발날짜</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(dto, i) in itemList">
+                                            <td>{{i+1}}</td>
+                                            <td>
+                                                <p>{{dto.schAirplaneName}} | 직항</p>
+                                                <p>{{dto.schDeparturePoint}} -> {{dto.schArrivalPoint}}</p>
+                                                <p>운항시간 : <span class="playingTime"></span></p>
+                                            </td>
+                                            <td :class=`startTime${i}`></td>
+                                            <td :class=`arriveTime${i}`></td>
+                                            <td class="goDate"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--결과 끝-->
+                    </div>
+                </div>
+                <!--운항 스케줄 조회 끝-->
+                <!--출도착 정보 안내-->
+                <div class="departure">
+                    <div class="departure_wrapper">
+                        <div class="sc_search">
+                            <div class="sc_search_between">
+                                <div>
+                                    <div class="go_back_airport">
+                                        <div class="go_select_opt">
+                                            <input type="text" value="출발지" readonly class="go_select_optt" id="goPoint">
+                                        </div>
+                                        <div class="arrive_select_opt">
+                                            <input type="text" value="도착지" readonly class="arrive_select_optt" id="comePoint">
+                                        </div>
+                                    </div>
+                                    <div class="go_back_date">
+                                        <div class="go_date_select_opt2">
+                                            <input type="text" value="가는날" readonly class="go_date_select_optt2" id="goDate">
+                                        </div>
+                                    </div>
+                                    <span><input type="button" value="조회" class="de_result_btn" id="de_result_btn"></span>
+                                </div>
+                            </div>
+                            <div class="go_select in_bl">
+                                <div class="go_layer">
+                                    <div class="KOR in_bl">
+                                        <h3>한국</h3>
+                                        <ul>
+                                            <li><a>서울/인천(ICN)</a></li>
+                                            <li><a>서울/김포(GMP)</a></li>
+                                            <li><a>부산(PUS)</a></li>
+                                            <li><a>제주(CJU)</a></li>
+                                            <li><a>청주(CJJ)</a></li>
+                                            <li><a>광주(KWJ)</a></li>
+                                            <li><a>대구(TAE)</a></li>
+                                            <li><a>여수(RSU)</a></li>
+                                            <li><a>울산(USN)</a></li>
+                                            <li><a>포항(KPO)</a></li>
+                                            <li><a>원주(WJU)</a></li>
+                                            <li><a>군산(KUV)</a></li>
+                                            <li><a>사천(HIN)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ENA in_bl">
+                                        <h3>동북아</h3>
+                                        <ul>
+                                            <li><a>도쿄/나리타(NRT)</a></li>
+                                            <li><a>오사카/간사이(KIX)</a></li>
+                                            <li><a>후쿠오카(FUK)</a></li>
+                                            <li><a>삿포로(CTS)</a></li>
+                                            <li><a>오키나와(OKA)</a></li>
+                                            <li><a>기타큐슈(KKJ)</a></li>
+                                            <li><a>상하이/푸동(PVG)</a></li>
+                                            <li><a>시안(XIY)</a></li>
+                                            <li><a>홍콩(HKG)</a></li>
+                                            <li><a>마카오(MFM)</a></li>
+                                            <li><a>타이베이/타오위안(TPE)</a></li>
+                                            <li><a>칭다오(TAO)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ESA in_bl">
+                                        <h3>동남아</h3>
+                                        <ul>
+                                            <li><a>방콕(BKK)</a></li>
+                                            <li><a>푸껫(HKT)</a></li>
+                                            <li><a>치앙마이(CNX)</a></li>
+                                            <li><a>세부(CEB)</a></li>
+                                            <li><a>클락(CRK)</a></li>
+                                            <li><a>보라카이/칼리보(KLO)</a></li>
+                                            <li><a>다낭(DAD)</a></li>
+                                            <li><a>하노이(HAN)</a></li>
+                                            <li><a>비엔티안(VTE)</a></li>
+                                            <li><a>코타 키나발루(BKI)</a></li>
+                                            <li><a>조호르바루(JHB)</a></li>
+                                            <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="OCE in_bl">
+                                        <h3>대양주</h3>
+                                        <ul>
+                                            <li><a>괌(GUM)</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="USA in_bl">
+                                        <h3>미주</h3>
+                                        <ul>
+                                            <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="go_select in_bl">
+                                    <div class="go_layer1">
+                                        <div class="KOR in_bl">
+                                            <h3>한국</h3>
+                                            <ul>
+                                                <li><a>서울/인천(ICN)</a></li>
+                                                <li><a>서울/김포(GMP)</a></li>
+                                                <li><a>부산(PUS)</a></li>
+                                                <li><a>제주(CJU)</a></li>
+                                                <li><a>청주(CJJ)</a></li>
+                                                <li><a>광주(KWJ)</a></li>
+                                                <li><a>대구(TAE)</a></li>
+                                                <li><a>여수(RSU)</a></li>
+                                                <li><a>울산(USN)</a></li>
+                                                <li><a>포항(KPO)</a></li>
+                                                <li><a>원주(WJU)</a></li>
+                                                <li><a>군산(KUV)</a></li>
+                                                <li><a>사천(HIN)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="ENA in_bl">
+                                            <h3>동북아</h3>
+                                            <ul>
+                                                <li><a>도쿄/나리타(NRT)</a></li>
+                                                <li><a>오사카/간사이(KIX)</a></li>
+                                                <li><a>후쿠오카(FUK)</a></li>
+                                                <li><a>삿포로(CTS)</a></li>
+                                                <li><a>오키나와(OKA)</a></li>
+                                                <li><a>기타큐슈(KKJ)</a></li>
+                                                <li><a>상하이/푸동(PVG)</a></li>
+                                                <li><a>시안(XIY)</a></li>
+                                                <li><a>홍콩(HKG)</a></li>
+                                                <li><a>마카오(MFM)</a></li>
+                                                <li><a>타이베이/타오위안(TPE)</a></li>
+                                                <li><a>칭다오(TAO)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="ESA in_bl">
+                                            <h3>동남아</h3>
+                                            <ul>
+                                                <li><a>방콕(BKK)</a></li>
+                                                <li><a>푸껫(HKT)</a></li>
+                                                <li><a>치앙마이(CNX)</a></li>
+                                                <li><a>세부(CEB)</a></li>
+                                                <li><a>클락(CRK)</a></li>
+                                                <li><a>보라카이/칼리보(KLO)</a></li>
+                                                <li><a>다낭(DAD)</a></li>
+                                                <li><a>하노이(HAN)</a></li>
+                                                <li><a>비엔티안(VTE)</a></li>
+                                                <li><a>코타 키나발루(BKI)</a></li>
+                                                <li><a>조호르바루(JHB)</a></li>
+                                                <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="OCE in_bl">
+                                            <h3>대양주</h3>
+                                            <ul>
+                                                <li><a>괌(GUM)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="USA in_bl">
+                                            <h3>미주</h3>
+                                            <ul>
+                                                <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="sc_search_text">조회 결과에서 선택일 기준으로 7일 전 항공편까지 확인하실 수 있습니다.</p>
+                        <p class="sc_search_text">항공편의 도착 기준은 비행기 착륙 후 주기장에 도착하여 하기준비가 완료된 상태입니다.</p>
+                        <p class="sc_search_text">활주로에 착륙 후 통상 15-20분 가량 소요됩니다. 화면에 표시되는 시각은 현지 시각 기준입니다.</p>
+                        <div class="de_result_wrap" id="itemList2">
+                            <table class="de_result_table" v-for="(dto, i) in itemList">
+                                <tr>
+                                    <td colspan="2">항공편</td>
+                                    <td colspan="2">{{dto.schAirplaneName}}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">출발</td>
+                                    <td>스케줄</td>
+                                    <td :class=`startTime${i}`></td>
+                                    <td rowspan="2">출발</td>
+                                </tr>
+                                <tr>
+                                    <td>실제시각</td>
+                                    <td :class=`startTime${i}`></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">도착</td>
+                                    <td>스케줄</td>
+                                    <td :class=`arriveTime${i}`></td>
+                                    <td rowspan="2">출발</td>
+                                </tr>
+                                <tr>
+                                    <td>실제시각</td>
+                                    <td :class=`arriveTime${i}`></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--출도착 정보 안내 끝-->
+                <!--취항 노선 안내-->
+                <div class="route">
+                    <div class="route_wrapper">
+                        <div class="route_img"></div>
+                        <p class="route_contents">상세 일정은 스케줄 조회를 참조해 주시기 바랍니다.</p>
+                        <input type="button" value="스케줄 조회" onclick="location.href='/pages/reservation/flight'">
+                        <p class="route_contents">운항 스케줄은 부득이한 사유로 예고 없이 변경될 수 있습니다.</p>
+                    </div>
+                </div>
+                <!--취항 노선 안내끝-->
+            </div>
+        </div>
+        <!-- container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+    <div class="modal"></div>
+    <div class="cal">
+        <div class="calwrapper">
+            <div class="caltop">
+                <p class="whatday">가는날</p>
+                <p class="cal_right">다음 3개월</p>
+            </div>
+            <table>
+                <tr>
+                    <td>일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td>토</td>
+                </tr>
+            </table>
+            <div class="calinner">
+                <div class="calscroll">
+                    <iframe src="/pages/index/cal" frameborder="0" id="ifm"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+    </div>
+    <div class="cal2">
+        <div class="calwrapper">
+            <div class="caltop">
+                <p class="whatday">가는날</p>
+                <p class="cal_right">다음 3개월</p>
+            </div>
+            <table>
+                <tr>
+                    <td>일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td>토</td>
+                </tr>
+            </table>
+            <div class="calinner">
+                <div class="calscroll">
+                    <iframe src="/pages/index/onewaycal" frameborder="0" id="ifm1"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+    </div>
+    <div class="modal_container">
+        <div class="modals">
+            <p class="moditext"></p>
+            <input type="button" value="확인" class="btn_cancel">
+        </div>
+    </div>
+    <script src="/userpage/app/reservation/flight_info/flight.js"></script>
+</body>
+</html>

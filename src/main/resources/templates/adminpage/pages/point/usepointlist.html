@@ -1,0 +1,67 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<head><div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/style.css">
+    <link rel="stylesheet" href="/adminpage/lib/css/point/usepointlist.css">
+
+</head>
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <div class="search">
+                        <p class="title">포인트 사용 내역 조회</p>
+                        <div>
+                            <input type="text" id="userid" placeholder="아이디를 입력하세요">
+                            <input type="button" id="searchUser" value="검색">
+                        </div>
+                    </div>  
+                    <table>
+                        <colgroup>
+                            <col width="120">
+                            <col width="120">
+                            <col width="250">
+                            <col width="120">
+                            <col width="120">
+                            <col width="140">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <td>적립내역</td>
+                                <td>사용내역</td>
+                                <td>메모</td>
+                                <td>사용자</td>
+                                <td>총 포인트</td>
+                                <td>일자</td>
+                            </tr>
+                        </thead>
+                        <tbody id="pointList">
+                            <tr v-for="(dto, i) in pointList">
+                                <td :id=`addPoint${i}`></td>
+                                <td :id=`usePoint${i}`></td>
+                                <td>{{dto.poMemo}}</td>
+                                <td :id=`userid${i}`></td>
+                                <td :id=`totalPoint${i}`></td>
+                                <td>{{dto.poRegdate}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage"></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/adminpage/app/point/usepointlist.js"></script>
+</body>
+</html>

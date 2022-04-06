@@ -1,0 +1,209 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/mypage/Mypage_cancel_service.css">
+    <script src="/userpage/app/mypage/Mypage_cancel_service.js"></script>
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="mypage_main">
+                <input type="hidden" id="memid" th:value="${memberApiResponse.memIndex}">
+                <input type="hidden" id="reIndex1" th:value="${reserveApiResponse[0].reIndex}">
+                <input type="hidden" id="reTripKind" th:value="${reserveApiResponse[0].reTripKind}">
+                <input type="hidden" id="rePeopleType" th:value="${reserveApiResponse[0].rePeopleType}">
+                <input type="hidden" id="reTotal" th:value="${reserveApiResponse[0].reTotal}">
+                <div class="mypage_menu">
+                    <p>마이<br>페이지</p>
+                    <ul>
+                        <li class="booking"><a href="/pages/index/mypageMain">예약조회/변경/취소</a></li>
+                        <li class="mypoint"><a href="/pages/index/mypagePoint">나의 나비포인트</a><div class="mypoint_sum"><span><strong id="point"></strong>p</span></div></li>
+                        <li class="coupon"><a href="/pages/index/mypageCoupons">나의 할인쿠폰</a><div class="mycoupon_sum"><span>0</span></div></li>
+                        <li class="qna"><a href="/pages/index/mypageQna">나의 Q&A</a></li>
+                        <li class="edit"><a href="#">회원정보 수정</a></li>
+                    </ul>
+                </div>
+                <div class="menu_title">
+                    <p>부가서비스 취소</p>
+                </div>
+                <h2>취소할 부가서비스 선택</h2>
+                <div class="cancel_choice">
+                    <table>
+                        <thead>
+                            <th colspan="6">신청된 부가서비스</th>
+                        </thead>
+                        <tbody>
+                            <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                <td>구간 1</td>
+                                <td>사전좌석지정</td>
+                                <td>[[${dto.reFirstName}]]/[[${dto.reLastName}]]</td>
+                                <div>
+                                    <td>
+                                        <input type="checkbox" th:class="'seat1C'+${i.index}">
+                                    </td>
+                                    <td>
+                                        <span th:class="'seat1D'+${i.index}">[[${dto.reSeatDetail}]]</span>
+                                    </td>
+                                    <td>KRW <span th:class="'seat1P'+${i.index}">[[${dto.reSeatPrice}]]</span></td>
+                                </div>
+                            </tr>
+                            <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                <td>구간 2</td>
+                                <td>사전좌석지정</td>
+                                <td>[[${dto.reFirstName}]]/[[${dto.reLastName}]]</td>
+                                <div>
+                                    <td>
+                                        <input type="checkbox" th:class="'seat2C'+${i.index}">
+                                    </td>
+                                    <td>
+                                        <span th:class="'seat2D'+${i.index}">[[${dto.reSeatDetail}]]</span>
+                                    </td>
+                                    <td>KRW <span th:class="'seat2P'+${i.index}">[[${dto.reSeatPrice}]]</span></td>
+                                </div>
+                            </tr>
+                            <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                <td>구간 1</td>
+                                <td>초과수하물</td>
+                                <td>[[${dto.reFirstName}]]/[[${dto.reLastName}]]</td>
+                                <input type="hidden" th:value="${dto.reBaggageidx}" th:class="'reBaggageidx1'+${i.index}">
+                                <div>
+                                    <td>
+                                        <input type="checkbox" th:class="'bagg1C'+${i.index}">
+                                    </td>
+                                    <td>
+                                        <span th:class="'bagg1KG'+${i.index}"></span>
+                                    </td>
+                                    <td>KRW <span class="price" th:class="'bagg1P'+${i.index}"></span></td>
+                                </div>
+                            </tr>
+                            <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                <td>구간 2</td>
+                                <td>초과수하물</td>
+                                <td>[[${dto.reFirstName}]]/[[${dto.reLastName}]]</td>
+                                <input type="hidden" th:value="${dto.reBaggageidx}" th:class="'reBaggageidx2'+${i.index}">
+                                <div>
+                                    <td>
+                                        <input type="checkbox" th:class="'bagg2C'+${i.index}">
+                                    </td>
+                                    <td>
+                                        <span th:class="'bagg2KG'+${i.index}"></span>
+                                    </td>
+                                    <td>KRW <span class="price" th:class="'bagg2P'+${i.index}"></span></td>
+                                </div>
+                            </tr>
+                            <tr th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 0">
+                                <td>구간 1</td>
+                                <td>여행보험</td>
+                                <td>[[${dto.reFirstName}]]/[[${dto.reLastName}]]</td>
+                                <input type="hidden" th:value="${dto.reInsuranceidx}" th:class="'reInsuranceidx1'+${i.index}">
+                                <div>
+                                    <td>
+                                        <input type="checkbox" th:class="'Insu1C'+${i.index}">
+                                    </td>
+                                    <td>
+                                        <span th:class="'Insu1Tp'+${i.index}"></span>
+                                    </td>
+                                    <td>KRW <span class="price" th:class="'Insu1P'+${i.index}"></span></td>
+                                </div>
+                            </tr>
+                            <tr class="ifOnewayD" th:each="dto, i : ${reserveApiResponse}" th:if="${i.count}%2 != 1">
+                                <td>구간 2</td>
+                                <td>여행보험</td>
+                                <td>[[${dto.reFirstName}]]/[[${dto.reLastName}]]</td>
+                                <input type="hidden" th:value="${dto.reInsuranceidx}" th:class="'reInsuranceidx2'+${i.index}">
+                                <div>
+                                    <td>
+                                        <input type="checkbox" th:class="'Insu2C'+${i.index}">
+                                    </td>
+                                    <td>
+                                        <span th:class="'Insu2Tp'+${i.index}"></span>
+                                    </td>
+                                    <td>KRW <span class="price" th:class="'Insu2P'+${i.index}"></span></td>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="refund_info">
+                    <div class="totalPrice_main">
+                        <div class="totalPrice_box">
+                            <span>기존 결제금액</span>
+                            <p>
+                                <span class="unit">현금/카드</span>
+                                <strong>KRW <span th:class="paymentPrice"></span></strong>
+                            </p>
+                        </div>
+                        <div class="totalPrice_box">
+                            <span>환불 위약금 (환불 불가 금액)</span>
+                            <p>
+                                <span class="unit">현금/카드</span>
+                                <strong>0</strong>
+                            </p>
+                        </div>
+                        <div class="totalPrice_box">
+                            <span>최종 환불금액</span>
+                            <p>
+                                <span class="unit">현금/카드</span>
+                                <strong>KRW <span th:class="lastPrice"></span></strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="final_btn">
+                    <p>위와 같이 환불을 진행하시겠습니까?</p>
+                    <div>
+                        <input type="submit" value="환불" class="final_cancel cursor">
+                        <input type="button" value="취소" class="cancel_btn cursor">
+                    </div>
+                    <div class="check_box">
+                    <input type="checkbox" id="confirm_check" class="confirm_check"><label for="confirm_check" class="confirm_text">* 동의 시 환불이 완료됩니다.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <!--퀵 메뉴 끝-->
+    <div class="modal">
+    </div>
+    <div class="pwcheck_modal">
+        <form action="#" method="post">
+            <div class="pwcheck_title">
+                <p>비밀번호 확인</p>
+            </div>
+            <div class="pwcheck_box">
+                <p>고객님의 개인정보를 소중하게 보호하려고 노력하고 있으며,<br>회원님의 동의 없이는 회원정보를 제공하지 않습니다.</p>
+                <p>비밀번호 입력 <input type="password"></p>
+                <div class="btn">
+                    <input type="button" class="btn_agree" value="확인">
+                    <input type="button" class="btn_cancel" value="취소">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="false_modal">
+        <div class="false_modal_box">
+            <p>내용을 확인 후 동의하셔야 예약취소 및 환불신청이 완료됩니다.</p>
+            <div class="modal_btn">
+                <p class="confirm_btn cursor">확인</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

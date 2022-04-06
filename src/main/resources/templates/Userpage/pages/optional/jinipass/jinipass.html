@@ -1,0 +1,319 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<script src="/userpage/app/optional/jinipass/jinipass.js"></script>
+<link rel="stylesheet" href="/userpage/lib/css/optional/jinipass/jinipass.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi"><!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="discount">
+                <p class="title_img"></p>
+                <p class="discount_title">보딩패스 할인</p>
+                <p class="title_sub">진에어 탑승권을 제시하면<br>
+                    다양한 혜택을 받을 수 있습니다.</p>
+            </div>
+            <div class="discount_kind">
+                <p class="meal_title">지니 보딩패스</p>
+                <table>
+                    <tr>
+                        <th class="dis_kor cursor">국내</th>
+                        <th class="dis_eastnorth cursor">동북아</th>
+                        <th class="dis_eastsouth cursor">동남아</th>
+                        <th class="dis_poli cursor">대양주</th>
+                        <th class="dis_usa cursor">미주</th>
+                    </tr>
+                </table>
+            </div>
+            <!--제휴 카드-->
+            <div class="kor">
+                <div class="korwrap">
+                    <p class="textcontent">진에어 지니 보딩패스(JINI Boarding Pass)는 진에어 홈페이지에 소개되어 있는 제휴사에 탑승권을 제시 하시면 각종 혜택을 드리는 진에어의 고객</p>
+                    <p class="textcontent2">서비스 프로그램입니다.</p>
+                    <p class="textcontent">제휴사 혜택은 별도 운전기사를 동반하지 않는 개별 이용객에 한합니다.(단체 이용객 제외)</p>
+                    <p class="textcontent">홈페이지에 제휴사별 명시되어 있는 프로그램 혜택은 탑승객 본인에게만 제공되는 것으로 탑승일로부터 31일 이내에 사용 가능합니다.</p>
+                    <p class="textcontent">제휴사에서 제공하는 혜택을 받기 위해서는 탑승권 원본과 신분확인이 가능한 신분증이 필요합니다.</p>
+                    <p class="textcontent">진에어는 제휴사에서 제공하는 모든 서비스에 대해 보증하고 있지 않습니다.</p>
+                    <p class="textcontent">진에어와 제휴사는 사전 고지 없이 프로그램을 변경하거나 종료할 수 있습니다.</p>
+                    <p class="textcontent">제휴사에 따라 이용 가능 기간 및 혜택이 변경될 수 있으니 이용 전 진에어 홈페이지를 통해 확인 해 주시기 바랍니다.</p>
+                    <p class="textcontent">제휴사 혜택은 타 혜택과 중복하여 사용하실 수 없습니다.</p>
+                    <p class="textcontent">업체별로 서비스 시간 및 혜택이 상이하오니 자세한 사항은 해당 업체로 문의하시기 바랍니다.</p>
+                    <p class="textcontent">제휴문의 : marketing@jinair.com</p>
+                </div>
+                <div class="img_content">
+                    <div class="imgcontent1">
+                        <div class="imgcontent1_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>엔터테인먼트</p>
+                            <p>빅오쇼(여수) ( 한국 )</p>
+                            <p>난타 홍대/제주 전용관 ( 서울/김포(GMP) )</p>
+                            <p>페인터즈 히어로(제주-CJU) ( 서울/김포(GMP) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent2_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>EXPERIENCE</p>
+                            <p>제주 타이거탱크 힐링파크 ( 한국 )</p>
+                            <p>스포츠몬스터(하남점/고양점/안성점) ( 한국 )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent3_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>맛집</p>
+                            <p>KAL 호텔 뷔페 레스토랑 (제주/서귀포) ( 제주(CJU) )</p>
+                            <p>이가한우한돈(부산) ( 한국 )</p>
+                            <p>해밀레스토랑 ( 제주(CJU) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent4_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>관광지</p>
+                            <p>태성해운 ( 포항(KPO) )</p>
+                            <p>키자니아 서울/부산 ( 한국 )</p>
+                            <p>제주민속촌 ( 제주(CJU) )</p>
+                            <p>코엑스 아쿠아리움 ( 서울/김포(GMP) )</p>
+                            <p>부산 트릭아이미술관 ( 부산(PUS) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent5_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>레져</p>
+                            <p>The bay 101 요트클럽 ( 부산(PUS) )</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="eastnorth">
+                <div class="eastnorthwrap">
+                    <p class="textcontent">진에어 지니 보딩패스(JINI Boarding Pass)는 진에어 홈페이지에 소개되어 있는 제휴사에 탑승권을 제시 하시면 각종 혜택을 드리는 진에어의 고객</p>
+                    <p class="textcontent2">서비스 프로그램입니다.</p>
+                    <p class="textcontent">제휴사 혜택은 별도 운전기사를 동반하지 않는 개별 이용객에 한합니다.(단체 이용객 제외)</p>
+                    <p class="textcontent">홈페이지에 제휴사별 명시되어 있는 프로그램 혜택은 탑승객 본인에게만 제공되는 것으로 탑승일로부터 31일 이내에 사용 가능합니다.</p>
+                    <p class="textcontent">제휴사에서 제공하는 혜택을 받기 위해서는 탑승권 원본과 신분확인이 가능한 신분증이 필요합니다.</p>
+                    <p class="textcontent">진에어는 제휴사에서 제공하는 모든 서비스에 대해 보증하고 있지 않습니다.</p>
+                    <p class="textcontent">진에어와 제휴사는 사전 고지 없이 프로그램을 변경하거나 종료할 수 있습니다.</p>
+                    <p class="textcontent">제휴사에 따라 이용 가능 기간 및 혜택이 변경될 수 있으니 이용 전 진에어 홈페이지를 통해 확인 해 주시기 바랍니다.</p>
+                    <p class="textcontent">제휴사 혜택은 타 혜택과 중복하여 사용하실 수 없습니다.</p>
+                    <p class="textcontent">업체별로 서비스 시간 및 혜택이 상이하오니 자세한 사항은 해당 업체로 문의하시기 바랍니다.</p>
+                    <p class="textcontent">제휴문의 : marketing@jinair.com</p>
+                </div>
+                <div class="img_content">
+                    <div class="imgcontent1">
+                        <div class="imgcontent6_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>통신</p>
+                            <p>말톡 ( 오사카/간사이(KIX) )</p>
+                            <p>텔레콤스퀘어 ( 도쿄/나리타(NRT) )</p>
+                            <p>와이파이도시락 ( 오사카/간사이(KIX) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent7_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>EXPERIENCE</p>
+                            <p>GPA ( 도쿄/나리타(NRT) )</p>
+                            <p>교토 유메야카타 ( 오사카/간사이(KIX) )</p>
+                            <p>AJ Hackett Macau Tower ( 마카오(MFM) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent8_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>쇼핑</p>
+                            <p>AMU PLAZA ( 기타큐슈(KKJ) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent9_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>관광지</p>
+                            <p>마카오 타워 ( 마카오(MFM) )</p>
+                            <p>가이쿄 드라마십(Kaikyo Dramaship) ( 기타큐슈(KKJ) )</p>
+                            <p>구 모지 미쓰이 클럽(Former Moji Mitsui Club) ( 기타큐슈(KKJ) )</p>
+                            <p>Former Osaka Shosen Mercantile Steamship Co. Building ( 기타큐슈(KKJ) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent10_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>교통</p>
+                            <p>사라쿠라 케이블카 ( 기타큐슈(KKJ) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent11_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>호텔</p>
+                            <p>STATION HOTEL KOKURA ( 기타큐슈(KKJ) )</p>
+                            <p>고쿠라베이호텔 ( 기타큐슈(KKJ) )</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="eastsouth">
+                <div class="eastsouthwrap">
+                    <p class="textcontent">진에어 지니 보딩패스(JINI Boarding Pass)는 진에어 홈페이지에 소개되어 있는 제휴사에 탑승권을 제시 하시면 각종 혜택을 드리는 진에어의 고객</p>
+                    <p class="textcontent2">서비스 프로그램입니다.</p>
+                    <p class="textcontent">제휴사 혜택은 별도 운전기사를 동반하지 않는 개별 이용객에 한합니다.(단체 이용객 제외)</p>
+                    <p class="textcontent">홈페이지에 제휴사별 명시되어 있는 프로그램 혜택은 탑승객 본인에게만 제공되는 것으로 탑승일로부터 31일 이내에 사용 가능합니다.</p>
+                    <p class="textcontent">제휴사에서 제공하는 혜택을 받기 위해서는 탑승권 원본과 신분확인이 가능한 신분증이 필요합니다.</p>
+                    <p class="textcontent">진에어는 제휴사에서 제공하는 모든 서비스에 대해 보증하고 있지 않습니다.</p>
+                    <p class="textcontent">진에어와 제휴사는 사전 고지 없이 프로그램을 변경하거나 종료할 수 있습니다.</p>
+                    <p class="textcontent">제휴사에 따라 이용 가능 기간 및 혜택이 변경될 수 있으니 이용 전 진에어 홈페이지를 통해 확인 해 주시기 바랍니다.</p>
+                    <p class="textcontent">제휴사 혜택은 타 혜택과 중복하여 사용하실 수 없습니다.</p>
+                    <p class="textcontent">업체별로 서비스 시간 및 혜택이 상이하오니 자세한 사항은 해당 업체로 문의하시기 바랍니다.</p>
+                    <p class="textcontent">제휴문의 : marketing@jinair.com</p>
+                </div>
+                <div class="img_content">
+                    <div class="imgcontent1">
+                        <div class="imgcontent12_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>통신</p>
+                            <p>말톡 ( 하노이(HAN) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent13_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>엔터테인먼트</p>
+                            <p>난타 방콕전용관 ( 방콕(BKK) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent14_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>쇼핑</p>
+                            <p>R&F Mall Johor Bahru ( 조호르바루(JHB) )</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="poli">
+                <div class="poliwrap">
+                    <p class="textcontent">진에어 지니 보딩패스(JINI Boarding Pass)는 진에어 홈페이지에 소개되어 있는 제휴사에 탑승권을 제시 하시면 각종 혜택을 드리는 진에어의 고객</p>
+                    <p class="textcontent2">서비스 프로그램입니다.</p>
+                    <p class="textcontent">제휴사 혜택은 별도 운전기사를 동반하지 않는 개별 이용객에 한합니다.(단체 이용객 제외)</p>
+                    <p class="textcontent">홈페이지에 제휴사별 명시되어 있는 프로그램 혜택은 탑승객 본인에게만 제공되는 것으로 탑승일로부터 31일 이내에 사용 가능합니다.</p>
+                    <p class="textcontent">제휴사에서 제공하는 혜택을 받기 위해서는 탑승권 원본과 신분확인이 가능한 신분증이 필요합니다.</p>
+                    <p class="textcontent">진에어는 제휴사에서 제공하는 모든 서비스에 대해 보증하고 있지 않습니다.</p>
+                    <p class="textcontent">진에어와 제휴사는 사전 고지 없이 프로그램을 변경하거나 종료할 수 있습니다.</p>
+                    <p class="textcontent">제휴사에 따라 이용 가능 기간 및 혜택이 변경될 수 있으니 이용 전 진에어 홈페이지를 통해 확인 해 주시기 바랍니다.</p>
+                    <p class="textcontent">제휴사 혜택은 타 혜택과 중복하여 사용하실 수 없습니다.</p>
+                    <p class="textcontent">업체별로 서비스 시간 및 혜택이 상이하오니 자세한 사항은 해당 업체로 문의하시기 바랍니다.</p>
+                    <p class="textcontent">제휴문의 : marketing@jinair.com</p>
+                </div>
+                <div class="img_content">
+                    <div class="imgcontent1">
+                        <div class="imgcontent15_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>통신</p>
+                            <p>말톡 ( 괌(GUM) )</p>
+                            <p>와이파이도시락 ( 괌(GUM) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgconten16_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>엔터테인먼트</p>
+                            <p>글로우브 나이트 클럽 ( 괌(GUM) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent17_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>EXPERIENCE</p>
+                            <p>BIG 선셋 디너 크루즈 ( 괌(GUM) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent18_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>레져</p>
+                            <p>괌 스타샌드 투어 ( 괌(GUM) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent19_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>관광지</p>
+                            <p>샌드캐슬 매직 디너쇼 ( 괌(GUM) )</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="usa">
+                <div class="usawrap">
+                    <p class="textcontent">진에어 지니 보딩패스(JINI Boarding Pass)는 진에어 홈페이지에 소개되어 있는 제휴사에 탑승권을 제시 하시면 각종 혜택을 드리는 진에어의 고객</p>
+                    <p class="textcontent2">서비스 프로그램입니다.</p>
+                    <p class="textcontent">제휴사 혜택은 별도 운전기사를 동반하지 않는 개별 이용객에 한합니다.(단체 이용객 제외)</p>
+                    <p class="textcontent">홈페이지에 제휴사별 명시되어 있는 프로그램 혜택은 탑승객 본인에게만 제공되는 것으로 탑승일로부터 31일 이내에 사용 가능합니다.</p>
+                    <p class="textcontent">제휴사에서 제공하는 혜택을 받기 위해서는 탑승권 원본과 신분확인이 가능한 신분증이 필요합니다.</p>
+                    <p class="textcontent">진에어는 제휴사에서 제공하는 모든 서비스에 대해 보증하고 있지 않습니다.</p>
+                    <p class="textcontent">진에어와 제휴사는 사전 고지 없이 프로그램을 변경하거나 종료할 수 있습니다.</p>
+                    <p class="textcontent">제휴사에 따라 이용 가능 기간 및 혜택이 변경될 수 있으니 이용 전 진에어 홈페이지를 통해 확인 해 주시기 바랍니다.</p>
+                    <p class="textcontent">제휴사 혜택은 타 혜택과 중복하여 사용하실 수 없습니다.</p>
+                    <p class="textcontent">업체별로 서비스 시간 및 혜택이 상이하오니 자세한 사항은 해당 업체로 문의하시기 바랍니다.</p>
+                    <p class="textcontent">제휴문의 : marketing@jinair.com</p>
+                </div>
+                <div class="img_content">
+                    <div class="imgcontent1">
+                        <div class="imgcontent20_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>통신</p>
+                            <p>말톡 ( 하와이, 호놀룰루(HNL) )</p>
+                            <p>와이파이도시락 ( 하와이, 호놀룰루(HNL) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent21_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>쇼핑</p>
+                            <p>와이켈레 프리미엄 아울렛 (Waikele Premium Outlets) ( 하와이, 호놀룰루(HNL) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent22_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>교통</p>
+                            <p>Waikiki Trolley(와이키키 트롤리) ( 하와이, 호놀룰루(HNL) )</p>
+                        </div>
+                    </div>
+                    <div class="imgcontent1">
+                        <div class="imgcontent23_img"></div>
+                        <div class="imgcontent1_text">
+                            <p>관광지</p>
+                            <p>폴리네시안 문화센터(PCC, Polynesian Cultural Center) ( 하와이, 호놀룰루(HNL) )</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal"></div>
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+</body>
+</html>

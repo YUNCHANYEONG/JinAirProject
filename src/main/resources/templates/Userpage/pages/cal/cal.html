@@ -1,0 +1,185 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>달력</title>
+    <style>
+        table{
+            border-top: none;
+            border-bottom: none;
+            margin: 0 auto;
+            text-align: center;
+            width: 1150px;
+            box-sizing: border-box;
+        }
+        table tr{
+            height: 110px;
+        }
+        table tr td{
+            width: 165px;
+        }
+        table tr td:nth-child(1) p{
+            color: rgb(218, 0, 0);
+        }
+        table p{
+            display: inline-block;
+            width: 152px;
+            height: 82px;
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            font-size: 36px;
+            font-weight: 500 !important;
+            padding-top: 24px;
+            cursor: pointer;
+            margin: 4px 0px;
+            position: relative;
+        }
+        table p.year_month{
+            border: none;
+            padding-top: 0px;
+        }
+        .yearrr{
+            display: block;
+            font-size: 16px;
+        }
+        table p.year_month > .monthhh{
+            display: inline-block;
+            font-size: 70px;
+            color: #661e43;
+        }
+        .choice_cal.on{
+            background-color: #661e43;
+            color: white;
+        }
+        .departure{
+            font-size: 10px;
+            color: white;
+            position:absolute;
+            top:20px;
+            left: 67px;
+        }
+    </style>
+    <script>
+        function cal(i){
+            var today = new Date();
+
+            var year = today.getFullYear();
+
+            var month = (today.getMonth()+i);
+
+            //이번달 1일이 무슨 요일인지 확인
+            var thisDay = new Date(year, month, 1);
+            var thisWeek = thisDay.getDay();
+
+            //각 달의 마지막 날짜 정보
+            var lastDate = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+            //윤년구하기
+            //4년마다, 100년마다는 아니지만 400년마다는 맞음
+            if(year % 4 == 0 && year % 100 !=0 || year % 400 ==0){
+                lastDate[1] = 29;
+            }
+
+            //줄수 계산하기
+            //1일의 요일
+            //마지막 날짜
+            var row = Math.ceil((thisWeek + lastDate[month])/7);  //4+31=35/7 > 5
+
+            //날짜 변수
+            var num = 1;
+
+            //달력을 저장할 변수
+            var cal = "<table>";
+            cal+="<tr class='ourkey'>";
+            cal+="<th></th>"
+            cal+="<th></th>"
+            cal+="<th></th>"
+            if((month+1)<10){
+                cal+="<th><p class='year_month'><span class='yearrr'>"+year+"</span><span class='monthhh'>0"+(month+1)+"</span></p></th>"
+            }else{
+                cal+="<th><p class='year_month'><span class='yearrr'>"+year+"</span><span class='monthhh'>"+(month+1)+"</span></p></th>"
+            }
+            cal+="<th></th>"
+            cal+="<th></th>"
+            cal+="<th></th>"
+            //줄
+            for(i = 1;i<=row;i++){
+                cal+="<tr>";
+                //칸
+                for(j = 1;j<=7;j++){
+                    if(j<=thisWeek && i==1 ||num > lastDate[month]){
+                        cal+="<td></td>";
+                    }else{
+                        if(num<10){
+                            cal+="<td><p class='choice_cal' id='choice_cal'>0"+num+"</p></td>";
+                        }else{
+                            cal+="<td><p class='choice_cal' id='choice_cal'>"+num+"</p></td>";
+                        }
+                        num++;
+                    }
+                }
+                cal+="</tr>";
+            }
+            cal+="</table>";
+            document.write(cal);
+        }
+
+        cal(0);
+        cal(1);
+        cal(2);
+
+
+
+        let str = '';
+        let str2 = '';
+        $(function(){
+            let choice1 = 'n';
+            let choice2 = 'n';
+
+
+            $('.choice_cal').on('click', function(){
+                if(choice1 == 'n'){
+                    choice1 = 'y';
+
+                    str = `${$(this).parent('td').parent('tr').siblings('.ourkey').find('.yearrr').html()}${$(this).parent('td').parent('tr').siblings('.ourkey').find('.monthhh').html()}${$(this).html()}`;
+                    console.log(str);
+                    $(this).addClass('on');
+                    parent.parent.gowhatdaydd(str);
+                    parent.parent.comewhatday();
+
+                }else if(choice1 == 'y'){
+                    str2 = `${$(this).parent('td').parent('tr').siblings('.ourkey').find('.yearrr').html()}${$(this).parent('td').parent('tr').siblings('.ourkey').find('.monthhh').html()}${$(this).html()}`;
+                    parent.parent.comewhatday();
+                    if(str == str2){
+                        choice1 = 'n';
+                        choice2 = 'n';
+                        $(this).removeClass('on');
+                        console.log(str);
+                        parent.parent.gowhatday();
+
+                    }else{
+                        if((str - str2) > 0){
+                            console.log('모달');
+                            parent.parent.minday();
+                        }else{
+                            choice2 = 'y';
+                            console.log(str2);
+                            console.log('종료')
+                            $(this).addClass('on'); // 종료
+                            parent.parent.comewhatdaydd(str2);
+                            parent.parent.twochoice();
+                            location.reload();
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+</body>
+</html>

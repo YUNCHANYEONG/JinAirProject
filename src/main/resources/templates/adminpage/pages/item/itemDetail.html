@@ -1,0 +1,67 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/item/itemDetail.css" />
+
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <div id="item_detail">
+                        <!-- 유실물 상세내용 -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>관리번호</th>
+                                    <th>이미지</th>
+                                    <th>물품 유형</th>
+                                    <th>항공편</th>
+                                    <th>도착 일자</th>
+                                    <th>도착지 공항</th>
+                                    <th>유실물 수령 상태</th>
+                                    <th>삭제</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itemDetail">
+                                <tr>
+                                    <td>{{itemDetail.losIndex}}</td>
+                                    <td><img :src=`/upload/${itemDetail.losImgName}` alt="이미지"></td>
+                                    <td>{{itemDetail.losType}}</td>
+                                    <td>{{itemDetail.losAirplane}}</td>
+                                    <td>{{itemDetail.losArrivedate.substr(0,10)}}</td>
+                                    <td>{{itemDetail.losAirportArea}}</td>
+                                    <td type="button" id="item_isfind_btn" value=""><p id="isfind_P">{{itemDetail.losIsfind}}</p></td>
+                                    <td><input type="button" id="item_del_btn" value="삭제"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 유실물 상세내용 -->
+                    </div>
+                    <div id="btn_div">
+                        <input type="button" onclick="location.href='/pages/admin/item'" value="목록" id="to_item_list">
+                    </div>
+                </div>
+            </div>
+            <!-- 모달창 -->
+            <div id="modal_isfind">
+                <div id="modal_isfind_content">
+                    <div id="modal_isfind_title">유실물 상태 변경</div>
+                    <div>
+                        <button class="modal_isfind_btn complete">완료</button>
+                        <button class="modal_isfind_btn uncomplete">미완료</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 모달창 끝 -->
+        </div>
+    </div>
+    <script src="/adminpage/app/item/itemDetail.js"></script>
+</body>
+
+</html>

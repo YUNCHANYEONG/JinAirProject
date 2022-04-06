@@ -1,0 +1,184 @@
+
+/* container */
+.cursor {
+    cursor: pointer;
+}
+#container {
+    position: relative;
+    top: 100px;
+    height: 2600px;
+}
+#container > .contentswrap {
+    width: 1180px;
+    padding: 30px;
+    margin: auto;
+    height: 50px;
+    letter-spacing: .8px;
+}
+
+#container > .contentswrap > .discount {
+    letter-spacing: 1.2px;
+    padding: 20px;
+}
+
+#container > .contentswrap > .discount > .discount_title {
+    font-size: 2.8em;
+    font-weight: 600;
+    color: rgb(102, 30, 67);
+}
+
+#container > .contentswrap > .discount > .title_sub {
+    font-size: 1.45em;
+    font-weight: 600;
+    margin-top: 25px;
+    line-height: 30px;
+    letter-spacing: 1.2px;
+}
+
+#container > .contentswrap > .discount > .title_img {
+    background: url(/userpage/lib/img/icon_top_coupon.png) no-repeat center;
+    background-size: 100%;
+    display: inline;
+    width: 170px;
+    height: 100px;
+    float: right;
+    position: relative;
+    right: 15px;
+    bottom: 5px;
+}
+
+#container > .contentswrap table {
+    border-collapse: collapse;
+    /* border-spacing: 0px; */
+    width: 100%;
+    margin-top: 15px;
+    box-shadow:  3px 5px 3px rgb(185, 185, 185);
+    line-height: 1.2;
+    font-size: 16px;
+    color: #444;
+    border-top: 1px solid rgb(102, 30, 67);
+}
+
+#container > .contentswrap > .discount_kind .cursor {
+    cursor:pointer;
+}
+
+#container > .contentswrap > .discount_kind th {
+    border-spacing: 0px;
+    padding: 10px;
+    height: 100%;
+    font-weight: bold;
+    vertical-align: middle;
+    width: 250px;
+    text-align: center;
+}
+
+#container > .contentswrap .discount_kind th.dis_family {
+    color: #fff;
+    background-color: rgb(102, 30, 67);
+}
+
+
+/*할인 공통부분*/
+#container > .contentswrap > div .tit_left {    /*할인내용 중 왼쪽 제목 박스 */
+    position: relative;
+    width: 150px;
+    height: 155px;
+    font-weight: 900;
+    border: 1.5px solid #444;
+    font-size: 3.8em;
+    color: rgb(126, 0, 73);
+    text-align: center;
+    padding-top: 45px; 
+    margin-right: 45px;
+}
+#container > .contentswrap > div div {  /*할인내용 박스 크기설정*/
+    width: 80%;
+    height: 100px;
+}
+#container > .contentswrap > div .tit_num {    /*할인내용 중 왼쪽 제목 박스 숫자 크기설정 */
+    font-size: 5em;
+}
+#container > .contentswrap > div .tit_num span {/*할인내용 중 왼쪽 제목 박스 '%' 크기 및 위치설정 */
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    font-size: 20px;
+}
+#container > .contentswrap > div div div{   /*할인내용 오른쪽 박스 위치조정*/
+    margin-top: -40px;
+}
+#container > .contentswrap > div div h3 {/*할인 안내 내용 중 제목 크기 설정*/
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 3px;
+    color:#000;
+}
+#container > .contentswrap > div div.notice {
+    height: 500px;
+    align-items: flex-start;
+    padding-top: 100px;
+    border-bottom: none !important;
+    
+}
+/* 지니쿠폰 */
+#container > .contentswrap > .discount_family {
+    display: block;
+    width: 100%;
+    padding: 20px 20px;
+}
+#container > .contentswrap > .discount_family > div {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    align-items: center;
+}
+#container > .contentswrap > .discount_family > .standard {
+    height: 350px;
+    padding-bottom: 100px;
+}
+#container > .contentswrap > .discount_family .standard_content > ul{
+    margin-bottom: 20px;
+}
+#container > .contentswrap > .discount_family > .rate {
+    height: 400px;
+    padding-bottom: 150px;
+}
+#container > .contentswrap > .discount_family .target_content > ul, .standard_content > ul, .rate_content > ul, .method_content > ul, .discount_family .notice_content > ul {
+    padding-top: 15px;
+    line-height: 18px;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+}
+#container > .contentswrap > .discount_family .target_content > ul li::before, .standard_content > ul li::before, .rate_content > ul li::before, .method_content > ul li::before, .notice_content > ul > li::before { content: "- "; font-size: 10px;}
+
+#container > .contentswrap > .discount_family .notice_content ul li.li_bold {
+    font-weight: bold;
+    color:rgb(0, 0, 0);
+}
+#container > .contentswrap > .discount_family .target_content p, .discount_family .notice_content p {
+    padding-bottom: 3px;
+    margin-top: 15px;
+    line-height: 18px;
+    font-weight: 600;
+}
+#container > .contentswrap > .discount_family .standard_content span, .discount_commercial .standard_content span {
+    margin-left: 15px;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}

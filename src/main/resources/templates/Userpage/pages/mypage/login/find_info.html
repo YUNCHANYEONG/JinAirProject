@@ -1,0 +1,113 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<script src="/userpage/app/mypage/find_info.js"></script>
+<link rel="stylesheet" href="/userpage/lib/css/mypage/find_info.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>   // 메뉴
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi">
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="find_container">
+            <div class="find_top">
+                <p>아이디/비밀번호 찾기</p>
+            </div>
+            <div class="find_radio">
+                <input type="radio" value="아이디 찾기" class="ckbox" id="findid" name="find" checked><label for="findid">아이디 찾기</label>
+                <input type="radio" value="비밀번호 찾기" class="ckbox" id="findpw" name="find"><label for="findpw">비밀번호 찾기</label>
+            </div>
+            <div class="confirm_box">
+                <div class="confirm_email">
+                    <p><img src="/userpage/lib/img/ico_email.png" alt="이메일"></p>
+                    <p class="title_text">이메일 인증</p>
+                </div>
+                <div class="confirm_kakao">
+                    <p><img src="/userpage/lib/img/ico_kakao.png" alt="이메일"></p>
+                    <p class="title_text">카카오 인증</p>
+                    <p class="sub">카카오 인증을 통해 진에어 계정 연동 후 본인 인증</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal"></div>
+<div class="email_modal">
+    <div class="modal_title">
+        <p>이메일 인증</p>
+    </div>
+    <div class="modal_main_id" id="itemList">
+        <p>- 회원가입 시 기재한 이름/생년월일/이메일 정보를 입력해 주세요.</p>
+        <p>- 회원가입 여부 확인 시 마스킹 처리된 아이디를 확인하실 수 있습니다.</p>
+        <table>
+            <tr>
+                <th>이름</th>
+                <td><input type="text" placeholder="예) 홍" id="mbrLnm">
+                    <input type="text" placeholder="예) 길동" id="mbrFnm">
+                </td>
+            </tr>
+            <tr>
+                <th>생년월일</th>
+                <td><input type="text" placeholder="예) 19820626" class="modal_input" id="bthDt"></td>
+            </tr>
+            <tr>
+                <th>이메일 또는 연락처</th>
+                <td><input type="text" placeholder="예) abcde@gmail.com" class="modal_input" id="emAdr"></td>
+            </tr>
+        </table>
+        <form action="" method="post">
+            <div class="btn">
+                <!-- 차후 submit으로 변경 필요 -->
+                <input type="button" class="btn_confirm" value="확인" id="btn_ser1">
+                <input type="button" class="btn_cancel" value="취소">
+            </div>
+        </form>
+    </div>
+    <div class="modal_main_pw" id="itemList1">
+        <p>- 회원가입 시 기재한 이름/생년월일/이메일 및 아이디 정보를 입력해 주세요.</p>
+        <p>- 등록된 이메일로 임시 비밀번호를 발송해 드립니다.</p>
+        <table>
+            <tr>
+                <th>아이디</th>
+                <td class="idtextbox"><input type="text" class="modal_input" id="memUserId"></td>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <td><input type="text" placeholder="예) 홍" id="mbrLnm1">
+                    <input type="text" placeholder="예) 길동" id="mbrFnm1">
+                </td>
+            </tr>
+            <tr>
+                <th>생년월일</th>
+                <td><input type="text" placeholder="예) 19820626" class="modal_input" id="bthDt1"></td>
+            </tr>
+            <tr>
+                <th>이메일 또는 연락처</th>
+                <td><input type="text" placeholder="예) abcde@gmail.com" class="modal_input" id="emAdr1"></td>
+            </tr>
+        </table>
+        <form action="" method="post">
+            <div class="btn">
+                <!-- 차후 submit으로 변경 필요 -->
+                <input type="button" class="btn_confirm" value="확인" id="btn_ser2">
+                <input type="button" class="btn_cancel" value="취소">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

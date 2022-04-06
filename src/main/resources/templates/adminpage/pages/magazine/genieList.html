@@ -1,0 +1,58 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/magazine/genieList.css">
+
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="contwrap">
+                    <div class="search">
+                        <p class="title">지니매거진</p>
+                    </div>
+                    <table id="itemList">
+                        <colgroup>
+                            <col width="100">
+                            <col width="460">
+                            <col width="180">
+                            <col width="180">
+                            <col width="180">
+                        </colgroup>
+                        <tr>
+                            <td>번호</td>
+                            <td>제목</td>
+                            <td>지니퀴즈</td>
+                            <td>PDF다운로드</td>
+                            <td>등록일</td>
+                        </tr>
+                        <tr v-for="dto in itemList">
+                            <td>{{dto.mzIndex}}</td>
+                            <td><a :href=`/pages/admin/genielist_view/${dto.mzIndex}`>{{dto.mzTitle}}</a></td>
+                            <td><a :href=`/api/magazine/downloadAns/${dto.mzIndex}` download="">{{dto.mzAnswerOriname}}</a></td>
+                            <td><a :href=`/api/magazine/downloadPdf/${dto.mzIndex}` download="">{{dto.mzPdfOriname}}</a></td>
+                            <td>{{dto.mzRegdate.substr(0,10)}}</td>
+                        </tr>
+                    </table>
+                    <a href="/pages/admin/genielist_add" class="notice_write"><input type="button" value="작성하기"></a>
+                    <div class="footer">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage">
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/adminpage/app/magazine/genieList.js"></script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+    <div th:replace="userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/payment/cancel_booking_md.css">
+    <script src="/userpage/app/payment/cancel_booking_md.js"></script>
+
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <input type="hidden" id="memid" th:value="${memberApiResponse.memIndex}">
+            <input type="hidden" id="reIndex1" th:value="${reserveApiResponse[0].reIndex}">
+            <input type="hidden" id="reTripKind" th:value="${reserveApiResponse[0].reTripKind}">
+            <input type="hidden" id="rePeopleType" th:value="${reserveApiResponse[0].rePeopleType}">
+            <div class="mypage_main w_1160">
+                <h2 class="total_text">환불정보</h2>
+                <div class="totalPrice_main">
+                    <div class="totalPrice_box">
+                        <span>기존 총 운임</span>
+                        <p>
+                            <span class="unit">KRW</span>
+                            <strong class="realPayPrice"></strong>
+                        </p>
+                    </div>
+                    <div class="totalPrice_box">
+                        <span>환불 위약금 (환불 불가 금액)</span>
+                        <p>
+                            <span class="unit">KRW</span>
+                            <strong>2,000</strong>
+                        </p>
+                    </div>
+                    <div class="totalPrice_box">
+                        <span>최종 환불금액</span>
+                        <p>
+                            <span class="unit">KRW</span>
+                            <strong class="realExchangePrice"></strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="cancel_check">
+                    <label for="check"><input type="checkbox" id="check">* 동의 시 환불이 완료됩니다.</label>
+                    <div class="btn">
+                        <p class="confirm_btn cursor">예약취소(환불) 신청</p>
+                        <p class="cancel_btn cursor">취소</p>
+                    </div>
+                </div>
+                <div class="user_info">
+                    <h2>탑승객 정보</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>성명</th>
+                                <th>구분</th>
+                                <th>성별</th>
+                                <th>생년월일</th>
+                                <th>국적</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="dto, i : ${reserveApiResponse}">
+                                <td>[[${dto.reFirstName}]][[${dto.reLastName}]]</td>
+                                <td th:class="'rePeopleType'+${i.index}"></td>
+                                <td th:text="${dto.reGender}"></td>
+                                <td th:class="'reBirth'+${i.index}">[[${dto.reBirth}]]</td>
+                                <td th:text="${dto.reNation}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 운임 정보-->
+                <div class="fare_wrap">
+                    <h2>여정 및 운임정보</h2>
+                    <div class="fare_info borderT">
+                        <p class="tit">왕복</p>
+                        <div class="jour_wrap">
+                            <div class="jour1_wrap">
+                                <p class="flight">여정 1 <span th:text="${reserveApiResponse[0].reSchName}"></span></p>
+                                <div class="area1_wrap area_wrap">
+                                    <div class="depart">
+                                        <p class="area" th:text="${reserveApiResponse[0].reSchDepPoint}"></p>
+                                        <p class="time">[출발] <span th:text="${#strings.substring(reserveApiResponse[0].reSchStartTime,0, 10)}"></span> [<span th:text="${#strings.substring(reserveApiResponse[0].reSchStartTime,11, 16)}"></span>]</p>
+                                    </div>
+                                    <p class="arrow"><img src="/userpage/lib/img/right_arrow.PNG" alt=""></p>
+                                    <div class="arr">
+                                        <p class="area" th:text="${reserveApiResponse[0].reSchArrPoint}"></p>
+                                        <p class="time">[도착] <span th:text="${#strings.substring(reserveApiResponse[0].reSchEndTime,0, 10)}"></span> [<span th:text="${#strings.substring(reserveApiResponse[0].reSchEndTime,11, 16)}"></span>]</p>
+                                    </div>
+                                    <p class="detail detail1 cursor">View Flight Details</p>
+                                </div>
+                            </div>
+                            <div class="tot">
+                                <p class="txt">총 운임</p>
+                                <p class="price_wrap"><span class="cul">KRW</span><span class="price finalPrice">203,900</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="fare_info_T">
+                        <colgroup>
+                            <col width="85%">
+                            <col width="15%">
+                        </colgroup>
+                        <tr class="borderB">
+                            <td>항공운임</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price planePrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래" class="arr_bott arr_bott1 cursor">
+                                        <img src="/userpage/lib/img/arr_top.png" alt="위" class="arr_top arr_top1 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add1">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price" th:class="trip1BP"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="borderB">
+                            <td class="borderB">유류할증료</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price oilPrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래" class="arr_bott arr_bott2 cursor">
+                                        <img src="/userpage/lib/img/arr_top.png" alt="위" class="arr_top arr_top2 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add2">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}">
+                                        <td><span class="name" >[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price">5,000</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="borderB">
+                            <td>세금</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price taxPrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래" class="arr_bott arr_bott3 cursor">
+                                        <img src="/userpage/lib/img/arr_top.png" alt="위" class="arr_top arr_top3 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add3">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price">4,000</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--부가서비스 확인-->
+                <div class="service_wrap">
+                    <h2>부가서비스</h2>
+                    <table class="service_T">
+                        <colgroup>
+                            <col width="85%">
+                            <col width="15%">
+                        </colgroup>
+                        <tr>
+                            <td class="borderT">총 운임</td>
+                            <td class="borderT">
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span><span class="price subFinalprice"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>사전좌석지정</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price seatPrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래" class="arr_bott arr_bott4 cursor">
+                                        <img src="/userpage/lib/img/arr_top.png" alt="위" class="arr_top arr_top4 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add4">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="40%">
+                                        <col width="45%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <td th:class="'seat1D'+${i.index}">[[${dto.reSeatDetail}]]</td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price" th:class="'seat1P'+${i.index}">[[${dto.reSeatPrice}]]</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>초과수하물</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price BaggPrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래" class="arr_bott arr_bott5 cursor">
+                                        <img src="/userpage/lib/img/arr_top.png" alt="위" class="arr_top arr_top5 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add5">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="40%">
+                                        <col width="45%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <input type="hidden" th:value="${dto.reBaggageidx}" th:class="'reBaggageidx1'+${i.index}">
+                                        <td th:class="'bagg1KG'+${i.index}"></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price" th:class="'bagg1P'+${i.index}"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>여행보험</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price InsuPrice"></span>
+                                    <span class="arrow">
+                                        <img src="/userpage/lib/img/arr_bott.png" alt="아래" class="arr_bott arr_bott6 cursor">
+                                        <img src="/userpage/lib/img/arr_top.png" alt="위" class="arr_top arr_top6 cursor">
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add6">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="40%">
+                                        <col width="45%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <tr>
+                                        <td>구간 1 : <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span> - <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr th:each="dto, i : ${reserveApiResponse}">
+                                        <td><span class="name">[[${dto.reFirstName}]]/[[${dto.reLastName}]]</span></td>
+                                        <input type="hidden" th:value="${dto.reInsuranceidx}" th:class="'reInsuranceidx1'+${i.index}">
+                                        <td th:class="'Insu1Tp'+${i.index}"></td>
+                                        <td>
+                                            <div class="td_wrap">
+                                                <span class="cul">KRW</span><span class="price" th:class="'Insu1P'+${i.index}"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <!--퀵 메뉴 끝-->
+    <div class="modal">
+    </div>
+    <!--모달 1-->
+    <div class="modal_flight_info1 modal_flight_info">
+        <div class="modal_flight_title">
+            <span class="tit">항공편 안내</span>
+            <span class="cursor close1"><img src="/userpage/lib/img/close.png" alt="닫기" width="20px"></span>
+        </div>
+        <div class="modal_flight_content">
+            <div class="cont_P">
+            <ul>
+                <li>
+                    구간 1
+                </li>
+                <li>편명 : <span th:text="${reserveApiResponse[0].reSchName}"></span></li>
+                <li>출발 : <span th:text="${#strings.substring(reserveApiResponse[0].reSchStartTime,0, 10)}"></span> [<span th:text="${#strings.substring(reserveApiResponse[0].reSchStartTime,11, 16)}"></span>] <span th:text="${reserveApiResponse[0].reSchDepPoint}"></span></li>
+                <li>도착 : <span th:text="${#strings.substring(reserveApiResponse[0].reSchEndTime,0, 10)}"></span> [<span th:text="${#strings.substring(reserveApiResponse[0].reSchEndTime,11, 16)}"></span>] <span th:text="${reserveApiResponse[0].reSchArrPoint}"></span></li>
+                <li>대기시간 : 00h 00m</li>
+                <li>A/C 타입 : <span th:text="${reserveApiResponse[0].reAirplainType}"></span></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!--모달 1끝-->
+    <div class="false_modal">
+        <div class="false_modal_box">
+            <p>예약변경 및 취소할 탑승객 및 여정을 선택하십시오.</p>
+            <div class="modal_btn">
+                <p class="confirm_btnn">확인</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

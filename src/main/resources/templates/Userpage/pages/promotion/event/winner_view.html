@@ -1,0 +1,101 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/promotion/event/winner_view.css"/>
+<script src="/userpage/app/promotion/event/winner_view.js"></script>
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi"><!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="discount">
+                <p class="title_img"></p>
+                <p class="discount_title">이벤트</p>
+            </div>
+            <div class="event_kind">
+                <table>
+                    <tr>
+                        <th class="dis_ing cursor"><a href="/pages/promotion/event">진행중 이벤트</a></th>
+                        <th class="dis_end cursor"><a href="/pages/promotion/event">종료된 이벤트</a></th>
+                        <th class="dis_win cursor"><a href="/pages/promotion/event">당첨자 발표</a></th>
+                    </tr>
+                </table>
+            </div>
+            <!--제휴 카드-->
+            <div class="win">
+                <div class="win_wrapper">
+                    <table class="win_content">
+                        <tr>
+                            <td class="table_top">
+                                <p class="content_title" th:text="${eventWinApiResponse.evTitle}"></p>
+                                <p class="sns_box">
+                                    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fbit.ly%2F3CaBcx5&text=%5B%EB%8B%B9%EC%B2%A8%EC%9E%90%20%EB%B0%9C%ED%91%9C%5D%20%20%EB%94%9C%EB%9D%BC%EC%9D%B4%ED%8A%B8%20%ED%8C%9D%EC%97%85%20%EC%8A%A4%ED%86%A0%EC%96%B4%2022%EB%85%84%202%EC%9B%94%20%EB%8B%B9%EC%B2%A8%EC%9E%90%20%EC%95%88%EB%82%B4">
+                                        <span class="twitter"><img src="/userpage/lib/img/twitter.png" alt=""></span>
+                                    </a>
+                                    <a href="https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fbit.ly%252F3CaBcx5&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=ko_KR">
+                                        <span class="facebook"><img src="/userpage/lib/img/face.png" alt=""></span>
+                                    </a>
+                                </p>
+                                <p class="content_regdate">작성일 : <span th:text="${#strings.substring(eventWinApiResponse.evRegdate,0, 10)}"></span></p>
+                            </td>
+                        </tr>
+                        <tr class="content_midd">
+                            <td>
+                                <p class="first_text"><span th:text="${eventWinApiResponse.evTitle}"></span>에 당첨되신 것을 축하드립니다!</p>
+                                <p class="second_text">당첨자께서는 이메일 개별 통보됨을 알려드립니다.</p>
+                                <p>※ 유의사항</p>
+                                <p>- 당첨 경품은 환불, 재발행, 양도가 불가합니다.</p>
+                                <p>- 유효기간 연장은 불가하오니 기한 준수하시어 사용 부탁드립니다.</p>
+                                <p>- 이메일 수신 여부 비동의 시 이벤트 당첨과 무관하게 취소처리됨을 알려드립니다.</p>
+                                <p>이벤트에 참여해주신 모든 분들께 진심으로 감사드립니다.<br>
+                                    앞으로도 진에어 많은 관심 부탁드립니다.</p>
+                                <p class="finishgreeting">Fly, better fly Jin Air</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="notiPriv">
+                        <colgroup><col width = 20%><col width = 80%></colgroup>
+                        <tr>
+                            <td colspan="2" style="text-indent: -999px">1234567863</td>
+                        </tr>
+                        <tr>
+                            <th>이전 글</th>
+                            <td><a :href="'/pages/promotion/event_view/' + notiPriv.evIndex">{{ notiPriv.evTitle }}</a></td>
+                        </tr>
+                    </table>
+                    <table id="notiNext">
+                        <colgroup><col width = 20%><col width = 80%></colgroup>
+                        <tr>
+                            <th>다음 글</th>
+                            <td><a :href="'/pages/promotion/event_view/' + notiNext.evIndex">{{ notiNext.evTitle }}</a></td>
+                        </tr>
+                    </table>
+                    <div class="listWrap">
+                        <a href="/pages/promotion/event"><input type="button" value="목록" class="listButt"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal"></div>
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+</body>
+</html>

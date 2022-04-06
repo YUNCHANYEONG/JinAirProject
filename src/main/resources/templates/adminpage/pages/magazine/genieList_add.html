@@ -1,0 +1,61 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/magazine/genieList_add.css">
+    <script src="/adminpage/app/magazine/genieList_add.js"></script>
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="contwrap">
+                    <div class="search">
+                        <p class="title">지니매거진 등록</p>
+                    </div>
+                    <form id="uploadFiles" name="uploadFiles" method="post" th:action="@{/pages/admin/genielist_add/upload}" encType="multipart/form-data" onsubmit="return sendit()">
+                        <table>
+                            <colgroup>
+                                <col width="150">
+                                <col width="850">
+                            </colgroup>
+                            <tr>
+                                <td>제목</td>
+                                <td><input type="text" class="magazine_rg" id="magazine_rg" name="mzTitle"></td>
+                            </tr>
+                            <tr>
+                                <td  colspan="2" class="file_id">
+                                    <div class="file-upload">
+                                        메인 페이지 파일 첨부
+                                        <input type="text" class="filetext1" id="filetext1">
+                                        <label for="ex_file1" class="ex_file">찾아보기</label>
+                                        <input type="file" id="ex_file1" name="imgs" multiple>
+                                    </div>
+                                    <div class="file-upload">
+                                        퀴즈 파일 첨부
+                                        <input type="text" class="filetext2" id="filetext2">
+                                        <label for="ex_file2" class="ex_file">찾아보기</label>
+                                        <input type="file" id="ex_file2" name="answers" multiple>
+                                    </div>
+                                    <div class="file-upload">
+                                        매거진 파일 첨부
+                                        <input type="text" class="filetext3" id="filetext3" >
+                                        <label for="ex_file3" class="ex_file">찾아보기</label>
+                                        <input type="file" id="ex_file3" name="pdfs" multiple>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="footer">
+                            <input type="button" value="취소" onclick="history.back()" class="goback">
+                            <input type="submit" value="등록" class="edit_btn">
+                        </div>
+                    </form>
+                </div>  
+            </div>
+        </div>
+    </div>
+</body>
+</html>

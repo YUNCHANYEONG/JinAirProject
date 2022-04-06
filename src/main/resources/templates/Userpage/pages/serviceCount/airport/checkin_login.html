@@ -1,0 +1,113 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/airport/checkinfo.css">
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/airport/checkin_login.css">
+<script src="/userpage/app/serviceCount/airport/checkinfo.js"></script>
+    <body>
+        <ul class="skipnavi">
+            <!--책갈피 역할-->
+            <li>
+                <a href="#container">본문내용</a>
+            </li>
+        </ul>
+        <!--wrap-->
+        <div id="wrap">
+            <!--header-->
+            <div th:replace="${loginURL} :: menu"></div>
+            <!--header 끝-->
+            <!-- container -->
+            <div id="container" class="memberWrap">
+                <h1 class="typeC">로그인</h1>
+                <div class="loginArea">
+                        <div class="tabArea">
+                            <ul class="tabTypeA">
+                                <li class="choice1">예약번호로 확인</a></li>
+                                <li class="choice2">회원 로그인</a></li>
+                            </ul>
+                        </div>
+                    <div id="member" class="member" style="display: block;">
+                        <form id="easy-pnr-login-form" method="post" autocomplete="off">
+                            <input type="hidden" name="_csrf" value="05ef738a-d801-4b10-91cb-0bb7c095b7ee">
+                            <input type="hidden" name="accessFrom" value="06">
+                            <input type="hidden" name="returnUrl" id="returnUrl" value="/checkin/checkinList">
+                            <fieldset>
+                                <span id="pnr-number">
+                                    <input type="text" name="pnrNumber" title="예약번호(숫자와 영문으로 조합된 6자리 예약번호)" class="placeholder" placeholder="예약번호(숫자와 영문으로 조합된 6자리 예약번호)" autocomplete="off" maxlength="6" style="text-transform: uppercase;">
+                                </span>
+                                <span id="ticket-number" style="display: none;">
+                                    <em>티켓번호 180 - </em>
+                                    <input type="text" name="ticketNumber" class="placeholder" data-lang-cd="KOR" autocomplete="off" maxlength="10" style="text-transform: uppercase;">
+                                </span>
+                                <span class="nameField">
+                                    <input type="text" name="lastName" title="성(Last Name)" class="placeholder" placeholder="성(Last Name)" autocomplete="off" style="text-transform: uppercase;">
+                                    <input type="text" name="firstName" title="이름(First Name)" class="placeholder" placeholder="이름(First Name)" autocomplete="off" style="text-transform: uppercase;">
+                                </span>
+                                <label for="departureDate"><span class="btn_calendar">
+                                    <input type="date" name="departureDate" title="출발일" class="btn_calendar placeholder" id="departureDate" data-placeholder="출발일" maxlength="10" style="background:#f7f7f7" autocomplete="off"></span></label>
+                                <div class="btn">
+                                    <input type="submit" value="확인">
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div id="nonmember" class="member" style="display: none;">
+                        <fieldset>
+                            <div class="member_reserve">
+                                <form id="member-login-form" autocomplete="off">
+                                    <input type="hidden" name="_csrf" value="05ef738a-d801-4b10-91cb-0bb7c095b7ee">
+                                    <input type="hidden" name="accessFrom" value="01">
+                                    <input type="hidden" name="returnUrl" value="/checkin/checkinList">
+                                    <span><input type="text" name="id" id="member-login-form-id" maxlength="20" placeholder="아이디" style="text-transform: uppercase;"></span>
+                                    <span><label for="member-login-form-pw"></label><input type="password" name="pw" id="member-login-form-pw" maxlength="20" placeholder="비밀번호"></span>
+                                    <p id="capsLockWarning" style="display: none;"><font color="red"><br/>Caps Lock이 켜져 있습니다.</font></p>
+                                    
+                                <div class="btn">
+                                    <input type="submit" value="확인"></input>
+                                </div>
+                                </form>            
+            <p class="find">
+                <a href="javascript://" data-click-area="로그인" data-click-name="회원가입" onclick="top.location.href='/member/joinGate';">회원가입</a>
+                <a href="javascript://" data-click-area="로그인" data-click-name="아이디찾기" onclick="top.location.href='/login/findIdPw';">아이디 찾기</a>
+                <a href="javascript://" data-click-area="로그인" data-click-name="비밀번호 찾기" onclick="top.location.href='/login/findIdPw?find=findPw';">비밀번호 찾기</a>
+            </p>
+            <p class="btnSns">
+                    <a href="javascript://" class="kakao choice" role="btn-sns" data-sns-type-code="08" data-state="SNS_LOGIN">카카오 계정으로 로그인</a>
+                
+                <a href="javascript://" class="facebook choice" role="btn-sns" data-sns-type-code="01" data-state="SNS_LOGIN">페이스북 계정으로 로그인</a>
+                <a href="javascript://" class="naver choice" role="btn-sns" data-sns-type-code="02" data-state="SNS_LOGIN">네이버 계정으로 로그인</a>
+                <a href="javascript://" class="google choice" role="btn-sns" data-sns-type-code="05" data-state="SNS_LOGIN">구글 계정으로 로그인</a>
+                <a href="javascript://" class="intra choice" role="btn-sns" data-sns-type-code="06" data-state="SNS_LOGIN">링크드인 계정으로 로그인</a>
+            </p>
+            
+            <div class="phone_login">
+                <a href="https://safelogin.kr/sauth/regist?site_code=NH&sub_code=0">
+                    
+                        <img src="//images.jinair.com/images/customer/img_phone_login.gif" alt="휴대폰 간편 로그인">
+                    
+                    
+                </a>
+            </div>
+            
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 푸터-->
+            <div th:replace="userpage/fragment/footer :: footer"></div>
+            <!--푸터 끝-->
+
+        </div>
+        <!--wrap 끝-->
+        <!--퀵 메뉴-->
+        <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+        <!--퀵 메뉴 끝-->
+<div class="modal"></div>
+</body>
+</html>

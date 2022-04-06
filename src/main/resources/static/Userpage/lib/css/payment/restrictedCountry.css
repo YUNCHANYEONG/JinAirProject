@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight:normal;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'NanumBarunGothic';
+    word-break: keep-all;
+    color: #444;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+}
+
+
+.content {
+    width: 100%;
+    background-color: #FAFAFA;
+    padding: 20px;
+    margin: 40px auto 15px;
+    border: 1px solid rgba(173, 173, 173, 0.5)
+}
+
+.content h4 {
+    margin: 10px auto;
+}
+
+.content p {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+a {
+    text-decoration: underline;
+}

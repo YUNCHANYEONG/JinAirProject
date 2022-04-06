@@ -1,0 +1,147 @@
+/* container */
+.cursor {
+    cursor: pointer;
+}
+#container {
+    position: relative;
+    top: 100px;
+    height: 1300px;
+}
+#container > .contentswrap {
+    width: 1180px;
+    padding: 30px;
+    margin: auto;
+    letter-spacing: 0.8px;
+}
+#container > .contentswrap > .discount {
+    letter-spacing: 1.2px;
+    padding: 20px;
+    height: 180px;
+}
+#container > .contentswrap > .discount > .discount_title {
+    font-size: 2.8em;
+    font-weight: 600;
+    color: rgb(102, 30, 67);
+}
+#container > .contentswrap > .discount > .title_sub {
+    font-size: 1.45em;
+    font-weight: 600;
+    margin-top: 25px;
+    line-height: 30px;
+    letter-spacing: 1.2px;
+}
+#container > .contentswrap > .discount > .title_img {
+    background: url(/userpage/lib/img/icon_top_activitys.png) no-repeat center;
+    background-size: 100%;
+    display: inline;
+    width: 170px;
+    height: 170px;
+    float: right;
+    position: relative;
+    right: 26px;
+    bottom: 27px;
+}
+#container > .contentswrap .discount_kind .bundlebox_title{
+    margin-top: 70px;
+}
+.img_jinitv{
+    width: 100%;
+    height: 375px;
+    background: url(/userpage/lib/img/activity01.png) no-repeat top;
+}
+.activity_wrap{
+    width: 100%;
+    height: 350px;
+    margin-top: 25px;
+}
+.activity_wrap > div{
+    display: inline-block;
+    width: 280px;
+    height: 100%;
+    border: 1px solid grey;
+    vertical-align: middle;
+    margin-right: 15px;
+    padding: 20px;
+}
+.activity_wrap > div input{
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 900;
+    background-color: #BDD600;
+    border: none;
+    cursor: pointer;
+}
+.img_klook{
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    background: url(/userpage/lib/img/activity02.png) no-repeat center;
+    background-size: 100%;
+    margin-bottom: 20px;
+}
+.img_donki{
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    background: url(/userpage/lib/img/activity03.png) no-repeat center;
+    background-size: 100%;
+    margin-bottom: 20px;
+}
+.korea, .oversee{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    bottom: 20px;
+    right: 21px;
+    font-size: 11px;
+    font-weight: 900;
+    color: white;
+    width: 57px;
+    padding-top: 6px;
+    height: 20px;
+}
+.oversee_jp{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    bottom: 20px;
+    right: 21px;
+    font-size: 11px;
+    font-weight: 900;
+    color: white;
+    width: 74px;
+    padding-top: 6px;
+    height: 20px;
+    background-color: rgb(0, 124, 173);
+}
+.korea{
+    background-color: rgb(102, 30, 67);
+}
+.oversee{
+    background-color: rgb(0, 124, 173);
+}
+.activity_boxtitle{
+    font-size: 19px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+.notice_box{
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}

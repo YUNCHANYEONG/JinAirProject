@@ -1,0 +1,120 @@
+/* container */
+.cursor {
+    cursor: pointer;
+}
+#container {
+    position: relative;
+    top: 100px;
+    height: 1300px;
+}
+#container > .contentswrap {
+    width: 1180px;
+    padding: 30px;
+    margin: auto;
+    letter-spacing: 0.8px;
+}
+
+#container > .contentswrap .title {
+    font-size: 22px;
+}
+
+#container > .contentswrap .title > h2 {
+    color: #661e43;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+#container > .contentswrap .title > span {
+    font-weight: 500;
+}
+
+.contentswrap > .searchWrap {
+    margin-top: 40px;
+    width: 100%;
+    height: 100px;
+    background-color: #F7F7F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentswrap > .searchWrap > #searchBox {
+    width: 530px;
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 18px;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.contentswrap > .searchWrap > .searchButt {
+    width: 140px;
+    background-color: #BDD600;
+    border: none;
+    height: 40px;
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.contentswrap > .contents {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.contentswrap > .contents > .noticeT {
+    width: 100%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.contentswrap > .contents > .noticeT th {
+    background-color: #F7F7F6;
+    color: #444;
+    line-height: 55px;
+}
+
+.contentswrap > .contents > .noticeT td {
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
+    height: 50px;
+}
+
+.footer{
+    margin-top: 40px;
+    width: 100%;
+    height: 30px;
+}
+.footer > .center{
+    display: flex;
+    justify-content: center;
+}
+.footer table{
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.footer table td{
+    width: 35px;
+    height: 40px;
+    border: 1px solid rgb(187, 187, 187);
+    background-color: #fff;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.pages {
+    background-color : #fff;
+    color : #444;
+    cursor : pointer;
+}
+
+#showPage > td:hover {
+    background-color: #BDD600;
+    color: white;
+}
+
+.firstPage1, .firstPage2, .lastPage1, .lastPage2 {
+    cursor: pointer;
+}
+

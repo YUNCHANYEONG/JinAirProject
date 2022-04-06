@@ -1,0 +1,35 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 센터 | 로그인</title>
+    <link rel="stylesheet" href="/adminpage/lib/css/style.css">
+    <link rel="stylesheet" href="/adminpage/lib/css/admin_login.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/adminpage/app/admin_login.js"></script>
+    <link rel="shortcut icon" href="/userpage/lib/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/userpage/lib/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div id="wrap">
+    <header>
+        <div class="header_inner">
+            <div class="img"></div><span>관리자 센터</span>
+        </div>
+    </header>
+    <div id="container">
+        <div class="login">
+            <div class="login_title">관리자 로그인</div>
+            <form action="/pages/admin_enter" method="post">
+                <p><input type="text" name="admin_id" class="admin_id" placeholder="아이디를 입력해주세요"></p>
+                <p><input type="password" name="admin_pw" class="admin_pw" placeholder="비밀번호를 입력해주세요"></p>
+                <p><input type="submit" value="로그인" class="btn_login"></p>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

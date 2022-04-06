@@ -1,0 +1,155 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/promotion/event/nowLeave.css"/>
+<script src="/userpage/app/promotion/event/nowLeave.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi"><!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="backgreen"></div>
+        <div class="contentswrap">
+            <div class="contentstop">
+                <p>지금 떠나세요!</p>
+                <p>당신의 심장이 반응하는 그 곳으로</p>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href=""><img src="/userpage/lib/img/1ad.png" alt="1번"></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href=""><img src="/userpage/lib/img/2ad.png" alt="2번"></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href=""><img src="/userpage/lib/img/3ad.png" alt="3번"></a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <p class="controller">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </p>
+                <div class="wrap-autoplay-control">
+                    <button aria-pressed="false" aria-label="자동 재생 일시정지"></button>
+                </div>
+            </div>
+            <div class="event_kind">
+                <table>
+                    <tr>
+                        <th class="dis_ing cursor">진행중 이벤트</th>
+                        <th class="dis_end cursor">종료된 이벤트</th>
+                        <th class="dis_win cursor">당첨자 발표</th>
+                    </tr>
+                </table>
+            </div>
+            <!--제휴 카드-->
+            <div class="ing">
+                <div class="ing_wrapper">
+                    <ul id="itemList">
+                        <li v-for="dto in itemList">
+                            <div class="ing_event">
+                                <div class="ing_event1_img">
+                                    <img :src=`\\upload\\${dto.evFileName}`>
+                                </div>
+                                <div class="ing_event1_contents">
+                                    <p class="ing_title"><input type="text" :value="dto.evTitle"></p>
+                                    <p class="ing_regdate">
+                                        <input type="text" :value="'이벤트 기간 : ' + dto.evStartDay.substr(0,10) + ' ~ '+ dto.evEndDay.substr(0,10)">
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="footer1">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage">
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="end">
+                <div class="end_wrapper">
+                    <ul id="itemList1">
+                        <li v-for="dto in itemList1">
+                            <div class="end_event">
+                                <div class="end_event1_img">
+                                    <img :src=`\\upload\\${dto.evFileName}`>
+                                </div>
+                                <div class="end_event1_contents">
+                                    <p class="end_title"><input type="text" :value="dto.evTitle"></p>
+                                    <p class="end_regdate">
+                                        <input type="text" :value="'이벤트 기간 : ' + dto.evStartDay.substr(0,10) + ' ~ '+ dto.evEndDay.substr(0,10)">
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="footer1">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage1">
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="win">
+                <div class="win_wrapper">
+                    <table id="itemList2">
+                        <colgroup>
+                            <col width="150">
+                            <col width="750">
+                            <col width="280">
+                        </colgroup>
+                        <tr>
+                            <td>번호</td>
+                            <td>제목</td>
+                            <td>작성일</td>
+                        </tr>
+                        <tr v-for="dto in itemList2">
+                            <td>{{dto.evIndex}}</td>
+                            <td><a :href="'/pages/promotion/event_view/'+dto.evIndex">{{dto.evTitle}}</a></td>
+                            <td>{{dto.evRegdate.substr(0,10)}}</td>
+                        </tr>
+                    </table>
+                    <div class="footer1">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage2">
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal"></div>
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+</body>
+</html>

@@ -1,0 +1,719 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/reservation/lccpage/lcc.css" />
+<script src="/userpage/app/reservation/lccpage/lcc.js"></script>
+<script src="/userpage/app/reservation/lccpage/lcc_layer.js"></script>
+
+<body>
+<ul class="skipnavi">
+    <!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="lcc">
+                <div class="in_bl">
+                    <p class="lcc_title">
+                        맞춤 항공권</p>
+                </div>
+                <div class="in_bl">
+                    <img src="/userpage/lib/img/icon_promotion.png" alt="프로모션 타이틀 이미지" />
+                </div>
+            </div>
+            <div class="lcc_kind">
+                <table>
+                    <tr>
+                        <th class="lcc_search_btn cursor">
+                            최저가 항공권 검색
+                        </th>
+                        <th class="custom_search_btn cursor">
+                            맞춤 항공권 검색
+                        </th>
+                        <th class="now_lcc_btn cursor">
+                            지금 이순간 최저가 항공권
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="lcc_contents">
+                <!-- 최저가 항공 찾기 -->
+                <div class="lcc_search">
+                    <!-- 조회 박스 -->
+                    <div class="search_box">
+                        <h3 class="sub_title in_bl">항공권 찾기</h3>
+                        <span>
+                                노선별 최저가 항공권을 검색해 보세요!
+                            </span>
+                        <div class="search_form">
+                            <div class="form1">
+                                <div class="person_type in_bl">
+                                    <div class="person_layerbtn">
+                                        <strong class="person_num" name="person_num">성인 1</strong>
+                                        <span>
+                                                    <img class="person_down_img" src="/userpage/lib/img/down.png"
+                                                         alt="드롭다운" />
+                                                    <img class="person_up_img" src="/userpage/lib/img/up.png" alt="드롭업" />
+                                                </span>
+                                    </div>
+                                    <ul class="person_pop_layer in_bl">
+                                        <li>
+                                            <div class="w_180 in_bl">
+                                                <strong class="num_font" name="adultPaxCnt">1</strong>
+                                                <span role="person-type-option"
+                                                      class="person_type1 person_font">성인
+                                                        </span>
+                                            </div>
+                                            <div class="person_btn in_bl">
+                                                <a href="javascript://" name="adultPaxCntDown"
+                                                   onclick="fnSetPaxCountDown('ADULT', this);"><img
+                                                        src="//images.jinair.com/images/btn/btn_minus.png"
+                                                        alt="-"></a>
+                                                <a href="javascript://" name="adultPaxCntUp"
+                                                   onclick="fnSetPaxCountUp('ADULT', this);"><img
+                                                        src="//images.jinair.com/images/btn/btn_plus.png"
+                                                        alt="+"></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="w_180 in_bl">
+                                                <strong class="num_font" name="childPaxCnt">0</strong>
+                                                <span role="person-type-option"
+                                                      class="person_type2 person_font">소아
+                                                        </span>
+                                                <button class="child_info_btn">
+                                                    <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                                </button>
+                                                <div class="child_modal">
+                                                    <p>소아<em>(탑승일 기준)</em></p>
+                                                    <ul>
+                                                        <li>[국내선] 만 2세 - 만 13세 미만</li>
+                                                        <li>[국제선] 만 2세 - 만 12세 미만</li>
+                                                    </ul>
+                                                    <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우
+                                                                첫구간 탑승일
+                                                                기준으로 나이 계산
+                                                                <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                            </span>
+                                                </div>
+                                            </div>
+                                            <div class="person_btn in_bl">
+                                                <a href="javascript://"
+                                                   onclick="fnSetPaxCountDown('CHILD',this);"
+                                                   class="disable"><img
+                                                        src="//images.jinair.com/images/btn/btn_minus.png"
+                                                        alt="-"></a>
+                                                <a href="javascript://"
+                                                   onclick="fnSetPaxCountUp('CHILD',this);"><img
+                                                        src="//images.jinair.com/images/btn/btn_plus.png"
+                                                        alt="+"></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="w_180 in_bl">
+                                                <strong class="num_font" name="infantPaxCnt">0</strong>
+                                                <span role="person-type-option"
+                                                      class="person_type3 person_font">유아
+                                                        </span>
+                                                <button class="baby_info_btn">
+                                                    <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                                </button>
+                                                <div class="infant_modal">
+                                                    <p>유아<em>(탑승일 기준)</em></p>
+                                                    <ul>
+                                                        <li>[국내선] 생후 7일 이상 - 만 2세 미만</li>
+                                                        <li>[국제선] 생후 7일 이상 - 만 2세 미만</li>
+                                                    </ul>
+                                                    <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우
+                                                                첫구간 탑승일
+                                                                기준으로 나이 계산
+                                                                <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                            </span>
+                                                </div>
+                                            </div>
+                                            <div class="person_btn in_bl">
+                                                <a href="javascript://" name="infantPaxCntDown"
+                                                   onclick="fnSetPaxCountDown('INFANT',this);"
+                                                   class="disable"><img
+                                                        src="//images.jinair.com/images/btn/btn_minus.png"
+                                                        alt="-"></a>
+                                                <a href="javascript://" name="infantPaxCntUp"
+                                                   onclick="fnSetPaxCountUp('INFANT',this);"><img
+                                                        src="//images.jinair.com/images/btn/btn_plus.png"
+                                                        alt="+"></a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="modal_submit_btn">
+                                                <a href="javascript://" onclick="submit()">확인</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form2">
+                                <!-- 출발지 -->
+                                <div class="go_select in_bl">
+                                    <div>
+                                        <p>출발지</p>
+                                        <div class="go_layerbtn">
+                                                    <span class="go_select_opt">
+                                                        <input type="text" value="출발지" readonly class="go_select_optt">
+                                                    </span>
+                                        </div>
+                                    </div>
+                                    <div class="go_layer" id="go_layer1">
+                                        <div class="KOR in_bl">
+                                            <h3>한국</h3>
+                                            <ul>
+                                                <li><a>서울/인천(ICN)</a></li>
+                                                <li><a>서울/김포(GMP)</a></li>
+                                                <li><a>부산(PUS)</a></li>
+                                                <li><a>제주(CJU)</a></li>
+                                                <li><a>청주(CJJ)</a></li>
+                                                <li><a>광주(KWJ)</a></li>
+                                                <li><a>대구(TAE)</a></li>
+                                                <li><a>여수(RSU)</a></li>
+                                                <li><a>울산(USN)</a></li>
+                                                <li><a>포항(KPO)</a></li>
+                                                <li><a>원주(WJU)</a></li>
+                                                <li><a>군산(KUV)</a></li>
+                                                <li><a>사천(HIN)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="ENA in_bl">
+                                            <h3>동북아</h3>
+                                            <ul>
+                                                <li><a>도쿄/나리타(NRT)</a></li>
+                                                <li><a>오사카/간사이(KIX)</a></li>
+                                                <li><a>후쿠오카(FUK)</a></li>
+                                                <li><a>삿포로(CTS)</a></li>
+                                                <li><a>오키나와(OKA)</a></li>
+                                                <li><a>기타큐슈(KKJ)</a></li>
+                                                <li><a>상하이/푸동(PVG)</a></li>
+                                                <li><a>시안(XIY)</a></li>
+                                                <li><a>홍콩(HKG)</a></li>
+                                                <li><a>마카오(MFM)</a></li>
+                                                <li><a>타이베이/타오위안(TPE)</a></li>
+                                                <li><a>칭다오(TAO)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="ESA in_bl">
+                                            <h3>동남아</h3>
+                                            <ul>
+                                                <li><a>방콕(BKK)</a></li>
+                                                <li><a>푸껫(HKT)</a></li>
+                                                <li><a>치앙마이(CNX)</a></li>
+                                                <li><a>세부(CEB)</a></li>
+                                                <li><a>클락(CRK)</a></li>
+                                                <li><a>보라카이/칼리보(KLO)</a></li>
+                                                <li><a>다낭(DAD)</a></li>
+                                                <li><a>하노이(HAN)</a></li>
+                                                <li><a>비엔티안(VTE)</a></li>
+                                                <li><a>코타 키나발루(BKI)</a></li>
+                                                <li><a>조호르바루(JHB)</a></li>
+                                                <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="OCE in_bl">
+                                            <h3>대양주</h3>
+                                            <ul>
+                                                <li><a>괌(GUM)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="USA in_bl">
+                                            <h3>미주</h3>
+                                            <ul>
+                                                <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 도착지 -->
+                                <div class="arrive_select in_bl" id="itemList">
+                                    <div>
+                                        <p>도착지</p>
+                                        <div class="arrive_layerbtn">
+                                                    <span class="arrive_select_opt">
+                                                        <input type="text" value="도착지" readonly class="arrive_select_optt">
+                                                    </span>
+                                        </div>
+                                    </div>
+                                    <div class="arrive_layer" id="arrive_layer1">
+                                        <div class="KOR in_bl">
+                                            <h3>한국</h3>
+                                            <ul>
+                                                <li><a>서울/인천(ICN)</a></li>
+                                                <li><a>서울/김포(GMP)</a></li>
+                                                <li><a>부산(PUS)</a></li>
+                                                <li><a>제주(CJU)</a></li>
+                                                <li><a>청주(CJJ)</a></li>
+                                                <li><a>광주(KWJ)</a></li>
+                                                <li><a>대구(TAE)</a></li>
+                                                <li><a>여수(RSU)</a></li>
+                                                <li><a>울산(USN)</a></li>
+                                                <li><a>포항(KPO)</a></li>
+                                                <li><a>원주(WJU)</a></li>
+                                                <li><a>군산(KUV)</a></li>
+                                                <li><a>사천(HIN)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="ENA in_bl">
+                                            <h3>동북아</h3>
+                                            <ul>
+                                                <li><a>도쿄/나리타(NRT)</a></li>
+                                                <li><a>오사카/간사이(KIX)</a></li>
+                                                <li><a>후쿠오카(FUK)</a></li>
+                                                <li><a>삿포로(CTS)</a></li>
+                                                <li><a>오키나와(OKA)</a></li>
+                                                <li><a>기타큐슈(KKJ)</a></li>
+                                                <li><a>상하이/푸동(PVG)</a></li>
+                                                <li><a>시안(XIY)</a></li>
+                                                <li><a>홍콩(HKG)</a></li>
+                                                <li><a>마카오(MFM)</a></li>
+                                                <li><a>타이베이/타오위안(TPE)</a></li>
+                                                <li><a>칭다오(TAO)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="ESA in_bl">
+                                            <h3>동남아</h3>
+                                            <ul>
+                                                <li><a>방콕(BKK)</a></li>
+                                                <li><a>푸껫(HKT)</a></li>
+                                                <li><a>치앙마이(CNX)</a></li>
+                                                <li><a>세부(CEB)</a></li>
+                                                <li><a>클락(CRK)</a></li>
+                                                <li><a>보라카이/칼리보(KLO)</a></li>
+                                                <li><a>다낭(DAD)</a></li>
+                                                <li><a>하노이(HAN)</a></li>
+                                                <li><a>비엔티안(VTE)</a></li>
+                                                <li><a>코타 키나발루(BKI)</a></li>
+                                                <li><a>조호르바루(JHB)</a></li>
+                                                <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="OCE in_bl">
+                                            <h3>대양주</h3>
+                                            <ul>
+                                                <li><a>괌(GUM)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="USA in_bl">
+                                            <h3>미주</h3>
+                                            <ul>
+                                                <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="submit_btn">
+                            <input type="button" value="조회" id="searchBtn1"/>
+                        </div>
+                    </div>
+                    <!-- 기본 default 화면 -->
+                    <div class="default_box"></div>
+                    <!-- 조회 결과 있는 화면 -->
+                    <div class="search_list" id="itemList1">
+                        <div class="search_title">
+                            <h3 class="in_bl">가는 여정</h3>
+                            <span class="subtitle" name="go_select_opt">{{itemList1[0].schDeparturePoint}}</span>
+                            <span class="subtitle to_img"><img src="/userpage/lib/img/right_arrow_icon.png" alt="에서"></span>
+                            <span class="subtitle" name="go_select_opt">{{itemList1[0].schArrivalPoint}}</span>
+                        </div>
+                        <div class="list_table" v-for="(dto, index) in itemList1">
+                            <h3>{{dto.schDepartureDate.substr(0,4)}}년 {{dto.schDepartureDate.substr(5,2)}}월 {{dto.schDepartureDate.substr(8,2)}}일 스케줄</h3>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="w_290" rowspan="2">항공편</th>
+                                    <th class="w_180" rowspan="2">출발시간</th>
+                                    <th class="w_180" rowspan="2">도착시간</th>
+                                    <th class="bbt w_420" colspan="3">항공 금액</th>
+                                </tr>
+                                <tr>
+                                    <th class="w_140">슈퍼로우</th>
+                                    <th class="w_140">플렉스</th>
+                                    <th class="w_140">지니</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <span>{{dto.schAirplaneName}} | 직항</span>
+                                        <p class="airport_text">
+                                            <span>{{dto.schDeparturePoint}}</span>
+                                            <img src="/userpage/lib/img/right_arrow_icon.png" alt="에서">
+                                            <span>{{dto.schArrivalPoint}}</span>
+                                        </p>
+                                        <span class="small_font">비행시간 {{dto.schFlyingTime.substr(11,5)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="time_span">{{dto.schStartTime.substr(11,5)}}</span>
+                                        <p class="small_font">{{dto.schDeparturePoint.substr(-5,5)}}</p>
+                                    </td>
+                                    <td>
+                                        <span class="time_span">{{dto.schArrivalDate.substr(11,5)}}</span>
+                                        <p class="small_font">{{dto.schArrivalPoint.substr(-5,5)}}</p>
+                                    </td>
+                                    <td>
+                                        <button class="button_seats" @click="form" :class=`button_seats${index}`>
+                                            <p class="small_font koreaprice">{{koreaprice[index]}}</p>
+                                            <strong class="seatsPrice">{{seatsPrice[index]}}</strong>
+                                            <p class="seats">{{seatsNum[index]}}</p>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="button_seats" @click="form" :class=`button_seats${index}`>
+                                            <p class="small_font koreaprice">{{koreaprice[index]}}</p>
+                                            <strong class="seatsPrice">{{seatsPrice1[index]}}</strong>
+                                            <p class="seats">{{seatsNum[index]}}</p>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="button_seats" @click="form" :class=`button_seats${index}`>
+                                            <p class="small_font koreaprice">{{koreaprice[index]}}</p>
+                                            <strong class="seatsPrice">{{seatsPrice2[index]}}</strong>
+                                            <p class="seats">{{seatsNum[index]}}</p>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 조회 결과 없음 화면 -->
+                    <div id="search_null1"></div>
+                </div>
+                <!-- 맞춤 항공 찾기 -->
+                <div class="custom_search">
+                    <div class="search_box">
+                        <h3 class="in_bl">항공권 찾기</h3>
+                        <span>
+                                예산에 맞는 항공권을 검색해 보세요!
+                            </span>
+                        <div class="search_form">
+                            <!-- 출발지 -->
+                            <div class="full_box">
+                                <div class="custom_box">
+                                    <div class="go_select in_bl">
+                                        <div class="go_layerbtn topcontrol">
+                                                    <span class="go_select_opt">
+                                                        <input type="text" value="출발지" readonly class="go_select_optt" id="go_select">
+                                                    </span>
+                                        </div>
+                                        <div class="go_layer">
+                                            <div class="KOR in_bl">
+                                                <h3>한국</h3>
+                                                <ul>
+                                                    <li><a>서울/인천(ICN)</a></li>
+                                                    <li><a>서울/김포(GMP)</a></li>
+                                                    <li><a>부산(PUS)</a></li>
+                                                    <li><a>제주(CJU)</a></li>
+                                                    <li><a>청주(CJJ)</a></li>
+                                                    <li><a>광주(KWJ)</a></li>
+                                                    <li><a>대구(TAE)</a></li>
+                                                    <li><a>여수(RSU)</a></li>
+                                                    <li><a>울산(USN)</a></li>
+                                                    <li><a>포항(KPO)</a></li>
+                                                    <li><a>원주(WJU)</a></li>
+                                                    <li><a>군산(KUV)</a></li>
+                                                    <li><a>사천(HIN)</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="ENA in_bl">
+                                                <h3>동북아</h3>
+                                                <ul>
+                                                    <li><a>도쿄/나리타(NRT)</a></li>
+                                                    <li><a>오사카/간사이(KIX)</a></li>
+                                                    <li><a>후쿠오카(FUK)</a></li>
+                                                    <li><a>삿포로(CTS)</a></li>
+                                                    <li><a>오키나와(OKA)</a></li>
+                                                    <li><a>기타큐슈(KKJ)</a></li>
+                                                    <li><a>상하이/푸동(PVG)</a></li>
+                                                    <li><a>시안(XIY)</a></li>
+                                                    <li><a>홍콩(HKG)</a></li>
+                                                    <li><a>마카오(MFM)</a></li>
+                                                    <li><a>타이베이/타오위안(TPE)</a></li>
+                                                    <li><a>칭다오(TAO)</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="ESA in_bl">
+                                                <h3>동남아</h3>
+                                                <ul>
+                                                    <li><a>방콕(BKK)</a></li>
+                                                    <li><a>푸껫(HKT)</a></li>
+                                                    <li><a>치앙마이(CNX)</a></li>
+                                                    <li><a>세부(CEB)</a></li>
+                                                    <li><a>클락(CRK)</a></li>
+                                                    <li><a>보라카이/칼리보(KLO)</a></li>
+                                                    <li><a>다낭(DAD)</a></li>
+                                                    <li><a>하노이(HAN)</a></li>
+                                                    <li><a>비엔티안(VTE)</a></li>
+                                                    <li><a>코타 키나발루(BKI)</a></li>
+                                                    <li><a>조호르바루(JHB)</a></li>
+                                                    <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="OCE in_bl">
+                                                <h3>대양주</h3>
+                                                <ul>
+                                                    <li><a>괌(GUM)</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="USA in_bl">
+                                                <h3>미주</h3>
+                                                <ul>
+                                                    <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 예산 -->
+                                    <div>
+                                        <div class="budge in_bl">
+                                            <span>예산</span>
+                                            <input type="text" name="budge_cnt" value="100,000" id="budge_cnt">
+                                        </div>
+                                    </div>
+                                    <div class="start_date in_bl">
+                                        <div class="start_date_layerbtn">
+                                                    <span class="start_date_select_opt">
+                                                        <input type="text" value="가는날" readonly class="go_date_select_optt">
+                                                    </span>
+                                        </div>
+                                    </div>
+                                    <div class="end_date in_bl">
+                                        <div class="end_date_layerbtn">
+                                                    <span class="end_date_select_opt">
+                                                        <input type="text" value="오는날" readonly class="come_date_select_optt">
+                                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="submit_btn">
+                            <input type="button" value="조회" id="searchBtn2"/>
+                        </div>
+                    </div>
+                    <!-- 기본 default 화면 -->
+                    <div class="default_box"></div>
+                    <!-- 조회 결과 있는 화면 -->
+                    <div class="search_list" id="itemList2">
+                        <div v-for="(dto, index) in itemList2" class="search_list_box">
+                            <div class="search_title">
+                                <h3 class="in_bl">가는 여정</h3>
+                                <span class="subtitle" name="go_select_opt">{{dto.schDeparturePoint}}</span>
+                                <span class="subtitle to_img"><img src="/userpage/lib/img/right_arrow_icon.png" alt="에서"></span>
+                                <span class="subtitle" name="go_select_opt">{{dto.schArrivalPoint}}</span>
+                            </div>
+                            <div class="list_table">
+                                <h3>{{dto.schDepartureDate.substr(0,4)}}년 {{dto.schDepartureDate.substr(5,2)}}월 {{dto.schDepartureDate.substr(8,2)}}일 스케줄</h3>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th class="w_290" rowspan="2">항공편</th>
+                                        <th class="w_180" rowspan="2">출발시간</th>
+                                        <th class="w_180" rowspan="2">도착시간</th>
+                                        <th class="bbt w_420" colspan="3">항공 금액</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="w_140">슈퍼로우</th>
+                                        <th class="w_140">플렉스</th>
+                                        <th class="w_140">지니</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>{{dto.schAirplaneName}} | 직항</span>
+                                            <p class="airport_text">
+                                                <span>{{dto.schDeparturePoint}}</span>
+                                                <img src="/userpage/lib/img/right_arrow_icon.png" alt="에서">
+                                                <span>{{dto.schArrivalPoint}}</span>
+                                            </p>
+                                            <span class="small_font">비행시간 {{dto.schFlyingTime.substr(11,5)}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="time_span">{{dto.schStartTime.substr(11,5)}}</span>
+                                            <p class="small_font">{{dto.schDeparturePoint.substr(-5,5)}}</p>
+                                        </td>
+                                        <td>
+                                            <span class="time_span">{{dto.schArrivalDate.substr(11,5)}}</span>
+                                            <p class="small_font">{{dto.schArrivalPoint.substr(-5,5)}}</p>
+                                        </td>
+                                        <td>
+                                            <button class="button_seats" @click="form" :class=`button_seats${index}`>
+                                                <p class="small_font koreaprice">{{koreaprice[index]}}</p>
+                                                <strong class="seatsPrice">{{seatsPrice[index]}}</strong>
+                                                <p class="seats">{{seatsNum[index]}}</p>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button class="button_seats" @click="form" :class=`button_seats${index}`>
+                                                <p class="small_font koreaprice">{{koreaprice[index]}}</p>
+                                                <strong class="seatsPrice">{{seatsPrice1[index]}}</strong>
+                                                <p class="seats">{{seatsNum[index]}}</p>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button class="button_seats" @click="form" :class=`button_seats${index}`>
+                                                <p class="small_font koreaprice">{{koreaprice[index]}}</p>
+                                                <strong class="seatsPrice">{{seatsPrice2[index]}}</strong>
+                                                <p class="seats">{{seatsNum[index]}}</p>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 조회 결과 없음 화면 -->
+                    <div id="search_null2"></div>
+                </div>
+                <!-- 지금 이순간 최저가 항공 리스트 -->
+                <div class="now_lcc">
+                    <!-- 국내 -->
+                    <div class="domestic" id="itemList3">
+                        <h3>국내선</h3>
+                        <span>(편도총액, 단위:KRW)</span>
+                        <ul>
+                            <li v-for="(dto, index) in itemList3">
+                                <div class="label_info in_bl">온라인특가</div>
+                                <div class="route_info in_bl">
+                                    <span class="isfree_bag">
+                                        #무료수하물
+                                    </span>
+                                    <p class="forMargin">
+                                        <span>
+                                            <strong>{{dto.schDeparturePoint.substr(0,(dto.schDeparturePoint.length-5))}}</strong>
+                                        </span>
+                                        <span>→</span>
+                                        <span>
+                                            <strong>{{dto.schArrivalPoint.substr(0,(dto.schArrivalPoint.length-5))}}</strong>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="detail_info in_bl">
+                                    <span class="date">
+                                       {{dto.schDepartureDate.substr(0,4)}}년 {{dto.schDepartureDate.substr(5,2)}}월 {{dto.schDepartureDate.substr(8,2)}}일
+                                    </span>
+                                    <p>
+                                        <span class="section">
+                                            KRW
+                                        </span>
+                                        <strong class="price">{{((dto.schBasicPrice)+"").substr(0,(((dto.schBasicPrice)+"").length-3))}},{{(dto.schBasicPrice+"").substr(-3,3)}} ~</strong>
+                                    </p>
+                                </div>
+                                <div class="button in_bl">
+                                    <span>
+                                        <a @click="reservateBtn1(index)">예매하기</a>
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 국외 -->
+                    <div class="oversea" id="itemList4">
+                        <h3>국외선</h3>
+                        <span>(편도총액, 단위:KRW)</span>
+                        <ul>
+                            <li v-for="dto in itemList4">
+                                <div class="label_info in_bl">온라인특가</div>
+                                <div class="route_info in_bl">
+                                    <span class="isfree_bag">
+                                        #
+                                        <span>무료수하물</span>
+                                    </span>
+                                    <p class="forMargin">
+                                        <span>
+                                            <strong>{{dto.schDeparturePoint.substr(0,(dto.schDeparturePoint.length-5))}}</strong>
+                                        </span>
+                                        <span>→</span>
+                                        <span>
+                                            <strong>{{dto.schArrivalPoint.substr(0,(dto.schArrivalPoint.length-5))}}</strong>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="detail_info in_bl">
+                                    <span class="date">
+                                        {{dto.schDepartureDate.substr(0,4)}}년 {{dto.schDepartureDate.substr(5,2)}}월 {{dto.schDepartureDate.substr(8,2)}}일
+                                    </span>
+                                    <p>
+                                        <span class="section">
+                                            KRW
+                                        </span>
+                                        <strong class="price">{{((dto.schBasicPrice)+"").substr(0,(((dto.schBasicPrice)+"").length-3))}},{{(dto.schBasicPrice+"").substr(-3,3)}} ~</strong>
+                                    </p>
+                                </div>
+                                <div class="button in_bl">
+                                    <span>
+                                        <a @click="reservateBtn2(index)">예매하기</a>
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+
+<div class="modal"></div>
+
+<!-- 모달 모음 -->
+<div class="modal_container">
+    <div class="modals">
+        <p class="moditext"></p>
+        <input type="button" value="확인" class="btn_cancel">
+    </div>
+</div>
+
+<!-- 달력 -->
+<div class="cal">
+    <div class="calwrapper">
+        <div class="caltop">
+            <p class="whatday">가는날</p>
+            <p class="cal_right">다음 3개월</p>
+        </div>
+        <table>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </table>
+        <div class="calinner">
+            <div class="calscroll">
+                <iframe src="/pages/index/cal" frameborder="0" id="ifm"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+</div>
+</body>
+
+</html>

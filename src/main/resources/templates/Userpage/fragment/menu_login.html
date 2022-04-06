@@ -1,0 +1,169 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<header th:fragment="menu">
+    <header id="header">
+        <!--상단 메뉴-->
+        <div class="header_sub">
+            <div class="header_wrap">
+                <h1 class="logo">
+                    <a href="/pages/index"><img src="/userpage/lib/img/logo_02.png" alt="" /></a>
+                </h1>
+                <ul class="login">
+                    <li>
+                        <a href="/pages/booking/index">로그아웃</a>| &nbsp
+                        <a href="/pages/index/mypageMain">마이페이지 </a>|
+                        <p class="lang">한국(한국어)<span>/
+                                </span>KRW</p>
+                        <p class="lang_img"></p>
+                    </li>
+                </ul>
+                <nav>
+                    <ul class="nav_all">
+                        <li class="open1">
+                            <a href="#">예약</a>
+                        </li>
+                        <li class="open2">
+                            <a href="#">서비스</a>
+                        </li>
+                        <li class="open3">
+                            <a href="#">프로모션</a>
+                        </li>
+                        <li class="open4">
+                            <a href="#">나비포인트</a>
+                        </li>
+                        <li class="open5">
+                            <a href="#">부가 서비스</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="sub_nav reservation">
+            <div class="subnav_warp">
+                <div>
+                    <a href="/pages/index" class="subNav_title">항공권 예약</a>
+                    <a href="/pages/index">예약</a>
+                    <a href="/pages/reservation/lcc">최저가 항공권</a>
+                </div>
+                <div>
+                    <a href="/pages/index/mypageMain" class="subNav_title">나의 예약</a>
+                    <a href="/pages/index/mypageMain">예약 조회/변경/취소</a>
+                    <a href="/pages/extras">부가서비스 신청/취소</a>
+                    <a href="/pages/index/checkinfo_list">웹/모바일 체크인</a>
+                </div>
+                <div>
+                    <a href="/pages/reservation/flight" class="subNav_title">운항 정보</a>
+                    <a href="/pages/reservation/flight?directId=flightCont1">스케줄 조회</a>
+                    <a href="/pages/reservation/flight?directId=flightCont2">출도착 안내</a>
+                    <a href="/pages/reservation/flight?directId=flightCont3">취향 노선 안내</a>
+                </div>
+                <div>
+                    <a href="/pages/reservation/fareRule" class="subNav_title">예약 및 운임 안내</a>
+                    <a href="/pages/reservation/fareRule?directId=fareRule1">예매 서비스</a>
+                    <a href="/pages/reservation/fareRule?directId=fareRule2">국내선 운임</a>
+                    <a href="/pages/reservation/fareRule?directId=fareRule3">국제선 운임</a>
+                    <a href="/pages/reservation/fareRule?directId=fareRule4">비즈니스 운임</a>
+                </div>
+                <div>
+                    <a href="/pages/reservation/discount" class="subNav_title">할인안내</a>
+                    <a href="/pages/reservation/discount?directId=discount1">가족운임 할인제도</a>
+                    <a href="/pages/reservation/discount?directId=discount2">사용우대 프로그램</a>
+                    <a href="/pages/reservation/discount?directId=discount3">제주도민 할인제도</a>
+                    <a href="/pages/reservation/discount?directId=discount4">제외/명예도민 할인제도</a>
+                    <a href="/pages/reservation/discount?directId=discount5">군산시민 할인제도</a>
+                </div>
+            </div>
+        </div>
+        <div class="sub_nav service">
+            <div class="subnav_warp">
+                <div>
+                    <a href="/pages/index/counter" class="subNav_title">공항서비스</a>
+                    <a href="/pages/index/counter">공항카운터 안내</a>
+                    <a href="/pages/index/baggage">수하물</a>
+                    <a href="/pages/index/help">도움이 필요하신 고객</a>
+                    <a href="/pages/index/checkinfo">체크인 안내</a>
+                    <a href="/pages/index/arrivalcard">입국신고서 작성 안내</a>
+                </div>
+                <div>
+                    <a href="/pages/index/guide" class="subNav_title">기내 서비스</a>
+                    <a href="/pages/index/guide">기내 여행 가이드</a>
+                    <a href="/pages/index/cabinShopping">기내유상판매</a>
+                    <a href="/pages/index/taxFree">기내 면세품</a>
+                    <a href="/pages/index/jiniInsight">기내 매거진</a>
+                    <a href="/pages/index/eventflight">이벤트 플라잇</a>
+                </div>
+                <div>
+                    <a href="/pages/index/bundle" class="subNav_title">부가 서비스</a>
+                    <a href="/pages/index/bundle">번들 서비스</a>
+                    <a href="/pages/index/seat">사전좌석지정</a>
+                    <a href="/pages/index/airlineFood">기내식</a>
+                    <a href="/pages/index/jiniPlay">기내 엔터테인먼트</a>
+                </div>
+            </div>
+        </div>
+        <div class="sub_nav benefit">
+            <div class="subnav_warp">
+                <div>
+                    <a href="/pages/promotion/event" class="subNav_title">프로모션</a>
+                    <a href="/pages/promotion/event">이벤트</a>
+                    <a href="/pages/promotion/coupon">지니쿠폰</a>
+                </div>
+                <div>
+                    <a href="/pages/promotion/card_exchange" class="subNav_title">카드 및 환전 혜택</a>
+                    <a href="/pages/promotion/card_exchange?directId=associatedCard1">제휴 카드</a>
+                    <a href="/pages/promotion/card_exchange?directId=associatedCard2">환율 우대</a>
+                    <a href="/pages/promotion/card_exchange?directId=associatedCard3">무이자 할부</a>
+                </div>
+            </div>
+        </div>
+        <div class="sub_nav point">
+            <div class="subnav_warp">
+                <div>
+                    <a href="/pages/index/mypagePoint?directId=navipoint1" class="subNav_title">나의 나비포인트</a>
+                </div>
+                <div>
+                    <a href="/pages/point?directId=saveinfo" class="subNav_title">적립안내</a>
+                </div>
+                <div>
+                    <a href="/pages/point?directId=flexinfo" class="subNav_title">사용안내</a>
+                </div>
+            </div>
+        </div>
+        <div class="sub_nav optional">
+            <div class="subnav_warp">
+                <div>
+                    <a href="https://jinistore.jinair.com/main.do" class="subNav_title">지니스토어</a>
+                </div>
+                <div>
+                    <a href="/pages/optional/jinipass" class="subNav_title">보딩패스 할인</a>
+                </div>
+                <div>
+                    <a href="/pages/optional/activity" class="subNav_title">액티비티</a>
+                    <a href="https://www.klook.com/ko/promo/jinairon?aff_adid=100885&aff_af_wid=8227&aid=8227&utm_medium=affiliate-alwayson&utm_source=non-network&utm_campaign=8227&utm_term=&utm_content=">클룩</a>
+                    <a href="https://www.yokosojapanpass.com/donki_fuel/public/coupon/index/0010789">돈키호테</a>
+                </div>
+                <div>
+                    <a href="/pages/optional/hotel" class="subNav_title">호텔</a>
+                    <a href="https://sp.booking.com/index.ko.html?aid=1486529&lang=ko">부킹닷컴</a>
+                    <a href="https://www.hotelscombined.co.kr/?languageCode=KO">호텔스 컴바인</a>
+                    <a href="https://kr.trip.com/hotels?locale=ko-KR&allianceid=1307583&sid=4088763">트립닷컴</a>
+                </div>
+                <div>
+                    <a href="/pages/optional/rentcar" class="subNav_title">차량서비스</a>
+                    <a href="https://www.skcarrental.com/rent/frame/wps/reservation.do?corpNm=jinAir&corpCd=&result=0000&resultMessage=ok">SK렌트카</a>
+                    <a href="https://www.rentalcars.com/?affiliateCode=jinair&adplat=jinimall&preflang=ko">렌탈카스</a>
+                    <a href="https://jinair.happartners.com/index.php/booking/plantrip">허츠렌트카</a>
+                    <a href="https://tagogayo.co.kr/?ali=jinair15">공항 벤</a>
+                </div>
+                <div>
+                    <a href="/pages/optional/insurance" class="subNav_title">여행 안심 서비스</a>
+                    <a href="/pages/optional/insurance2">Chubb 해외 여행보험</a>
+                    <a href="/pages/optional/insurance3">Assistcard 여행토탈케어</a>
+                </div>
+            </div>
+        </div>
+        <!--상단 메뉴 끝-->
+    </header>
+</header>
+</html>

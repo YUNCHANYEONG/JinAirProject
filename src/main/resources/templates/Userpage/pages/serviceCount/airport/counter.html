@@ -1,0 +1,833 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/airport/counter.css">
+<script src="/userpage/app/serviceCount/airport/counter.js"></script>
+
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!-- 컨테이너 -->
+        <div id="container">
+            <div class="count_bn">
+                <h1 class="typeA">공항 카운터 안내
+                    <img src="/userpage/lib/img/count_bn1.PNG" alt="배너 이미지">
+                </h1>
+                <p class="typeA_sub">진에어의 각 취향지별 공항 카운터 정보를 확인하세요.</p>
+            </div>
+            <div class="tabArea">
+                <ul class="tabTypeA">
+                    <li><a href="#" onclick="'tap_display'" data-click-area="서비스-공항서비스-공항카운터안내" data-click-name="Tab_국내선" id="domestic_tab">국내선</a></li>
+                    <li><a href="#" data-click-area="서비스-공항서비스-공항카운터안내" data-click-name="Tab_국제선" id="international_tab">국제선</a></li>
+                    <li><a href="#" data-click-area="서비스-공항서비스-공항카운터안내" data-click-name="Tab_도심공항" id="city_tab">도심공항</a></li>
+                </ul>
+            </div>
+            <div class="counter" id="domestic" style="display: block;">
+                <h2 class="desc">국내선</h2>
+                <ul class="list lists" style="display: block;">
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                서울 김포국제공항<br>국내선청사 2F 15~21번
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic1_KOR.gif" alt="
+                서울 김포국제공항<br>국내선청사 2F 15~21번
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic1.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                제주 제주국제공항<br>공항청사 3F GATE 2 앞
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic2_KOR.gif" alt="
+                제주 제주국제공항<br>공항청사 3F GATE 2 앞
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic2.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                부산 김해국제공항<br>국내선청사 2F
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic3_KOR.gif" alt="
+                부산 김해국제공항<br>국내선청사 2F
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic3.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                청주 청주국제공항<br>1층 동쪽
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic4_KOR.gif" alt="
+                청주 청주국제공항<br>1층 동쪽
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic4.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                광주 광주공항<br>국내선청사 1F GATE 1 정면
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic5_KOR.gif" alt="
+                광주 광주공항<br>국내선청사 1F GATE 1 정면
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic5.gif';"></p>
+                        </div>
+                    </li>
+                    <!-- 대구국제공항 -->
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                대구 대구국제공항<br>1층 23~26번
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic6_KOR.gif" alt="
+                대구 대구국제공항<br>1층 23~26번
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic6.gif';"></p>
+                        </div>
+                    </li>
+                    <!-- //대구국제공항 -->
+                    <!-- 여수공항 -->
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                여수 여수공항<br>1층 중앙
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic7_KOR.gif" alt="
+                여수 여수공항<br>1층 중앙
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic7.gif';"></p>
+                        </div>
+                    </li>
+                    <!-- //여수공항 -->
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                울산 울산공항<br>1층 5~6번
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic8_KOR.gif" alt="
+                울산 울산공항<br>1층 5~6번
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic8.gif';"></p>
+                        </div>
+                    </li>
+                    <!-- 포항 포항공항 -->
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                포항 포항공항<br>1층
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic9_KOR.gif" alt="
+            포항 포항공항<br>1층
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic9.gif';"></p>
+                        </div>
+                    </li>
+                    <!-- //포항 포항공항 -->
+                    <!-- 군산공항 -->
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                군산 군산공항<br>1층
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic10_KOR.gif" alt="
+            군산 군산공항<br>1층
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic10.gif';"></p>
+                        </div>
+                    </li>
+                    <!-- //군산공항 -->
+                    <!-- 원주공항 -->
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                원주 원주공항<br>1층
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_domestic11_KOR.gif" alt="
+            원주 원주공항<br>1층
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_domestic11.gif';"></p>
+                        </div>
+                    </li>
+                    <!-- //원주공항 -->
+                </ul>
+            </div>
+            <div class="counter" id="international" style="display: none;">
+                <h2 class="desc">국제선</h2>
+                <h3><a class="icoFold on">한국</a></h3>
+                <ul class="list lists">
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                서울 인천국제공항<br>제 1 여객터미널 국제선 3F (K)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_KOR1_KOR.gif" alt="
+                서울 인천국제공항<br>제 1 여객터미널 국제선 3F (K)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_KOR1.gif';"></p>
+                        </div>
+                        <p class="caution">카운터 위치는 변경 가능성이 있으므로 공항 도착 후 재확인하여 주시기 바랍니다.</p>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                제주 제주국제공항<br>공항청사 3F GATE 4, 5 앞
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_KOR2_KOR.gif" alt="
+                제주 제주국제공항<br>공항청사 3F GATE 4, 5 앞
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_KOR2.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                부산 김해국제공항<br>국제선 2F B zone (B13 ~ B20)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_KOR3_KOR.gif" alt="
+                부산 김해국제공항<br>국제선 2F B zone (B13 ~ B20)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_KOR3.gif';"></p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                청주 청주국제공항<br>1층
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_KOR5_KOR.gif" alt="
+                청주 청주국제공항<br>1층
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_KOR5.gif';"></p>
+                        </div>
+                    </li>
+                </ul>
+                <h3><a class="icoFold1">동북아</a></h3>
+                <ul class="list1 lists" style="display: none;">
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                도쿄 나리타국제공항<br>제1 여객터미널 North Wing 4F E COUNTER
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_JPN1_KOR.gif" alt="
+                도쿄 나리타국제공항<br>제1 여객터미널 North Wing 4F E COUNTER
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_JPN1.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                오사카 간사이국제공항<br>제1 터미널 4층 국제선 출발 로비 남측 E 또는 F
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_JPN2_KOR.gif" alt="
+                오사카 간사이국제공항<br>제1 터미널 4층 국제선 출발 로비 남측 E 또는 F
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_JPN2.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                후쿠오카 후쿠오카공항<br>국제선터미널 3층 남쪽, LJ222/224 : J구역, LJ226 : K구역
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_JPN3_KOR.gif" alt="
+                후쿠오카 후쿠오카공항<br>국제선터미널 3층 남쪽, LJ222/224 : J구역, LJ226 : K구역
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_JPN3.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                삿포로 신치토세공항<br>3F A or B
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_JPN4_KOR.gif" alt="
+                삿포로 신치토세공항<br>3F A or B
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_JPN4.gif';"></p>
+                        </div>
+                        <p class="caution">카운터 위치는 변경 가능성이 있으므로 공항 도착 후 재확인하여 주시기 바랍니다.</p>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                오키나와 나하공항<br>A 또는 B 또는 C
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_JPN5_KOR.gif" alt="
+                오키나와 나하공항<br>A 또는 B 또는 C
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_JPN5.gif';"></p>
+                        </div>
+                        <p class="caution">카운터 위치는 변경 가능성이 있으므로 공항 도착 후 재확인하여 주시기 바랍니다.</p>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                기타큐슈 기타큐슈공항<br>2F 국제선 전용 카운터
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_JPN6_KOR.gif" alt="
+                기타큐슈 기타큐슈공항<br>2F 국제선 전용 카운터
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_JPN6.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                상하이 푸동국제공항<br>Terminal 1, 3F (L8 ~ L13)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_CHN1_KOR.gif" alt="
+                상하이 푸동국제공항<br>Terminal 1, 3F (L8 ~ L13)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_CHN1.gif';"></p>
+                        </div>
+                    </li>
+                    <li class="hk">
+                        <div class="wrap">
+                            <p class="tit">
+                                홍콩 홍콩국제공항<br>Terminal 1, G27~30
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_CHN2_KOR.gif" alt="
+                홍콩 홍콩국제공항<br>Terminal 1, G27~30
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_CHN2.gif';"></p>
+                        </div>
+                        <div class="hk_text">
+                        <h3>1. 홍콩 국제공항</h3>
+                        <ul class="caution">
+
+                            <li>항공기 출발 2시간 30분 전 탑승수속 시작</li>
+                            <li>Terminal 1에서 탑승구까지 최소 40분 이상 소요 예정</li>
+                            <li>항공기 출발 50분 전 탑승수속 마감</li>
+
+                        </ul>
+                        <h3>2. 홍콩 공항 페리터미널</h3>
+                        <p class="caution">항공기 출발 110분 전 탑승수속 마감</p>
+                        <ul class="caution typeB">
+
+                            <li>페리터미널에서 수속을 마친 경우 여객청사로 이동하기 전 반드시 공항세 환불을 받으시기 바랍니다. (여객청사 이동 후 공항세 환급 불가)</li>
+                            <li>페리터미널 카운터의 경우 다수의 승객이 동시에 페리에서 하기 시 수속 카운터가 혼잡할 수 있습니다.</li>
+
+                        </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                마카오 마카오국제공항<br>1F C13 ~ C16
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_CHN3_KOR.gif" alt="
+                마카오 마카오국제공항<br>1F C13 ~ C16
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_CHN3.gif';"></p>
+                        </div>
+                        <p class="caution">항공기 출발 50분 전 탑승수속 마감</p>
+                        <p class="caution">카운터 위치는 변경 가능성이 있으므로 공항 도착 후 재확인하여 주시기 바랍니다.</p>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                시안 셴양국제공항<br>Terminal 3
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_CHN4_KOR.gif" alt="
+                시안 셴양국제공항<br>Terminal 3
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_CHN4.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                우시 우시공항<br>Terminal 1, 2F (L11 ~ L20)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_CHN5_KOR.gif" alt="
+                우시 우시공항<br>Terminal 1, 2F (L11 ~ L20)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_CHN5.gif';"></p>
+                        </div>
+                    </li>
+                </ul>
+
+                <h3><a class="icoFold2">동남아</a></h3>
+                <ul class="list2 lists" style="display: none;">
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                방콕 태국 수완나폼 국제공항<br>4F LJ002/004 : P구역, LJ012 : D구역
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN1_KOR.gif" alt="
+                방콕 태국 수완나폼 국제공항<br>4F LJ002/004 : P구역, LJ012 : D구역
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN1.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                태국 푸켓국제공항<br>국제선 터미널 3층
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN2_KOR.gif" alt="
+                태국 푸켓국제공항<br>국제선 터미널 3층
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN2.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">세부 필리핀 막탄 국제공항<br>제1터미널 3F, 30~34</p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN3_KOR.gif"
+                                    alt="세부 필리핀 막탄 국제공항<br>제1터미널 3F, 30~34"
+                                    onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN3.gif';">
+                            </p>
+                        </div>
+                        <p class="caution">공항사정에 따라 변경 가능(30번 ~ 45번)</p>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                클락 필리핀 디오스다도마카파갈 국제공항<br>1F LJ032 : 27~30 / LJ024 : 33~36<span>| 항공기 출발 50분 전 탑승수속
+                                    마감</span>
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN4_KOR.gif" alt="
+                클락 필리핀 디오스다도마카파갈 국제공항<br>1F LJ032 : 27~30 / LJ024 : 33~36<span>| 항공기 출발 50분 전 탑승수속 마감</span>
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN4.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                비엔티안 라오스 왓따이 국제공항<br>1F (25~27)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN5_KOR.gif" alt="
+                비엔티안 라오스 왓따이 국제공항<br>1F (25~27)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN5.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                코타키나발루 말레이시아 코타키나발루 국제공항<br>제 1터미널 3층 A카운터 (LJ064 : A5~A8, LJ062 : A1~A8)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN6_KOR.gif" alt="
+                코타키나발루 말레이시아 코타키나발루 국제공항<br>제 1터미널 3층 A카운터 (LJ064 : A5~A8, LJ062 : A1~A8)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN6.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                다낭 다낭국제공항<br>제 2터미널, 3F, 28~54 또는 1~27
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN7_KOR.gif" alt="
+                다낭 다낭국제공항<br>제 2터미널, 3F, 28~54 또는 1~27
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN7.gif';"></p>
+                        </div>
+                        <p class="caution">카운터 위치는 변경 가능성이 있으므로 공항 도착 후 재확인하여 주시기 바랍니다.</p>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                하노이 베트남 노이바이국제공항<br>3F (D9 ~ D12)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN8_KOR.gif" alt="
+                하노이 베트남 노이바이국제공항<br>3F (D9 ~ D12)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN8.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                타이베이 대만 타오위안국제공항<br>제 1터미널 1F 11
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN9_KOR.gif" alt="
+                타이베이 대만 타오위안국제공항<br>제 1터미널 1F 11
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN9.gif';"></p>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                조호르바루 세나이 국제공항<br>여객터미널 (19~24번)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_ASEAN10_KOR.gif" alt="
+                조호르바루 세나이 국제공항<br>여객터미널 (19~24번)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_ASEAN10.gif';"></p>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+                <h3><a class="icoFold3">미주/대양주</a></h3>
+                <ul class="list3 lists" style="display: none;">
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                호놀룰루 하와이 호놀룰루국제공항<br>2F (Lobby 6)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_america1_KOR.gif" alt="
+                호놀룰루 하와이 호놀룰루국제공항<br>2F (Lobby 6)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_america1.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                케언스 케언스 공항<br>1F (16~22)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_america2_KOR.gif" alt="
+                케언스 케언스 공항<br>1F (16~22)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_america2.gif';"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrap">
+                            <p class="tit">
+                                괌 안토니오 비원팻국제공항<br>2F (1 ~ 8)
+                            </p>
+                            <p class="thumb"><img src="//images.jinair.com/images/ready/counter_oceania1_KOR.gif" alt="
+                괌 안토니오 비원팻국제공항<br>2F (1 ~ 8)
+        " onerror="this.onerror=null;this.src='//images.jinair.com/images/ready/counter_oceania1.gif';"></p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="countryRule" id="countryRule">
+                    <h2 class="typeA">Travel Information</h2>
+                    <p class="txtdesc">외교부 홈페이지에서 제공하는 비자 정보로, 페이지 하단의 ‘입국허가요건 참고자료’를 조회하시면 대한민국 국민의 여행 목적지 국가별 상세한 입국
+                        규정을 확인하실 수 있습니다.</p>
+                    <a href="https://www.0404.go.kr/consulate/visa.jsp" target="_blank" title="새창 열림"
+                        class="btnTypeA">외교부 – 영사서비스 – 비자 바로가기</a>
+                    <p class="txtdesc">IATA (국제항공운송협회)에서 제공하는 각국의 출입국 관련 일반 정보 조회 시스템으로 영문으로만 제공됩니다.</p>
+                    <a href="https://www.iatatravelcentre.com/passport-visa-health-travel-document-requirements.htm"
+                        target="_blank" title="새창 열림" class="btnTypeA">IATA – TravelCentre – 비자 안내</a>
+                    <p class="txtdesc">진에어는 정보의 정확성을 보장하지 않으며, 최근 개정 사항이 일부 반영 되지 않거나 오류가 있을 수 있으므로 상세한 정보는 경유지/목적지 국가
+                        정부의 공식 홈페이지 또는 해당 국가 영사 공관을 통해 문의하시기 바랍니다.</p>
+                </div>
+            </div>
+            <div id="city" class="counter prohibit" style="display: none;">
+                <h2 class="desc">도심공항</h2>
+                <p class="srmy">당일 인천공항을 출발하는 국제선 탑승 승객을 대상으로 도심공항에서 탑승수속, 수하물 위탁, 출국 심사 서비스를 제공합니다.</p>
+                <h3 class="typeA">도심공항 이용 안내</h3>
+                <table class="bbsList">
+                    <colgroup>
+                        <col>
+                        <col style="width:28%">
+                        <col style="width:28%">
+                        <col style="width:28%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">구분</th>
+                            <th scope="col">삼성동 도심공항</th>
+                            <th scope="col">KTX 광명역 도심공항</th>
+                            <th scope="col">서울역 도심공항</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>위치</td>
+                            <td>서울시 강남구 테헤란로 87길 22<br>한국도심공항 1~2층</td>
+                            <td>경기도 광명시 광명역로 21<br>KTX 광명역 지하 1층</td>
+                            <td>서울역 도심공항 터미널 지하 2층</td>
+                        </tr>
+                        <tr>
+                            <td>이용 시간</td>
+                            <td>05:10 ~ 18:30</td>
+                            <td>06:30 ~ 19:00</td>
+                            <td>05:20 ~ 19:00</td>
+                        </tr>
+                        <tr>
+                            <td>이용 대상</td>
+                            <td>당일 인천공항 출발<br>진에어 국제선 탑승 승객</td>
+                            <td>당일 인천공항 출발<br>진에어 국제선 탑승 승객</td>
+                            <td>당일 인천공항 출발<br>
+                                진에어 국제선 탑승 승객<br>
+                                <span class="uline">※ 미주 노선 제외</span><br>
+                                <span class="uline">※ 공항철도 직통열차 이용 필수</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>탑승수속 마감</td>
+                            <td>항공기 출발 3시간 전<br>※ 오전 9시 이전 출발 항공편은<br>수속 불가</td>
+                            <td>항공기 출발 3시간 전</td>
+                            <td>항공기 출발 3시간 전</td>
+                        </tr>
+                        <tr>
+                            <td>서비스 내용</td>
+                            <td>탑승 수속, 수하물 위탁, 출국 심사<br>※ 법무부 출국심사 : 05:30 ~ 18:30</td>
+                            <td>탑승 수속, 수하물 위탁, 출국 심사<br>※ 법무부 출국심사 : 07:00 ~ 19:00</td>
+                            <td>탑승 수속, 수하물 위탁, 출국 심사<br>※ 법무부 출국심사 : 07:00 ~ 19:00</td>
+                        </tr>
+                        <tr>
+                            <td>홈페이지</td>
+                            <td><a href="https://www.calt.co.kr/" target="_blank"
+                                    title="새창 열림">http://www.calt.co.kr</a></td>
+                            <td><a href="http://www.letskorail.com/ebizcom/cs/guide/terminal/terminal01.do"
+                                    target="_blank" title="새창 열림">http://www.letskorail.com</a></td>
+                            <td><a href="https://www.arex.or.kr/content.do?menuNo=MN201503300000000026" target="_blank"
+                                    title="새창 열림">https://www.arex.or.kr/main.do</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="typeA">이용 절차</h3>
+                <ul class="use_list">
+                    <li>
+                        <div><span>출국심사 후 리무진 버스 또는 공항철도 탑승</span></div>
+                    </li>
+
+                    <li>
+                        <div><span>인천공항 도착</span></div>
+                    </li>
+                    <li>
+                        <div><span>출국장 입장(보안검색 전용 통로 이용)</span></div>
+                    </li>
+                    <li>
+                        <div><span>전용 출국심사대 통과</span></div>
+                    </li>
+                    <li>
+                        <div><span>해당 항공편 탑승구 출국 대기장 이동</span></div>
+                    </li>
+                    <li>
+                        <div><span>항공기 탑승</span></div>
+                    </li>
+                </ul>
+
+                <h3 class="typeA">유의사항</h3>
+                <ul class="caution">
+                    <li>도심공항에서는 항공권 현장 구매 및 수하물 추가 등의 부가서비스는 제공하지 않습니다.</li>
+                    <li>휠체어 서비스 이용 승객, 임산부 승객 등 직원 도움이 필요한 승객은 도심공항에서 탑승수속이 불가하오니, 공항 카운터를 이용해 주시기 바랍니다.</li>
+                    <li>대형수하물, 반려동물, 스포츠장비(골프백은 가능) 등 특수수하물은 도심공항에서 위탁이 불가합니다.</li>
+                </ul>
+            </div>
+            <div class="pointInfo">
+                <h2>지점안내</h2>
+                <p>- 진에어의 국내외 각 취항지별 지점을 안내해 드립니다.</p>
+                <a class="btnTypeA" id="pointInfo_btn">자세히보기</a>
+            </div>
+        </div>
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+    <div class="pointInfo_modal">
+        <div class="title">
+            <h2>지점안내<p class="close"></p></h2>
+        </div>
+        <div class="modal_content">
+            <table class="table">
+                <tr>
+                    <th>지점</th>
+                    <th>주소</th>
+                </tr>
+                <tr>
+                    <td>본사</td>
+                    <td>서울특별시 강서구 공항대로 453 대한항공 교육훈련센터 3층 ㈜진에어</td>
+                </tr>
+                <tr>
+                    <td>인천</td>
+                    <td>인천광역시 중구 공항로 272 인천국제공항 여객터미널 2층 2100A호 ㈜<br>진에어 인천국제공항지점 여객운송사무실
+                        <br>+82-32-743-1504
+                    </td>
+                </tr>
+                <tr>
+                    <td>김포</td>
+                    <td>서울특별시 강서구 하늘길 112 김포국제공항 국내선청사 2층 사무동 ㈜진에어 김포공항지점
+                        <br>+82-2-2665-1572
+                    </td>
+                </tr>
+                <tr>
+                    <td>제주</td>
+                    <td>제주특별자치도 제주시 공항로 2 제주국제공항 여객청사 3층 ㈜진에어 제주국제공항지점 여객운송사무실
+                        <br>+82-64-713-9422
+                    </td>
+                </tr>
+                <tr>
+                    <td>부산</td>
+                    <td>부산광역시 중구 중앙대로 146 대한항공 빌딩 3층
+                        <br>
+                        부산광역시 강서구 공항진입로 108 김해국제공항 국제선청사 3층 ㈜진에어 부산공항지점
+                        <br>+82-51-905-9301
+                    </td>
+                </tr>
+                <tr>
+                    <td>청주</td>
+                    <td>충청북도 청주시 청원구 내수읍 오창대로 980 청주국제공항 2층
+                        <br>+82-43-241-3557
+                    </td>
+                </tr>
+                <tr>
+                    <td>광주</td>
+                    <td>광주광역시 광산구 상무대로 420-25, 광주공항 화물청사 1층 진에어 광주공항지점
+                        <br>+82-62-435-9092
+                    </td>
+                </tr>
+                <tr>
+                    <td>대구</td>
+                    <td>대구광역시 동구 공항로 221 대구국제공항 2층 진에어 사무실
+                        <br> +82-53-293-0452
+                    </td>
+                </tr>
+                <tr>
+                    <td>울산</td>
+                    <td>울산광역시 북구 산업로 1103 울산공항 여객청사 2층 진에어
+                        <br> +82-52-900-0217
+                    </td>
+                </tr>
+                <tr>
+                    <td>원주</td>
+                    <td>강원도 횡성군 횡성읍 횡성로 38 원주공항 1층 진에어 사무실</td>
+                </tr>
+                <tr>
+                    <td>방콕</td>
+                    <td>Room No. G1-060A, Passenger Terminal 1st Floor, Concourse G, Suvarnabhumi Airport, 999 Moo 1,
+                        Nong prue, Bangphli, Samut prakarn 10540, Thailand
+                        <br> <br>+66-2-134-0761
+                    </td>
+                </tr>
+                <tr>
+                    <td>세부</td>
+                    <td>International Arrival Level, Terminal 2, Mactan-Cebu International Airport, Lapu-Lapu City 6015,
+                        Cebu, Philippines
+                        <br> +63-32-494-7666
+                    </td>
+                </tr>
+                <tr>
+                    <td>클락</td>
+                    <td>JIN AIR AO17, Mezzanine Level, Clark International Airport, Passenger Terminal Building, Clark
+                        Free Zone, Philipines
+                        <br> +63-45-499-1625
+                    </td>
+                </tr>
+                <tr>
+                    <td>비엔티안</td>
+                    <td>Wattay-Vientiane International Airport P.O. BOX :">+ 9429. Vientiane, Lao P.D.R. Room 102
+                        <br> +856-21-520-840
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>코타키나발루</td>
+                    <td>Lot L2L 05(B), Level 2 (landside), Terminal Building, Kota Kinabalu International Airport,
+                        88740, Sabah
+                        <br> +60-(0)88-413-470
+                    </td>
+                </tr>
+                <tr>
+                    <td>다낭</td>
+                    <td>Room O.1.17, 1 floor, Da Nang international airport, Danang
+                        <br> +84-236-3664-565
+                    </td>
+                </tr>
+                <tr>
+                    <td>하노이</td>
+                    <td>2-E06D3, Terminal 2, Noibai International Airport, Hanoi
+                        <br> +84-4-3587-6648
+                    </td>
+                </tr>
+                <tr>
+                    <td>조호르바루</td>
+                    <td>JIN AIR Lot GL19-2, Public Concourse, Passenger Terminal Building, Senai International Airport
+                        81250
+                        <br> +60 (0)14 201 4889
+                    </td>
+                </tr>
+                <tr>
+                    <td>타이베이</td>
+                    <td>Room B-O-277, Terminal 1, No.15, Hangzhan S. Rd., Dayuan Township Taoyuan County 33758, Taiwan
+                        (R.O.C.)
+                        <br> +886-3-398-2003 (Airport Office)
+                        <br> +886-2-2571-1139 (Ticketing Office)
+                    </td>
+                </tr>
+                <tr>
+                    <td>홍콩</td>
+                    <td>FLAT/RM 10-12, 2/F AIRPORT WORLD TRADE CENTRE, 1 SKY PLAZA ROAD, HONG KONG INTERNATIONAL
+                        AIRPORT, LANTAU, HONG KONG
+                        <br> +852-3756-3512
+                    </td>
+                </tr>
+                <tr>
+                    <td>마카오</td>
+                    <td>Macau International Airport Passenger Terminal Mezzanine Level Room 12045
+                        <br> +853-8898-2032
+                    </td>
+                </tr>
+                <tr>
+                    <td>상하이</td>
+                    <td>#18-201，2nd Floor, Terminal 1, Pudong International Airport, Shanghai 201207
+                        <br> +86-21-6835-5033
+                    </td>
+                </tr>
+                <tr>
+                    <td>시안</td>
+                    <td>#18-201，2nd Floor, Terminal 1, Pudong International Airport, Shanghai 201207
+                        <br> +86-21-6835-5033
+                    </td>
+                </tr>
+                <tr>
+                    <td>우시</td>
+                    <td>I-D-19, T1, WUXI SUNAN SHUOFANG INTERNATIONAL AIRPORT NO1 AIRPORT STREET, BINHU DISTRICT, WUXI ,
+                        JIANGSU
+                        <br> 0510-8532-0185
+                    </td>
+                </tr>
+                <tr>
+                    <td>도쿄</td>
+                    <td>N3042, Terminal 1, Narita International Airport, Narita City, Chiba, 282-0011
+                        <br> +81-0476-32-5612
+                    </td>
+                </tr>
+                <tr>
+                    <td>오사카</td>
+                    <td>0122, 3rd FL, South Airline BLDG, Kansai International Airport, 1 Senshu kukonaka, Tajiri-cho,
+                        Sennan-gun, Osaka-fu, Japan 549-0011
+                        <br> +81-72-456-8081
+                    </td>
+                </tr>
+                <tr>
+                    <td>후쿠오카</td>
+                    <td>#42031, Fukuoka Airport International Terminal Building, 739, Oaza-Aoki, Hakata-ku,
+                        Fukuoka-city, Fukuoka
+                        <br> +81-92-260-8073
+                    </td>
+                </tr>
+                <tr>
+                    <td>기타큐슈</td>
+                    <td>6 KUKOKITAMACHI, MINAMIKU, KOKURA, KITAKYUSHU CITY, JAPAN
+                        <br> +81-93-473-3800
+                    </td>
+                </tr>
+                <tr>
+                    <td>삿포로</td>
+                    <td>International Terminal Bldg.3F, New Chitose Airport, Bibi Chitose, Hokkaido, JAPAN
+                        <br> +81-123-25-8871
+                    </td>
+                </tr>
+                <tr>
+                    <td>오키나와</td>
+                    <td>Okinawa Naha Airport Passenger Terminal Bldg., 150 Kagamizu, Naha-city, Okinawa Pref., Japan
+                        <br> +81-98-840-1474
+                    </td>
+                </tr>
+                <tr>
+                    <td>괌</td>
+                    <td>Guam International Airport Suite B-226 355 Chalan Pasaheru Tamuning Guam 96913
+                        <br>+1-671-642-2800
+                    </td>
+                </tr>
+                <tr>
+                    <td>호놀룰루</td>
+                    <td>00 Rodgers Blvd. P.O Box #70, Honolulu, HI 96819
+                        <br>+1-808-834-5846
+                    </td>
+                </tr>
+                <tr>
+                    <td>케언스</td>
+                    <td>Tenancy 8 Level1, International Building, Cairns international Airport, QLD, Australia
+                        <br>+61-7-4035-9722
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="modal"></div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/adminpage/app/optional/baggageadd.js"></script>
+    <link rel="stylesheet" href="/userpage/lib/css/payment/extras_test.css">
+</head>
+<div class="select_baggage_wrap">
+    <div class="baggage_wrap">
+        <div class="baggage_1">
+            <p class="section1 section"><img src="/userpage/lib/img/airplane2.png" alt="비행기">구간1(탑승객 1)
+            </p>
+            <p>현장 구매 가격</p>
+            <select name="bagg" id="bagg">
+                <option value=""></option>
+                <option value="국내선off">국내선off</option>
+                <option value="일본/중국본토off">일본/중국본토off</option>
+                <option value="홍콩/마카오/대만off">홍콩/마카오/대만off</option>
+                <option value="동남아off">동남아off</option>
+                <option value="대양주off개수">대양주off개수</option>
+                <option value="대양주off무게">대양주off무게</option>
+                <option value="호주off개수">호주off개수</option>
+                <option value="호주off무게">호주off무게</option>
+                <option value="미주off개수">미주off개수</option>
+                <option value="미주off무게">미주off무게</option>
+                <option value="국내선on">국내선on</option>
+                <option value="일본/중국본토on">일본/중국본토on</option>
+                <option value="홍콩/마카오/대만on">홍콩/마카오/대만on</option>
+                <option value="동남아on">동남아on</option>
+                <option value="대양주on">대양주on</option>
+                <option value="호주on">호주on</option>
+                <option value="미주on">미주on</option>
+            </select>
+            <p id="success"></p>
+        </div>
+    </div>
+    <input type="button" class="cursor select_comp" value="선택완료">
+</div>
+<!--수하물 선택 랩 끝-->
+</html>

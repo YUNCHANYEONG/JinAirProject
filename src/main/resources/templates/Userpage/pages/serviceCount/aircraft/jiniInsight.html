@@ -1,0 +1,65 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/aircraft/jiniInsight.css">
+<script src="/userpage/app/serviceCount/aircraft/jiniInsight.js"></script>
+<!-- head.html 끝-->
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="discount">
+                    <p class="title_img"></p>
+                    <p class="discount_title">기내 매거진</p>
+                    <p class="title_sub">새롭게 단장한 진에어 기내소식지를 만나보세요.</p>
+                </div>
+                <div class="jini_magazine">
+                    <p class="jini_title">지니 매거진</p>
+                    <p class="jini_sub">지니 매거진은 단순 정보전달을 넘어 여행을 보다 기쁘고 뜻 깊게 즐길 수 있도록 소중한 여행길에 함께 합니다.</p>
+                    <p class="jini_sub">매 월 테마와 연관되는 새로운 시각의 여행 정보, 걷기 코스, 흥미진진한 지니퀴즈 등 진에어의 다양한 소식들이 준비되어 있습니다.</p>
+                    <div class="jini_magazine_wrap" id="itemList">
+                        <div class="jini_magazine1 jini_magazinebox" v-for="dto in itemList">
+                            <img :src=`\\upload\\${dto.mzImgName}`>
+                            <div class="jini_magabox">
+                                <p class="jini_magazine1_title">{{dto.mzTitle.split(')')[0]}})<br>{{dto.mzTitle.substr(-11,11)}}</p>
+                                <div class="jini_magazine1_file">
+                                    <a :href=`/api/magazine/downloadAns/${dto.mzIndex}` download><button class="jinisolution">지니퀴즈 정답</button></a>
+                                    <a :href=`/api/magazine/downloadPdf/${dto.mzIndex}` download><button>PDF 다운로드</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer1">
+                    <div class="center">
+                        <table>
+                            <tr id="showPage">
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+    <div class="modal"></div>
+</body>
+</html>

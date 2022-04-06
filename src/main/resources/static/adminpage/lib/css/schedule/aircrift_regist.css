@@ -1,0 +1,74 @@
+#container > .contents > .contwrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#container > .contents > .contwrap > .title{ 
+    clear: both;
+    font-size: 1.4rem; 
+    font-weight: 700;
+}
+#container > .contents > .contwrap .contents_main{
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+#container > .contents > .contwrap .contents_main table{
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+#container > .contents > .contwrap .contents_main tr:nth-child(2n+1){
+    background-color: #F2F2F2;
+}
+#container > .contents > .contwrap .contents_main tr {
+    border-top: 1px solid #ccc;
+    height: 40px;
+}
+#container > .contents > .contwrap .contents_main tr td{
+    text-align: center !important;
+}
+#container > .contents > .contwrap .contents_main tr:first-child td{
+    width: 333px;
+}
+#container > .contents > .contwrap .contents_main tr:nth-child(3) td{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+#container > .contents > .contwrap .btn_box{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+#container > .contents > .contwrap .btn_box input[type="submit"]{ 
+    width: 80px;
+    height: 30px;
+    background-color:#BDD600;
+    border-radius: 2px;
+    clear: both;
+    border: 0;
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+#container > .contents > .contwrap .btn_box input[type="button"]:first-child{ 
+    width: 80px;
+    height: 30px;
+    border: 3px solid #BDD600;
+    background-color: white;
+    font-size: 0.8rem;
+    border-radius: 2px;
+    clear: both;
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}

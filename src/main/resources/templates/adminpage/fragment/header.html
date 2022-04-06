@@ -1,0 +1,13 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<header th:fragment="header">
+    <div class="header_inner">
+        <a href="/pages/admin_index"><div class="img"></div></a><a href="/pages/admin_index"><span>관리자 센터</span></a>
+        <div class="logout">
+            <p class="myname" th:text="${str}"></p>
+            <input type="text" value="님" class="nim"><input type="button" value="Logout" onclick="location.href='/pages/admin_login'">
+        </div>
+    </div>
+</header>
+</html>

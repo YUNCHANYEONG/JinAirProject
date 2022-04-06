@@ -1,0 +1,58 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/style.css">
+<link rel="stylesheet" href="/adminpage/lib/css/inquiry/faq_write.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <div class="title">
+                        <p>FAQ 작성하기</p>
+                    </div>
+                    <form action="./faq_main.html">
+                        <div class="contents_main">
+                            <table>
+                                <colgroup>
+                                    <col width="15%">
+                                    <col width="15%">
+                                    <col width="70%">
+                                </colgroup>
+                                <tr>
+                                    <td><select id="faqType">
+                                        <option>항공권 예매</option>
+                                        <option>할인 제도</option>
+                                        <option>수하물</option>
+                                        <option>기내 서비스</option>
+                                        <option>기타</option>
+                                    </select></td>
+                                    <td colspan="2"><input name="title" type="text" placeholder="제목을 입력하세요" id="faqTitle"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><textarea name="content" placeholder="내용을 입력하세요." id="faqContent"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="contents_bottom">
+                            <div class="faq_btn_add">                        
+                                <a href="/pages/admin/faq_main"><input type="button" value="목록"></a>
+                                <span><input type="button" value="등록" id="writeFaq"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/adminpage/app/inquiry/faq_write.js"></script>
+</html>

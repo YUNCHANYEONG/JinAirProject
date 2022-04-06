@@ -1,0 +1,688 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/optional/seat.css">
+<script src="/userpage/app/serviceCount/optional/seat.js"></script>
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="discount">
+                    <p class="title_img"></p>
+                    <p class="discount_title">사전좌석지정</p>
+                    <p class="title_sub">국내선/국제선 탑승 전 고객님이 원하는 자리를<br>
+                        미리 선택하여 구매하는 서비스 입니다.</p>
+                </div>
+                <div class="discount_kind">
+                    <p class="bundlebox_title">기종별 좌석 안내</p>
+                    <table>
+                        <tr>
+                            <th class="dis_B777_200 cursor">B777_200ER<p></p></th>
+                            <th class="dis_B737_800 cursor">B737_800<p></p></th>
+                            <th class="dis_B737_900 cursor">B737_900<p></p></th>
+                        </tr>
+                    </table>
+                </div>
+                <!--제휴 카드-->
+                <div class="B777_200ER">
+                    <div class="B777_200ERwrap">
+                        <table class="B777_200ERseat">
+                            <colgroup>
+                                <col width="330">
+                                <col width="400">
+                                <col width="500">
+                            </colgroup>
+                            <tr>
+                                <td>기종</td>
+                                <td>좌석종류</td>
+                                <td>특징</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="6"><p>B777-200ER</p><input type="button" value="좌석배치도"class="seatmap_butt"></td>
+                                <td>지니플러스</td>
+                                <td>좌석 간 간격이 일반석 보다 15cm 더 넓은 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니스트레치</td>
+                                <td>첫번째 열에 위치하여 일반석 보다 넓은 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니패스트</td>
+                                <td>항공기 앞쪽에 위치하여 빠른 하기가 가능한 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>비상구열</td>
+                                <td>비상구에 위치한 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니스탠다드A</td>
+                                <td>일반 좌석 중 앞 쪽에 위치 혹은, 선호도가 높은 커플 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니스탠다드B</td>
+                                <td>일반 좌석 중 뒤 쪽에 위치한 좌석</td>
+                            </tr>
+                        </table>
+                        <p class="bundlebox_title">좌석별 요금 안내</p>
+                        <table class="B777_200ERprice"> 
+                            <tr>
+                                <td>채널</td>
+                                <td>지역</td>
+                                <td>지니플러스</td>
+                                <td>지니스트레치<br>비상구열</td>
+                                <td>지니패스트</td>
+                                <td>비상구열<br>(등받이 고정)</td>
+                                <td>지니스탠다드A</td>
+                                <td>지니스탠다드B</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">오프라인<br>(고객서비스센터, 공항)</td>
+                                <td>국내선</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 8,000<br>USD 8</td>
+                                <td>KRW 13,000<br>USD 13</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                                <td>KRW 3,000<br>USD 3</td>
+                            </tr>
+                            <tr>
+                                <td>일본/중국본토</td>
+                                <td>KRW 25,000<br>USD 25</td>
+                                <td>KRW 20,000<br>USD 20</td>
+                                <td>KRW 10,000<br>USD 10</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                            </tr>
+                            <tr>
+                                <td>홍콩/마카오/대만/러시아</td>
+                                <td>KRW 35,000<br>USD 35</td>
+                                <td>KRW 30,000<br>USD 30</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 25,000<br>USD 25</td>
+                                <td>KRW 8,000<br>USD 8</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                            </tr>
+                            <tr>
+                                <td>동남아/대양주</td>
+                                <td>KRW 60,000<br>USD 60</td>
+                                <td>KRW 45,000<br>USD 45</td>
+                                <td>KRW 22,000<br>USD 22</td>
+                                <td>KRW 40,000<br>USD 40</td>
+                                <td>KRW 11,000<br>USD 11</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                            </tr>
+                            <tr>
+                                <td>호주/미주</td>
+                                <td>KRW 120,000<br>USD 120</td>
+                                <td>KRW 85,000<br>USD 85</td>
+                                <td>KRW 32,000<br>USD 32</td>
+                                <td>KRW 75,000<br>USD 75</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">오프라인<br>(고객서비스센터, 공항)</td>
+                                <td>국내선</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                                <td>KRW 2,000<br>USD 2</td>
+                            </tr>
+                            <tr>
+                                <td>일본/중국본토</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                                <td>KRW 2,000<br>USD 2</td>
+                            </tr>
+                            <tr>
+                                <td>홍콩/마카오/대만/러시아</td>
+                                <td>KRW 29,000<br>USD 29</td>
+                                <td>KRW 24,000<br>USD 24</td>
+                                <td>KRW 12,000<br>USD 12</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                                <td>KRW 3,000<br>USD 3</td>
+                            </tr>
+                            <tr>
+                                <td>동남아/대양주</td>
+                                <td>KRW 49,000<br>USD 49</td>
+                                <td>KRW 39,000<br>USD 39</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 34,000<br>USD 34</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                            </tr>
+                            <tr>
+                                <td>호주/미주</td>
+                                <td>KRW 99,000<br>USD 99</td>
+                                <td>KRW 79,000<br>USD 79</td>
+                                <td>KRW 29,000<br>USD 29</td>
+                                <td>KRW 69,000<br>USD 69</td>
+                                <td>KRW 12,000<br>USD 12</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                            </tr>
+                        </table>
+                        <p class="seat_text">통화 별 환율 기준 : KRW1,000 = USD 1 = JPY 100 = CNY 7 = HKD 8 = MOP 8 = TWD 30 = THB 35 = MYR4 = PHP 50 = VND 24,000 = AUD 1.4</p>
+                        <p class="seat_text">공항 현장 구매 : 지니플러스, 지니스트레치, 비상구열, 비상구열 (등받이 고정)의 잔여 좌석에 한해 당일 공항에서 좌석 배정 및 결제 가능</p>
+                        <p class="seat_subtext">모든 통화는 출발지 현지 통화 기준으로 적용되며, 필리핀은 USD로도 구매가 가능합니다.</p>
+                        <p class="seat_subtext">지니플러스 좌석의 경우 노선에 따라 지니플러스 운임을 별도로 운영하고 있으며, 동 경우 예약 단에서 지니플러스 운임을 선택해야 해당 좌석 무상 배정이 가능합니다.</p>
+                        <p class="seat_subtext1">일반 운임으로 구매 시에는 당일 공항에서 잔여 좌석에 한해 업그레이드 비용 지불 후 지니플러스 좌석으로 배정 가능합니다. (노선별 업그레이드 비용 차등)</p>
+                        <div class="bundlebox2">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>신청</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">신청 방법</p>
+                                <p class="jini_store_titcont">< 진에어 홈페이지/모바일 구매 고객 ></p>
+                                <p class="jini_store_content">신청 가능 기한 : 항공기 출발 24시간 전까지</p>
+                                <p class="jini_store_content">항공권 구매 단계 중 사전좌석지정 서비스 신청이 가능합니다.</p>
+                                <p class="jini_store_content">항공권 구매를 완료했을 경우, [마이페이지] – [상세조회] – [부가서비스 신청/취소]에서 사전좌석지정 서비스 신청이 가능합니다.</p>
+                                <a href="/pages/index/mypageMain"><input type="button" value="바로가기"></a>
+                                <p class="jini_store_titcont">< 여행사/대리점 구매 고객 ></p>
+                                
+                                <p class="jini_store_content">신청 가능 기한 : 항공기 출발 24시간 전까지</p>
+                                <p class="jini_store_content">[예약] – [나의 예약] 혹은 진에어 고객서비스센터에서 사전좌석지정이 가능합니다. (조회 불가 시, 해당 구매처로 문의 바랍니다)</p>
+                            </div>
+                        </div>
+                        <div class="bundlebox3">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>유의</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">유의 사항</p>
+                                <p class="jini_store_content">출발 24시간 전까지 사전좌석지정 서비스 취소가 가능합니다. 출발 24시간 이내에는 취소 및 환불이 불가하며, 항공권 환불 시에도 사전좌석지정 비용은 환불되지 않습니다.</p>
+                                <p class="jini_store_content">신청한 좌석의 변경을 원하시는 경우에는, 기존 좌석 취소 후 재구매 해주시기 바랍니다.</p>
+                                <p class="jini_store_content butt_wrap">관련 규정에 의거하여, 비상구 좌석 이용에 적합하지 않은 승객은 해당 좌석 배정을 제한하고 있습니다. <span class="modal_rule_butt cursor">관련 규정 보기</span></p>
+                                <p class="jini_store_content_sub">비상구열 좌석 구매 후 공항에서 해당 좌석 이용이 불가능한 승객이라고 판단할 경우, 현장에서 임의로 좌석 지정을 취소할 수 있으며,
+                                    이 경우 좌석 비용은 환불되지 않습니다.</p>
+                                <p class="jini_store_content">항공기 운영에 따라 일부 좌석은 사전좌석지정이 제한됨을 양해하여 주시기 바랍니다.</p>
+                                <p class="jini_store_content">항공기 기종과 스케줄은 사전예고 없이 변경될 수 있으며, 이 경우 사전 구매하신 좌석이 변경될 수 있습니다.</p>
+                                <p class="jini_store_content">좌석 전면 격벽 유무는 탑승 후 환불 사유로 인정되지 않으니, 구매 시 유의하시기 바랍니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="B737_800">
+                    <div class="B737_800wrap">
+                        <table class="B737_800seat">
+                            <colgroup>
+                                <col width="330">
+                                <col width="400">
+                                <col width="500">
+                            </colgroup>
+                            <tr>
+                                <td>기종</td>
+                                <td>좌석종류</td>
+                                <td>특징</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="6"><p>B777-200ER</p><input type="button" value="좌석배치도" class="seatmap_butt"></td>
+                                <td>지니스트레치</td>
+                                <td>첫번째 열에 위치하여 일반석 보다 넓은 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니패스트</td>
+                                <td>항공기 앞쪽에 위치하여 빠른 하기가 가능한 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>비상구열</td>
+                                <td>비상구에 위치한 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>비상구열(등받이 고정)</td>
+                                <td>비상구에 위치한 좌석(등받이 고정)</td>
+                            </tr>
+                            <tr>
+                                <td>지니스탠다드A</td>
+                                <td>일반 좌석 중 앞 쪽에 위치 혹은, 선호도가 높은 커플 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니스탠다드B</td>
+                                <td>일반 좌석 중 뒤 쪽에 위치한 좌석</td>
+                            </tr>
+                        </table>
+                        <p class="bundlebox_title">좌석별 요금 안내</p>
+                        <table class="B737_800price"> 
+                            <tr>
+                                <td>채널</td>
+                                <td>지역</td>
+                                <td>지니플러스</td>
+                                <td>지니스트레치<br>비상구열</td>
+                                <td>지니패스트</td>
+                                <td>비상구열<br>(등받이 고정)</td>
+                                <td>지니스탠다드A</td>
+                                <td>지니스탠다드B</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">오프라인<br>(고객서비스센터, 공항)</td>
+                                <td>국내선</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 8,000<br>USD 8</td>
+                                <td>KRW 13,000<br>USD 13</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                                <td>KRW 3,000<br>USD 3</td>
+                            </tr>
+                            <tr>
+                                <td>일본/중국본토</td>
+                                <td>KRW 25,000<br>USD 25</td>
+                                <td>KRW 20,000<br>USD 20</td>
+                                <td>KRW 10,000<br>USD 10</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                            </tr>
+                            <tr>
+                                <td>홍콩/마카오/대만/러시아</td>
+                                <td>KRW 35,000<br>USD 35</td>
+                                <td>KRW 30,000<br>USD 30</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 25,000<br>USD 25</td>
+                                <td>KRW 8,000<br>USD 8</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                            </tr>
+                            <tr>
+                                <td>동남아/대양주</td>
+                                <td>KRW 60,000<br>USD 60</td>
+                                <td>KRW 45,000<br>USD 45</td>
+                                <td>KRW 22,000<br>USD 22</td>
+                                <td>KRW 40,000<br>USD 40</td>
+                                <td>KRW 11,000<br>USD 11</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                            </tr>
+                            <tr>
+                                <td>호주/미주</td>
+                                <td>KRW 120,000<br>USD 120</td>
+                                <td>KRW 85,000<br>USD 85</td>
+                                <td>KRW 32,000<br>USD 32</td>
+                                <td>KRW 75,000<br>USD 75</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">오프라인<br>(고객서비스센터, 공항)</td>
+                                <td>국내선</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                                <td>KRW 2,000<br>USD 2</td>
+                            </tr>
+                            <tr>
+                                <td>일본/중국본토</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                                <td>KRW 2,000<br>USD 2</td>
+                            </tr>
+                            <tr>
+                                <td>홍콩/마카오/대만/러시아</td>
+                                <td>KRW 29,000<br>USD 29</td>
+                                <td>KRW 24,000<br>USD 24</td>
+                                <td>KRW 12,000<br>USD 12</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                                <td>KRW 3,000<br>USD 3</td>
+                            </tr>
+                            <tr>
+                                <td>동남아/대양주</td>
+                                <td>KRW 49,000<br>USD 49</td>
+                                <td>KRW 39,000<br>USD 39</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 34,000<br>USD 34</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                            </tr>
+                            <tr>
+                                <td>호주/미주</td>
+                                <td>KRW 99,000<br>USD 99</td>
+                                <td>KRW 79,000<br>USD 79</td>
+                                <td>KRW 29,000<br>USD 29</td>
+                                <td>KRW 69,000<br>USD 69</td>
+                                <td>KRW 12,000<br>USD 12</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                            </tr>
+                        </table>
+                        <p class="seat_text">통화 별 환율 기준 : KRW1,000 = USD 1 = JPY 100 = CNY 7 = HKD 8 = MOP 8 = TWD 30 = THB 35 = MYR4 = PHP 50 = VND 24,000 = AUD 1.4</p>
+                        <p class="seat_text">공항 현장 구매 : 지니플러스, 지니스트레치, 비상구열, 비상구열 (등받이 고정)의 잔여 좌석에 한해 당일 공항에서 좌석 배정 및 결제 가능</p>
+                        <p class="seat_subtext">모든 통화는 출발지 현지 통화 기준으로 적용되며, 필리핀은 USD로도 구매가 가능합니다.</p>
+                        <p class="seat_subtext">지니플러스 좌석의 경우 노선에 따라 지니플러스 운임을 별도로 운영하고 있으며, 동 경우 예약 단에서 지니플러스 운임을 선택해야 해당 좌석 무상 배정이 가능합니다.</p>
+                        <p class="seat_subtext1">일반 운임으로 구매 시에는 당일 공항에서 잔여 좌석에 한해 업그레이드 비용 지불 후 지니플러스 좌석으로 배정 가능합니다. (노선별 업그레이드 비용 차등)</p>
+                        <div class="bundlebox2">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>신청</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">신청 방법</p>
+                                <p class="jini_store_titcont">< 진에어 홈페이지/모바일 구매 고객 ></p>
+                                <p class="jini_store_content">신청 가능 기한 : 항공기 출발 24시간 전까지</p>
+                                <p class="jini_store_content">항공권 구매 단계 중 사전좌석지정 서비스 신청이 가능합니다.</p>
+                                <p class="jini_store_content">항공권 구매를 완료했을 경우, [마이페이지] – [상세조회] – [부가서비스 신청/취소]에서 사전좌석지정 서비스 신청이 가능합니다.</p>
+                                <a href="/pages/index/mypageMain"><input type="button" value="바로가기"></a>
+                                <p class="jini_store_titcont">< 여행사/대리점 구매 고객 ></p>
+                                
+                                <p class="jini_store_content">신청 가능 기한 : 항공기 출발 24시간 전까지</p>
+                                <p class="jini_store_content">[예약] – [나의 예약] 혹은 진에어 고객서비스센터에서 사전좌석지정이 가능합니다. (조회 불가 시, 해당 구매처로 문의 바랍니다)</p>
+                            </div>
+                        </div>
+                        <div class="bundlebox3">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>유의</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">유의 사항</p>
+                                <p class="jini_store_content">출발 24시간 전까지 사전좌석지정 서비스 취소가 가능합니다. 출발 24시간 이내에는 취소 및 환불이 불가하며, 항공권 환불 시에도 사전좌석지정 비용은 환불되지 않습니다.</p>
+                                <p class="jini_store_content">신청한 좌석의 변경을 원하시는 경우에는, 기존 좌석 취소 후 재구매 해주시기 바랍니다.</p>
+                                <p class="jini_store_content butt_wrap">관련 규정에 의거하여, 비상구 좌석 이용에 적합하지 않은 승객은 해당 좌석 배정을 제한하고 있습니다. <span class="modal_rule_butt cursor">관련 규정 보기</span></p>
+                                <p class="jini_store_content_sub">비상구열 좌석 구매 후 공항에서 해당 좌석 이용이 불가능한 승객이라고 판단할 경우, 현장에서 임의로 좌석 지정을 취소할 수 있으며,
+                                    이 경우 좌석 비용은 환불되지 않습니다.</p>
+                                <p class="jini_store_content">항공기 운영에 따라 일부 좌석은 사전좌석지정이 제한됨을 양해하여 주시기 바랍니다.</p>
+                                <p class="jini_store_content">항공기 기종과 스케줄은 사전예고 없이 변경될 수 있으며, 이 경우 사전 구매하신 좌석이 변경될 수 있습니다.</p>
+                                <p class="jini_store_content">좌석 전면 격벽 유무는 탑승 후 환불 사유로 인정되지 않으니, 구매 시 유의하시기 바랍니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="B737_900">
+                    <div class="B737_900wrap">
+                        <table class="B737_900seat">
+                            <colgroup>
+                                <col width="330">
+                                <col width="400">
+                                <col width="500">
+                            </colgroup>
+                            <tr>
+                                <td>기종</td>
+                                <td>좌석종류</td>
+                                <td>특징</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="6"><p>B777-200ER</p><input type="button" value="좌석배치도" class="seatmap_butt"></td>
+                                <td>지니비즈</td>
+                                <td>좌석 간 간격이 일반석 보다 24cm 더 넓은 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니스트레치</td>
+                                <td>첫번째 열에 위치하여 일반석 보다 넓은 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니패스트</td>
+                                <td>항공기 앞쪽에 위치하여 빠른 하기가 가능한 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>비상구열(등받이 고정)</td>
+                                <td>비상구에 위치한 좌석(등받이 고정)</td>
+                            </tr>
+                            <tr>
+                                <td>지니스탠다드A</td>
+                                <td>일반 좌석 중 앞 쪽에 위치 혹은, 선호도가 높은 커플 좌석</td>
+                            </tr>
+                            <tr>
+                                <td>지니스탠다드B</td>
+                                <td>일반 좌석 중 뒤 쪽에 위치한 좌석</td>
+                            </tr>
+                        </table>
+                        <p class="bundlebox_title">좌석별 요금 안내</p>
+                        <table class="B737_900price"> 
+                            <tr>
+                                <td>채널</td>
+                                <td>지역</td>
+                                <td>지니플러스</td>
+                                <td>지니스트레치<br>비상구열</td>
+                                <td>지니패스트</td>
+                                <td>비상구열<br>(등받이 고정)</td>
+                                <td>지니스탠다드A</td>
+                                <td>지니스탠다드B</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">오프라인<br>(고객서비스센터, 공항)</td>
+                                <td>국내선</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 8,000<br>USD 8</td>
+                                <td>KRW 13,000<br>USD 13</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                                <td>KRW 3,000<br>USD 3</td>
+                            </tr>
+                            <tr>
+                                <td>일본/중국본토</td>
+                                <td>KRW 25,000<br>USD 25</td>
+                                <td>KRW 20,000<br>USD 20</td>
+                                <td>KRW 10,000<br>USD 10</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                            </tr>
+                            <tr>
+                                <td>홍콩/마카오/대만/러시아</td>
+                                <td>KRW 35,000<br>USD 35</td>
+                                <td>KRW 30,000<br>USD 30</td>
+                                <td>KRW 15,000<br>USD 15</td>
+                                <td>KRW 25,000<br>USD 25</td>
+                                <td>KRW 8,000<br>USD 8</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                            </tr>
+                            <tr>
+                                <td>동남아/대양주</td>
+                                <td>KRW 60,000<br>USD 60</td>
+                                <td>KRW 45,000<br>USD 45</td>
+                                <td>KRW 22,000<br>USD 22</td>
+                                <td>KRW 40,000<br>USD 40</td>
+                                <td>KRW 11,000<br>USD 11</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                            </tr>
+                            <tr>
+                                <td>호주/미주</td>
+                                <td>KRW 120,000<br>USD 120</td>
+                                <td>KRW 85,000<br>USD 85</td>
+                                <td>KRW 32,000<br>USD 32</td>
+                                <td>KRW 75,000<br>USD 75</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">오프라인<br>(고객서비스센터, 공항)</td>
+                                <td>국내선</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                                <td>KRW 2,000<br>USD 2</td>
+                            </tr>
+                            <tr>
+                                <td>일본/중국본토</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 14,000<br>USD 14</td>
+                                <td>KRW 7,000<br>USD 7</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                                <td>KRW 2,000<br>USD 2</td>
+                            </tr>
+                            <tr>
+                                <td>홍콩/마카오/대만/러시아</td>
+                                <td>KRW 29,000<br>USD 29</td>
+                                <td>KRW 24,000<br>USD 24</td>
+                                <td>KRW 12,000<br>USD 12</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 6,000<br>USD 6</td>
+                                <td>KRW 3,000<br>USD 3</td>
+                            </tr>
+                            <tr>
+                                <td>동남아/대양주</td>
+                                <td>KRW 49,000<br>USD 49</td>
+                                <td>KRW 39,000<br>USD 39</td>
+                                <td>KRW 19,000<br>USD 19</td>
+                                <td>KRW 34,000<br>USD 34</td>
+                                <td>KRW 9,000<br>USD 9</td>
+                                <td>KRW 4,000<br>USD 4</td>
+                            </tr>
+                            <tr>
+                                <td>호주/미주</td>
+                                <td>KRW 99,000<br>USD 99</td>
+                                <td>KRW 79,000<br>USD 79</td>
+                                <td>KRW 29,000<br>USD 29</td>
+                                <td>KRW 69,000<br>USD 69</td>
+                                <td>KRW 12,000<br>USD 12</td>
+                                <td>KRW 5,000<br>USD 5</td>
+                            </tr>
+                        </table>
+                        <p class="seat_text">통화 별 환율 기준 : KRW1,000 = USD 1 = JPY 100 = CNY 7 = HKD 8 = MOP 8 = TWD 30 = THB 35 = MYR4 = PHP 50 = VND 24,000 = AUD 1.4</p>
+                        <p class="seat_text">공항 현장 구매 : 지니플러스, 지니스트레치, 비상구열, 비상구열 (등받이 고정)의 잔여 좌석에 한해 당일 공항에서 좌석 배정 및 결제 가능</p>
+                        <p class="seat_subtext">모든 통화는 출발지 현지 통화 기준으로 적용되며, 필리핀은 USD로도 구매가 가능합니다.</p>
+                        <p class="seat_subtext">지니플러스 좌석의 경우 노선에 따라 지니플러스 운임을 별도로 운영하고 있으며, 동 경우 예약 단에서 지니플러스 운임을 선택해야 해당 좌석 무상 배정이 가능합니다.</p>
+                        <p class="seat_subtext1">일반 운임으로 구매 시에는 당일 공항에서 잔여 좌석에 한해 업그레이드 비용 지불 후 지니플러스 좌석으로 배정 가능합니다. (노선별 업그레이드 비용 차등)</p>
+                        <div class="bundlebox2">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>신청</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">신청 방법</p>
+                                <p class="jini_store_titcont">< 진에어 홈페이지/모바일 구매 고객 ></p>
+                                <p class="jini_store_content">신청 가능 기한 : 항공기 출발 24시간 전까지</p>
+                                <p class="jini_store_content">항공권 구매 단계 중 사전좌석지정 서비스 신청이 가능합니다.</p>
+                                <p class="jini_store_content">항공권 구매를 완료했을 경우, [마이페이지] – [상세조회] – [부가서비스 신청/취소]에서 사전좌석지정 서비스 신청이 가능합니다.</p>
+                                <a href="/pages/index/mypageMain"><input type="button" value="바로가기"></a>
+                                <p class="jini_store_titcont">< 여행사/대리점 구매 고객 ></p>
+                                
+                                <p class="jini_store_content">신청 가능 기한 : 항공기 출발 24시간 전까지</p>
+                                <p class="jini_store_content">[예약] – [나의 예약] 혹은 진에어 고객서비스센터에서 사전좌석지정이 가능합니다. (조회 불가 시, 해당 구매처로 문의 바랍니다)</p>
+                            </div>
+                        </div>
+                        <div class="bundlebox3">
+                            <div class="jini_left">
+                                <div class="jini_box_left">
+                                    <p>유의</p>
+                                </div>
+                            </div>
+                            <div class="jini_right">
+                                <p class="jini_store_title">유의 사항</p>
+                                <p class="jini_store_content">출발 24시간 전까지 사전좌석지정 서비스 취소가 가능합니다. 출발 24시간 이내에는 취소 및 환불이 불가하며, 항공권 환불 시에도 사전좌석지정 비용은 환불되지 않습니다.</p>
+                                <p class="jini_store_content">신청한 좌석의 변경을 원하시는 경우에는, 기존 좌석 취소 후 재구매 해주시기 바랍니다.</p>
+                                <p class="jini_store_content butt_wrap">관련 규정에 의거하여, 비상구 좌석 이용에 적합하지 않은 승객은 해당 좌석 배정을 제한하고 있습니다. <span class="modal_rule_butt cursor">관련 규정 보기</span></p>
+                                <p class="jini_store_content_sub">비상구열 좌석 구매 후 공항에서 해당 좌석 이용이 불가능한 승객이라고 판단할 경우, 현장에서 임의로 좌석 지정을 취소할 수 있으며,
+                                    이 경우 좌석 비용은 환불되지 않습니다.</p>
+                                <p class="jini_store_content">항공기 운영에 따라 일부 좌석은 사전좌석지정이 제한됨을 양해하여 주시기 바랍니다.</p>
+                                <p class="jini_store_content">항공기 기종과 스케줄은 사전예고 없이 변경될 수 있으며, 이 경우 사전 구매하신 좌석이 변경될 수 있습니다.</p>
+                                <p class="jini_store_content">좌석 전면 격벽 유무는 탑승 후 환불 사유로 인정되지 않으니, 구매 시 유의하시기 바랍니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--좌석배치도 모달창-->
+                <div id="modal_seatmap_wrap">
+                    <div class="modal_seatmap_wrap">
+                        <div class="modal_title">
+                            <p class="tit_text">
+                                좌석배치도
+                            </p>
+                            <p class="close">
+                                <img src="/userpage/lib/img/close.png" alt="닫기" class="cursor" width="35px">
+                            </p>
+                        </div>
+                        <div class="modal_content_wrap">
+                            <div class="modal_menu_wrap">
+                                <div id="modal_menu1" class="modal_menu">B777-200ER</div>
+                                <div id="modal_menu2" class="modal_menu">B737-800</div>
+                                <div id="modal_menu3" class="modal_menu">B737-900</div>
+                            </div>
+
+                            <div id="modal_content1" class="modal_content">
+                                <img src="/userpage/lib/img/seatmap1.png" alt="B777-200ER" class="seatmap_img">
+                            </div>
+
+                            <div id="modal_content2" class="modal_content">
+                                <img src="/userpage/lib/img/seatmap2.png" alt="B737-800" class="seatmap_img">
+                            </div>
+
+                            <div id="modal_content3" class="modal_content">
+                                <img src="/userpage/lib/img/seatmap3.png" alt="B737-900" class="seatmap_img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--좌석배치도 모달창 끝-->
+            </div>
+            <!--비상구 좌석 지정 시 유의 사항 안내 모달창-->
+            <div id="modal_exit_seat_info">
+                <div class="modal_exit_seat_info">
+                    <div class="modal_title">
+                        <span class="text">
+                            비상구 좌석 지정 시 유의 사항 안내
+                        </span>
+                        <span class="close cursor">
+                            <img src="/userpage/lib/img/close.png" alt="닫기" width="35px">
+                        </span>
+                    </div>
+                    <div class="modal_contents">
+                        <div class="content">
+                            <p class="top_content"> 국토교통부의 운항기술기준(고시)에 의거하여, 비상 상황 발생 시 비상구 개방 등 임무 수행이 가능한 승객에 한해 비상구 좌석을 이용할 수 있사오니 <span class="col_red">하기 규정을 반드시 확인 후 좌석 지정해 주시기 바랍니다.</span>
+                            * 비상구 좌석 구매 승객은 웹/모바일 체크인 서비스 이용이 제한됩니다.
+                            <span class="col_red">* 출발지 공항 또는 객실 현장에서 착석 불가한 승객이라 판단될 경우 임의로 이용 취소 될 수 있으며 좌석 비용은 환불되지 않습니다.
+                            * 비상구는 반드시 승무원의 신호에 따라 개방되어야 하며, 임의로 비상구를 개방할 경우 항공보안법에 따라 형사 처벌을 받을 수 있습니다.</span>
+                            </p>
+                            <ul>
+                                <li>1. 만15세 미만이거나 동반자의 도움 없이 비상 상황에서의 역할을 수행하기에 불충분한 승객</li>
+                                <li>2. 승객의 상태나 책임(유소아 동반승객, 임산부 승객, 노약자등)으로 인하여, 비상 상황에서의 역할을 수행하는데 방해가 되거나 수행할 경우 해를 입게 되는 승객</li>
+                                <li>3. 활동성,체력 또는 양팔이나 손 및 다리의 민첩성이 비상 상황에서의 역할을 수행하기 어려운승객
+                                    <ul class="sub_ul">
+                                        <li>- 비상구나 탈출용 슬라이드 조작장치에 대한 접근</li>
+                                        <li>- 탈출용 슬라이드 조작장치를 잡고 밀거나 당기고 돌리는 동작, 슬라이드의 전개 또는 팽창 후 안정 유지 및 탈출용 슬라이드로 탈출한 승객이 슬라이드로부터 벗어날 수 있도록 하는 동작</li>
+                                        <li>- 비상구 작동 손잡이를 상하좌우로 잡고 당기거나 돌리거나 밀어서 비상구를 여는 동작 및 OVERWING WINDOW EXIT 작동 손잡이를 잡아 당겨서 EXIT를 여는 동작</li>
+                                        <li>- 날개 위의 OVERWING WINDOW EXIT와 비슷한 크기와 무게의 장애물 제거 및 장애물 제거 시 균형의 유지</li>
+                                        <li>- 신속한 비상구로의 접근 및 탈출</li>
+                                    </ul>
+                                </li>
+                                <li>4. 글 또는 그림의 형태로 제공된 비상탈출에 관한 지시를 읽고 이해하지 못하거나 승무원의 구두 지시를 이해하지 못하는 승객</li>
+                                <li>5. 콘텍트 렌즈나 안경을 제외한 다른 시력보조장비 없이는 비상 상황에서의 역할을 수행할 수 없는 승객</li>
+                                <li>6. 일반적인 보청기를 제외한 다른 청력보조장비 없이는 승무원의 탈출지시를 듣고 이해 할 수 없는 승객</li>
+                                <li>7. 다른 승객들에게 정보를 적절하게 전달할 수 있는 능력이 부족한 승객</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <!--비상구 좌석 지정 시 유의 사항 안내 모달창 끝-->
+        </div>
+        <!-- container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <div class="modal"></div>
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+</body>
+</html>

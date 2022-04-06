@@ -1,0 +1,240 @@
+/* contents */
+#container > .contents > .con_wrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.contents > .con_wrap > .search{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+.contents .search > .title{
+    font-size: 1.4rem; 
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+} 
+/* 유실물 검색 */
+#item_search {
+    width: 100%;
+    margin-bottom: 25px;
+}
+#item_search fieldset {
+    margin-top: 15px;
+    background-color: #f2f2f2;
+    padding: 10px 30px;
+    height: auto;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+#item_search table {
+    margin: 30px auto;
+    width: 85%;
+    font-size: 14px;
+    font-weight: 900;
+    
+}
+#item_search table tr:nth-child(2){
+    height: 70px;
+}
+#item_search table td {
+    text-align: center;
+    line-height: 2;
+}
+#item_search span {
+    font-size: 16px;
+    line-height: 2;
+}
+#item_search input, #item_search select {
+    height: 40px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    font-weight: bolder;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 15px;
+}
+#item_search input {
+    margin: 0 auto;
+    width: 200px;
+    text-indent: 10px;
+    font-weight: bolder;
+}
+#item_search select {
+    width: 200px;
+    text-align: center;
+}
+#item_search select.item_list {
+    width: 200px;
+}
+#item_search #item_search_btn {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#item_search #item_search_btn input {
+    background-color: #bdd600;
+    cursor: pointer;
+    font-weight: bold;
+    height: 30px;
+    text-indent: 0px;
+    width: 130px;
+    font-size: 16px;
+}
+
+/* 유실물 리스트 */
+.item_list {
+    width: 100%;
+}
+.item_list > .title {
+    margin-left: 20px;
+    line-height: 2;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.item_list > table {
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    border-collapse: collapse;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+.item_list > table tr{
+    height: 40px;
+}
+.item_list > table thead{
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #ccc;
+}
+.item_list > table th {
+    padding: 10px;
+    font-weight: bold;
+}
+.item_list > table td {
+    height: 80px;
+    border-bottom: 1px solid rgb(153, 153, 153, 0.5);
+}
+
+#lostList img {
+    width: 60px;
+    height: 60px;
+}
+
+.item_list > table td input {
+    border: none;
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: bolder;
+    border-radius: 2px;
+    background-color: #bdd600;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    cursor: pointer;
+}
+.item_list > table td input:hover {
+    color: #fff;
+    background-color: rgb(153, 153, 153, 0.5);
+}
+
+/* 모달창 수령완료 / 미완료 */
+#modal_isfind {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#modal_isfind > #modal_isfind_content {
+    width: 400px;
+    height: 300px;
+    margin: 150px auto 30px;
+    padding-top: 30px;
+    border-radius: 5px;
+    border: 3px solid #BDD600;
+    background-color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+#modal_isfind > #modal_isfind_content > #modal_isfind_title {
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+#modal_isfind > #modal_isfind_content button {
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 0 5px;
+    cursor: pointer;
+}
+#modal_isfind > #modal_isfind_content button.uncomplete{
+    border: 3px solid #BDD600;
+    background-color: #fff;
+}
+.footer{
+    margin-top: 40px;
+    width: 100%;
+    height: 30px;
+}
+.footer > .center{
+    display: flex;
+    justify-content: center;
+}
+.footer table{
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.footer table td{
+    width: 35px;
+    height: 40px;
+    border: 1px solid rgb(187, 187, 187);
+    background-color: #fff;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.footer > .notice_write{
+    display: inline;
+    float: right;
+    position: relative;
+    bottom: 30px;
+}
+.footer > .notice_write > input{
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    background-color: #BDD600;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+
+.showPage > td:hover {
+    background-color: #BDD600;
+    color: white;
+}
+
+.firstPage1, .firstPage2, .lastPage1, .lastPage2 {
+    cursor: pointer;
+}

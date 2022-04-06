@@ -1,0 +1,178 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/admin_main.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="contwrap">
+                    <div class="topcont">
+                        <div class="korea">
+                            <div class="korea_name"><p>대한민국</p>
+                                <div id="korea_time"></div>
+                            </div>
+                        </div>
+                        <div class="totalair">
+                            <div class="totalair_top">
+                                <p>날씨</p>
+                            </div>
+                            <div class="weather_weather">
+                                <table>
+                                    <tr>
+                                        <td>날씨</td>
+                                        <td class="weather_weather1"></td>
+                                        <td class="weather_weather2"></td>
+                                        <td class="weather_weather3"></td>
+                                        <td class="weather_weather4"></td>
+                                        <td class="weather_weather5"></td>
+                                        <td class="weather_weather6"></td>
+                                        <td class="weather_weather7"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>풍속</td>
+                                        <td class="weather_wind1"></td>
+                                        <td class="weather_wind2"></td>
+                                        <td class="weather_wind3"></td>
+                                        <td class="weather_wind4"></td>
+                                        <td class="weather_wind5"></td>
+                                        <td class="weather_wind6"></td>
+                                        <td class="weather_wind7"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>시각</td>
+                                        <td class="weather_clock1"></td>
+                                        <td class="weather_clock2"></td>
+                                        <td class="weather_clock3"></td>
+                                        <td class="weather_clock4"></td>
+                                        <td class="weather_clock5"></td>
+                                        <td class="weather_clock6"></td>
+                                        <td class="weather_clock7"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="other">
+                            <div class="other_name">
+                                <select name="other_select" class="other_select" id="other_select">
+                                    <option value="베이징">베이징</option>
+                                    <option value="하노이">하노이</option>
+                                    <option value="두바이">두바이</option>
+                                    <option value="도하">도하</option>
+                                    <option value="카이로">카이로</option>
+                                    <option value="부다페스트">부다페스트</option>
+                                    <option value="런던">런던</option>
+                                    <option value="뉴욕" selected>뉴욕</option>
+                                </select>
+                                <div id="other_time"></div>
+                            </div>
+                        </div>
+                        <div class="totalair">
+                            <div class="totalair_top">
+                                <p>세계 날씨</p>
+                            </div>
+                            <div class="weather_weather">
+                                <table>
+                                    <tr>
+                                        <td>날씨</td>
+                                        <td class="other_weather1"></td>
+                                        <td class="other_weather2"></td>
+                                        <td class="other_weather3"></td>
+                                        <td class="other_weather4"></td>
+                                        <td class="other_weather5"></td>
+                                        <td class="other_weather6"></td>
+                                        <td class="other_weather7"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>풍속</td>
+                                        <td class="other_wind1"></td>
+                                        <td class="other_wind2"></td>
+                                        <td class="other_wind3"></td>
+                                        <td class="other_wind4"></td>
+                                        <td class="other_wind5"></td>
+                                        <td class="other_wind6"></td>
+                                        <td class="other_wind7"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>시각</td>
+                                        <td class="other_clock1"></td>
+                                        <td class="other_clock2"></td>
+                                        <td class="other_clock3"></td>
+                                        <td class="other_clock4"></td>
+                                        <td class="other_clock5"></td>
+                                        <td class="other_clock6"></td>
+                                        <td class="other_clock7"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chartcontainer">  
+                        <canvas id="line-chart"></canvas>
+                    </div>
+                    <div class="bottcont">
+                        <div class="QnA" id="itemList">
+                            <p><a href="/pages/admin/qna_main">Q&A</a></p>
+                            <p>답변이 필요한 게시글 : ({{itemList.length}})개</p>
+                            <table>
+                                <tr v-for="dto in itemList.slice().reverse()">
+                                    <td><a :href=`/pages/admin/qna_view/${dto.qnaIndex}`>{{dto.qnaTitle}}</a></td>
+                                    <td>NotComplete</td>
+                                </tr>
+                            </table>
+                            <p><a href="/pages/admin/qna_main">more</a></p>
+                        </div>
+                        <div class="notice" id="scList">
+                            <p><a href="/pages/admin/scheduleList">운항 스케줄</a></p>
+                            <table>
+                                <tr>
+                                    <td>항공기 코드</td>
+                                    <td>항공기 이름</td>
+                                    <td>출발 일자</td>
+                                    <td>출발지</td>
+                                    <td>출발시간</td>
+                                    <td>도착지</td>
+                                    <td>도착시간</td>
+                                </tr>
+                                <tr v-for="list in scList">
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${list.schIndex}`>{{list.schAirplaneType}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${list.schIndex}`>{{list.schAirplaneName}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${list.schIndex}`>{{list.schDepartureDate.substr(0,10)}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${list.schIndex}`>{{list.schDeparturePoint}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${list.schIndex}`>{{list.schStartTime.substr(11,16)}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${list.schIndex}`>{{list.schArrivalPoint}}</a>
+                                    </td>
+                                    <td>
+                                        <a :href=`/pages/admin/scheduleResultInfo/${list.schIndex}`>{{list.schArrivalDate.substr(11,16)}}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p><a href="/pages/admin/scheduleList">more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/adminpage/app/admin_main.js"></script>
+</html>
+<script src="/adminpage/app/chart.js"></script>

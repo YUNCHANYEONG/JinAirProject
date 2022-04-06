@@ -1,0 +1,165 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/cm/cm_modify.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+</script>
+<!-- head.html -->
+<body>
+<div id="wrap">
+    <div th:replace="/adminpage/fragment/header :: header"></div>
+    <div id="container">
+        <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+        <div class="contents">
+            <div id="cm_detail_box">
+                <div class="title_wrap">
+                    <p id="cm_detail_title">고객 상세정보 수정</p>
+                </div>
+                <div class="cm_detail" id="memberUpdate">
+                    <div id="memUpdateForm">
+                        <table>
+                            <colgroup>
+                                <col width="20%">
+                                <col width="30%">
+                                <col width="20%">
+                                <col width="30%">
+                            </colgroup>
+                            <tr>
+                                <th>고유번호</th>
+                                <td id="memIndex"></td>
+                                <th>우편번호</th>
+                                <td>
+                                    <input type="text" name="memZipcode" id="zipcode" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>아이디</th>
+                                <td id="userid"></td>
+                                <th>주소1</th>
+                                <td>
+                                    <input type="text" name="memAddress1" id="address1" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>비밀번호</th>
+                                <td ><input type="hidden" id="userpw">-</td>
+                                <th>주소2</th>
+                                <td>
+                                    <input type="text" name="memAddress2" id="address2" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>연락처</th>
+                                <td>
+                                    <select name="memHpNation" id="hp_nation">
+                                    </select>
+                                    <input type="tel" name="memHp" id="hp" value=""/>
+                                </td>
+                                <th>주소3</th>
+                                <td>
+                                    <input type="text" name="memAddress3" id="address3" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>성명(KOR)</th>
+                                <td>
+                                    <input type="text" name="memKorFirstName" id="kor_first_name" value="" readonly/>
+                                    <input type="text" name="memKorLastName" id="kor_last_name" value="" readonly/>
+                                </td>
+                                <th>가입일자</th>
+                                <td id="regDate"></td>
+                            </tr>
+                            <tr>
+                                <th>성명(ENG)</th>
+                                <td>
+                                    <input type="text" name="memEngFirstName" id="eng_first_name" value="" readonly/>
+                                    <input type="text" name="memEngLastName" id="eng_last_name" value="" readonly/>
+                                </td>
+                                <th>이메일</th>
+                                <td>
+                                    <input type="email" name="memEmail" id="email" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>성별</th>
+                                <td>
+                                    <label>
+                                        <span>남자</span>
+                                        <input type="radio" name="memGender" id="male" value="남자"/>
+                                    </label>
+                                    <label>
+                                        <span>여자</span>
+                                        <input type="radio" name="memGender" id="female" value="여자"/>
+                                    </label>
+                                </td>
+                                <th>이메일 수신동의</th>
+                                <td>
+                                    <label>
+                                        <span>동의</span>
+                                        <input type="radio" name="memEmailIsagree" id="emailAgree" value="True"/>
+                                    </label>
+                                    <label>
+                                        <span>미동의</span>
+                                        <input type="radio" name="memEmailIsagree" id="emailDisagree" value="False"/>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>생년월일</th>
+                                <td>
+                                    <input type="text" name="memBirth" id="birth" value=""/>
+                                </td>
+                                <th>SNS/앱 푸시 동의</th>
+                                <td>
+                                    <label>
+                                        <span>동의</span>
+                                        <input type="radio" name="memSnsIsagree" id="snsAgree" value="True"/>
+                                    </label>
+                                    <label>
+                                        <span>미동의</span>
+                                        <input type="radio" name="memSnsIsagree" id="snsDisagree" value="False"/>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>국적</th>
+                                <td>
+                                    <select name="memPassport" id="passport_list">
+                                    </select>
+                                </td>
+                                <th>예약 비행기</th>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <th>거주국가</th>
+                                <td>
+                                    <select name="memNation" id="nation_list">
+                                    </select>
+                                </td>
+                                <th>나비 포인트</th>
+                                <td>
+                                    <input type="text" name="point" id="point" readonly/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">쿠폰</th>
+                                <td colspan="2">-</td>
+                            </tr>
+                        </table>
+                        <div id="form_btn">
+                            <input type="button" value="취소" onclick="history.back()"/>
+                            <input type="submit" id="update" value="수정 완료"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/adminpage/app/cm/cm_modify.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/userpage/lib/css/payment/complete.css" />
+<script src="/userpage/app/payment/complete.js"></script>
+<body>
+    <div>
+        <input type="hidden" th:each="dto : ${reserveApiResponse1}" class="cookies" th:id="${dto.reIndex}" th:value="${dto.reIndex}">
+        <input type="hidden" th:each="ss, i : ${reserveApiResponse1}" class="reserNum" th:if="${i.count} % 2 != 0" th:id="${ss.reReserNum}" th:value="${ss.reReserNum}">
+        <input type="hidden" th:each="memid, i : ${reserveApiResponse1}" th:if="${memid.reExtraSale} != null and ${i.count} % 2 != 0" class="sale" th:id="${memid.reUserindex}" th:value="${memid.reExtraSale}">
+    </div>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="wrap w_1160">
+                <div class="title">
+                    <h2>결제가 완료 되었습니다.</h2>
+                </div>
+                <div class="reserve_info">
+                    <h3>예약정보</h3>
+                    <table>
+                        <tr>
+                            <th>예약일</th>
+                                <td id="reserDay"></td>
+                            <th>예약번호</th>
+                                <td id="resCode">[[${reserveApiResponse1[0].reReserNum}]]</td>
+                        </tr>
+                        <tr>
+                            <th>상태</th>
+                            <td>결제완료</td>
+                            <th>탑승객수</th>
+                            <td id="peopleSum"></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                여정1
+                                <p id="airName">[[${reserveApiResponse1[0].reSchName}]]</p>
+                            </th>
+                            <td colspan="3" class="info">
+                                <div class="in_bl">
+                                    <span id="startPoint">[[${reserveApiResponse1[0].reSchDepPoint}]]</span>
+                                    <p>[출발] <span id="startTime1" th:value="${reserveApiResponse1[0].reSchStartTime}"></span></p>
+                                </div>
+                                <span class="arrow">
+                                    <img src="/userpage/lib/img/right_arrow.PNG" alt="에서">
+                                </span>
+                                <div class="in_bl">
+                                    <span id="arrPoint">[[${reserveApiResponse1[0].reSchArrPoint}]]</span>
+                                    <p>[도착] <span id="endTime1" th:value="${reserveApiResponse1[0].reSchEndTime}"></span></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <th:block th:if="${reserveApiResponse1[1].reSchName} != null">
+                        <tr>
+                            <th>
+                                여정2
+                                <p>[[${reserveApiResponse1[1].reSchName}]]</p>
+                            </th>
+                            <td colspan="3" class="info">
+                                <div class="in_bl">
+                                    <span>[[${reserveApiResponse1[1].reSchDepPoint}]]</span>
+                                    <p>[출발] <span id="startTime2" th:value="${reserveApiResponse1[1].reSchStartTime}"></span></p>
+                                </div>
+                                <span class="arrow">
+                                    <img src="/userpage/lib/img/right_arrow.PNG" alt="에서">
+                                </span>
+                                <div class="in_bl">
+                                    <span>[[${reserveApiResponse1[1].reSchArrPoint}]]</span>
+                                    <p>[도착] <span id="endTime2" th:value="${reserveApiResponse1[1].reSchEndTime}"></span></p>
+                                </div>
+                            </td>
+                        </tr>
+                        </th:block>
+                    </table>
+                </div>
+                <div class="user_info">
+                    <h3>탑승객 정보</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>성명</th>
+                                <th>구분</th>
+                                <th>성별</th>
+                                <th>생년월일</th>
+                                <th>국적</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="dto, i : ${reserveApiResponse1}" th:if="${i.count} % 2 != 0">
+                            <tr>
+                                <td>[[${dto.reFirstName}]]/[[${dto.reLastName}]]</td>
+                                <td class="isAdult" th:value="${dto.reBirth}"></td>
+                                <td>[[${dto.reGender}]]</td>
+                                <td>[[${dto.reBirth}]]</td>
+                                <td>[[${dto.reNation}]]</td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pay_info">
+                    <h3>결제정보</h3>
+                    <table>
+                        <tr>
+                            <th>결제방식</th>
+                            <td id="pay" th:value="${reserveApiResponse1[0].rePayment}">카카오페이</td>
+                            <th>상세정보</th>
+                            <td>test</td>
+                        </tr>
+                        <tr>
+                            <th>승인번호</th>
+                            <td>06116075</td>
+                            <th>구매일</th>
+                            <td id="today"></td>
+                        </tr>
+                        <tr>
+                            <th>결제금액</th>
+                            <td>KRW <span id="totalPrice" th:value="${reserveApiResponse1[0].reTotal}"></span></td>
+                            <td colspan="2">
+                                <button>
+                                    <img src="/userpage/lib/img/printer.png" alt="프린터">
+                                    영수증 인쇄
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="to_main">
+                    <a href="/pages/index">
+                        메인
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <!--퀵 메뉴 끝-->
+
+    <div class="modal"></div>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/mypage/Mypage_qna.css">
+<body>
+<ul class="skipnavi">
+    <!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <input type="hidden" id="memid" th:value="${memberApiResponse.memIndex}">
+        <div class="mypage_main">
+            <div class="mypage_menu">
+                <p>마이<br>페이지</p>
+                <ul>
+                    <li class="booking"><a href="/pages/index/mypageMain">예약조회/변경/취소</a></li>
+                    <li class="mypoint"><a href="/pages/index/mypagePoint">나의 나비포인트</a><div class="mypoint_sum"><span><strong id="point"></strong>p</span></div></li>
+                    <li class="coupon"><a href="/pages/index/mypageCoupons">나의 할인쿠폰</a><div class="mycoupon_sum"><span id="coupon">0</span></div></li>
+                    <li class="qna"><a href="/pages/index/mypageQna">나의 Q&A</a></li>
+                    <li class="edit"><a href="#">회원정보 수정</a></li>
+                </ul>
+            </div>
+            <div class="menu_title">
+                <p>나의 Q&A</p>
+            </div>
+            <div class="qna_main">
+                <table id="myQnaList" class="bbsList">
+                    <colgroup>
+                        <col width="15%"><col width="40%"><col width="18%"><col width="14%"><col width="18%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">구분</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">등록일</th>
+                        <th scope="col">답변</th>
+                        <th scope="col">답변일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="list in myQnaList">
+                        <th scope="col">{{ list.qnaType }}</th>
+                        <th scope="col"><a :href=`/pages/myQna/view/${list.qnaIndex}`>{{ list.qnaTitle }}</a></th>
+                        <th scope="col">{{ list.qnaRegdate.substr(0, 10) }}</th>
+                        <th scope="col">{{ list.qnaIsans }}</th>
+                        <th scope="col" id="qnaAnsdate">{{ list.qnaAnsdate }}</th>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="paging">
+                    <li></li>
+                </ul>
+            </div>
+            <div class="footer_info">
+                <div class="footer_text">
+                    <p>문의하기</p>
+                    <p class="subtext">- 진에어에 궁금한 점이 있으신가요?</p>
+                </div>
+                <div class="btn">
+                    <a href="/pages/index/addQna">고객의 말씀(Q&A)</a>
+                    <a href="/pages/index/faqList">FAQ 바로가기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal">
+</div>
+<div class="pwcheck_modal">
+    <form action="#" method="post">
+        <div class="pwcheck_title">
+            <p>비밀번호 확인</p>
+        </div>
+        <div class="pwcheck_box">
+            <p>고객님의 개인정보를 소중하게 보호하려고 노력하고 있으며,<br>회원님의 동의 없이는 회원정보를 제공하지 않습니다.</p>
+            <p>비밀번호 입력 <input type="password" class="pass"></p>
+            <div class="btn">
+                <input type="button" class="btn_agree" value="확인" onclick="location.href='/pages/index/mypageEdit'">
+                <input type="button" class="btn_cancel" value="취소">
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/userpage/app/mypage/Mypage_qna.js"></script>
+</body>
+</html>

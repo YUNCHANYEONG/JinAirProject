@@ -1,0 +1,135 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-vind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-if="http://www.w3.org/1999/xhtml">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/mypage/faq_list.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/UserPage/quickmenu/quickmenu.css">
+    <script src="/UserPage/quickmenu/quickmenu.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <ul class=" skipnavi">
+        <!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="mypage_main">
+                <div class="menu_title">
+                    <p>자주 묻는 질문(FAQ)</p>
+                    <p>고객님께서 자주 문의 하시는 질문 및 답변을 모아 놓았습니다.</p>
+                </div>
+                <div class="quick_faq">
+                    <ul>
+                        <li class="faq1 check type" id="faq1" value="전체">전체</li>
+                        <li class="faq2 type" id="faq2" value="항공권 예매">항공권 예매</li>
+                        <li class="faq3 type" id="faq3" value="할인 제도">할인 제도</li>
+                        <li class="faq4 type" id="faq4" value="수하물">수하물</li>
+                        <li class="faq5 type" id="faq5" value="기내 서비스">기내 서비스</li>
+                        <li class="faq6 type" id="faq6" value="기타">기타</li>
+                    </ul>
+                </div>
+                <div class="srh_faq">
+                    <input type="text" placeholder="전체 FAQ에서 검색합니다." id="searchText">
+                    <input type="button" value="검색" id="searchFaq">
+                </div>
+                <table class="faqlist" id="faqList">
+                    <colgroup>
+                        <col width="10%">
+                        <col width="18%">
+                        <col width="">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">번호</th>
+                            <th scope="col">상세분류</th>
+                            <th scope="col">제목</th>
+                        </tr>
+                    </thead>
+                        <tbody v-for="(faq, i) in faqList">
+                        <tr :id=`faqNumber${i}` style="cursor: pointer">
+                            <td >{{i+1}}</td>
+                            <td>{{faq.faqType}}</td>
+                            <td class="al">
+                                <p class="question">
+                                    <a>{{faq.faqTitle}}</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr :id=`tr_answer${i}` style="display: none">
+                            <td colspan="3" class="td_answer">{{faq.faqContent}}
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+                <div id="footer"> </div>
+                <div class="info_main">
+                    <div class="footer_text">
+                        <p>더 궁금한 사항이 있으신가요?</p>
+                    </div>
+                    <div>
+                        <a href="add_qna.html">고객의 말씀(Q&A) 문의하기</a>
+                        <a href="Mypage_qna.html">나의 Q&A 조회하기</a>
+                    </div>
+                </div>
+                <div class="tube_main">
+                    <ul>
+                        <h2>진에어 100% 활용 꿀팁! TELL ME JINI</h2>
+                        <li class="sub_text">
+                            <p>더 많은 영상을 보고 싶으시다면 <a href="https://www.youtube.com/user/JinAir0717" target="_blank">진에어
+                                    YOUTYBE 공식 채널 바로 가기</a></p>
+                        </li>
+                    </ul>
+                    <ul class="iframe_box">
+                        <li>
+                            <div class="video_box">
+                                <iframe src="https://www.youtube.com/embed/hC_84y6ZKts" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <p><a href="https://www.youtube.com/watch?v=hC_84y6ZKts" target="_blank" title="새창열림">[진에어] 빨리 수속하는 꿀팁? 항공사 직원에게 무엇이든 물어보세요!<br>(feat. 웹/모바일 체크인) l TELL ME JINI</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="video_box">
+                                <iframe src="https://www.youtube.com/embed/0Klb_AcbczA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>반려동물과 함께 국내선 비행기 타는 법! 쉽고 간단히 설명 드려요~</iframe><p><a href="https://www.youtube.com/watch?v=0Klb_AcbczA" target="_blank" title="새창열림">반려동물과 함께 국내선 비행기 타는 법! 쉽고 간단히 설명 드려요~</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="video_box">
+                                <iframe src="https://www.youtube.com/embed/4XSd1N3PRQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>3가지만 알아두세요, 여행사이트에서 구매한 항공권 바로 조회하는 법!</iframe><p><a href="https://youtu.be/4XSd1N3PRQA" target="_blank" title="새창열림">3가지만 알아두세요, 여행사이트에서 구매한 항공권 바로 조회하는 법!</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="video_box">
+                                <iframe src="https://www.youtube.com/embed/8hL7pHAIucQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>국내선 자주묻는 기내 반입 물품! 규정! 항공사에서 직접 정리해드립니다~</iframe><p><a href="https://youtu.be/8hL7pHAIucQ" target="_blank" title="새창열림">국내선 자주묻는 기내 반입 물품! 규정! 항공사에서 직접 정리해드립니다~</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+    <div class="modal">
+    </div>
+    <script src="/Userpage/app/mypage/faq_list.js"></script>
+</body>
+
+
+
+</html>

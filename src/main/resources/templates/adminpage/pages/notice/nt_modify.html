@@ -1,0 +1,51 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/style.css">
+<link rel="stylesheet" href="/adminpage/lib/css/notice/nt_modify.css">
+<body>
+<form class="file-upload" method="post" id="updateNoty" th:action="@{/pages/admin/nt_file/upload}" enctype="multipart/form-data">
+    <input type="hidden" name="_method" value="PUT">
+    <input id="idx" type="hidden" name="idx" th:value="${notifyApiResponse.noIndex}">
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap" id="ntModify">
+                    <div class="search">
+                        <p class="title">공지사항 목록(수정)</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <th><input name="title" type="text" id="ntTitle" th:value="${notifyApiResponse.noTitle}"></th>
+                            <th id="ntRegdate">등록일 <span th:text="${#strings.substring(notifyApiResponse.noRegdate,0,10)}"></span></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="float: right; padding: 5px 3px">
+                                <input id="ntfileName" type="text" placeholder="파일첨부">
+                                <label for="ex_file" class="ex_file">찾아보기</label>
+                                <input name="file" type="file" id="ex_file">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <textarea name="content" style="resize: none;" placeholder="내용을 입력하세요." th:text="${notifyApiResponse.noContents}"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="footer">
+                        <input type="button" value="취소" class="btn_notice btn_cancel" onclick="history.back()"/>
+                        <input type="submit" value="수정 완료" id="update" class="btn_notice btn_modify">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="/adminpage/app/notice/nt_modify.js"></script>
+</body>
+</html>

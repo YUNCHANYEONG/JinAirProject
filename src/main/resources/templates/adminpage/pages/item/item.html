@@ -1,0 +1,102 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/item/item.css">
+<script src="/adminpage/app/item/item.js" async defer></script>
+<!-- head.html 끝-->
+    <body>
+        <div id="wrap">
+            <div th:replace="/adminpage/fragment/header :: header"></div>
+            <div id="container">
+                <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+                <div class="contents">
+                    <div class="con_wrap">
+                <div class="search">
+                    <p class="title">기내 유실물 조회</p>
+                </div>
+                <div id="item_search">
+                    <!-- 유실물 조회 -->
+                    <div>
+                        <fieldset>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <span>항공편명</span>
+                                        <select name="airplane_list" id="airplane_list"></select>
+                                       </td>
+                                    <td>
+                                        <span>도착지 공항</span>
+                                        <select name="arrival_airport_list" id="arrival_airport_list">
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <span>물품 유형</span>
+                                        <select name="item_list" class="item_list" id="item_list">
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <span>도착 날짜 기간</span>
+                                        <input type="date" name="item_start_date" id="item_start_date" value="연도-월-일" required > ~
+                                        <input type="date" name="item_end_date" id="item_end_date" value="연도-월-일" required >
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        <div id="item_search_btn">
+                            <input type="button" id="btn_search" value="검색" />
+                        </div>
+                    </div>
+                    <!-- 유실물 조회 끝 -->
+                </div>
+                <div class="search">
+                    <p class="title">조회 결과</p>
+                </div>
+                <div class="item_list">
+                    <!-- 유실물 리스트 -->
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>관리번호</th>
+                            <th>이미지</th>
+                            <th>물품 유형</th>
+                            <th>항공편</th>
+                            <th>도착 일자</th>
+                            <th>도착지 공항</th>
+                            <th>유실물 수령 상태</th>
+                        </tr>
+                        </thead>
+                        <tbody id="lostList">
+                            <tr role="row" v-for="dto in lostList">
+                                <td scope="row" id="itemIndex"><a :href=`/pages/admin/item/detail/${dto.losIndex}`>{{dto.losIndex}}</a></td>
+                                <td><a :href=`/pages/admin/item/detail/${dto.losIndex}`><img :src=`/upload/${dto.losImgName}` alt="이미지"></a></td>
+                                <td><a :href=`/pages/admin/item/detail/${dto.losIndex}`>{{dto.losType}}</a></td>
+                                <td><a :href=`/pages/admin/item/detail/${dto.losIndex}`>{{dto.losAirplane}}</a></td>
+                                <td><a :href=`/pages/admin/item/detail/${dto.losIndex}`>{{dto.losArrivedate.substr(0,10)}}</a></td>
+                                <td><a :href=`/pages/admin/item/detail/${dto.losIndex}`>{{dto.losAirportArea}}</a></td>
+                                <td><a :href=`/pages/admin/item/detail/${dto.losIndex}`>{{dto.losIsfind}}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage"></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 유실물 리스트 -->
+                </div>
+            </div>
+        </div>
+        <!-- 모달창 -->
+        <!-- 모달창 끝 -->
+    </div>
+</div>
+</body>
+</html>

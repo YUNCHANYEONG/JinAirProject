@@ -1,0 +1,89 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<script src="../../../../static/userpage/app/promotion/event/winner_view.js"></script>
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/notice/nt_view.css"/>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi">
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="contentswrap">
+                <div class="title">
+                    <h2>공지사항</h2>
+                    <span>진에어의 다양한 소식을 알려드립니다.</span>
+                </div>
+                <div class="sns">
+                    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fbit.ly%2F3hQmnpU&text=%EA%B5%AD%EB%82%B4%EC%84%A0%20%EA%B9%80%ED%8F%AC-%ED%8F%AC%ED%95%AD%20%EB%B0%8F%20%ED%8F%AC%ED%95%AD-%EC%A0%9C%EC%A3%BC%20%EB%85%B8%EC%84%A0%20%EC%A6%9D%ED%8E%B8%20%EC%9A%B4%ED%95%AD%20%EC%95%88%EB%82%B4"
+                       onClick="window.open(this.href, '', 'width=800, height=430, top=200, left=300'); return false;">
+                        <span class="twitter snsIcon"></span>
+                    </a>
+                    <a href="https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fsharer.php%3Fu%3Dhttps%253A%252F%252Fbit.ly%252F3hQmnpU&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=ko_KR"
+                       onClick="window.open(this.href, '', 'width=800, height=430, top=200, left=300'); return false;">
+                        <span class="facebook snsIcon"></span>
+                    </a>
+                </div>
+                <div class="contents">
+                    <table class="noticeT" id="notiView">
+                        <colgroup>
+                            <col width = 60%>
+                            <col width = 40%>
+                        <tr>
+                            <th style="text-align: left">{{ notiView.noTitle }}</th>
+                            <th style="text-align: right">등록일 {{ notiView.noRegdate.substr(0, 10) }}</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="content">
+                                <p>
+                                    {{ notiView.noContents }}
+                                </p>
+                                <span class="jinTxt">Fly, better fly Jin Air</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="notiPriv">
+                        <colgroup><col width = 20%><col width = 80%></colgroup>
+                        <tr>
+                            <td colspan="2" style="text-indent: -999px">1234567863</td>
+                        </tr>
+                        <tr>
+                            <th>이전 글</th>
+                            <td class="prevP"><a :href=`/pages/notice/nt_view/${notiPriv.noIndex}`>{{ notiPriv.noTitle }}</a></td>
+                        </tr>
+                    </table>
+                    <table id="notiNext">
+                        <colgroup><col width = 20%><col width = 80%></colgroup>
+                        <tr>
+                            <th>다음 글</th>
+                            <td class="nextP"><a :href=`/pages/notice/nt_view/${notiNext.noIndex}`>{{ notiNext.noTitle }}</a></td>
+                        </tr>
+                    </table>
+                    <div class="listWrap">
+                        <a href="/pages/notice/notice"><input type="button" value="목록" class="listButt"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+</body>
+<script src="/userpage/app/notice/nt_view.js"></script>
+
+</html>

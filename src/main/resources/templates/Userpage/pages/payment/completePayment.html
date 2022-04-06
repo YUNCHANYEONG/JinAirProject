@@ -1,0 +1,49 @@
+
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/payment/completePayment.css">
+<script src="/userpage/app/payment/completePayment.js"></script>
+
+<body>
+<ul class="skipnavi">
+    <!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="mypage_main w_1160">
+            <div class="menu_title">
+                <p>취소가 완료 되었습니다.</p>
+            </div>
+            <div class="main_txt">
+                <ul>
+                    <li>ㆍ선택하신 예약이 모두 취소되었으며 취소하신 항공권, 부가서비스 등은 복구되지 않습니다.</li>
+                    <li>ㆍ재예약을 원하시는 경우 신규 예약을 진행해 주시기 바랍니다.</li>
+                    <li>ㆍ신용카드 결제의 경우 환불 소요 기간은 취소일로부터 5~7일 소요되며, 신용카드사 규정에 따라 차이가 있습니다.<br> 정확한 환불 일자는 3일(영업일 기준) 경과 후 신용카드사로 문의해 주시기 바랍니다.</li>
+                </ul>
+            </div>
+            <div class="btn">
+                <p>메인</p>
+            </div>
+        </div>
+    </div>
+    <!--container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<!--퀵 메뉴-->
+<!--퀵 메뉴 끝-->
+<div class="modal">
+</div>
+</body>
+</html>

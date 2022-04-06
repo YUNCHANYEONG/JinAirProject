@@ -1,0 +1,2328 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/payment/payReservation.css"/>
+<!-- head 끝 -->
+<body>
+<div>
+    <input type="hidden" th:each="dto : ${reserveApiResponse1}" class="cookies" th:id="${dto.reIndex}" th:value="${dto.reIndex}">
+    <input type="hidden" class="memid" th:each="memid, i : ${reserveApiResponse1}" th:if="${memid.reUserindex} != null and ${i.count} % 2 != 0" th:value="${memid.reUserindex}">
+    <input type="hidden" class="insuranceIndex" th:each="insuranceIndex : ${reserveApiResponse1}" th:if="${insuranceIndex.reInsuranceidx} != null" th:id="${insuranceIndex.reIndex}" th:value="${insuranceIndex.reInsuranceidx}">
+    <input type="hidden" class="baggageIndex" th:each="baggageIndex : ${reserveApiResponse1}" th:if="${baggageIndex.reBaggageidx} != null" th:id="${baggageIndex.reIndex}" th:value="${baggageIndex.reBaggageidx}">
+    <input type="hidden" class="seatNum" th:each="seat : ${reserveApiResponse1}" th:if="${seat.reIndex} != null" th:id="${seat.reSeatDetail}" th:value="${seat.reSeatPrice}">
+</div>
+<ul class="skipnavi">
+    <!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <!--contentswrap-->
+        <div class="contentswrap">
+            <!--여정선택-->
+            <div class="fix_trip_info">
+                <!--여정1-->
+                <div class="trip_info">
+                    <div class="schedule">
+                        <p><span id="triptype1"></span> 여정1</p>
+                        <p class="cursor arrow_img"></p>
+                        <p class="cursor arrow_img arrow_up_img"></p>
+                    </div>
+                    <div class="trip_area fs20">
+                        <p class="dep_area" id="go_area1">[[${reserveApiResponse1[0].reSchDepPoint}]] <span>[출발]</span><span id="goArea1"></span></p>
+                        <p class="arr_area" id="arr_area1">[[${reserveApiResponse1[0].reSchArrPoint}]] <span>[도착]</span><span id="arrArea1"></span></p>
+                    </div>
+                </div>
+                <!--여정1 끝-->
+                <!--여정2-->
+                <div class="trip_info2">
+                    <div class="schedule">
+                        <p><span id="triptype2"></span> 여정2</p>
+                    </div>
+                    <th:block th:if="${reserveApiResponse1[1].reIndex} != null">
+                        <div class="trip_area fs20">
+                            <p class="dep_area" id="go_area2">[[${reserveApiResponse1[1].reSchDepPoint}]] <span>[출발]</span><span id="goArea2"></span></p>
+                            <p class="arr_area" id="arr_area2">[[${reserveApiResponse1[1].reSchArrPoint}]] <span>[도착]</span><span id="arrArea2"></span></p>
+                        </div>
+                    </th:block>
+                </div>
+                <!--여정2 끝-->
+                <!--탑승객 수-->
+                <div class="nop">
+                    <p>탑승객수</p>
+                    <p class="fs20" id="person_cnt">[[${reserveApiResponse1[0].rePeopleType}]]</p>
+                </div>
+                <!--탑승객 수 끝-->
+                <!--수정버튼-->
+                <input type="button" value="수정" onclick="updateTrip()" class="trip_edit_butt fs20">
+                <!--수정버튼 끝-->
+            </div>
+            <!--여정선택 끝-->
+            <!--탑승객 정보-->
+            <div class="select_wrap">
+                <!--결제 헤더-->
+                <div class="title">결제</div>
+                <div class="select_step">
+                    <p>Step</p><span class="div"> </span>
+                    <p>1 여정선택</p><span class="div"> </span>
+                    <p>2 항공편 선택</p><span class="div"> </span>
+                    <p>3 탑승객 정보</p><span class="div"> </span>
+                    <p>4 부가서비스</p><span class="div"> </span>
+                    <p class="fcpup bb">5 결제</p>
+                </div>
+                <!--결제 헤더 끝-->
+            </div>
+            <!--결제랩-->
+            <div class="pay_wrap">
+                <!--탑승객 정보-->
+                <div class="passenger_wrap">
+                    <h2>탑승객 정보</h2>
+                    <table class="passenger_info_T">
+                        <colgroup>
+                            <col width="25%">
+                            <col width="20%">
+                            <col width="25%">
+                            <col width="30%">
+                        </colgroup>
+                        <tr>
+                            <th class="borderT">성명</th>
+                            <th class="borderT">구분</th>
+                            <th class="borderT">생년월일</th>
+                            <th class="borderT">국적</th>
+                        </tr>
+                        <tr th:each="passengerDto, i : ${reserveApiResponse1}" th:if="${i.count} % 2 != 0">
+                            <td>[[${passengerDto.reFirstName}]]/[[${passengerDto.reLastName}]]</td>
+                            <td class="birthD" th:value="${passengerDto.reBirth}"></td>
+                            <td>[[${passengerDto.reBirth}]]</td>
+                            <td>[[${passengerDto.reNation}]]</td>
+                        </tr>
+                    </table>
+                </div>
+                <!--탑승객 정보 끝-->
+                <!--운임규정-->
+                <div class="fare_wrap">
+                    <h2>여정 및 운임정보</h2>
+                    <div class="fare_info borderT">
+                        <p class="tit" id="tripinfo1"></p>
+                        <div class="jour_wrap">
+                            <!--여정1-->
+                            <div class="jour1_wrap">
+                                <p class="flight">여정 1 [[${reserveApiResponse1[0].reSchName}]]</p>
+                                <div class="area1_wrap area_wrap">
+                                    <div class="depart">
+                                        <p class="area">[[${reserveApiResponse1[0].reSchDepPoint}]]</p>
+                                        <p class="time" id="godate">[출발] <span id="spanStart1" th:value="${reserveApiResponse1[0].reSchStartTime}"></span></p>
+                                    </div>
+                                    <p class="arrow"><img src="/userpage/lib/img/right_arrow.PNG" alt=""></p>
+                                    <div class="arr">
+                                        <p class="area">[[${reserveApiResponse1[0].reSchArrPoint}]]</p>
+                                        <p class="time">[도착] <span id="spanEnd1" th:value="${reserveApiResponse1[0].reSchEndTime}"></span></p>
+                                    </div>
+                                    <p class="detail detail1 cursor">View Flight Details</p>
+                                </div>
+                            </div>
+                            <!--여정1 끝-->
+                            <!--여정2-->
+                            <th:block th:if="${reserveApiResponse1[1].reIndex} != null">
+                            <div class="jour2_wrap">
+                                <p class="flight">여정 2 [[${reserveApiResponse1[0].reSchName}]]</p>
+                                <div class="area2_wrap area_wrap">
+                                    <div class="depart">
+                                        <p class="area">[[${reserveApiResponse1[1].reSchDepPoint}]]</p>
+                                        <p class="time">[출발] <span id="spanStart2" th:value="${reserveApiResponse1[1].reSchStartTime}"></span></p>
+                                    </div>
+                                    <p class="arrow"><img src="/userpage/lib/img/right_arrow.PNG" alt=""></p>
+                                    <div class="arr">
+                                        <p class="area">[[${reserveApiResponse1[1].reSchArrPoint}]]</p>
+                                        <p class="time">[도착] <span id="spanEnd2" th:value="${reserveApiResponse1[1].reSchEndTime}"></span></p>
+                                    </div>
+                                    <p class="detail detail2 cursor">View Flight Details</p>
+                                </div>
+                            </div>
+                            </th:block>
+                            <!--여정2 끝-->
+                            <div class="tot">
+                                <p class="txt">총 운임</p>
+                                <p class="price_wrap"><span class="cul">KRW</span><span
+                                        class="price priceSum">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="fare_info_T">
+                        <colgroup>
+                            <col width="85%">
+                            <col width="15%">
+                        </colgroup>
+                        <tr>
+                            <td>항공운임</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="areaTtotal">0</span>
+                                    <span class="arrow">
+                                                <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                     class="arr_bott arr_bott1 cursor">
+                                                <img src="/userpage/lib/img/arr_top.png" alt="위" class="arr_top arr_top1 cursor">
+                                            </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add1">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <th:block th:each="area, i : ${reserveApiResponse1}">
+                                        <tr>
+                                            <td>구간 <span th:text="1" th:if="${i.count} % 2 != 0"></span><span th:text="2" th:if="${i.count} % 2 == 0"></span> : [[${area.reSchDepPoint}]]</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="name">[[${area.reFirstName}]]/[[${area.reLastName}]]</span></td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price areaPrice" th:value="${area.reSchBasicPrice}">0</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>유류할증료</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price oilT">0</span>
+                                    <span class="arrow">
+                                                <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                     class="arr_bott arr_bott2 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                                                                            alt="위" class="arr_top arr_top2 cursor">
+                                            </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add2">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <th:block th:each="area, j : ${reserveApiResponse1}">
+                                        <tr>
+                                            <td>구간 <span th:text="1" th:if="${j.count} % 2 != 0"></span><span th:text="2" th:if="${j.count} % 2 == 0"></span>  : [[${area.reSchDepPoint}]]</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="name">[[${area.reFirstName}]]/[[${area.reLastName}]]</span></td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price oil"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>세금</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price taxT">0</span>
+                                    <span class="arrow">
+                                                <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                     class="arr_bott arr_bott3 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                                                                            alt="위" class="arr_top arr_top3 cursor">
+                                        </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add3">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="85%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <th:block th:each="area, k : ${reserveApiResponse1}">
+                                        <tr>
+                                            <td>구간 <span th:text="1" th:if="${k.count} % 2 != 0"></span><span th:text="2" th:if="${k.count} % 2 == 0"></span> : [[${area.reSchDepPoint}]]</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="name">[[${area.reFirstName}]]/[[${area.reLastName}]]</span></td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price tax"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--운임규정 끝-->
+                <!--부가서비스 확인-->
+                <div class="service_wrap">
+                    <h2>부가서비스 구매/취소</h2>
+                    <table class="service_T">
+                        <colgroup>
+                            <col width="85%">
+                            <col width="15%">
+                        </colgroup>
+                        <tr>
+                            <td class="borderT">총 운임</td>
+                            <td class="borderT">
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span><span class="price optPrice"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>사전좌석지정</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price seatT">0</span>
+                                    <span class="arrow">
+                                                <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                     class="arr_bott arr_bott4 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                                                                            alt="위" class="arr_top arr_top4 cursor">
+                                            </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add4">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="40%">
+                                        <col width="45%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <th:block th:each="opt1, k : ${reserveApiResponse1}">
+                                        <tr>
+                                            <td>구간 <span th:text="1" th:if="${k.count} % 2 != 0"></span><span th:text="2" th:if="${k.count} % 2 == 0"></span> : [[${opt1.reSchDepPoint}]]</td>
+                                            <td></td>
+                                            <td style="height: 61px!important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="name">[[${opt1.reFirstName}]]/[[${opt1.reLastName}]]</span></td>
+                                            <td></td>
+                                            <td style="height: 61px!important;">
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span><span class="price priceOpt" th:if="${opt1.reSeatPrice} != null" th:value="${opt1.reSeatPrice}"></span>
+                                                    <span class="price" th:if="${opt1.reSeatPrice} == null" th:text="0"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>초과수하물</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price" id="bagPriceT">0</span>
+                                    <span class="arrow">
+                                                <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                     class="arr_bott arr_bott5 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                                                                            alt="위" class="arr_top arr_top5 cursor">
+                                            </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add5">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="40%">
+                                        <col width="45%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <th:block th:each="opt2, k : ${reserveApiResponse1}">
+                                        <tr>
+                                            <td>구간 <span th:text="1" th:if="${k.count} % 2 != 0"></span><span th:text="2" th:if="${k.count} % 2 == 0"></span> : [[${opt2.reSchDepPoint}]]</td>
+                                            <td></td>
+                                            <td style="height: 61px!important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="name">[[${opt2.reFirstName}]]/[[${opt2.reLastName}]]</span></td>
+                                            <td class="bgst" th:if="${opt2.reBaggageidx} != null" th:value="${opt2.reBaggageidx}"></td>
+                                            <td class="bgst" th:if="${opt2.reBaggageidx} == null"></td>
+                                            <td>
+                                                <div class="td_wrap">
+                                                    <span class="cul">KRW</span>
+                                                    <span class="price bgPrice" th:id="${opt2.reBaggageidx}"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>여행보험</td>
+                            <td>
+                                <div class="td_wrap">
+                                    <span class="cul">KRW</span>
+                                    <span class="price incPriceT">0</span>
+                                    <span class="arrow">
+                                             <img src="/userpage/lib/img/arr_bott.png" alt="아래"
+                                                  class="arr_bott arr_bott6 cursor"><img src="/userpage/lib/img/arr_top.png"
+                                                                                         alt="위" class="arr_top arr_top6 cursor">
+                                        </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="datail_add datail_add6">
+                            <td colspan="2" class="detail_td">
+                                <table class="detail_T detail1_T">
+                                    <colgroup>
+                                        <col width="40%">
+                                        <col width="45%">
+                                        <col width="15%">
+                                    </colgroup>
+                                    <th:block th:each="opt3, k : ${reserveApiResponse1}">
+                                        <tr>
+                                            <td>구간 <span th:text="1" th:if="${k.count} % 2 != 0"></span><span th:text="2" th:if="${k.count} % 2 == 0"></span> : [[${opt3.reSchDepPoint}]]</td>
+                                            <td></td>
+                                            <td style="height: 61px!important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="name">[[${opt3.reFirstName}]]/[[${opt3.reLastName}]]</span></td>
+                                            <td class="insType" th:if="${opt3.reInsuranceidx} != ''" th:class="issu" th:value="${opt3.reInsuranceidx}"></td>
+                                            <td style="height: 61px!important;">
+                                                <span class="cul">KRW</span>
+                                                <span th:if="${opt3.reInsuranceidx} != ''" class="price insPrice" th:value="${opt3.reInsuranceidx}">
+                                                    </span>
+                                            </td>
+                                        </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--부가서비스 확인 끝-->
+                <!--할인-->
+                <div class="discount_wrap">
+                    <h2>쿠폰/카드 제휴 할인</h2>
+                    <table class="discount_T discount_title">
+                        <tr>
+                            <td>
+                                <label for="coupone"><input type="radio" name="discount" id="coupone" checked>쿠폰
+                                    할인</label>
+                                <label for="card"><input type="radio" name="discount" id="card">카드 제휴 할인</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="discount_T discount_coup">
+                        <tr>
+                            <td>
+                                <select name="sel_coupon" id="sel_coupon" placeholder="선택">
+                                    <option value="undefined">선택</option>
+                                    <option v-for="dto in sel_coupon" v-bind:value="dto.ucDiscount" v-bind:value2="dto.ucCode">{{dto.ucDesc}}</option>
+                                </select>
+                                <input type="button" value="적용" class="butt_apply cursor" id="checkBut">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>결제 건당 쿠폰 1개만 사용이 가능하며 중복 사용은 불가합니다.</li>
+                                    <li>쿠폰에 기재된 '결제통화'로 결제 시에만 사용이 가능합니다.</li>
+                                    <li>유효기간 만료 시 자동 소멸되어 사용 및 환급이 불가합니다.</li>
+                                    <li>쿠폰의 금액이 전체 항공운임(유류세/TAX 불포함) 혹은 부가서비스 금액보다 큰 경우, 할인 적용 후 쿠폰의 잔액은 자동
+                                        소멸됩니다.</li>
+                                    <li>운임 할인 쿠폰이 적용된 예약은 날짜 및 여정변경/부분취소 등이 불가합니다.<br>변경이 필요한 경우 전체 예약 취소/환불 후
+                                        재구매하시기 바라며, 이 경우 유효기간이 만료하지 않은 할인 쿠폰은 원복되어 재사용이 가능합니다.</li>
+                                    <li>부가서비스 할인 쿠폰이 적용된 경우, 부가서비스 일부의 취소는 불가하며 전체 부가서비스를 함께 취소/환불 후 재구매하시기
+                                        바랍니다.<br>이 경우 유효기간이 만료하지 않은 할인 쿠폰은 원복되어 재사용이 가능합니다.</li>
+                                    <li>프로모션 코드, 신분 할인 및 기타 할인(제휴, 특별할인) 과의 중복 사용에 제약이 있을 수 있습니다.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="discount_T discount_card">
+                        <tr>
+                            <td>
+                                <select name="sel_card" id="sel_card" placeholder="선택">
+                                    <option value="">선택</option>
+                                    <option value="">KB국민 Easy Fly 티타늄카드 부가서비스 할인</option>
+                                    <option value="">Air Money/TOP Point/유니마일 사용</option>
+                                    <option value="">BC 법인 카드 할인</option>
+                                </select>
+                                <input type="button" value="적용" class="butt_apply">
+                            </td>
+                        </tr>
+                        <tr class="card card1">
+                            <td>
+                                <p class="txt_top">[KB국민 Easy fly 티타늄카드 부가서비스 즉시 할인 관련 안내]</p>
+                                <ul>
+                                    <li>KB 국민 Easy fly 티타늄카드 부가서비스 즉시 할인은 여행보험을 제외한 부가서비스 대상 적용됩니다.</li>
+                                    <li>할인 전 부가서비스 구매금액 기준 총 1만원 초과시에 한하여, 결제 건당 1만원 즉시 할인 적용됩니다.</li>
+                                    <li>부가서비스 할인이 적용된 경우, 할인 적용된 부가서비스 일부의 취소는 불가하며 전체 부가서비스를 함께 취소/환불 후 재구매하시기
+                                        바랍니다.</li>
+                                    <li>KB국민 Easy fly 티타늄카드로 결제 시에만 적용됩니다.</li>
+                                    <li>서비스 제공 가능 여부는 최종 결제 시 KB국민카드에서 검증하며, 제공 불가시 예약/구매 절차가 초기화될 수 있으므로 유의하시기
+                                        바랍니다.</li>
+                                    <li>KB국민 Easy fly 티타늄카드의 항공권 청구할인 서비스는 본 즉시할인과 중복으로 KB국민카드에서 제공합니다.</li>
+                                    <li>기타 자세한 사항은 KB국민카드 홈페이지 또는 고객센터(1588-1688)로 확인해주시기 바랍니다.</li>
+                                </ul>
+                                <p class="txt_bott">
+                                <p class="link"><a
+                                        href="https://card.kbcard.com/CXPRICAC0076.cms?mainCC=a&issueStateType=3&cooperationcode=09245&solicitorcode=7039000051"
+                                        target="_blank">[KB국민 Easy fly 티타늄카드 자세히 보기]</a></p>
+                                <p class="hp">준법감시인 심의필 제190610-01849-HPP</p>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="card card2">
+                            <td>
+                                <ul>
+                                    <li>Air Money / TOP 포인트 / 유니마일 사용 선택 시 아래의 카드 종류는 "비씨카드"로 선택 바랍니다</li>
+                                    <li>고객님께서 결제 하실 카드에 따라<br>
+                                        Air Money 카드 사용 시 Air Money 포인트 차감,<br>
+                                        유니마일 카드 사용 시 유니마일에서 포인트 차감,<br>
+                                        그 밖의 BC 카드 사용 시 TOP 포인트가 차감됩니다.<br>
+                                        (단, 최대 해당 카드 결제 금액까지만 차감됩니다.)<br>
+                                        포인트 사용 처리는 해당 결제일에 차감되며 포인트 사용 문의는 BC카드 고객센터(1588-4000)로 연락바랍니다.
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="card card3">
+                                <ul>
+                                    <li>항공운임 기준으로 결제 금액에 따라 할인액이 상이하며 최초 결제 시에만 적용됩니다.</li>
+                                    <li>운임 할인이 적용된 예약은 날짜 및 여정변경/부분취소 등이 불가합니다. 변경이 필요한 경우 전체 예약 취소/환불 후 재구매하시기
+                                        바랍니다.</li>
+                                    <li>[ 결제 금액별 할인액 (최초 결제 기준) ]<br>
+                                        10만원 이상 결제 시 1만원 할인<br>
+                                        20만원 이상 결제 시 1만 5천원 할인<br>
+                                        30만원 이상 결제 시 2만원 할인</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--할인 끝-->
+                <!--결제정보-->
+                <div class="pay_info_wrap">
+                    <h2>결제정보</h2>
+                    <table class="pay_info_T">
+                        <colgroup>
+                            <col width="33.3%">
+                            <col width="33.3%">
+                            <col width="33.3%">
+                        </colgroup>
+                        <tr>
+                            <td>
+                                <p class="tit">총 운임</p>
+                                <p class="price_wrap"><span class="cul">KRW</span><span
+                                        class="price" id="pPrice">0</span></p>
+                            </td>
+                            <td>
+                                <p class="tit">할인금액</p>
+                                <p class="price_wrap"><span class="cul">KRW</span><span class="price" id="disC">0</span>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="tit">최종 결제금액</p>
+                                <p class="price_wrap"><span class="cul">KRW</span><span
+                                        class="price tot" id="totalPrice"></span></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--결제정보 끝-->
+                <!--결제-->
+                <div class="payment_wrap">
+                    <h2>결제방식</h2>
+                    <table class="payment_T">
+                        <colgroup>
+                            <col width="15%">
+                            <col width="85%">
+                        </colgroup>
+                        <tr>
+                            <td class="method_tit normal">
+                                일반결제
+                            </td>
+                            <td>
+                                <div class="card_wrap">
+                                    <label for="payM1">
+                                        <input type="radio" name="payM" id="payM1" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap1 cursor">
+                                            <p id="cardImg1" class="cardImg1"></p>
+                                            <p class="text">신용카드</p>
+                                        </div>
+                                    </label>
+                                    <label for="payM2">
+                                        <input type="radio" name="payM" id="payM2" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap2 cursor">
+                                            <p id="cardImg2" class="cardImg2"></p>
+                                            <p class="text"></p>
+                                        </div>
+                                    </label>
+                                    <label for="payM3">
+                                        <input type="radio" name="payM" id="payM3" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap3 cursor">
+                                            <p id="cardImg3" class="cardImg3"></p>
+                                            <p class="text">계좌이체</p>
+                                        </div>
+                                    </label>
+                                </div>
+                                <select id="selectCardCode" name="selectCardCode" title="카드 종류">
+                                    <option value="">카드를 선택해 주십시오. </option>
+                                    <option value="026">비씨카드(페이북)</option>
+                                    <option value="029">신한카드</option>
+                                    <option value="016">KB국민카드</option>
+                                    <option value="031">삼성카드</option>
+                                    <option value="027">현대카드</option>
+                                    <option value="047">롯데카드</option>
+                                    <option value="021">우리카드</option>
+                                    <option value="006">하나카드</option>
+                                    <option value="018">NH농협카드</option>
+                                    <option value="022">씨티카드</option>
+                                    <option value="F26">부산은행</option>
+                                    <option value="E26">대구은행</option>
+                                    <option value="H26">경남은행</option>
+                                    <option value="011">제주은행</option>
+                                    <option value="002">광주은행</option>
+                                    <option value="010">전북은행</option>
+                                    <option value="058">KDB산업은행</option>
+                                    <option value="017">수협은행</option>
+                                </select>
+                                <select name="selectInstallment" id="selectInstallment" class="select valid"
+                                        aria-invalid="false">
+                                    <option value="00">일시불</option>
+                                    <option value="02">2개월</option>
+                                    <option value="03">3개월</option>
+                                    <option value="04">4개월</option>
+                                    <option value="05">5개월</option>
+                                    <option value="06">6개월</option>
+                                    <option value="07">7개월</option>
+                                    <option value="08">8개월</option>
+                                    <option value="09">9개월</option>
+                                    <option value="10">10개월</option>
+                                    <option value="11">11개월</option>
+                                    <option value="12">12개월</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="easy">
+                            <td class="method_tit easy">
+                                간편결제
+                            </td>
+                            <td>
+                                <label for="payM4">
+                                    <input type="radio" name="payM" id="payM4" class="payM">
+                                    <div class="cardImg_wrap cardImg_wrap4 cursor">
+                                        <p id="cardImg4" class="cardImg4"></p>
+                                    </div>
+                                </label>
+                                <div class="sel_easy_more cursor">
+                                    <span>기타 간편결제를 선택하세요</span><span class="arr"><img src="/userpage/lib/img/arr_bott.png"
+                                                                                      alt="" width="13px"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="easy_more">
+                            <td></td>
+                            <td>
+                                <div class="card_wrap card_wrap2">
+                                    <label for="payM5">
+                                        <input type="radio" name="payM" id="payM5" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap5 cursor">
+                                            <p id="cardImg5" class="cardImg5"></p>
+                                        </div>
+                                    </label>
+                                    <label for="payM6">
+                                        <input type="radio" name="payM" id="payM6" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap6 cursor">
+                                            <p id="cardImg6" class="cardImg6"></p>
+                                            <p class="text"></p>
+                                        </div>
+                                    </label>
+                                    <label for="payM7">
+                                        <input type="radio" name="payM" id="payM7" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap7 cursor">
+                                            <p id="cardImg7" class="cardImg7"></p>
+                                        </div>
+                                    </label>
+                                    <label for="payM8">
+                                        <input type="radio" name="payM" id="payM8" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap8 cursor">
+                                            <p id="cardImg8" class="cardImg8"></p>
+                                        </div>
+                                    </label>
+                                    <label for="payM9">
+                                        <input type="radio" name="payM" id="payM9" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap9 cursor">
+                                            <p id="cardImg9" class="cardImg9"></p>
+                                        </div>
+                                    </label>
+                                    <label for="payM10">
+                                        <input type="radio" name="payM" id="payM10" class="payM">
+                                        <div class="cardImg_wrap cardImg_wrap10 cursor">
+                                            <p id="cardImg10" class="cardImg10"></p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul>
+                                    <li>안전한 신용거래를 위해 안전결제(ISP) 혹은 안심클릭(MPI) 인증이 가능한 국내발행 카드에 한해 결제하실 수 있습니다.
+                                    </li>
+                                    <li>결제금액이 30만원이 넘는 경우 공인인증서 사용이 의무화되어 있습니다.</li>
+                                    <li>ActiveX 프로그램이 제대로 설치가 되지 않은 경우에는 결제가 정상적으로 진행되지 않습니다.</li>
+                                    <li>해외발행 카드 사용의 경우 진에어 해외 사이트에서 결제하실 수 있습니다.</li>
+                                    <li>일부 선불카드(기프트카드)는 사용하실 수 없습니다.</li>
+                                </ul>
+                                <div class="dis_int cursor">무이자 할부 및 혜택안내</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="checkbox_wrap">
+                                <label for="checkbox"><input type="checkbox" id="checkbox"  class="checkbox">운송제한품목 보기를 확인하였으며 이에
+                                    동의합니다.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="butt_pay_wrap">
+                                <input type="button" value="결제" class="butt_pay cursor">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--결제 끝-->
+                <div id="modal_restricted_items_wrap">
+                    <div class="modal_restricted_items_wrap">
+                        <div class="modal_title">
+                            <span class="txt">항공기 위험물 안내</span>
+                            <span class="close cursor"><img src="/userpage/lib/img/close.png" alt="닫기" width="35px"></span>
+                        </div>
+                        <div class="modal_contents">
+                            <div class="top">
+                                <ul>
+                                    <li>국제민간항공기구(ICAO) 및 국제항공운송협회(IATA)에서 지정한 항공위험물은 수하물로 운송될 수 없습니다.</li>
+                                    <li>항공기 및 개인 또는 타인의 재산에 위험을 가져올 수 있는 항공위험물 안내</li>
+                                </ul>
+                                <div class="detail_link cursor">
+                                    <a href="/pages/index/baggage" target="_blank">자세히 보기</a>
+                                </div>
+                                <div class="item_list_wrap">
+                                    <div class="list list1">
+                                        <p class="txt">폭발물</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list1-1.jpg" alt="탄약"></td>
+                                                <td><img src="/userpage/lib/img/list1-2.jpg" alt="폭죽"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>탄약</p>
+                                                    <p>Ammunition</p>
+                                                </td>
+                                                <td>
+                                                    <p>폭죽</p>
+                                                    <p>Fireworks</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="list list2">
+                                        <p class="txt">가스류</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list2-1.jpg" alt="에어로즐"></td>
+                                                <td><img src="/userpage/lib/img/list2-2.jpg" alt="부탄가스"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>에어로즐</p>
+                                                    <p>Aerosols</p>
+                                                </td>
+                                                <td>
+                                                    <p>부탄가스</p>
+                                                    <p>Butane Gas</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="list list3">
+                                        <p class="txt">인화성 액체</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list3-1.jpg" alt="페인트"></td>
+                                                <td><img src="/userpage/lib/img/list-3-2.jpg" alt="알코올"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>페인트</p>
+                                                    <p>Paint</p>
+                                                </td>
+                                                <td>
+                                                    <p>알코올</p>
+                                                    <p>Alcohol</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="list list4">
+                                        <p class="txt">인화성 고체</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list4-1.jpg" alt="고체연료"></td>
+                                                <td><img src="/userpage/lib/img/list4-2.jpg" alt="번개탄"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>고체연료</p>
+                                                    <p>Solid Fuel</p>
+                                                </td>
+                                                <td>
+                                                    <p>번개탄</p>
+                                                    <p>Ignition Coal</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="list list5">
+                                        <p class="txt">산화성 물질</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list5-1.jpg" alt="락스"></td>
+                                                <td><img src="/userpage/lib/img/list5-2.jpg" alt="표백제"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>락스</p>
+                                                    <p>Clorox</p>
+                                                </td>
+                                                <td>
+                                                    <p>표백제</p>
+                                                    <p>Bleach</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="list list6">
+                                        <p class="txt">독성 및 전염성 물질</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list6-1.jpg" alt="제초제"></td>
+                                                <td><img src="/userpage/lib/img/list6-2.jpg" alt="살충제"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>제초제</p>
+                                                    <p>Herbcide</p>
+                                                </td>
+                                                <td>
+                                                    <p>살충제</p>
+                                                    <p>Pesticide</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="list list7">
+                                        <p class="txt">방사성 물질</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list7-1.jpg" alt="방사성 동위원소"></td>
+                                                <td><img src="/userpage/lib/img/list7-2.jpg" alt="방사선 투과검사 장비"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>방사성 동위원소</p>
+                                                    <p>Radioisotope</p>
+                                                </td>
+                                                <td>
+                                                    <p>방사선 투과검사</p>
+                                                    <p>Radiographic <br>Test Equipment</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="list list8">
+                                        <p class="txt">부식성 물질</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list8-1.jpg" alt="습식 배터리"></td>
+                                                <td><img src="/userpage/lib/img/list8-2.jpg" alt="수은 온도계"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>습식 배터리</p>
+                                                    <p>Wet Battery</p>
+                                                </td>
+                                                <td>
+                                                    <p>수은 온도계</p>
+                                                    <p>Mercury <br>Thermometer</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="list list9">
+                                        <p class="txt">기타 위험 물질</p>
+                                        <table>
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <tr>
+                                                <td><img src="/userpage/lib/img/list9-1.jpg" alt="여분의 리튬"></td>
+                                                <td><img src="/userpage/lib/img/list9-2.jpg" alt="드라이 아이스"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>여분의 리튬</p>
+                                                    <p>Spare Li-ion<br>Batteries<br>(휴대만 가능)</p>
+                                                </td>
+                                                <td>
+                                                    <p>드라이 아이스</p>
+                                                    <p>Dry Ice</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <label for="modal_checkbox" class="modal_checkbox_wrap">
+                                    <input type="checkbox" name="modal_checkbox" id="modal_checkbox">운송제한품목
+                                    보기를 확인하였으며 이에 동의합니다.
+                                </label>
+                                <div class="button_wrap">
+                                    <input type="button" value="확인" class="butt butt_ok cursor">
+                                    <input type="button" value="취소" class="butt butt_canc cursor">
+                                </div>
+                                <div class="modal_conf_ok_wrap">
+                                    <div class="modal_conf_ok">
+                                        위 내용을 확인 후 동의하셔야 다음 단계 진행이 가능합니다.
+                                        <p>
+                                            <input type="button" value="확인" class="cursor">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--항공기 위험물 안내 모달창 끝-->
+                <!--운임 규정 안내 모달창-->
+                <div id="modal_fare_rules">
+                    <div class="modal_fare_rules">
+                        <div class="modal_title">
+                            <span class="text">운임 규정 안내</span>
+                            <span class="close cursor"><img src="/userpage/lib/img/close.png" alt="닫기" width="30px"></span>
+                        </div>
+                        <div class="modal_contents">
+                            <h4>가는편</h4>
+                            <table class="rules1 rules_T">
+                                <colgroup>
+                                    <col width="20%">
+                                    <col width="80%">
+                                </colgroup>
+                                <tr>
+                                    <th>예약변경</th>
+                                    <td>
+                                        <ul>
+                                            <li>~ 61일 전 : 편도 당 KRW 1,000 징수</li>
+                                            <li>60일 전 ~ 31일 전 : 편도 당 KRW 3,000 징수</li>
+                                            <li>30일 전 ~ 15일 전 : 편도 당 KRW 4,000 징수</li>
+                                            <li>14일 전 ~ 2일 전 : 편도 당 KRW 8,000 징수</li>
+                                            <li>1일 전 ~ 출발시간 전 : 편도 당 KRW 10,000 징수</li>
+                                            <li>출발시간 이후(NO-SHOW) : 편도 당 KRW 15,000 징수 (예약부도 위약금 포함)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>환불</th>
+                                    <td>
+                                        <ul>
+                                            <li>~ 61일 전 : 편도 당 KRW 1,000 징수</li>
+                                            <li>60일 전 ~ 31일 전 : 편도 당 KRW 3,000 징수</li>
+                                            <li>30일 전 ~ 15일 전 : 편도 당 KRW 4,000 징수</li>
+                                            <li>14일 전 ~ 2일 전 : 편도 당 KRW 8,000 징수</li>
+                                            <li>1일 전 ~ 출발시간 전 : 편도 당 KRW 10,000 징수</li>
+                                            <li>출발시간 이후(NO-SHOW) : 편도 당 KRW 15,000 징수 (예약부도 위약금 포함)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>할인</th>
+                                    <td>
+                                        <ul>
+                                            <li>소아: 성인 운임의 10% 할인</li>
+                                            <li>유아: 성인 운임의 100% 할인</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>나비포인트</th>
+                                    <td>
+                                        <span>진에어 국내선 탑승 시, 운임 종류 별 나비포인트 적립률</span>
+                                        <ul>
+                                            <li>지니비즈: 150%</li>
+                                            <li>지니: 100%</li>
+                                            <li>플렉스: 80%</li>
+                                            <li>슈퍼로우 및 그 외 적립 불가</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>기타안내</th>
+                                    <td>
+                                        <ul>
+                                            <li>• 운임종류 : 정상운임 (Y)</li>
+                                            <li>• 신분할인 : 가능 (예, 군인, 장애인, 제주도민 등), 단, 탑승 시 할인증빙서류 지참</li>
+                                            <li>• 소아할인 : 가능 (만 24개월 이상 ~ 만 13세 미만), 단, 탑승 시 할인증빙서류 지참</li>
+                                            <li>• 변경/환불 수수료 : 징수</li>
+                                            <li>• 나비포인트 적립 : 가능 (100%)</li>
+                                            <li>• 구매 후 변경(날짜, 탑승편, 운임종류, 좌석종류)은 잔여 좌석이 있는 동일 또는 상위운임으로만 가능하며 운임
+                                                차액이 발생할 수 있습니다.</li>
+                                            <li>• 환불 신청 기한은 항공권 유효기간 만료일로부터 30일 이내이며, 그 이후에 요청하실 경우 환불이 거절될 수
+                                                있습니다.</li>
+                                            <li>• 항공권의 유효기간은 전체 미사용 항공권의 경우 발행일로부터 1년, 여행 개시 후에는 최초 출발일로부터
+                                                1년입니다.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                            <h4>오는편</h4>
+                            <table class="rules2 rules_T">
+                                <colgroup>
+                                    <col width="20%">
+                                    <col width="80%">
+                                </colgroup>
+                                <tr>
+                                    <th>예약변경</th>
+                                    <td>
+                                        <ul>
+                                            <li>~ 61일 전 : 편도 당 KRW 1,000 징수</li>
+                                            <li>60일 전 ~ 31일 전 : 편도 당 KRW 3,000 징수</li>
+                                            <li>30일 전 ~ 15일 전 : 편도 당 KRW 4,000 징수</li>
+                                            <li>14일 전 ~ 2일 전 : 편도 당 KRW 8,000 징수</li>
+                                            <li>1일 전 ~ 출발시간 전 : 편도 당 KRW 10,000 징수</li>
+                                            <li>출발시간 이후(NO-SHOW) : 편도 당 KRW 15,000 징수 (예약부도 위약금 포함)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>환불</th>
+                                    <td>
+                                        <ul>
+                                            <li>~ 61일 전 : 편도 당 KRW 1,000 징수</li>
+                                            <li>60일 전 ~ 31일 전 : 편도 당 KRW 3,000 징수</li>
+                                            <li>30일 전 ~ 15일 전 : 편도 당 KRW 4,000 징수</li>
+                                            <li>14일 전 ~ 2일 전 : 편도 당 KRW 8,000 징수</li>
+                                            <li>1일 전 ~ 출발시간 전 : 편도 당 KRW 10,000 징수</li>
+                                            <li>출발시간 이후(NO-SHOW) : 편도 당 KRW 15,000 징수 (예약부도 위약금 포함)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>할인</th>
+                                    <td>
+                                        <ul>
+                                            <li>소아: 성인 운임의 10% 할인</li>
+                                            <li>유아: 성인 운임의 100% 할인</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>나비포인트</th>
+                                    <td>
+                                        <span>진에어 국내선 탑승 시, 운임 종류 별 나비포인트 적립률</span>
+                                        <ul>
+                                            <li>지니비즈: 150%</li>
+                                            <li>지니: 100%</li>
+                                            <li>플렉스: 80%</li>
+                                            <li>슈퍼로우 및 그 외 적립 불가</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>기타안내</th>
+                                    <td>
+                                        <ul>
+                                            <li>• 운임종류 : 정상운임 (Y)</li>
+                                            <li>• 신분할인 : 가능 (예, 군인, 장애인, 제주도민 등), 단, 탑승 시 할인증빙서류 지참</li>
+                                            <li>• 소아할인 : 가능 (만 24개월 이상 ~ 만 13세 미만), 단, 탑승 시 할인증빙서류 지참</li>
+                                            <li>• 변경/환불 수수료 : 징수</li>
+                                            <li>• 나비포인트 적립 : 가능 (100%)</li>
+                                            <li>• 구매 후 변경(날짜, 탑승편, 운임종류, 좌석종류)은 잔여 좌석이 있는 동일 또는 상위운임으로만 가능하며 운임
+                                                차액이 발생할 수 있습니다.</li>
+                                            <li>• 환불 신청 기한은 항공권 유효기간 만료일로부터 30일 이내이며, 그 이후에 요청하실 경우 환불이 거절될 수
+                                                있습니다.</li>
+                                            <li>• 항공권의 유효기간은 전체 미사용 항공권의 경우 발행일로부터 1년, 여행 개시 후에는 최초 출발일로부터
+                                                1년입니다.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="bott">
+                                <label for="checkBox2" class="checkBox_wrap">
+                                    <input type="checkbox" name="checkBox2" id="checkBox2">각 여정에 대한 운임 규정을 확인하였으며
+                                    동의합니다.
+                                </label>
+                                <p>항공권 구매 당일 예약 변경 및 환불 시에는 수수료 및 위약금이 부과되지 않습니다.</p>
+                                <div class="butt_wrap">
+                                    <input type="button" value="확인" class="butt butt_ok cursor" id="finalPayment">
+                                    <input type="button" value="취소" class="butt butt_canc cursor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal_conf_ok_wrap">
+                        <div class="modal_conf_ok">
+                            위 내용을 확인 후 동의하셔야 다음 단계 진행이 가능합니다.
+                            <p>
+                                <input type="button" value="확인" class="butt_conf cursor">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--운임 규정 안내 모달창 끝-->
+                <!--신용카드 무이자 할부 및 혜택 안내 모달창-->
+                <div id="modal_credit_int">
+                    <div class="modal_credit_int">
+                        <div class="modal_credit_title">
+                            <span class="text">신용카드 무이자 할부 및 혜택 안내</span>
+                            <span class="close cursor"><img src="/userpage/lib/img/close.png" alt="닫기" width="30px"></span>
+                        </div>
+                        <div class="modal_credit_contents">
+                            <div class="top">
+                                <ul>
+                                    <li>기간: 2022년 2월 1일 ~ 2022년 2월 28일</li>
+                                    <li>대상: 진에어 홈페이지, 모바일 및 예약센터에서 5만원 이상 결제 고객</li>
+                                </ul>
+                                <table>
+                                    <colgroup>
+                                        <col width="33%">
+                                        <col width="33%">
+                                        <col width="33%">
+                                    </colgroup>
+                                    <tr>
+                                        <th>신용카드</th>
+                                        <th>무이자</th>
+                                        <th>부분 무이자</th>
+                                    </tr>
+                                    <tr>
+                                        <td>비씨카드(페이북)</td>
+                                        <td>2 ~ 5개월</td>
+                                        <td>10, 12개월</td>
+                                    </tr>
+                                    <tr>
+                                        <td>신한카드</td>
+                                        <td>2 ~ 6개월</td>
+                                        <td>10, 12개월</td>
+                                    </tr>
+                                    <tr>
+                                        <td>KB국민카드</td>
+                                        <td>2 ~ 6개월</td>
+                                        <td>10, 12개월</td>
+                                    </tr>
+                                    <tr>
+                                        <td>삼성카드</td>
+                                        <td>2 ~ 6개월</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>현대카드</td>
+                                        <td>2 ~ 6개월</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>하나카드</td>
+                                        <td>2 ~ 6개월</td>
+                                        <td>10, 12개월</td>
+                                    </tr>
+                                </table>
+                                <div class="bott">
+                                    <p class="bott_tit">수시로 신용카드 무이자 할부 혜택이 변경되므로 필히 카드사를 통해 자세한 사항을 확인 하시기
+                                        바랍니다.</p>
+                                    <ul>
+                                        <li>비씨카드(페이북): 법인/Non-BC/체크/선불/기프트 카드 제외</li>
+                                        <li>신한카드: 법인/BC/체크/선불/기프트 카드 제외</li>
+                                        <li>KB국민카드: 법인/BC/체크/선불/기프트 카드 제외</li>
+                                        <li>삼성카드: 법인/올앳/체크/선불/기프트 카드 등 일부 카드 제외</li>
+                                        <li>현대카드: 법인/체크/기프트/하이브리드/선불 카드 카드 제외<br>
+                                            무이자 할부 이용 시 M포인트/X캐시백 적립 및 할인 제외</li>
+                                        <li>하나카드: 법인/BC/체크/선불/기프트 카드 제외</li>
+                                    </ul>
+                                    <div class="butt_wrap">
+                                        <input type="button" value="확인" class="butt_ok_credit">
+                                        <input type="button" value="닫기" class="butt_canc_credit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--신용카드 무이자 할부 및 혜택 안내 모달창 끝-->
+            </div>
+            <!--결제랩 끝-->
+        </div>
+        <!--contents_wrap 끝-->
+    </div>
+    <!--container 끝-->
+    <!--모달 1-->
+    <div class="modal_flight_info1 modal_flight_info">
+        <div class="modal_flight_title">
+            <span class="tit">항공편 안내</span>
+            <span class="cursor close1"><img src="/userpage/lib/img/close.png" alt="닫기" width="20px"></span>
+        </div>
+        <div class="modal_flight_content">
+            <p class="cont_P">
+            <ul>
+                <li>
+                    <구간 1>
+                </li>
+                <li>편명 : [[${reserveApiResponse1[0].reSchName}]]</li>
+                <li>출발 : [[${reserveApiResponse1[0].reSchStartTime}]][[${reserveApiResponse1[0].reSchDepPoint}]]</li>
+                <li>도착 : [[${reserveApiResponse1[0].reSchEndTime}]][[${reserveApiResponse1[0].reSchArrPoint}]]</li>
+                <li>비행시간 : 01h 10m</li>
+                <li>대기시간 : 00h 00m</li>
+                <li>A/C 타입 : [[${reserveApiResponse1[0].reAirplainType}]]</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    <!--모달 1끝-->
+    <!--모달 2-->
+    <th:block th:each="memid, i : ${reserveApiResponse1}" th:if="${i.count} % 2 == 0">
+    <div class="modal_flight_info2 modal_flight_info">
+        <div class="modal_flight_title">
+            <span class="tit">항공편 안내</span>
+            <span class="cursor close2"><img src="/userpage/lib/img/close.png" alt="닫기" width="20px"></span>
+        </div>
+        <div class="modal_flight_content">
+            <p class="cont_P">
+            <ul>
+                <li>
+                    <구간 2>
+                </li>
+                <li>편명 : [[${reserveApiResponse1[1].reSchName}]]</li>
+                <li>출발 : [[${reserveApiResponse1[1].reSchStartTime}]][[${reserveApiResponse1[1].reSchDepPoint}]]</li>
+                <li>도착 : [[${reserveApiResponse1[1].reSchEndTime}]][[${reserveApiResponse1[1].reSchArrPoint}]]</li>
+                <li>비행시간 : 01h 10m</li>
+                <li>대기시간 : 00h 00m</li>
+                <li>A/C 타입 : [[${reserveApiResponse1[1].reAirplainType}]]</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    </th:block>
+    <!--모달 2끝-->
+    <div class="modal"></div>
+    <!-- 푸터 -->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝 -->
+</div>
+<!--wrap 끝-->
+<div class="modal">
+</div>
+
+<!--일정 수정 모달창-->
+<div id="modal_edit_jour_wrap">
+    <div class="edit_jour_wrap">
+        <div class="modal_edit_close">
+            <img class="modal_edit_close_btn cursor" src="/userpage/lib/img/x_icon.png" alt="닫기">
+        </div>
+        <div class="radio_wrap">
+            <input type="radio" value="왕복" id="round" class="cursor" name="tripType" checked>
+            <label for="round" class="cursor">왕복</label>
+            <input type="radio" value="편도" id="oneway" class="cursor" name="tripType">
+            <label for="oneway" class="cursor">편도</label>
+            <input type="radio" value="다구간" id="multi" class="cursor" name="tripType">
+            <label for="multi" class="cursor">다구간</label>
+        </div>
+        <!-- 왕복 레이어 -->
+        <div class="round_wrap">
+            <table class="modal_table">
+                <tr>
+                    <td>
+                        <div class="person_type w_120 in_bl">
+                            <div class="person_layerbtn">
+                                <strong class="person_num" name="person_num">성인 1</strong>
+                            </div>
+                            <ul class="person_pop_layer person_pop_layer1 in_bl">
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="1" class="adultPaxCnt">
+                                        <strong class="num_font" name="adultPaxCnt">1</strong>
+                                        <span role="person-type-option" class="person_type1 person_font">성인
+                                            </span>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="adultPaxCntDown"
+                                           onclick="fnSetPaxCountDown('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="adultPaxCntUp"
+                                           onclick="fnSetPaxCountUp('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="childPaxCnt">
+                                        <strong class="num_font" name="childPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type2 person_font">소아
+                                            </span>
+                                        <button class="child_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="child_modal">
+                                            <p>소아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 만 2세 - 만 13세 미만</li>
+                                                <li>[국제선] 만 2세 - 만 12세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" onclick="fnSetPaxCountDown('CHILD',this);"
+                                           class="disable"><img src="//images.jinair.com/images/btn/btn_minus.png"
+                                                                alt="-"></a>
+                                        <a href="javascript://" onclick="fnSetPaxCountUp('CHILD',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="infantPaxCnt">
+                                        <strong class="num_font" name="infantPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type3 person_font">유아
+                                            </span>
+                                        <button class="baby_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="infant_modal">
+                                            <p>유아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 생후 7일 이상 - 만 2세 미만</li>
+                                                <li>[국제선] 생후 7일 이상 - 만 2세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="infantPaxCntDown"
+                                           onclick="fnSetPaxCountDown('INFANT',this);" class="disable"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="infantPaxCntUp"
+                                           onclick="fnSetPaxCountUp('INFANT',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="submit_btn">
+                                        <a href="javascript://" onclick="submit1()">확인</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="go_select in_bl">
+                            <div class="go_layerbtn">
+                                    <span class="go_select_opt"><input type="text" value="출발지" readonly
+                                                                       class="go_select_optt go_default"></span>
+                            </div>
+                            <div class="go_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="arrive_select in_bl">
+                            <div class="arrive_layerbtn">
+                                    <span class="arrive_select_opt">
+                                        <input type="text" value="도착지" readonly
+                                               class="arrive_select_optt arrive_default">
+                                    </span>
+                            </div>
+                            <div class="arrive_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="go_date in_bl">
+                            <div class="go_date_layerbtn">
+                                    <span class="go_date_select_opt"><input type="text" value="가는날" readonly
+                                                                            class="go_date_select_optt go_date_default"></span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="come_date in_bl">
+                            <div class="come_date_layerbtn">
+                                    <span class="come_date_select_opt"><input type="text" value="오는날" readonly
+                                                                              class="come_date_select_optt"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- 편도 레이어 -->
+        <div class="oneway_wrap">
+            <table class="modal_table">
+                <tr>
+                    <td>
+                        <div class="person_type w_120 in_bl">
+                            <div class="person_layerbtn">
+                                <strong class="person_num" name="person_num">성인 1</strong>
+                            </div>
+                            <ul class="person_pop_layer person_pop_layer2 in_bl">
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="1" class="adultPaxCnt">
+                                        <strong class="num_font" name="adultPaxCnt">1</strong>
+                                        <span role="person-type-option" class="person_type1 person_font">성인
+                                            </span>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="adultPaxCntDown"
+                                           onclick="fnSetPaxCountDown('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="adultPaxCntUp"
+                                           onclick="fnSetPaxCountUp('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="childPaxCnt">
+                                        <strong class="num_font" name="childPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type2 person_font">소아
+                                            </span>
+                                        <button class="child_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="child_modal">
+                                            <p>소아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 만 2세 - 만 13세 미만</li>
+                                                <li>[국제선] 만 2세 - 만 12세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" onclick="fnSetPaxCountDown('CHILD',this);"
+                                           class="disable"><img src="//images.jinair.com/images/btn/btn_minus.png"
+                                                                alt="-"></a>
+                                        <a href="javascript://" onclick="fnSetPaxCountUp('CHILD',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="infantPaxCnt">
+                                        <strong class="num_font" name="infantPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type3 person_font">유아
+                                            </span>
+                                        <button class="baby_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="infant_modal">
+                                            <p>유아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 생후 7일 이상 - 만 2세 미만</li>
+                                                <li>[국제선] 생후 7일 이상 - 만 2세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="infantPaxCntDown"
+                                           onclick="fnSetPaxCountDown('INFANT',this);" class="disable"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="infantPaxCntUp"
+                                           onclick="fnSetPaxCountUp('INFANT',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="submit_btn">
+                                        <a href="javascript://" onclick="submit2()">확인</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="go_select in_bl">
+                            <div class="go_layerbtn">
+                                    <span class="go_select_opt"><input type="text" value="출발지" readonly
+                                                                       class="go_select_optt go_default"></span>
+                            </div>
+                            <div class="go_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="arrive_select in_bl">
+                            <div class="arrive_layerbtn">
+                                    <span class="arrive_select_opt">
+                                        <input type="text" value="도착지" readonly
+                                               class="arrive_select_optt arrive_default">
+                                    </span>
+                            </div>
+                            <div class="arrive_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="go_date2 in_bl">
+                            <div class="go_date_layerbtn">
+                                    <span class="go_date_select_opt"><input type="text" value="가는날" readonly
+                                                                            class="go_date_select_optt go_date_default"></span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- 다구간 레이어 -->
+        <div class="multi_wrap">
+            <table class="modal_table">
+                <tr>
+                    <td>
+                        <div class="person_type w_120 in_bl">
+                            <div class="person_layerbtn">
+                                <strong class="person_num" name="person_num">성인 1</strong>
+                            </div>
+                            <ul class="person_pop_layer person_pop_layer3 in_bl">
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="1" class="adultPaxCnt">
+                                        <strong class="num_font" name="adultPaxCnt">1</strong>
+                                        <span role="person-type-option" class="person_type1 person_font">성인
+                                            </span>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="adultPaxCntDown"
+                                           onclick="fnSetPaxCountDown('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="adultPaxCntUp"
+                                           onclick="fnSetPaxCountUp('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="childPaxCnt">
+                                        <strong class="num_font" name="childPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type2 person_font">소아
+                                            </span>
+                                        <button class="child_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="child_modal">
+                                            <p>소아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 만 2세 - 만 13세 미만</li>
+                                                <li>[국제선] 만 2세 - 만 12세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" onclick="fnSetPaxCountDown('CHILD',this);"
+                                           class="disable"><img src="//images.jinair.com/images/btn/btn_minus.png"
+                                                                alt="-"></a>
+                                        <a href="javascript://" onclick="fnSetPaxCountUp('CHILD',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="infantPaxCnt">
+                                        <strong class="num_font" name="infantPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type3 person_font">유아
+                                            </span>
+                                        <button class="baby_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="infant_modal">
+                                            <p>유아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 생후 7일 이상 - 만 2세 미만</li>
+                                                <li>[국제선] 생후 7일 이상 - 만 2세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="infantPaxCntDown"
+                                           onclick="fnSetPaxCountDown('INFANT',this);" class="disable"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="infantPaxCntUp"
+                                           onclick="fnSetPaxCountUp('INFANT',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="submit_btn">
+                                        <a href="javascript://" onclick="submit3()">확인</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="go_select in_bl">
+                            <div class="go_layerbtn">
+                                <span class="go_select_opt"><input type="text" value="출발지" class="go_select_optt" readonly></span>
+                            </div>
+                            <div class="go_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="arrive_select in_bl">
+                            <div class="arrive_layerbtn">
+                                    <span class="arrive_select_opt">
+                                        <input type="text" value="도착지" readonly class="arrive_select_optt">
+                                    </span>
+                            </div>
+                            <div class="arrive_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="go_date2 in_bl">
+                            <div class="go_date_layerbtn">
+                                <span class="go_date_select_opt"><input type="text" value="가는날" readonly class="go_date_select_optt"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="go_select in_bl">
+                            <div class="go_layerbtn2">
+                                    <span class="go_select_opt2"> <input type="text" value="출발지" readonly
+                                                                         class="go_select_optt2"></span>
+                            </div>
+                            <div class="go_layer2">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="arrive_select2 in_bl">
+                            <div class="arrive_layerbtn2">
+                                    <span class="arrive_select_opt2"><input type="text" value="도착지" readonly
+                                                                            class="arrive_select_optt2"></span>
+                            </div>
+                            <div class="arrive_layer2">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="go_date3 in_bl">
+                            <div class="go_date_layerbtn2">
+                                    <span class="go_date_select_opt2"> <input type="text" value="가는날" readonly
+                                                                              class="go_date_select_optt2"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="update_submit">
+            <a onclick="modification()">조회</a>
+        </div>
+    </div>
+</div>
+<!--일정 수정 모달창 끝-->
+<!-- 달력 -->
+<div class="cal">
+    <div class="calwrapper">
+        <div class="caltop">
+            <p class="whatday">가는날</p>
+            <p class="cal_right">다음 3개월</p>
+        </div>
+        <table>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </table>
+        <div class="calinner">
+            <div class="calscroll">
+                <iframe src="/pages/index/cal" frameborder="0" id="ifm"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+</div>
+<div class="cal2">
+    <div class="calwrapper">
+        <div class="caltop">
+            <p class="whatday">가는날</p>
+            <p class="cal_right">다음 3개월</p>
+        </div>
+        <table>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </table>
+        <div class="calinner">
+            <div class="calscroll">
+                <iframe src="/pages/index/onewaycal" frameborder="0" id="ifm1"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+</div>
+<div class="cal3">
+    <div class="calwrapper">
+        <div class="caltop">
+            <p class="whatday">가는날</p>
+            <p class="cal_right">다음 3개월</p>
+        </div>
+        <table>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </table>
+        <div class="calinner">
+            <div class="calscroll">
+                <iframe src="/pages/index/multical" frameborder="0" id="ifm2"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+</div>
+<div class="false_modal">
+    <div class="false_modal_box">
+        <p>운송제한품목 보기 동의 여부 체크 후 진행 가능합니다.</p>
+        <div class="modal_btn">
+            <p class="confirm_btn">확인</p>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/userpage/app/payment/payReservation.js"></script>
+<script src="/userpage/app/payment/payment.js"></script>
+</html>

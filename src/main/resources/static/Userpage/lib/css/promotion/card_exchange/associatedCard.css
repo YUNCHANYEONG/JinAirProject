@@ -1,0 +1,510 @@
+/* container */
+.cursor {
+    cursor: pointer;
+}
+#container {
+    position: relative;
+    top: 100px;
+    height: 2700px;
+}
+#container > .contentswrap {
+    width: 1180px;
+    padding: 30px;
+    margin: auto;
+    height: 50px;
+    letter-spacing: .8px;
+}
+
+#container > .contentswrap > .discount {
+    letter-spacing: 1.2px;
+    padding: 20px;
+}
+
+#container > .contentswrap > .discount > .discount_title {
+    font-size: 2.8em;
+    font-weight: 600;
+    color: rgb(102, 30, 67);
+}
+
+#container > .contentswrap > .discount > .title_sub {
+    font-size: 1.45em;
+    font-weight: 600;
+    margin-top: 25px;
+    line-height: 30px;
+    letter-spacing: 1.2px;
+}
+
+#container > .contentswrap > .discount > .title_img {
+    background: url(/userpage/lib/img/icon_top.png) no-repeat center;
+    background-size: 88%;
+    display: inline;
+    width: 170px;
+    height: 100px;
+    float: right;
+    position: relative;
+    right: 19px;
+    bottom: 5px;
+}
+
+#container > .contentswrap table {
+    border-collapse: collapse;
+    /* border-spacing: 0px; */
+    width: 100%;
+    margin-top: 15px;
+    box-shadow:  3px 5px 3px rgb(185, 185, 185);
+    line-height: 1.2;
+    font-size: 16px;
+    color: #444;
+    border-top: 1px solid rgb(102, 30, 67);
+}
+
+#container > .contentswrap > .discount_kind .cursor {
+    cursor:pointer;
+}
+
+#container > .contentswrap > .discount_kind th {
+    padding: 10px;
+    height: 100%;
+    font-weight: bold;
+    vertical-align: middle;
+    width: 250px;
+    text-align: center;
+}
+
+#container > .contentswrap .discount_kind th.dis_card {
+    color: #fff;
+    background-color: rgb(102, 30, 67);
+}
+
+/* 제휴 카드 */
+.card{
+    width: 100%;
+    margin-top: 45px;
+}
+.card > .card_title{
+    font-size: 24px;
+    font-weight: 900;
+}
+.card > .BCcard{
+    margin-top: 25px;
+    width: 100%;
+    height: 350px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+.BCcard_left{
+    float: left;
+    width: 27%;
+    font-size: 23px;
+    font-weight: bolder;
+}
+.BCcard_left > .BCcard_img{
+    margin-top: 10px;
+    background: url(/userpage/lib/img/BCcard.png) no-repeat left;
+    background-size: 100%;
+    border: 1px solid rgb(219, 219, 219);
+    width: 240px;
+    height: 150px;
+    position: relative;
+    left: 2px;
+}
+.BCcard_left > input[type=button]{
+    width: 140px;
+    height: 40px;
+    border: none;
+    background-color: #BDD600;
+    margin-top: 20px;
+    margin-left: 55px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.BCcard_right{
+    width: 73%;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+.BCcard_right p{
+    margin-bottom: 5px;
+}
+.BCcard_right .card_minititle{
+    font-size: 17px;
+    font-weight: bolder;
+    margin-bottom: 18px;
+}
+.BCcard_right .last_cnt{
+    margin-bottom: 18px;
+}
+.BCcard_right .sub_cnt{
+    margin-left: 10px;
+}
+.card > .KBcard{
+    margin-top: 70px;
+    width: 100%;
+    height: 380px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+.KBcard_left{
+    float: left;
+    width: 27%;
+    font-size: 23px;
+    font-weight: bolder;
+}
+.KBcard_left > .KBcard_img{
+    margin-top: 10px;
+    background: url(/userpage/lib/img/KBcard.png) no-repeat left;
+    background-size: 100%;
+    border: none;
+    width: 240px;
+    height: 150px;
+    position: relative;
+    left: 2px;
+}
+.KBcard_left > input[type=button]{
+    width: 140px;
+    height: 40px;
+    border: none;
+    background-color: #BDD600;
+    margin-top: 20px;
+    margin-left: 55px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.KBcard_right{
+    width: 73%;
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+}
+.KBcard_right p{
+    margin-bottom: 5px;
+}
+.KBcard_right .card_minititle{
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 18px;
+}
+.KBcard_right .last_cnt{
+    margin-bottom: 18px;
+}
+.KBcard_right .sub_cnt{
+    margin-left: 10px;
+}
+.KBcard_right .KBcard_tit{
+    font-size: 23px;
+    font-weight: bolder;
+    margin-bottom: 8px;
+}
+.visacard{
+    margin-top: 70px;
+    width: 100%;
+    height: 1100px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+.visacard .visacard_top{
+    font-size: 24px;
+    font-weight: bolder;
+}
+.visacard .visacard_top > p{
+    margin-bottom: 10px;
+}
+.visacard_top > p.visa_tit{
+    font-size: 29px;
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
+.visacard .visacard_top > p:nth-child(2){
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+.visacard .visacard_top > p:nth-child(4){
+    margin-bottom: 20px;
+}
+.visacard .visacard_top > p:nth-child(5){
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+.visacard .visacard_top > input[type=button]{
+    width: 140px;
+    height: 40px;
+    border: none;
+    background-color: #BDD600;
+    cursor: pointer;
+    font-weight: 600;
+}
+.visacard .visacard_mid{
+    margin-top: 35px;
+}
+.visacard .visacard_mid p{
+    font-size: 18px;
+    font-weight: bolder;
+}
+.visacard .visacard_mid .visacard_img{
+    margin-top: 15px;
+    background: url(/userpage/lib/img/visacard.png) no-repeat left;
+    background-size: 100%;
+    border: none;
+    width: 100%;
+    height: 500px;
+}
+.visacard_bottom{
+    margin-top: 0px;
+}
+.visacard_bottom p{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.visacard_bottom .card_minititle{
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 18px;
+}
+.visacard_bottom .last_cnt{
+    margin-bottom: 18px;
+}
+.notice_bottom{
+    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+}
+.notice_bottom p{
+    padding-left: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+/* 환율 우대 */
+.exchange{
+    width: 100%;
+    margin-top: 45px;
+    display: none;
+}
+.exchange > .hanabank{
+    margin-top: 25px;
+    width: 100%;
+    height: 1070px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+.hanabank_left{
+    float: left;
+    width: 27%;
+    font-size: 23px;
+    font-weight: bolder;
+}
+.hanabank_left > .hanabank_img{
+    background: url(/userpage/lib/img/hana.PNG) no-repeat left;
+    background-size: 90%;
+    border: none;
+    width: 240px;
+    height: 80px;
+    position: relative;
+    left: 2px;
+}
+.hanabank_right{
+    width: 73%;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+.hanabank_right p{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.hanabank_right .bank_minititle{
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 18px;
+}
+.hanabank_right .bank_tit{
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 18px;
+}
+.hanabank_right .banklast_cnt{
+    margin-bottom: 18px;
+}
+.hanabank_right .sub_cnt{
+    margin-left: 10px;
+}
+.hanabank_right .bank_tit2{
+    font-size: 18px;
+    font-weight: bolder;
+    margin-bottom: 8px;
+}
+.hanabank_right .sub_cnt2{
+    margin-left: 135px;
+}
+.hanabank_right .sub_cnt3{
+    margin-left: 14px;
+}
+.hanabank_right .sub_cnt4{
+    margin-left: 14px;
+    margin-bottom: 20px;
+}
+.hanabank_right .gapper{
+    font-size: 16px;
+    font-weight: bolder;
+}
+.hanabank_right .col{
+    text-align: justify;
+    padding: 30px;
+    text-align: center;
+    background-color: #f2f2f2;
+    column-count: 3;
+    column-gap: 30px;
+    column-rule: 2px solid rgba(128, 128, 128, 0.3);
+    font-size: 14px;
+    font-weight: 600;
+}
+.hanabank_right .col p{
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+.hanabank_right .col span{
+    line-height: 14px;
+}
+.hanabank_right .font_blue{
+    color: rgb(0, 174, 255);
+}
+.hanabank_right .notice_top{
+    margin-top: 20px;
+}
+/* 우리 */
+.exchange .woribank{
+    margin-top: 50px;
+    width: 100%;
+    height: 400px;
+}
+.woribank_left{
+    float: left;
+    width: 27%;
+    font-size: 23px;
+    font-weight: bolder;
+}
+.woribank_left > .woribank_img{
+    background: url(/userpage/lib/img/wori.PNG) no-repeat left;
+    background-size: 90%;
+    border: none;
+    width: 240px;
+    height: 80px;
+    position: relative;
+    left: 2px;
+}
+.woribank_left > input[type=button]{
+    width: 160px;
+    height: 40px;
+    border: none;
+    background-color: #BDD600;
+    margin-top: 20px;
+    margin-left: 55px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.woribank_right{
+    width: 73%;
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+}
+.woribank_right p{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.woribank_right .bank_minititle{
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 18px;
+}
+.woribank_right .bank_tit{
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 18px;
+}
+.woribank_right .banklast_cnt{
+    margin-bottom: 18px;
+}
+.woribank_right .col{
+    text-align: justify;
+    padding: 30px;
+    text-align: center;
+    background-color: #f2f2f2;
+    column-count: 3;
+    column-gap: 30px;
+    column-rule: 2px solid rgba(128, 128, 128, 0.3);
+    font-size: 14px;
+    font-weight: 600;
+}
+.woribank_right .col p{
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+.woribank_right .col span{
+    line-height: 14px;
+}
+/* 무이자 */
+.no_interest{
+    width: 100%;
+    margin-top: 45px;
+    display: none;
+}
+#container .no_interest > .no_interestWrapper table{
+    margin: 25px 0px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-collapse: collapse;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: none;
+}
+#container .no_interest .no_interestWrapper table tr{
+    height: 66px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+#container .no_interest .no_interestWrapper table tr:nth-child(1){
+    background-color: #F2F2F2;
+}
+#container .no_interest .no_interestWrapper table td{
+    border-right: 0.7px solid rgba(128, 128, 128, 0.3);
+}
+#container .no_interest .no_interestWrapper table td:last-child{
+    border-right: none;
+}
+.no_interest .no_interestWrapper p{
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.no_interest .no_interestWrapper .sub_cnt3{
+    margin-left: 15px;
+}
+.no_interest .no_interestWrapper .bank_tit{
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 50px 0px 18px;
+}
+.no_interest .no_interestWrapper .font_blue{
+    color: rgb(0, 174, 255);
+    text-decoration: underline;
+}
+.no_interest .no_interestWrapper .font_blue::before{
+    content: '※ ';
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}

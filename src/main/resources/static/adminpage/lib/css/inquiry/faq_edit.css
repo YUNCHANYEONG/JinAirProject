@@ -1,0 +1,147 @@
+#container > .contents > .con_wrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#container > .contents .title{
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+#container > .contents .faq_table table{
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-collapse: collapse;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    background-color: #fff;
+}
+table tr td > #faqType {
+    background: #f2f2f2;
+    color: #444;
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 700;
+    border: 2px #fff;
+    text-align: center;
+    padding-left: 10px;
+    letter-spacing: 3px;
+    box-shadow: 2px 2px 2px 2px rgb(199 199 199);
+    border-radius: 5px;
+}
+
+#container > .contents .faq_table tr:first-child{
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #ccc;
+    height: 40px;
+}
+#container > .contents .faq_table table tr td{
+    width: 150px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+#container > .contents .faq_table table tr td:nth-child(2){
+    width: 700px;
+    text-align: left;
+}
+#container > .contents .faq_table table tr:nth-child(2){
+    height: 300px;
+}
+#container > .contents .faq_table table .editTitle {
+    width: 98%;
+    height: 30px;
+    border: 1px solid rgb(199, 199, 199);
+    outline: none;
+    padding: 5px 5px 5px 15px;
+    line-height: 1.4
+}
+#container > .contents .faq_table table textarea{
+    width: 98%;
+    height: 290px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: 1px solid rgb(199, 199, 199);
+    outline: none;
+    padding: 5px;
+    resize: none;
+}
+#container > .contents .contents_bottom{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+    position: relative;
+    right: 6px;
+}
+#container > .contents .contents_bottom .faq_btn_add input[type="button"]{
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    background-color: #BDD600;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+#container > .contents .contents_bottom .faq_btn_add input[type="button"]:nth-child(1){
+    width: 80px;
+    border: 3px solid #BDD600;
+    background-color: white;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+/* faq_view 끝 */
+/* faq_view 시작(모달창) */
+.edit_container{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.edit_container .edit_info{
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    border: 3px solid #BDD600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.edit_container .edit_info p{
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 900;
+}
+.edit_container .edit_info .edit_modal{
+    display: flex;
+    justify-content: center;
+}
+.edit_container .edit_info .edit_modal input{
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 40px 10px 0;
+}
+.edit_container .edit_info .edit_modal input.btn_cancel{
+    background-color: white;
+    border: 3px solid #BDD600;
+}
+/* faq_view 끝(모달창) */

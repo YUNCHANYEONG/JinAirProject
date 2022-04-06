@@ -1,0 +1,240 @@
+#container > .contents > .contwrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.contents > .contwrap > .event{
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+.contents > .contwrap .event > .title{
+    font-size: 1.4rem; 
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+.contents > .contwrap > .event_wrap > .event_edit table {
+    margin: 15px auto 0;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 1.2;
+    font-size: 14px;
+    table-layout: fixed;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+.contents > .contwrap > .event_wrap > .event_edit th {
+    height: 43px;
+    font-weight: bold;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+.contents > .contwrap > .event_wrap > .event_edit th.right {
+    text-align: center;
+}
+.contents > .contwrap > .event_wrap > .event_edit input.tit {
+    font-weight: bold;
+    width: 98%;
+    height: 35px;
+    text-indent: 5px;
+    outline: none;
+}
+.contents > .contwrap > .event_wrap > .event_edit th.botbor {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-indent: 5px;
+}
+.contents > .contwrap > .event_wrap > .event_edit td {
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: left;
+}
+.calandfile{
+    width: 100%;
+    vertical-align: middle;
+}
+.calevndate{
+    display: inline-block;
+    width: 70%;
+    text-indent: 10px;
+}
+.filediv{
+    display: inline-block;
+    width: 29%;
+}
+.contents > .contwrap > .event_wrap > .event_edit .evndate:first-child {
+    margin-left: 15px;
+}
+.contents > .contwrap > .event_wrap > .event_edit .evndate{
+    display: inline;
+    font-size: 12px;
+    font-weight: bolder;
+    text-indent: 3px;
+    height: 30px;
+    outline: none;
+}
+.file-upload {
+    display: inline;
+}
+.calandfile input[type="text"]{
+    width: 250px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 900;
+    text-indent: 7px;
+    outline: none;
+}
+.file-upload label {
+    padding: 8px 3px;
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #BDD600;    
+    width: 80px;
+    height: 30px;
+    margin-left: 3px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.file-upload input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+.contents > .contwrap > .event_wrap > .event_edit td.content_txt {
+    word-spacing: 4px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+}
+.contents > .contwrap > .event_wrap > .event_edit .event_content {
+    width: 100%;
+    resize: none;
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    height: 200px;
+    outline: none;
+}
+
+.contents > .contwrap > .event_wrap > .event_edit .footer{
+    width: 100%;
+    text-align: right;
+}
+.contents > .contwrap > .event_wrap > .event_edit .butt {
+    margin-top: 5px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    background-color: #BDD600;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    margin-left: 5px;
+}
+.contents > .contwrap > .event_wrap > .event_edit .canc_btn {
+    background-color: #fff;
+    border: 3px solid #BDD600;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+
+/* 모달창  수정 취소*/
+#modal_iseditcancel {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#modal_iseditcancel > #modal_iseditcancel_content {
+    width: 400px;
+    height: 300px;
+    margin: 0 auto 30px;
+    padding-top: 30px;
+    border-radius: 5px;
+    border: 3px solid #BDD600;
+    background-color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+#modal_iseditcancel_title {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+#modal_iseditcancel > #modal_iseditcancel_content button {
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+#modal_iseditcancel > #modal_iseditcancel_content .canccomplete {
+    border: 3px solid #BDD600;
+    background-color: #fff;
+}
+
+/* 모달창 수정 완료*/
+#modal_isedit {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#modal_isedit > #modal_isedit_content {
+    width: 400px;
+    height: 300px;
+    margin: 0 auto 30px;
+    padding-top: 30px;
+    border-radius: 5px;
+    border: 3px solid #BDD600;
+    background-color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+#modal_isedit_title {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+#modal_isedit > #modal_isedit_content input {
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+#modal_isedit > #modal_isedit_content input.uncomplete {
+    border: 3px solid #BDD600;
+    background-color: #fff;
+}

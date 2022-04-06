@@ -1,0 +1,63 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/inquiry/faq_edit.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- head.html 끝 -->
+<body>
+        <div id="wrap">
+            <div th:replace="/adminpage/fragment/header :: header"></div>
+            <div id="container">
+                <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+                <div class="contents" >
+                    <div class="con_wrap" id="tableBoard">
+                        <div class="title">
+                            <p>FAQ 세부내용 수정</p>
+                        </div>
+                        <div class="faq_table">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select id="faqType" :value="tableBoard.faqType">
+                                        <option disabled value="faqType">{{tableBoard.faqType}}</option>
+                                        <option>항공권 예매</option>
+                                        <option>할인 제도</option>
+                                        <option>수하물</option>
+                                        <option>기내 서비스</option>
+                                        <option>기타</option>
+                                        </select>
+                                    </td>
+                                    <td class="user_name"><textarea id="faqTitle" class="editTitle">{{tableBoard.faqTitle}}</textarea></td>
+                                    <td id="faqRegdate">{{tableBoard.faqRegdate}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><textarea id="faqContent">{{tableBoard.faqContent}}</textarea></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="contents_bottom">
+                            <div class="faq_btn_add">
+                                <input type="button" value="취소" onclick="history.back()">
+                                <input type="button" value="수정완료" class="btn_edit" onclick="editBtn()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="edit_container">
+                <div class="edit_info">
+                    <p>게시글을 수정하시겠습니까?</p>
+                    <div class="edit_modal">
+                        <input type="button" value="취소" class="btn_cancel" style="cursor: pointer">
+                        <input type="button" value="수정" id="update" style="cursor: pointer">
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<script src="/adminpage/app/inquiry/faq_edit.js"></script>
+</html>

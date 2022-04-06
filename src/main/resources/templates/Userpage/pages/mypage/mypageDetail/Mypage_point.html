@@ -1,0 +1,320 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/mypage/Mypage_point.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/userpage/app/mypage/Mypage_point.js"></script>
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <input type="hidden" id="memid" th:value="${memberApiResponse.memIndex}">
+            <div class="mypage_main">
+                <div class="mypage_menu">
+                    <p>마이<br>페이지</p>
+                    <ul>
+                        <li class="booking"><a href="/pages/index/mypageMain">예약조회/변경/취소</a></li>
+                        <li class="mypoint"><a href="/pages/index/mypagePoint">나의 나비포인트</a><div class="mypoint_sum"><span><strong id="point"></strong>p</span></div></li>
+                        <li class="coupon">
+                            <a href="/pages/index/mypageCoupons">나의 할인쿠폰</a>
+                            <div class="mycoupon_sum">
+                                <span id="coupon"></span>
+                            </div>
+                        </li>
+                        <li class="qna"><a href="/pages/index/mypageQna">나의 Q&A</a></li>
+                        <li class="edit"><a href="#">회원정보 수정</a></li>
+                    </ul>
+                </div>
+                <div class="menu_title">
+                    <p>나의 나비포인트</p>
+                </div>
+                <div class="sub_menu_check">
+                    <ul>
+                        <li class="point_save">포인트 적립</li>
+                        <li class="point_flex">포인트 사용</li>
+                        <li class="point_srh">포인트 조회</li>
+                    </ul>
+                </div>
+                <div class="save_container">
+                    <div class="save_box">
+                        <p>예약번호</p>
+                        <form action="#">
+                            <input type="text" maxlength="6">
+                            <input type="submit" value="조회">
+                        </form>
+                    </div>
+                    <p>* 항공권 예약번호 6자리를 입력하십시오.</p>
+                </div>
+                <div class="flex_container">
+                    <h2>보너스 항공권 설정</h2>
+                    <div class="point_box">
+                        <form action="#" method="get">
+                            <input type="hidden" name="go_select_opt">
+                            <input type="hidden" name="arrive_select_opt">
+                            <input type="hidden" name="go_date">
+                            <input type="hidden" name="come_date">
+                            <div class="in_bl">
+                                <!-- 예약 선택 / 왕복 -->
+                                <div class="reserve_round">
+                                    <div class="go_select in_bl">
+                                        <div class="go_layerbtn">
+                                        <span class="go_select_opt">
+                                            <input type="text" value="출발지" readonly class="go_select_optt">
+                                        </span>
+                                        </div>
+                                        <div class="go_layer">
+                                            <div class="KOR in_bl">
+                                                <h3>한국</h3>
+                                                <ul>
+                                                    <li><a>서울/인천(ICN)</a></li>
+                                                    <li><a>서울/김포(GMP)</a></li>
+                                                    <li><a>부산(PUS)</a></li>
+                                                    <li><a>제주(CJU)</a></li>
+                                                    <li><a>청주(CJJ)</a></li>
+                                                    <li><a>광주(KWJ)</a></li>
+                                                    <li><a>대구(TAE)</a></li>
+                                                    <li><a>여수(RSU)</a></li>
+                                                    <li><a>울산(USN)</a></li>
+                                                    <li><a>포항(KPO)</a></li>
+                                                    <li><a>원주(WJU)</a></li>
+                                                    <li><a>군산(KUV)</a></li>
+                                                    <li><a>사천(HIN)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="arrive_select in_bl">
+                                        <div class="arrive_layerbtn">
+                                        <span class="arrive_select_opt">
+                                            <input type="text" value="도착지" readonly class="arrive_select_optt"></span>
+                                        </div>
+                                        <div class="arrive_layer">
+                                            <div class="KOR in_bl">
+                                                <h3>한국</h3>
+                                                <ul>
+                                                    <li><a>서울/인천(ICN)</a></li>
+                                                    <li><a>서울/김포(GMP)</a></li>
+                                                    <li><a>부산(PUS)</a></li>
+                                                    <li><a>제주(CJU)</a></li>
+                                                    <li><a>청주(CJJ)</a></li>
+                                                    <li><a>광주(KWJ)</a></li>
+                                                    <li><a>대구(TAE)</a></li>
+                                                    <li><a>여수(RSU)</a></li>
+                                                    <li><a>울산(USN)</a></li>
+                                                    <li><a>포항(KPO)</a></li>
+                                                    <li><a>원주(WJU)</a></li>
+                                                    <li><a>군산(KUV)</a></li>
+                                                    <li><a>사천(HIN)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="go_date in_bl">
+                                        <div class="go_date_layerbtn">
+                                        <span class="go_date_select_opt">
+                                            <input type="text" value="평일" readonly class="go_date_select_optt">
+                                        </span>
+                                        </div>
+                                        <div class="go_date_select">
+                                            <div class="go in_bl">
+                                                <h3>평일</h3>
+                                                <ul>
+                                                    <li><a>평일</a></li>
+                                                    <li><a>주말</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="come_date in_bl">
+                                        <div class="come_date_layerbtn">
+                                        <span class="come_date_select_opt">
+                                            <input type="text" value="편도" readonly class="come_date_select_optt">
+                                        </span>
+                                        </div>
+                                        <div class="come_date_select">
+                                            <div class="come in_bl">
+                                                <h3>편도</h3>
+                                                <ul>
+                                                    <li><a>편도</a></li>
+                                                    <li><a>왕복</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 예약 선택 / 왕복 끝 -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="pointInfo">
+                    </div>
+                    <div class="submit">
+                        <input type="button" value="보너스 항공권 쿠폰 발행" class="coupon_add">
+                    </div>
+                    <h2>구간 별 필요 포인트</h2>
+                    <table class="bbsList">
+                        <colgroup>
+                            <col width="33%"><col width="33%"><col width="33%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">구분</th>
+                                <th scope="col">요일 기준</th>
+                                <th scope="col">사용 포인트</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" rowspan="2">국내선 편도</th>
+                                <td>월화수목</td>
+                                <td>1000P</td>
+                            </tr>
+                            <tr>
+                                <td>금토일</td>
+                                <td>1500P</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" rowspan="2" class="bb">국내선 왕복</th>
+                                <td>월화수목</td>
+                                <td>2000P</td>
+                            </tr>
+                            <tr>
+                                <td>금토일</td>
+                                <td>3000P</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>유의 사항</h2>
+                    <div class="flex_info">
+                        <ul class="caution">			
+                            <li>- 포인트 사용 시 유효기간 만료 임박 포인트부터 순서대로 적용됩니다.</li>
+                            <li>- 보너스 항공권 쿠폰의 유류세 및 공항세는 이용자 본인 부담입니다.</li>
+                            <li>- 성수기 기간에는 보너스 항공권 사용이 불가합니다.
+                                <ul>
+                                    <li>* 보너스 항공권 쿠폰 사용불가 기간 (출발일 기준)</li>
+                                    <li>* 2021년: 연초(1/1~1/3), 설날(2/10~2/15), 봄방학(2/20~3/1), 어린이날(5/1~5/5), 석가탄신일(5/15~5/19), 여름휴가(7/24~8/21), 추석(9/18~9/23), 연말(12/31)</li>
+                                    <li>* 2022년: 연초(1/1), 설날(1/29~2/3), 봄방학(2/20~3/1), 어린이날(5/4~5/9), 현충일(6/4~6/6), 여름휴가(7/25~8/20), 추석(9/8~9/13), 한글날(10/1~10/4), 개천절(10/10~10/11), 연말(12/31)</li>
+                                </ul>
+                            </li>
+                            <li>- 보너스 항공권 쿠폰을 이용한 예약 변경은 불가하오니 환불 후 재구매하여 주시기 바라며, 예약 취소 시 쿠폰 사용 유효기간 내의 쿠폰에 한해서만 환불이 가능하며,</li>
+                            <li>사용 유효기간이 지난 경우 쿠폰은 자동 소멸됩니다.</li>
+                            <li>- 보너스 항공권 쿠폰 사용 유효기간
+                                <ul>
+                                    <li>* 발권 유효기간: 보너스 항공권 쿠폰 발행 후 1개월</li>
+                                    <li>* 탑승 유효기간: 보너스 항공권 쿠폰 발행 후 4개월</li>
+                                </ul>
+                            </li>
+                            <li>- 환불된 보너스 항공권 쿠폰을 포인트로 재환급하는 경우, 포인트 유효기간 이내의 포인트만 환급이 가능하며 유효기간이 지난 경우 자동 소멸됩니다.</li>
+                            <li>(포인트 유효기간 : 적립일로부터 3년).</li>
+                            <li>- 타인과 포인트 합산은 불가합니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                <div class="srh_container">
+                    <div>
+                            <div class="srh_box">
+                                <p>기간<input type="date" id="item_start_date1"><input type="date" id="item_start_date2">
+                                </p>
+                                <div class="btn">
+                                    <input type="button" id="searchPo" value="조회">
+                                    <input type="button" value="초기화" class="btn_cancel" onclick="location.reload()">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="none_point" id="false">
+                        <p>+++나비포인트 이용 상세 내역이 없습니다.</p>
+                    </div>
+                    <div class="none_point" id="true">
+                        <table>
+                            <colgroup>
+                                <col width="70">
+                                <col width="120">
+                                <col width="120">
+                                <col width="400">
+                                <col width="150">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>적립내역</th>
+                                <th>사용내역</th>
+                                <th>내용</th>
+                                <th>날짜</th>
+                            </tr>
+                            </thead>
+                            <tbody id="pointList">
+                            <tr v-for="(dto, i) in pointList">
+                                <td>{{i+1}}</td>
+                                <td :id=`addPoint${i}`></td>
+                                <td :id=`usePoint${i}`></td>
+                                <td>{{dto.poMemo}}</td>
+                                <td :id=`regDate${i}`></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="footer">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage"></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_info">
+                        <div class="footer_text">
+                            <p>나비포인트 이용방법</p>
+                            <p class="subtext">1.항공기 탑승 후 30일 이내 진에어 홈페이지에서 포인트를 적립하세요.
+                            <p class="subtext">2.누적 포인트를 이용하여 국내선 보너스 항공권을 예약하세요.</p>
+                        </div>
+                        <div class="point_info">
+                            <a href="/pages/point">나비포인트 안내</a>
+                        </div>
+                    </div>
+            </div>
+        <!--container 끝-->
+        </div>
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <!--퀵 메뉴 끝-->
+    <div class="modal">
+    </div>
+    <div class="modal_container">
+        <div class="modals">
+            <p class="moditext"></p>
+            <input type="button" value="확인" class="btn_cancel">
+        </div>
+    </div>
+    <div class="pwcheck_modal">
+        <form action="#" method="post">
+        <div class="pwcheck_title">
+            <p>비밀번호 확인</p>
+        </div>
+        <div class="pwcheck_box">
+            <p>고객님의 개인정보를 소중하게 보호하려고 노력하고 있으며,<br>회원님의 동의 없이는 회원정보를 제공하지 않습니다.</p>
+            <p>비밀번호 입력 <input type="password"></p>
+            <div class="btn">
+                <input type="submit" class="btn_agree" value="확인" onclick="location.href='/pages/index/mypageEdit'">
+                <input type="button" class="btn_cancel" value="취소">
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+</html>
+

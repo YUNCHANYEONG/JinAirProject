@@ -1,0 +1,57 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/style.css">
+<link rel="stylesheet" href="/adminpage/lib/css/notice/notice.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="header_inner">
+                <a href="../admin_index.html"><div class="img"></div></a><a href="/AdminPage/admin_index.html"><span>관리자 센터</span></a>
+                <div class="logout"><p class="myname">반하나</p><input type="text" value="님" class="nim"><input type="button" value="Logout" onclick="location.href='../admin_login.html'"></div>
+            </div>
+        </header>
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <div class="search">
+                        <p class="title">공지사항 목록</p>
+                        <div>
+                            <input type="text" placeholder="검색어를 입력하세요" id="searchText">
+                            <input type="button" value="검색" id="searchNoti">
+                        </div>
+                    </div>
+                    <table id="notiList">
+                        <tr>
+                            <th>번호</th>
+                            <th style="text-align: left">제목</th>
+                            <th>등록일</th>
+                        </tr>
+                        <tr v-for="noti in notiList">
+                            <td>{{ noti.noIndex }}</td>
+                            <td style="text-align: left"><a :href=`/pages/admin/nt_view/${noti.noIndex}`>{{ noti.noTitle }}</a></td>
+                            <td>{{ noti.noRegdate.substr(0, 10) }}</td>
+                        </tr>
+                    </table>
+                    <a href="/pages/admin/nt_write" class="notice_write"><input type="button" value="공지사항 등록"></a>
+                    <div class="footer">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage">
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/adminpage/app/notice/notice.js"></script>
+</html>

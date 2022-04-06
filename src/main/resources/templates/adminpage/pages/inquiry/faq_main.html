@@ -1,0 +1,74 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/style.css">
+<link rel="stylesheet" href="/adminpage/lib/css/inquiry/faq_main.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <div class="title">
+                        <p>FAQ 목록</p>
+                    </div>
+                    <div class="contents_top">
+                        <div class="faq_check_box">
+                                <li id="checkBox1"><a id="faq1" value="전체">전체</a></li>
+                                <li id="checkBox2"><a id="faq2" value="항공권 예매">항공권 예매</a></li>
+                                <li id="checkBox3"><a id="faq3" value="할인 제도">할인 제도</a></li>
+                                <li id="checkBox4"><a id="faq4" value="수하물">수하물</a></li>
+                                <li id="checkBox5"><a id="faq5" value="기내 서비스">기내 서비스</a></li>
+                                <li id="checkBox6"><a id="faq6" value="기타">기타</a></li>
+                        </div>
+                        <div class="btn_top">
+                            <input type="text" placeholder="검색어를 입력하세요." id="searchText" >
+                            <input type="button" value="검색" id="searchFaq">
+                        </div>
+                    </div>
+                    <div class="contents_main" id="board">
+                        <table id="faqList">
+                            <tr>
+                                <td>번호</td>
+                                <td>제목</td>
+                                <td>등록일</td>
+                            </tr>
+                            <tr v-for="(faq, i) in faqList">
+                                <td>{{faq.faqIndex}}</td>
+                                <td><a :href=`/pages/admin/faq_view/${faq.faqIndex}`>{{faq.faqTitle}}</a></td>
+                                <td>{{faq.faqRegdate.substr(0,10)}}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="contents_bottom">
+                        <div class="footer">
+                            <div class="center">
+                                <table>
+                                    <tr id="showPage">
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="faq_btn_write">
+                            <a href="/pages/admin/faq_write" class="faq_write"><input type="button" value="작성하기"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/adminpage/app/inquiry/faq_main.js"></script>
+
+
+</html>

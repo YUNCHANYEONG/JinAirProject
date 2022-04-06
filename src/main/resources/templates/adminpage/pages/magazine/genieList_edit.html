@@ -1,0 +1,74 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/magazine/genieList_edit.css">
+    <script src="/adminpage/app/magazine/genieList_edit.js"></script>
+<!-- head.html 끝-->
+<body>
+    <form id="uploadFiles" name="uploadFiles" method="post" th:action="@{/pages/admin/genielist_edit/update}" encType="multipart/form-data" onsubmit="return sendit()">
+        <input th:type="hidden" th:value="${images.mzIndex}" name="id">
+        <div id="wrap">
+            <div th:replace="/adminpage/fragment/header :: header"></div>
+            <div id="container">
+                <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+                <div class="contents">
+                    <div class="contwrap">
+                        <div class="search">
+                            <p class="title">지니매거진 세부 수정</p>
+                        </div>
+                        <table>
+                            <colgroup>
+                                <col width="100">
+                                <col width="460">
+                                <col width="180">
+                            </colgroup>
+                            <tr id="itemList">
+                                <td>제목</td>
+                                <td>{{itemList.mzTitle}}</td>
+                                <td>등록일 {{itemList.mzRegdate.substr(0,10)}}</td>
+                            </tr>
+                            <tr>
+                                <td  colspan="3" class="file_id">
+                                    <div class="file-upload">
+                                        메인 페이지 파일 첨부
+                                        <input th:type="text" th:class="filetext1" placeholder="첨부파일">
+                                        <label th:for="ex_file1" th:class="ex_file">찾아보기</label>
+                                        <input th:type="file" th:id="ex_file1" name="imgs">
+                                    </div>
+                                    <div class="file-upload">
+                                        퀴즈 파일 첨부
+                                        <input th:type="text" th:class="filetext2" placeholder="첨부파일">
+                                        <label th:for="ex_file2" th:class="ex_file">찾아보기</label>
+                                        <input th:type="file" th:id="ex_file2" name="answers">
+                                    </div>
+                                    <div class="file-upload">
+                                        매거진 파일 첨부
+                                        <input th:type="text" th:class="filetext3" placeholder="첨부파일">
+                                        <label th:for="ex_file3" th:class="ex_file">찾아보기</label>
+                                        <input th:type="file" th:id="ex_file3" name="pdfs">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="footer">
+                            <input type="button" value="뒤로" onclick="history.back()" class="goback">
+                            <input type="button" value="수정 완료" class="edit_btn">
+                        </div>
+                    </div>  
+                </div>
+                <div id="modal_isfind">
+                    <div class="modal">
+                        <div id="modal_isfind_title">수정하시겠습니까?</div>
+                        <div>
+                            <input type="button" value="취소" class="modal_isfind_btn uncomplete">
+                            <input type="submit" value="수정" class="modal_isfind_btn complete">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

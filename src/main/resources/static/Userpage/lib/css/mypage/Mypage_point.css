@@ -1,0 +1,1348 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight:normal;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+/*skipnavi*/
+.skipnavi{
+    position: absolute;
+    left: 0;
+    top: -50px;
+    text-indent: -9999px;
+    font-size: 0;
+    width: 100%;
+    z-index: 999;
+}
+.skipnavi>li a:focus, .skipnavi>li a:active{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    text-indent: 0px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+/*skipnavi 끝*/
+
+/*전체 페이지*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'NanumBarunGothic';
+    word-break: keep-all;
+}
+ul, li {
+    list-style: none;
+    text-decoration: none;
+    word-break: keep-all;
+    /* white-space: nowrap; */
+}
+ul {
+    margin-bottom: 2px;
+}
+li {
+    margin: 0.5%;
+}
+a{text-decoration: none;}
+a:link{color:#444;}
+a:visited{color:#444;}
+
+::selection {
+    background-color: #BDD600;
+}
+body{
+    height: 1; 
+    color: #444;
+    white-space: normal; 
+    word-wrap: break-word; 
+    line-height: 1;
+}
+#wrap{
+    margin: 0;
+    padding: 0;
+}
+/* 헤더 */
+#header{
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 100;
+}
+#header .header_sub{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.190);
+    height: 91px;
+    margin: 0 auto;
+    background-color: white;
+}
+#header .header_sub .header_wrap{
+    width: 1180px;
+    margin: 0 auto;
+}
+#header .logo{
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 0;
+    width: 200px;
+    height: 50px;
+    display: inline-block;
+}
+#header .logo img{
+    position: relative;
+    right: -5px;
+    top: -10px;
+}
+#header .login{ 
+    box-sizing: border-box;
+    display: inline;
+    position: relative;
+    left: -25px;
+    top: 35px;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+#header .login a{
+    margin-right: 12px;
+}
+#header .login a:link{
+    color: rgb(107, 107, 107);
+}
+#header .login a:visited{
+    color: rgb(107, 107, 107);
+}
+#header .login > li{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(107, 107, 107);
+    letter-spacing: 1px;
+}
+#header .login > li > a{
+    display: inline-block;
+}
+#header .login > li > p span:nth-child(1){
+    letter-spacing: 1px;
+}
+#header .login > li > span:nth-child(2){
+    font-size: 11px;
+    font-weight: 200;
+    color: rgb(214, 214, 214);
+}
+#header .login > li .lang{
+    margin-left: 17px;
+    display: inline-block;
+}
+#header .login > li .lang_img{
+    display: inline-block;
+    background: url('/userpage/lib/img/down.png') no-repeat right;
+    background-size: 13px;
+    width: 13px;
+    height: 13px;
+    position: relative;
+    left: 9px;
+    top: 3px;
+}
+#header nav{
+    top: 47px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 600px;
+}
+#header nav .nav_all{
+    float: left;
+    position: relative;
+    width: 600px;
+    top: -10px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#header nav .nav_all li{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 0 20px;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+}
+#header nav .nav_all > .open1{
+    border-bottom: none;
+    width: 54px;
+    position: relative;
+    left: 5px;
+    text-align: center;
+}
+#header nav .nav_all > .open2{
+    border-bottom: none;
+    position: relative;
+    left: 14px;
+}
+#header nav .nav_all > .open3{
+    border-bottom: none;
+    width: 73px;
+    position: relative;
+    left: 22px;
+    text-align: center;
+}
+#header nav .nav_all > .open4{
+    border-bottom: none;
+    position: relative;
+    left: 29px;
+}
+#header nav .nav_all > .open5{
+    border-bottom: none;
+    position: relative;
+    left: 35px;
+}
+/* 서브 네비 시작 */
+#header .sub_nav{
+    display: none;
+    clear: both;
+    z-index: 100;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    margin: 0 auto;
+}
+#header .sub_nav > .subnav_warp .subNav_title{
+    margin-top: 32px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 40px;
+}
+#header .sub_nav > .subnav_warp{
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+    width: 1180px;
+    height: 100%;
+}
+#header .sub_nav > .subnav_warp > div{
+    display: inline-block;
+    border-left: 1px solid rgba(128, 128, 128, 0.190);
+    text-align: center;
+}
+#header .sub_nav > .subnav_warp > div:nth-child(1){
+    position: relative;
+    border-left: none
+}
+#header .sub_nav > .subnav_warp > div > a{
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    line-height: 28px;
+    letter-spacing: -1px;
+}
+#header .sub_nav{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.190);
+}
+#header .reservation{
+    height: 257px;
+}
+#header .service{
+    height: 257px;
+}
+#header .benefit{
+    height: 230px;
+}
+#header .point{
+    height: 110px;
+}
+#header .optional{
+    height: 230px;
+}
+#header .reservation > .subnav_warp > div{
+    width: 20%;
+}
+#header .service > .subnav_warp > div{
+    width: 33.3%;
+}
+#header .benefit > .subnav_warp > div{
+    width: 50%;
+}
+#header .point > .subnav_warp > div{
+    width: 33.3%;
+}
+#header .optional > .subnav_warp > div{
+    width: 16.6%;
+}
+/* 서브 네비 끝 */
+/* contents */
+#container{
+    height: auto;
+}
+
+/*푸터*/
+#footerCont {
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+    z-index: 10;
+    overflow: hidden;
+}
+/*위쪽 푸터*/
+#foot_topwraper{
+    width: 100%;
+    height: 120px;
+    background-color: rgb(248, 248, 248);
+}
+#foot_top {
+    width: 1180px;
+    margin: 0 auto;
+}
+#top_menu {
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    padding-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.menu_wrap {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 900;
+    margin-top: 7px;
+    padding-top: 3px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+.men_tit {
+    font-size: 16px;
+    display: inline-block;
+    width: 70px;
+    height: 20px;
+    padding: 5px;
+    padding-left: 5px
+    !important;
+    white-space: nowrap;
+    margin-right: 87px;
+}
+.horiz {
+    width: 1000px;
+    display: flex;
+    flex-wrap: nowrap;
+    font-weight: 600;
+    color: rgb(80, 80, 80);
+    word-break: keep-all;
+    white-space: nowrap;
+}
+.men_tit a{
+    font-weight: bolder;
+    color: black
+    !important;
+}
+.f_black b{
+    color: black !important;
+    font-weight: bolder;
+    font-size: 15px
+    !important;
+    position: relative;
+    right: 4px;
+}
+.horiz li {
+    margin-right: 27px;
+}
+
+/*아래쪽 푸터*/
+#foot_bottwraper{
+    width: 100%;
+}
+#foot_bott {
+    width: 1180px;
+    height: 225px;
+    margin: 0 auto;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+}
+#bott_menu {
+    width: 100%;
+    height: 100%;
+    padding: 19px 0px 20px 13px;
+    display: inline-block;
+}
+#app_ico {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    width: 730px;
+    white-space: nowrap;
+    line-height: 40px;
+    float: left;
+    margin-left: 7px;
+    padding-top: 5px;
+}
+#app_ico > ul {
+    display: flex;
+    align-content: center;
+}
+#app_ico > ul > li{
+    margin-right: 5px;
+}
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-indent: -9999px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(248, 248, 248);
+}
+.Sicon .twit {
+    background-image: url('/userpage/lib/img/twitter.png');
+    background-size: 70%;    opacity: 0.7;
+    margin-left: 10px
+    !important;
+}
+.Sicon .faceb {
+    background-image: url('/userpage/lib/img/face.png');
+    background-size: 50%;    opacity: 0.8;
+    margin-left: 4px
+}
+.Sicon .youtub {
+    background-image: url('/userpage/lib/img/youtube.png');
+    background-size: 45%;   opacity: 0.6;
+    margin-left: 4px
+}
+.Sicon .insta {
+    background-image: url('/userpage/lib/img/insta.png');
+    background-size: 60%;    opacity: 0.8;
+    margin-left: 4px
+}
+
+.Sicon .blog {
+    background-image: url('/userpage/lib/img/blog.PNG');
+    background-size: 140%;
+    margin-left: 4px
+}
+.Aicon_txt {
+    font-size: 12px;
+    line-height: 30px;
+    margin-left: 40px;
+}
+.Sicon .site {
+    margin-left: 5px;
+}
+.site .Aicon_txt {
+    margin-left: 0;
+    line-height: 35px;
+    font-weight: 900;
+    font-size: 14px;
+}
+.sit {
+    margin-left: 10px;
+    background-image: url('/userpage/lib/img/site.PNG');
+    background-size: 140%;
+}
+.Aicon img {
+    margin-top: -3px;
+    height: 36px;
+}
+.Aicon img:nth-child(2) {
+    margin-top: -7px;
+    height: 35px;
+}  
+#info {
+    padding: 7px;
+    width: 65%;
+    padding-top: 10px;
+    display: inline-block;
+}
+#info ul {
+    width: 100%;
+}
+#info ul li {
+    margin-bottom: 10px;
+}
+#info ul > li:first-child {
+    margin-bottom: 25px;
+}
+.small_txt {
+    font-size: 10px;
+    color: rgb(85, 85, 85);
+    font-weight: bold;
+}
+.sub_txt {
+    font-size: 16px;
+    color: rgb(85, 85, 85);
+    font-weight: bold;
+}
+.pdiv {
+    display: inline-block;
+}
+.pdiv::before {
+    content: " | ";
+    color: rgb(198, 198, 198);
+    margin: 3px;
+    font-weight: bold;
+}
+.small_txt .pdiv::before {
+    content: " | ";
+    color: rgb(198, 198, 198);
+    font-size: 10px;
+    margin: 2px;
+}
+
+/*뉴스레터*/
+#news {
+    margin-top: 15px;
+    float: right;
+    margin-right: 25px;
+}
+.mail_box {
+    display: flex;
+    align-content: center;
+    padding: 0;
+    margin-top: 10px;
+}
+.mail_box input[type="text"] {
+    width: 327px;
+    height: 45px;
+    padding: 13px;
+    padding-top: 15px;
+    border: none;
+    font-size: 20px;
+}
+.mail_box input[type="text"]:focus {
+    outline: none;
+}
+.mail_box input[type="text"]::placeholder {
+    font-size: 20px;
+    color: rgb(170, 179, 194);
+}
+.mail_box input[type="submit"] {
+    position: relative;
+    width: 50px;
+    height: 45px;
+    padding: 13px;
+    left: -15px;
+    background-image: url('/userpage/lib/img/btn_srch.gif');
+    background-position: center;
+    padding-top: 20px;
+    border: none;
+    font-size: 0;
+}
+#news img {
+    margin-left: 79%;
+    margin-top: 16px;
+}
+/*뉴스레터 끝*/
+/* 모달 */
+.modal{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.pwcheck_modal{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 101;
+}
+.pwcheck_modal .pwcheck_title{
+    width: 500px;
+    height: 70px;
+    background-color: #661E43;
+    text-indent: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.pwcheck_modal .pwcheck_box{
+    background-color: white;
+    width: 500px;
+    height: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #BDD600;
+    font-weight: 600;
+}
+.pwcheck_modal .pwcheck_box p:nth-child(2){
+    width: 80%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 15px 0;
+    margin: 15px 0;
+
+    text-align: left;
+    text-indent: 20px;
+}
+.pwcheck_modal .pwcheck_box input[type="password"]{
+    width: 250px;
+    height: 50px;
+    text-indent: 20px;
+    font-size: 1rem;
+    border: 1px solid #EDEDED;
+    background-color: #F7F7F7;
+    font-weight: 600;
+    margin-left: 20px;
+}
+.pwcheck_modal .pwcheck_box .btn input[type="submit"]{
+    width: 150px;
+    height: 50px;
+    background-color:#BDD600;
+    border: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.pwcheck_modal .pwcheck_box .btn input[type="button"]{
+    width: 150px;
+    height: 50px;
+    background-color:white;
+    border: 2px solid #BDD600;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+/* 마이페이지 메인 */
+/* 서브타이틀 시작 */
+.mypage_main{
+    width: 1160px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.mypage_main .mypage_menu{
+    width: 1160px;
+    height: 120px;
+    margin: 0 auto;
+    background-color: #f2f2f2;
+    display: flex;
+    position: relative;
+    top: 0;
+    align-items: center;
+    text-align: center;
+    z-index: 99;
+}
+.mypage_main .mypage_menu p{
+    width: 160px;
+    border-right: 1px solid #5f5f5f65;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 25px 0;
+}
+.mypage_main .mypage_menu ul{
+    display: flex;
+}
+.mypage_main .mypage_menu ul li{
+    width: 200px;
+    font-size: 0.9rem;
+    color: #661E43;
+    font-weight: 600;
+    border-right: 1px solid #5f5f5f65;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mypage_main .mypage_menu ul li:last-child {
+    border-right: none;
+}
+
+.mypage_main .mypage_menu ul li a:before{
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    background:url('/userpage/lib/img/ico_subNav.png') no-repeat 0 -40px;
+}
+.mypage_main .mypage_menu ul li.booking a:before{
+    background-position-x: 0;
+}
+.mypage_main .mypage_menu ul li.mypoint a:before{
+    background-position-x:-40px;
+}
+.mypage_main .mypage_menu ul li.coupon a:before{
+    background-position-x:-80px;
+}
+.mypage_main .mypage_menu ul li.qna a:before{
+    background-position-x:-160px;
+}
+.mypage_main .mypage_menu ul li.edit a:before{
+    background-position-x:-200px;
+}
+/* 서브타이틀 끝 */
+.menu_title{
+    margin: 70px 0 50px 0;
+    font-size: 3rem;
+    color: #661E43;
+    font-weight: 600;
+    text-indent: 30px;
+}
+header{
+    height: 91px;
+}
+header{
+    height: 91px;
+}
+.sub_menu_check ul{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.sub_menu_check ul li{
+    width: 400px;
+    height: 50px;
+    border-top: 1px solid #661E43;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    border-collapse: collapse;
+    margin: 0;
+    box-shadow: 3px 5px 3px rgb(185, 185, 185);
+}
+.sub_menu_check ul li.point_srh{
+    background-color: #661E43;
+    color: white;
+}
+.btn input[class="btn_agree"]{
+    width: 150px;
+    height: 50px;
+    background-color:#BDD600;
+    border: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.btn input[class="btn_cancel"]{
+    width: 150px;
+    height: 50px;
+    border: 2px solid #BDD600;
+    background-color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.save_container{
+    margin: 50px auto;
+    height: 300px;
+}
+.save_container > p{
+    text-align: left;
+    margin-top: 20px;
+    text-indent: 80px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.save_box{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.save_box p{
+    font-size: 1.1rem;
+    text-align: left;
+    margin-right: 30px;
+    font-weight: 700;
+}
+.save_box input[type="text"]{
+    width: 250px;
+    height: 50px;
+    text-indent: 20px;
+    font-size: 1rem;
+    border: 1px solid #EDEDED;
+    background-color: #F7F7F7;
+    font-weight: 600;
+}
+.save_box input[type="submit"]{
+    width: 130px;
+    height: 50px;
+    border: 2px solid #BDD600;
+    background-color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.flex_container > h2{
+    text-indent: 20px;
+    margin: 90px 0 20px 0;
+}
+
+.srh_container .srh_box{
+    height: 120px;
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+table.bbsList{
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    font-weight: 600;
+}
+table.bbsList tr{
+    height: 60px;
+}
+table.bbsList thead th{
+    border-bottom: 1px solid lightgray;
+    background-color: #f2f2f2;
+    border-right: 1px solid lightgray;
+}
+table.bbsList td, tbody th{
+    border-right: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+}
+table.bbsList td:last-child, thead tr th:last-child{
+    border-right: 0;
+}
+.flex_info{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 50px 0;
+    text-indent: 20px;
+}
+.flex_info ul{
+    font-size: 1rem;
+    line-height: 22px;
+    font-weight: 600;
+}
+.flex_info ul ul{
+    font-size: 0.8rem;
+}
+.srh_container .srh_box p{
+    margin-left: 10px;
+}
+.srh_container .srh_box select, input[type="date"]{
+    width: 300px;
+    height: 50px;
+    text-indent: 10px;
+    font-size: 1rem;
+    border: 1px solid #EDEDED;
+    background-color: white;
+    font-weight: 600;
+    margin-left: 20px;
+}
+.srh_container .srh_box .btn input[type="button"]{
+    width: 150px;
+    height: 50px;
+    background-color:#BDD600;
+    border: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.srh_container .srh_box .btn input[class="btn_cancel"]{
+    width: 150px;
+    height: 50px;
+    border: 2px solid #BDD600;
+    background-color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+/* 나비포인트 이용 방법 */
+.none_point{
+    margin: 30px 0;
+    padding: 60px 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.none_point table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+.none_point table thead {
+    border-bottom: 1px solid rgb(192,192,192, 0.5);
+    background-color:  #F7F7F7;
+}
+.none_point table tr {
+    height: 60px;
+    border-bottom: 1px solid rgb(192,192,192, 0.5);
+}
+.none_point table tr:last-child{
+    border: none;
+}
+.none_point table tr th {
+    border-right: 1px solid rgb(192,192,192, 0.5);
+    border-bottom: 1px solid rgb(192,192,192, 0.5);
+}
+.none_point table tr td {
+    text-align: center;
+    border-right: 1px solid rgb(192,192,192, 0.5);
+}
+.none_point table tr td:last-child,
+.none_point table tr th:last-child{
+    border-right: none;
+}
+#true {
+    height: fit-content;
+}
+.footer_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    background-color: #F7F7F7;
+    padding: 0 40px;
+    margin: 40px 0;
+}
+
+.footer_info p:first-child{
+    margin-bottom: 13px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.footer_info .footer_text .subtext{
+    font-size: 1rem;
+    line-height: 25px;
+    font-weight: 600;
+}
+.footer_info .point_info{
+    width: 150px;
+    height: 40px;
+    background-color:#BDD600;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+/* 포인트 */
+
+.mypoint{
+    display: flex;
+    flex-direction: column;
+}
+.mypoint_sum{
+    margin-top: 10px;
+    min-width: 48px;
+    height: 18px;
+    background-color: #661E43;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.coupon{
+    display: flex;
+    flex-direction: column;
+}
+.mycoupon_sum{
+    margin-top: 10px;
+    min-width: 48px;
+    height: 18px;
+    background-color: #661E43;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 출발지 */
+#container .flex_container .go_layerbtn,
+#container .flex_container .arrive_layerbtn,
+#container .flex_container .go_date_layerbtn,
+#container .flex_container .come_date_layerbtn{
+    margin-right: 2px;
+    margin-left: 2px;
+    width: 220px;
+    height: 60px;
+    background-color: #fff;
+    border: 2px solid #e9e9e9;
+    box-shadow: 2px 2px 3px rgb(150 150 150 / 30%);
+    vertical-align: middle;
+}
+#container .flex_container .go_layerbtn {
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    justify-content: space-around;
+
+}
+#container .flex_container .go_layerbtn span {
+    font-weight: bold;
+    line-height: 3;
+}
+.go_select_optt, .arrive_select_optt, .go_date_select_optt, .come_date_select_optt{
+    width: 220px;
+    font-size: 17px;
+    text-align: left;
+    text-indent: 20px;
+    font-weight: bold;
+    line-height: 3;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    padding-right: 25px;
+    cursor: pointer;
+}
+#container .flex_container .go_layerbtn .go_select_opt,
+#container .flex_container .arrive_layerbtn .arrive_select_opt,
+#container .flex_container .go_date_layerbtn .go_date_select_opt,
+#container .flex_container .come_date_layerbtn .come_date_select_opt{
+    font-size: 18px;
+    text-align: center;
+}
+#container .flex_container .go_layer {
+    width: 880px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 5;
+    text-align: left;
+}
+#container .flex_container .go_layer div {
+    width: 160px;
+    height: 100%;
+    vertical-align: top;
+    margin-left: 3px;
+}
+#container .flex_container .go_layer div h3 {
+    color: #7e0049;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+#container .flex_container .go_layer div li a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 2;
+    cursor: pointer;
+}
+#container .flex_container .go_layer div li a:hover {
+    color: #7e0049;
+}
+#container .flex_container .go_layer div li a.nonselect {
+    color: #999;
+    cursor: default;
+}
+/* 도착지 */
+#container .flex_container .arrive_layerbtn {
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    justify-content: space-around;
+    vertical-align: middle;
+}
+#container .flex_container .arrive_layerbtn span {
+    font-weight: bold;
+    line-height: 2;
+}
+#container .flex_container .arrive_layer {
+    width: 880px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 5;
+    text-align: left;
+}
+#container .flex_container .arrive_layer div {
+    width: 160px;
+    height: 100%;
+    vertical-align: top;
+    margin-left: 3px;
+}
+#container .flex_container .arrive_layer div h3 {
+    color: #7e0049;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+#container .flex_container .arrive_layer div li a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 2;
+    cursor: pointer;
+}
+#container .flex_container .arrive_layer div li a:hover {
+    color: #7e0049;
+}
+#container .flex_container .arrive_layer div li a.nonselect {
+    color: #999;
+    cursor: default;
+}
+
+/* 가는 날 */
+#container .flex_container .go_date_layerbtn {
+    display: flex;
+    cursor: pointer;
+    vertical-align: middle;
+    justify-content: space-around;
+}
+#container .flex_container .go_date_layerbtn span {
+    font-weight: bold;
+    line-height: 2;
+}
+
+#container .flex_container .go_date_select {
+    width: 440px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 5;
+    text-align: left;
+}
+#container .flex_container .go_date_select div {
+    width: 160px;
+    height: 100%;
+    vertical-align: top;
+    margin-left: 3px;
+}
+#container .flex_container .go_date_select div h3 {
+    color: #7e0049;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+#container .flex_container .go_date_select div li a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 2;
+    cursor: pointer;
+}
+#container .flex_container .go_date_select div li a:hover {
+    color: #7e0049;
+}
+#container .flex_container .go_date_select div li a.nonselect {
+    color: #999;
+    cursor: default;
+}
+/* 오는날 */
+#container .flex_container .come_date_layerbtn {
+    display: flex;
+    cursor: pointer;
+    vertical-align: middle;
+    justify-content: space-around;
+}
+#container .flex_container .come_date_layerbtn span {
+    font-weight: bold;
+    line-height: 2;
+}
+
+#container .flex_container .come_date_select {
+    width: 440px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 5;
+    text-align: left;
+}
+#container .flex_container .come_date_select div {
+    width: 160px;
+    height: 100%;
+    vertical-align: top;
+    margin-left: 3px;
+}
+#container .flex_container .come_date_select div h3 {
+    color: #7e0049;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+#container .flex_container .come_date_select div li a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 2;
+    cursor: pointer;
+}
+#container .flex_container .come_date_select div li a:hover {
+    color: #7e0049;
+}
+#container .flex_container .come_date_select div li a.nonselect {
+    color: #999;
+    cursor: default;
+}
+/*평일 구분 */
+.reserve_round{
+    display: flex;
+}
+.flex_container .point_box{
+    height: 120px;
+    background-color: #F7F7F7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+    margin-bottom: 40px;
+}
+.flex_container .submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.flex_container input[type="button"]{
+    width: 200px;
+    height: 50px;
+    background-color:#BDD600;
+    border: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.go_select_opt,
+.arrive_select_opt,
+.go_date_select_opt,
+.come_date_select_opt{
+    width: 100%;
+    text-align: center;
+    padding-right: 30px;
+    background: url(/userpage/lib/img/down2.png) no-repeat;
+    background-size: 10%;
+    background-position: 95% 45%;
+}
+.go_select_opt.on,
+.arrive_select_opt.on,
+.go_date_select_opt.on,
+.come_date_select_opt.on{
+    width: 100%;
+    text-align: center;
+    background: url(/userpage/lib/img/up.png) no-repeat;
+    background-size: 10%;
+    background-position: 95% 45%;
+}
+
+.modal_container{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.3);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.modal_container > .modals p{
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 900;
+}
+.modal_container > .modals{
+    width: 290px;
+    height: 180px;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+    border-radius: 1px;
+    border: 1px solid #BDD600;
+    display: flex;
+    margin: 300px auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.modal_container > .modals form{
+    display: flex;
+    justify-content: center;
+}
+.modal_container > .modals input{
+    font-size: 14px;
+    font-weight: 900;
+    width: 80px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    margin: 40px 10px 0;
+    cursor: pointer;
+}
+
+
+.footer{
+    margin-top: 40px;
+    width: 100%;
+    height: 30px;
+}
+.footer > .center{
+    display: flex;
+    justify-content: center;
+}
+.footer table{
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.footer table td{
+    width: 35px;
+    height: 40px;
+    border: 1px solid rgb(187, 187, 187);
+    background-color: #fff;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.pages {
+    background-color : #fff;
+    color : #444;
+    cursor : pointer;
+}
+
+#showPage > td:hover {
+    background-color: #BDD600;
+    color: white;
+}
+
+.firstPage1, .firstPage2, .lastPage1, .lastPage2 {
+    cursor: pointer;
+}

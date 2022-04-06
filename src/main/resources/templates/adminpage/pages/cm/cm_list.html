@@ -1,0 +1,60 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/cm/cm_list.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- head.html 끝-->
+<body>
+<div id="wrap">
+    <div th:replace="/adminpage/fragment/header :: header"></div>
+    <div id="container">
+        <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+        <div class="contents">
+            <div id="cm_list_box">
+                <div id="cm_list_search">
+                    <div id="cm_list_title">고객 조회</div>
+                    <div id="searchMember">
+                        <input type="text" id="searchUserid" placeholder="아이디를 입력하세요">
+                        <input type="submit" id="searchSubmit" value="검색">
+                    </div>
+                </div>
+                <div id="cm_list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>고유 번호</th>
+                                <th>아이디</th>
+                                <th>성명</th>
+                                <th>생년월일</th>
+                                <th>연락처</th>
+                                <th>가입일자</th>
+                            </tr>
+                        </thead>
+                        <tbody id="memList">
+                            <tr role="row" v-for="dto in memberList">
+                                <td scope="row"><a :href=`/pages/admin/cm_list/cm_detail/${dto.memIndex}`>{{dto.memIndex}}</a></td>
+                                <td><a :href=`/pages/admin/cm_list/cm_detail/${dto.memIndex}`>{{dto.memUserid}}</a></td>
+                                <td><a :href=`/pages/admin/cm_list/cm_detail/${dto.memIndex}`>{{dto.memKorFirstName}} {{dto.memKorLastName}}({{dto.memEngFirstName}} {{dto.memEngLastName}})</a></td>
+                                <td><a :href=`/pages/admin/cm_list/cm_detail/${dto.memIndex}`>{{dto.memBirth}}</a></td>
+                                <td><a :href=`/pages/admin/cm_list/cm_detail/${dto.memIndex}`>{{dto.memHp}}</a></td>
+                                <td><a :href=`/pages/admin/cm_list/cm_detail/${dto.memIndex}`>{{dto.memRegdate}}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footer">
+                    <div class="center">
+                        <table>
+                            <tr id="showPage"></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/adminpage/app/cm/cm_list.js"></script>
+</body>
+</html>

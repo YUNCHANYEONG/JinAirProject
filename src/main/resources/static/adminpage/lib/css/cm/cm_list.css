@@ -1,0 +1,115 @@
+/* contents */
+#cm_list_box {
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+    height: 800px;
+}
+
+/* title */
+#cm_list_box #cm_list_title {
+    font-size: 1.4rem; 
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+/* search */
+#cm_list_box #cm_list_search {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+#cm_list_search form{
+    display: inline;
+    align-self:flex-end
+}
+#cm_list_box #cm_list_search input[type="text"] {
+    width: 150px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    text-indent: 10px;
+    font-size: 12px;
+    color: grey;
+    position: relative;
+    bottom: 1px;
+    outline: none;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+#cm_list_box #cm_list_search input[type="submit"] {
+    text-align: center;
+    width: 40px;
+    height: 30px;
+    border: 1px solid #BDD600;
+    border-radius: 2px;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+
+
+/* cm table */
+#cm_list > table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    /* font-size: 13px; */
+    font-weight: bold;
+    margin: 20px auto 0px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+
+#cm_list > table th {
+    background-color: #f2f2f2;
+    height: 40px;
+}
+
+#cm_list > table td {
+    height: 40px;
+    text-align: center;
+}
+
+
+.footer{
+    margin-top: 40px;
+    width: 100%;
+    height: 30px;
+}
+.footer > .center{
+    display: flex;
+    justify-content: center;
+}
+.footer table{
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.footer table td{
+    width: 35px;
+    height: 40px;
+    border: 1px solid rgb(187, 187, 187);
+    background-color: #fff;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.pages {
+    background-color : #fff;
+    color : #444;
+    cursor : pointer;
+}
+
+#showPage > td:hover {
+    background-color: #BDD600;
+    color: white;
+}
+
+.firstPage1, .firstPage2, .lastPage1, .lastPage2 {
+    cursor: pointer;
+}

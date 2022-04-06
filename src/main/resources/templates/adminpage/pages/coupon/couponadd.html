@@ -1,0 +1,78 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+        <link rel="stylesheet" href="/adminpage/lib/css/coupon/couponadd.css">
+        <link rel="stylesheet" href="/adminpage/lib/css/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <body>
+        <div id="wrap">
+            <div th:replace="/adminpage/fragment/header :: header"></div>
+            <div id="container">
+                <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+                <div class="contents">
+                    <div class="contwrap">
+                        <div class="search">
+                            <p class="title">지니 쿠폰 발급</p>
+                        </div>
+                        <div class="contents_main">
+                            <table class="coupon_tb">
+                                <colgroup>
+                                    <col width="200">
+                                    <col width="100">
+                                    <col width="120">
+                                    <col width="120">
+                                    <col width="80">
+                                    <col width="140">
+                                    <col width="100">
+                                </colgroup>
+                                <tr>
+                                    <td>쿠폰 명</td>
+                                    <td>할인율</td>
+                                    <td>시작일자</td>
+                                    <td>종료일자</td>
+                                    <td>시작 코드명</td>
+                                    <td>종료 코드명</td>
+                                    <td>쿠폰타입</td>
+                                </tr>
+                                <tr>
+                                    <td><input class="coupon_box3" type="text" placeholder="쿠폰 명" id="title"></td>
+                                    <td><input class="coupon_box3" type="text" placeholder="할인율" id="discount"></td>
+                                    <td><input class="coupon_box4" type="date" placeholder="시작 일자" id="startDate" v-model="startDate"></td>
+                                    <td><input class="coupon_box2" type="date" placeholder="종료 일자" id="endDate" v-model="endDate"></td>
+                                    <td><input class="coupon_box3" type="text" placeholder="시작 코드" id="startCode" v-model="totalcoupon"></td>
+                                    <td><input class="coupon_box3" type="text" placeholder="종료 코드" id="endCode" v-model="crprice"></td>
+                                    <td>
+                                        <select class="coupon_box" id="type">
+                                            <optgroup label="쿠폰 타입">
+                                                <option value="ALL">기본</option>
+                                                <option value="Promotion">프로모션</option>
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                                <div class="footer">
+                                    <input type="button" value="쿠폰발급" class="coupon_btn" id="add_btn">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal_isfind">
+                    <div id="modal_isfind_content">
+                        <div id="modal_isfind_title">
+                        </div>
+                        <div>
+                            <button class="modal_isfind_btn uncomplete">취소</button>
+                            <button class="modal_isfind_btn complete">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+<script src="/adminpage/app/coupon/couponadd.js"></script>
+</html>

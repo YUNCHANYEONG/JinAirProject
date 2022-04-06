@@ -1,0 +1,4688 @@
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight:normal;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+/*skipnavi*/
+.skipnavi{
+    position: absolute;
+    left: 0;
+    top: -50px;
+    text-indent: -9999px;
+    font-size: 0;
+    width: 100%;
+    z-index: 999;
+}
+.skipnavi>li a:focus, .skipnavi>li a:active{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    text-indent: 0px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+/*skipnavi 끝*/
+
+/*전체 페이지*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'NanumBarunGothic';
+    word-break: keep-all;
+}
+ul, li {
+    list-style: none;
+    text-decoration: none;
+    word-break: keep-all;
+    /* white-space: nowrap; */
+}
+ul {
+    margin-bottom: 2px;
+}
+li {
+    margin: 0.5%;
+}
+a{text-decoration: none;}
+a:link{color:#444;}
+a:visited{color:#444;}
+
+::selection {
+    background-color: #BDD600;
+}
+body{
+    color: #444;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1;
+}
+#wrap{
+    margin: 0;
+    padding: 0;
+}
+/* 헤더 */
+#header{
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+#header .header_sub{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.190);
+    height: 91px;
+    margin: 0 auto;
+    background-color: white;
+}
+#header .header_sub .header_wrap{
+    width: 1180px;
+    margin: 0 auto;
+}
+#header .logo{
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 0;
+    width: 200px;
+    height: 50px;
+    display: inline-block;
+}
+#header .logo img{
+    position: relative;
+    right: -5px;
+    top: -10px;
+}
+#header .login{
+    box-sizing: border-box;
+    display: inline;
+    position: relative;
+    left: -25px;
+    top: 35px;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+#header .login a{
+    margin-right: 12px;
+}
+#header .login a:link{
+    color: rgb(107, 107, 107);
+}
+#header .login a:visited{
+    color: rgb(107, 107, 107);
+}
+#header .login > li{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(107, 107, 107);
+    letter-spacing: 1px;
+}
+#header .login > li > a{
+    display: inline-block;
+}
+#header .login > li > p span:nth-child(1){
+    letter-spacing: 1px;
+}
+#header .login > li > span:nth-child(2){
+    font-size: 11px;
+    font-weight: 200;
+    color: rgb(214, 214, 214);
+}
+#header .login > li .lang{
+    margin-left: 17px;
+    display: inline-block;
+}
+#header .login > li .lang_img{
+    display: inline-block;
+    background: url("/userpage/lib/img/down.png") no-repeat right;
+    background-size: 13px;
+    width: 13px;
+    height: 13px;
+    position: relative;
+    left: 9px;
+    top: 3px;
+}
+#header nav{
+    position: absolute;
+    top: 47px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 600px;
+}
+#header nav .nav_all{
+    float: left;
+    position: relative;
+    width: 600px;
+    top: -10px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#header nav .nav_all li{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 0 20px;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+}
+#header nav .nav_all > .open1{
+    border-bottom: none;
+    width: 54px;
+    position: relative;
+    left: 5px;
+    text-align: center;
+}
+#header nav .nav_all > .open2{
+    border-bottom: none;
+    position: relative;
+    left: 14px;
+}
+#header nav .nav_all > .open3{
+    border-bottom: none;
+    width: 73px;
+    position: relative;
+    left: 22px;
+    text-align: center;
+}
+#header nav .nav_all > .open4{
+    border-bottom: none;
+    position: relative;
+    left: 29px;
+}
+#header nav .nav_all > .open5{
+    border-bottom: none;
+    position: relative;
+    left: 35px;
+}
+/* 서브 네비 시작 */
+#header .sub_nav{
+    display: none;
+    clear: both;
+    z-index: 100;
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    margin: 0 auto;
+}
+#header .sub_nav > .subnav_warp .subNav_title{
+    margin-top: 32px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 40px;
+}
+#header .sub_nav > .subnav_warp{
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+    width: 1180px;
+    height: 100%;
+}
+#header .sub_nav > .subnav_warp > div{
+    display: inline-block;
+    border-left: 1px solid rgba(128, 128, 128, 0.190);
+    text-align: center;
+}
+#header .sub_nav > .subnav_warp > div:nth-child(1){
+    position: relative;
+    border-left: none
+}
+#header .sub_nav > .subnav_warp > div > a{
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    line-height: 28px;
+    letter-spacing: -1px;
+}
+#header .sub_nav{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.190);
+}
+#header .reservation{
+    height: 257px;
+}
+#header .service{
+    height: 257px;
+}
+#header .benefit{
+    height: 230px;
+}
+#header .point{
+    height: 110px;
+}
+#header .optional{
+    height: 230px;
+}
+#header .reservation > .subnav_warp > div{
+    width: 20%;
+}
+#header .service > .subnav_warp > div{
+    width: 33.3%;
+}
+#header .benefit > .subnav_warp > div{
+    width: 50%;
+}
+#header .point > .subnav_warp > div{
+    width: 33.3%;
+}
+#header .optional > .subnav_warp > div{
+    width: 16.6%;
+}
+/* 서브 네비 끝 */
+/* container */
+#container{
+    width: 100%;
+    height: 3200px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.fs20 {
+    font-size: 20px;
+}
+
+.fcpup {
+    color:rgb(102, 30, 67);
+}
+
+.bb {
+    border-bottom: 1px solid rgb(102, 30, 67);
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.fs20 {
+    font-size: 20px;
+}
+
+.fcpup {
+    color:rgb(102, 30, 67);
+}
+
+.bb {
+    border-bottom: 1px solid rgb(102, 30, 67);
+}
+
+#container > .contentswrap {
+    width: 1180px;
+    position: relative;
+    top: 90px;
+    margin: 0 auto;
+}
+
+
+/*여정*/
+#container > .contentswrap > .fix_trip_info {
+    position: fixed;
+    top: 80px;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 90px;
+    font-size: 14px;
+    z-index: 50;
+    background-color: #fff;
+}
+
+.fix_trip_info > .trip_info, .trip_info2 {
+    position: relative;
+    width: 730px;
+    padding: 25px;
+    background-color: rgb(248, 248, 248);
+    margin-right: 3px;
+}
+
+.trip_info > .schedule, .trip_info2 > .schedule {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#container > .contentswrap > .fix_trip_info > .nop {
+    width: 350px;
+    padding: 20px;
+    background-color: rgb(248, 248, 248);
+    margin-right: 3px;
+}
+
+.fix_trip_info > .trip_edit_butt {
+    position: relative;
+    width: 92px;
+    background-color: #BDD600;
+    padding: 20px;
+    border: none;
+}
+.trip_info > .schedule > .arrow_img {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    width: 25px;
+    height: 25px;
+    background-image: url("/userpage/lib/img/down.png");
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.trip_info > .schedule > .arrow_up_img {
+    display: none;
+    background-image: url("/userpage/lib/img/up.png");
+}
+
+.trip_info > .trip_area, .trip_info2 > .trip_area {
+    display: flex;
+}
+
+.trip_info > .trip_area .arr_area::before, .trip_info2 > .trip_area .arr_area::before {
+    content:" ";
+    background-image: url("/userpage/lib/img/right_arrow.PNG");
+    background-size:35px 14px;
+    background-repeat: no-repeat;
+    width: 35px;
+    height:14px;
+    display: inline-block;
+}
+
+.area {
+    font-size: 20px;
+}
+
+.trip_info > .trip_area span.sm_ft, .trip_info2 > .trip_area span.sm_ft {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.trip_info > .schedule > p > span, .trip_info2 > .schedule > p > span {
+    background-color: rgb(102, 30, 67);
+    padding: 2px 20px;
+    color: #fff;
+    margin-right: 10px;
+}
+
+#container > .contentswrap > .fix_trip_info > .nop > p:first-child {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/*여정 끝*/
+
+/*여정2*/
+.trip_info2 {
+    display: none;
+    position: absolute;
+    top: 80px;
+    padding: 25px;
+    font-size: 14px;
+    background-color: rgb(248, 248, 248);
+}
+/*여정2 끝*/
+
+
+/*항공편 선택*/
+.select_wrap {
+    position: relative;
+    width: 100%;
+    top: 130px;
+    font-weight: 600;
+}
+
+.select_wrap > .title {
+    font-size: 2.8em;
+    color:rgb(102, 30, 67);
+    font-weight: 900;
+    padding: 25px;
+    letter-spacing: 2.5px;
+}
+
+.select_wrap > .select_step {
+    position: absolute;
+    display: flex;
+    right: 20px;
+}
+
+.select_wrap > .select_step > p {
+    height: 35px;
+}
+
+.select_step .div::after {
+    content: " · ";
+    margin: 0 8px;
+}
+
+.select_wrap > .setP {
+    margin-top: 34px;
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    background-color: rgb(248, 248, 248);
+    border-top: 1px solid rgba(168, 165, 165, 0.3);
+}
+
+/*토글 클래스 */
+.none {
+    visibility: visible;
+    /* text-indent: 0px; */
+}
+
+.no {
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/*토글 클래스 끝*/
+
+/*부가서비스 신청*/
+#optionS_wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 1180px;
+    height: 2700px;
+    margin: 0 auto;
+    margin-top: 254px;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(168, 165, 165, 0.5);
+    padding-top: 50px;
+}
+
+/*서비스 메뉴*/
+.service_menu_wrap {
+    width: 120px;
+    height: 2400px;
+    background-color: #EBEBEB;
+    box-shadow: 5px 0px 8px rgba(32, 32, 32, 0.5);
+    z-index: 1;
+}
+
+.service_menu_wrap .service_menu {
+    width: 100%;
+}
+
+.service_menu_wrap .service_menu table {
+    width: 100%;
+    height: 400px;
+    border-collapse: collapse;
+}
+
+.service_menu_wrap .service_menu table tr {
+    width: 100%; height: 100px;
+    padding: 10px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.service_menu_wrap .service_menu table tr td img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+.service_menu_wrap .service_menu table tr td {
+    background: none;
+    color:rgb(80, 80, 80);
+}
+
+.service_menu_wrap .service_menu table tr td.menu1 {
+    background:#661e43;
+    color: #fff;
+}
+
+.service_menu_wrap .service_menu table tr td.menu4 {
+    font-size: 16px;
+    background-color: #BDD600;
+}
+
+
+.service_menu td.menu1 > .menu1img {
+    display: none;
+    width: 50px;
+}
+
+.service_menu td.menu2 > .menu2img {
+    display: block;
+    width: 55px;
+}
+
+.service_menu td.menu3 > .menu3img {
+    display: block;
+    width: 45px;
+}
+
+.service_menu td.menu1 > img.menu1_invert {
+    display: block;
+    filter: invert();
+    width: 50px;
+}
+
+.service_menu td.menu2 > img.menu2_invert {
+    display: none;
+    filter: invert();
+    width: 55px;
+}
+
+.service_menu td.menu3 > img.menu3_invert {
+    display: none;
+    filter: invert();
+    width: 45px;
+}
+
+
+.service_menu_wrap .service_menu table tr td img.img2 {
+    width: 40px;
+}
+
+
+/*서비스 메뉴 끝*/
+
+/*서비스 컨텐츠 랩*/
+.service_content_wrap {
+    width: 1060px;
+    height: 2400px;
+}
+
+/*서비스 타이틀1*/
+.service_title1 {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    font-weight: 600;
+    background-color: #EBEBEB;
+}
+
+.service_title1 .section1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    background-color: #661e43;
+    color: #fff;
+}
+
+.service_title1 .section2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    background-color: #EBEBEB;
+    color: #444;
+}
+
+.service_title1 > div > a {
+    color: inherit;
+}
+
+.service_title1 a.checkBox_1::before {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0px 10px 0 0;
+    content: " ";
+    background: url("/userpage/lib/img/section_check.png");
+}
+
+.service_title1 a.checkBox_2::before {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 2px 10px 0 0;
+    content: " ";
+    background: url("/userpage/lib/img/section_no_check.png");
+    background-size: 100%;
+}
+/*서비스 타이틀 끝*/
+
+/*서비스 컨텐츠1*/
+.service_content {
+    position: relative;
+    display: flex;
+    width: 100%; /*1060px*/
+    height: 2320px;
+    background-color: #BDD600;
+}
+
+/*탑승객 정보 랩*/
+.service_content .passenger_info_wrap {
+    width: 315px;
+    background-color: #A2A2A2;
+}
+
+
+.service_content .passenger_info_wrap .passenger_info {
+    width: 100%;
+    height: 250px;
+    padding: 30px;
+    background-color: #EBEBEB;
+    font-weight: 600;
+    border-bottom: 1px solid #fff;
+}
+
+.service_content .passenger_info_wrap .passenger_info h3 {
+    color: #661e43;
+}
+
+.service_content .passenger_info_wrap .passenger_info label {
+    /*display: flex;*/
+    /*flex-wrap: nowrap;*/
+    margin-top: 25px;
+    /*margin-left: 15px;*/
+    /*align-items: flex-start;*/
+}
+
+.label {
+    width: 100%;
+    height: 80px;
+    background-color: #B28913;
+}
+
+.service_content .passenger_info_wrap .passenger_info img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.passenger_info1 img, .passenger_info2 img{
+    margin-right: 16.3px !important;
+}
+
+.service_content .passenger_info_wrap .passenger_info span {
+    margin-bottom: 3px;
+    color: black;
+}
+
+.service_content .passenger_info_wrap .passenger_info p.select_seat_num {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 15px;
+    background-color: #fff;
+    border: none;
+}
+
+.service_content .passenger_info_wrap .passenger_info p.select_seat_num1 span .seat_num, .service_content .passenger_info_wrap .passenger_info p.select_seat_num2 span .seat_number {
+    width: 80px;
+    height: 40px;
+}
+
+.seat_num {
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.service_content .passenger_info_wrap .passenger_info p.select_seat_num span.close {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    font-size: 25px;
+    top: 5px;
+    right: 0px;
+    border: none;
+    color: rgba(168, 165, 165, 0.5);
+    font-weight: 400;
+    z-index: 1;
+}
+
+.service_content .passenger_info_wrap .passenger_info p.select_seat_price {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 3px;
+    margin-left: 15px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.passenger_info_wrap1 .passenger_info p.select_seat_price >.seat_P1 {
+    visibility: hidden;
+    display: block;
+    font-size: 10px;
+    margin-right: 5px;
+    color: #444;
+}
+
+.passenger_info_wrap2 .passenger_info p.select_seat_price >.seat_P2{
+    visibility: hidden;
+    display: block !important;
+    font-size: 10px;
+    margin-right: 5px;
+    color: #444;
+}
+
+/*탑승객 정보 랩 끝*/
+
+
+/*좌석정보 랩*/
+.service_content .seat_info_wrap {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 170px;
+    height: 2320px;
+    background-color: #fff;
+}
+
+.seat_info_view1 {
+    display: none;
+}
+
+.seat_info_view2 {
+    display: none;
+}
+
+.seat_view1 {
+    display: none;
+}
+
+.seat_view2 {
+    display: none;
+}
+
+.seat_info_wrap2 {
+    display: none;
+}
+
+.service_content .seat_info_wrap .seat_info {
+    position: absolute;
+    top: 95px;
+    left: 30px;
+    width: 140px;
+    height: 500px;
+    z-index: 20;
+}
+
+.service_content .seat_info_wrap .seat_info .info {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 35px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    background-color: #BDD600;
+    box-shadow: 3px 3px 8px rgba(32, 32, 32, 0.5);
+    /* box-shadow: 5px 5px 5px 5px ; */
+}
+
+.service_content .seat_info_wrap .seat_info .info img {
+    margin-left: 20px;
+    margin-right: 8px;
+}
+
+.service_content .seat_info_wrap .seat_info .info span::after {
+    content: " > ";
+}
+
+/*좌석 선택랩*/
+
+.service_content .seat_info_wrap .seat_info .seat_box {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+    font-size: 14px;
+}
+
+.service_content .box {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #636363;
+    margin-right: 5px;
+}
+
+.seat_sel {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    /* border: 3px solid red; */
+    text-indent: -9999px;
+}
+
+.prop {
+    font-size: 1em;
+}
+
+.check {
+    font-size: 1em;
+}
+
+.B777_seat .b777 {
+    width: 26px;
+    height: 26px;
+}
+
+.checkPerson, .checkPerson2 {
+    display: none;
+}
+
+.seat_num {
+    border: none;
+}
+
+.seat_num:active {
+    border: none;
+}
+
+.seat_num:focus {outline:none;}
+    /*
+    .chk_box { display: block; position: relative; padding-left: 25px; margin-bottom: 10px; cursor: pointer; font-size: 14px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    /* 기본 체크박스 숨기기 */
+
+.chk_box input[type="checkbox"] { display: none; }
+
+/* 선택되지 않은 체크박스 스타일 꾸미기 */
+/* .on { width: 20px;
+    height: 20px;
+    background: #ddd;
+    position: absolute;
+    top: 0; left: 0;
+}  */
+
+/* .box {
+    background-color: #636363;;
+} */
+
+/* 선택된 체크박스 스타일 꾸미기 */
+/* .SSC:checked + .box1 {
+    background: #f86480;
+} */
+.SSC:checked + .seat_sel {
+    background: url("/userpage/lib/img/check.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    filter: blur();
+}
+
+.SSC:checked + .box1 {
+    background-color: #518BBB;
+}
+.SSC:checked + .box2 {
+    background-color: #72008E;
+}
+.SSC:checked + .box3 {
+    background-color: #A82628
+}
+.SSC:checked + .box4 {
+    background-color: #00103F;
+}
+.SSC:checked + .box5 {
+    background-color: #007074;
+}
+.SSC:checked + .box6 {
+    background-color: #737373;
+}
+
+.SSC:checked + .boxPlus, .SSC:checked + .boxBiz {
+    background-color: #B28913;
+}
+
+.SSC:checked + .box7 {
+    padding: 0px;
+    font-size: 40px;
+    background-image: url('/userpage/lib/img/none_select.png');
+    background-repeat: no-repeat;
+    background-size: 130%;
+    background-position: center;
+    border: 3px solid #636363;
+}
+
+.SSC:checked + .box8 {
+    padding: 0px;
+    font-size: 40px;
+    height: 33px !important;
+    background-image: url('/userpage/lib/img/none_select.png');
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: center;
+    border: 3px solid #636363;
+}
+
+ .SSC:checked + .box9 {
+     padding: 0px;
+     font-size: 40px;
+     height: 54px !important;
+     background-image: url('/userpage/lib/img/none_select.png');
+     background-repeat: no-repeat;
+     background-size: 250%;
+     background-position: center;
+     border: 3px solid #636363;
+ }
+
+.SSC2:checked + .seat_sel {
+    background: url("/userpage/lib/img/check.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    filter: blur();
+}
+
+.SSC2:checked + .box1 {
+    background-color: #518BBB;
+}
+.SSC2:checked + .box2 {
+    background-color: #72008E;
+}
+.SSC2:checked + .box3 {
+    background-color: #A82628
+}
+.SSC2:checked + .box4 {
+    background-color: #00103F;
+}
+.SSC2:checked + .box5 {
+    background-color: #007074;
+}
+.SSC2:checked + .box6 {
+    background-color: #737373;
+}
+
+.SSC2:checked + .boxPlus, .SSC2:checked + .boxBiz {
+    background-color: #B28913;
+}
+
+.SSC2:checked + .box7 {
+    padding: 0px;
+    font-size: 40px;
+    background-image: url('/userpage/lib/img/none_select.png');
+    background-repeat: no-repeat;
+    background-size: 130%;
+    background-position: center;
+    border: 3px solid #636363;
+}
+
+.SSC2:checked + .box8 {
+    padding: 0px;
+    height: 33px !important;
+    font-size: 40px;
+    background-image: url('/userpage/lib/img/none_select.png');
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: center;
+    border: 3px solid #636363;
+}
+
+.SSC2:checked + .box9 {
+    padding: 0px;
+    height: 54px !important;
+    font-size: 40px;
+    background-image: url('/userpage/lib/img/none_select.png');
+    background-repeat: no-repeat;
+    background-size: 250%;
+    background-position: center;
+    border: 3px solid #636363;
+}
+
+.back_none {
+    background-color: #fff;
+}
+
+.on:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.chk_box input[type="checkbox"]:checked + .on:after {
+    display: block;
+}
+
+.on:after {
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    left: 6px;
+    top: 2px;
+}
+
+
+.service_content .box1 {
+    border: 3px solid #518BBB;
+    cursor: pointer;
+}
+.service_content .box2 {
+    border: 3px solid #72008E;
+    cursor: pointer;
+}
+.service_content .box3 {
+    border: 3px solid #A82628;
+    cursor: pointer;
+}
+.service_content .box4 {
+    border: 3px solid #00103F;
+    cursor: pointer;
+}
+.service_content .box5 {
+    border: 3px solid #007074;
+    cursor: pointer;
+}
+.service_content .box6 {
+    border: 3px solid #737373;
+    cursor: pointer;
+}
+.service_content .boxPlus, .service_content .boxBiz {
+    border: 3px solid #B28913;
+    cursor: pointer;
+}
+
+.passenger_info_wrap2 {
+    display: none;
+}
+
+.service_content .box7 {
+    padding: 0px;
+    font-size: 40px;
+    background-image: url('/userpage/lib/img/none_select.png');
+    background-repeat: no-repeat;
+    background-size: 130%;
+    background-position: center;
+    border: 3px solid #636363;
+}
+
+.service_content .box8 {
+    padding: 0px;
+    height: 33px !important;
+    font-size: 40px;
+    background-image: url('/userpage/lib/img/none_select.png');
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: center;
+    border: 3px solid #636363;
+}
+
+.service_content .box9 {
+    padding: 0px;
+    height: 54px !important;
+    font-size: 40px;
+    background-image: url('/userpage/lib/img/none_select.png');
+    background-repeat: no-repeat;
+    background-size: 250%;
+    background-position: center;
+    border: 3px solid #636363;
+}
+
+.box7, .box8, .box9 {
+    pointer-events: none;
+}
+
+.service_content .seat_info_wrap .seat_info .seat_box .txt {
+    display: flex;
+    flex-wrap: wrap;
+    width: 110px;
+    height: 25px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.service_content .seat_info_wrap .seat_info .seat_box .txt .price {
+    display: inline;
+    font-size: 16px;
+    margin-left: 3px;
+}
+
+.service_content .seat_info_wrap .seat_info .seat_box .txt .cur {
+    width: 40px !important;
+    display: inline;
+    font-size: 12px;
+    height: 14px;
+}
+
+.service_content .seat_info_wrap .seat_info .seat_box .txt .seat_name {
+    display: inline-block;
+}
+
+.service_content .seat_info_wrap .seat_info .seat_box .box1+.txt {
+    color: #518BBB !important;
+    /* background-color: #661e43; */
+}
+.service_content .seat_info_wrap .seat_info .seat_box .box2+.txt {
+    color: #72008E !important;
+}
+.service_content .seat_info_wrap .seat_info .seat_box .box3+.txt {
+    color: #A82628 !important;
+}
+.service_content .seat_info_wrap .seat_info .seat_box .box4+.txt {
+    color: #00103F !important;
+}
+.service_content .seat_info_wrap .seat_info .seat_box .box5+.txt {
+    color: #007074 !important;
+}
+.service_content .seat_info_wrap .seat_info .seat_box .box6+.txt {
+    color: #737373!important;
+}
+
+.service_content .seat_info_wrap .seat_info .seat_box .boxPlus+.txt, .service_content .seat_info_wrap .seat_info .seat_box .boxBiz+.txt {
+    color: #B28913 !important;
+}
+
+.service_content .seat_info_wrap .seat_info .seat_box .cur {
+    font-size: 12px;
+    color: inherit !important;
+}
+
+.seat .left_seat label, .seat .right_seat label {
+    text-indent: -9999px;
+}
+
+.seat .left_seat p, .seat input[type="checkbox"] {
+    display: none;
+}
+
+.seat_column .left_seat .seat_sel, .seat_column .right_seat .seat_sel {
+    text-indent: 0px;
+}
+
+/*좌석 선택랩*/
+
+
+/*좌석 선택 랩2*/
+
+.seat_view1, .seat_view2 {
+    position: relative;
+    width: 575px;
+    height: 2320px;
+    background-color: #fff;
+}
+
+.service_content .select_seat_wrap {
+    position: relative;
+    display: flex;
+    width: 575px;
+    height: 2320px;
+    background-color: #fff;
+}
+
+/*좌석정보 랩 끝*/
+
+
+
+.select_seat_wrap1 {
+    display: flex;
+}
+
+.select_seat_wrap2 {
+    display: none;
+}
+
+
+.select_seat_wrap .select_seat {
+    width: 470px;
+    height: 100%;
+    background: url(/userpage/lib/img/B737-800.png);
+    background-size: 102%;
+    padding: 40px;
+    padding-top: 30px;
+    background-repeat: no-repeat;
+}
+
+.select_seat_wrap .B737-900 {
+    width: 470px;
+    height: 100%;
+    background: url(/userpage/lib/img/B737-900.png);
+    background-size: 100%;
+    padding: 40px;
+    padding-top: 30px;
+    background-repeat: no-repeat;
+}
+
+.select_seat_wrap .B777_200ER {
+    width: 470px;
+    height: 100%;
+    background: url(/userpage/lib/img/B777-200ER.png);
+    background-size: 102%;
+    padding: 40px;
+    padding-top: 30px;
+    background-repeat: no-repeat;
+}
+
+
+.select_seat_wrap .select_seat .top_toilet_area {
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.select_seat_wrap .select_seat .bottom_toilet_area {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    margin-top: 20px;
+}
+
+.select_seat_wrap .select_seat .middle_toilet_area {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    margin-top: 15px;
+}
+
+.select_seat_wrap .select_seat .middle_toilet_area2 {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: flex-end;
+}
+
+.bottom_toilet_area2 {
+    margin-top: 5px !important;
+    margin-bottom: 10px;
+}
+
+.select_seat_wrap .select_seat .exit_area {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.select_seat_wrap .select_seat .seat  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+.select_seat_wrap .select_seat .seat .left_seat, .right_seat {
+    width: 43%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.boxBiz {
+    height: 54px;
+}
+
+.select_seat_wrap .select_seat .B777_seat {
+    margin-bottom: 12px;
+}
+
+.select_seat_wrap .select_seat .B777_seat .left_seat, .B777_seat .right_seat {
+    width: 22%;
+}
+
+.select_seat_wrap .select_seat .B777_seat .center_seat {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.B777_seat .center_seat .seat_sel {
+    width: 26px;
+    height: 26px;
+}
+
+.B777_seat .boxPlus {
+    width: 26px;
+    height: 35px;
+}
+
+.B777_seat .center_seat .boxPlus {
+    width: 26px;
+    height: 33px;
+}
+
+.select_seat_wrap .select_seat .seat_column {
+    margin-top: 50px;
+}
+
+.select_seat_wrap .select_seat .seat_column .left_seat, .select_seat_wrap .select_seat  .seat_column .right_seat {
+    border: none;
+    height: 5px !important;
+    font-weight: bold;
+    text-indent: 0;
+}
+
+.select_seat_wrap .select_seat .seat_column > .left_seat p, .select_seat_wrap .select_seat .seat_column .right_seat p {
+    text-indent: 0 !important;
+    color: black !important;
+    display: inline-block;
+}
+
+.seat_columnB777 {
+    margin-top: 20px;
+    display: flex;
+}
+
+.seat_columnB777 > div {
+    display: flex;
+    height: 5px;
+    justify-content: space-around;
+    text-indent: 0;
+}
+
+.seat_columnB777 > div.B777left, .seat_columnB777 > div.B777right {
+    width: 22% !important;
+}
+
+.seat_columnB777 > div.B777center {
+    width: 30% !important;
+}
+
+.seat_columnB777 .B777left p, .seat_columnB777 .B777center p, .seat_columnB777 .B777right p {
+    text-indent: 0px;
+    border: none;
+    font-weight: bold;
+    color: black !important;
+}
+
+.seat_columnB777 .B777left p {
+    display: inline-block;
+}
+
+.bottom_exit_area {
+    margin-top: 25px;
+}
+
+.seat_column2 {
+    margin-top: 70px !important;
+}
+
+
+.select_seat_wrap .select_comp {
+    position: fixed;
+    display: flex;
+    bottom: 100px;
+    left: 56%;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 60px;
+    background-color: #BDD600;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 3px 3px 8px rgba(32, 32, 32, 0.5);
+}
+
+.select_seat_wrap .seat_map {
+    position: relative;
+    top: 0px;
+    width: 105px;
+    height: 100%;
+}
+
+.select_seat_wrap .seat_map .move_map {
+    position: absolute;
+    top: 80px;
+    width: 105px;
+    height: 400px;
+    background: url('/userpage/lib/img/seat_map.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.select_seat_wrap .seat_map .location {
+    width: 100%;
+    height: 100px;
+    border: 1px solid black;
+    position: absolute;
+    top: 25px;
+}
+
+.select_seat_wrap .select_seat .seat_column {
+    margin-bottom: 20px;
+}
+/*좌석 선택 랩 끝*/
+
+/*따라다니는 지도*/
+
+
+/*서비스 컨텐츠1 끝*/
+/*서비스 컨텐츠 랩1 끝*/
+
+.service_content_wrap1 {
+    display: block;
+}
+
+.service_content_wrap2 {
+    display: none;
+}
+.service_content_wrap3 {
+    display: none;
+}
+/*서비스 컨텐츠 랩2*/
+
+.service_content_wrap2 .service_content {
+    background-color: #ffffff;
+}
+
+/*서비스 타이틀 2*/
+.service_content_wrap > .service_title2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E0E0E0;
+    height: 80px;
+    width: 100%;
+    font-weight: bold;
+}
+/*서비스 타이틀 2 끝*/
+
+/*탑승객 정보*/
+.service_content_wrap > .service_title2:hover {
+    color: #661e43;
+}
+
+.service_content_wrap > .service_title2 span {
+    color: #661e43; font-size: 18px; margin-right: 3px;
+}
+
+.service_content_wrap2 .passenger_info_wrap {
+    background-color: #ffffff;
+}
+
+.service_content_wrap2 .service_content .passenger_info_wrap .passenger_info {
+    width: 100%;
+    height: 400px;
+    padding: 30px;
+    background-color: #EBEBEB;
+    font-weight: 600;
+    border-bottom: 1px solid #fff;
+}
+
+
+.service_content_wrap2 .service_content .passenger_info_wrap .passenger_info p.section {
+    display: flex;
+    height: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0px;
+    margin-top: 15px;
+    padding: 0px;
+    margin-left: -12px;
+    margin-bottom:5px;
+}
+
+.service_content_wrap2 .service_content .passenger_info_wrap .passenger_info p.section2 {
+    margin-top: 45px;
+}
+
+.service_content_wrap2 .service_content .passenger_info_wrap .passenger_info p.section img {
+    margin-right: -10px;
+}
+
+
+.service_content_wrap2 .service_content .passenger_info_wrap .passenger_info .select_bagg_price {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    margin: 0 auto;
+    background-color: #fff;
+    /* border: 3px solid #661e43; */
+    padding-left: 10px;
+    color: black;
+    padding: 12px;
+}
+
+
+
+.service_content_wrap2 .service_content .passenger_info_wrap .passenger_info p.select_bagg_price span.close {
+    display: none;
+    position: absolute;
+    font-size: 25px;
+    top: 3px;
+    right: 5px;
+    color: rgba(168, 165, 165, 0.5);
+    font-weight: 400;
+}
+
+.service_content .passenger_info_wrap .passenger_info p.select_bagg_price .select_bagg {
+    width: 90%;
+    height: 100%;
+}
+
+.service_content .passenger_info_wrap .passenger_info p.bot_bagg_price {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    height: 28px;
+    margin: 10px 12px;
+    color: black;
+    font-weight: bold;
+}
+
+.service_content .passenger_info_wrap .passenger_info p.bot_bagg_price > span.cur {
+    font-size: 10px;
+    margin-right: 5px;
+    color: #444;
+    height: 30px;
+    padding-top: 5px;
+}
+
+.service_content .select_baggage_wrap {
+    width: 745px;
+    padding: 0px;
+}
+
+.service_content .select_baggage_wrap .baggage_wrap {
+    height: 400px;
+    padding: 30px;
+    border-bottom: 1px solid rgba(167, 167, 165, 0.5);
+}
+
+.service_content .select_baggage_wrap .baggage_1, .baggage_2 {
+    margin-top: 15px;
+    padding: 20px;
+    width: 230px;
+    height: 120px;
+}
+
+
+.service_content .select_baggage_wrap .baggage_wrap .section{
+    display: flex;
+    align-items: center;
+    color: black;
+    font-weight: bold;
+    margin-left: -18px;
+}
+
+
+.service_content .select_baggage_wrap .baggage_1 select, .baggage_2 select {
+    width: 250px;
+    height: 45px;
+    border: 1px solid rgba(168, 168, 168, 0.5);
+    box-shadow: 3px 3px 5px rgba(32, 32, 32, 0.3);
+    padding: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.service_content_wrap2 .service_content .passenger_info .section1 {
+    margin-top: 30px !important;
+}
+
+.service_content .select_baggage_wrap .baggage_wrap img {
+    width: 60px;
+}
+/*탑승객 정보 끝*/
+/*수하물 선택 랩*/
+/*수하물 선택 랩 끝*/
+/*서비스 컨텐츠 2*/
+/*서비스 컨텐츠 2 끝*/
+/*서비스 컨텐츠 랩2 끝*/
+
+/*서비스 컨텐츠 랩3*/
+.insuranceNum {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 15px;
+    background-color: #fff;
+    border: none;
+    font-weight: bold;
+}
+
+.service_content_wrap3 .passenger_info {
+    width: 315px !important;
+}
+
+.service_content_wrap3 .section2 .checkBox_1 {
+    display: block;
+}
+
+.service_content_wrap3 .service_title1 .section1 {
+    background-color: #661e43 !important;
+    color: #fff !important;
+}
+
+.service_content_wrap3 .service_title1 .section2 {
+    background-color: #661e43;
+    color: #fff;
+}
+
+h3 > span {
+    color: #661e43 !important;
+}
+
+.service_content_wrap3 .service_content .passenger_info_wrap .passenger_info{
+    height: 180px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(224, 224, 224);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_title span {
+    color:rgb(102, 30, 67);
+    margin: 0 10px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content {
+    width: 100% !important;
+    height: 2240px;
+    background-color: #FFFFFF;
+    padding: 30px 0 30px 30px;
+}
+
+.select_ins_price {
+    margin-top: 10px;
+    display: none;
+}
+
+.cur {
+    height: 80px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_menu_wrap {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_menu_wrap .ins_menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 40px;
+    font-weight: bold;
+    border: 1px solid rgba(168, 165, 165, 0.5);
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_menu_wrap .ins_menu1 {
+    color: #fff;
+    background-color: #661e43;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_menu_wrap .ins_menu2 {
+    background-color: #fff;
+    color: #444;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent {
+    width: 100%;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent hr {
+    border: 1px solid rgba(168, 168, 168, 0.3);
+    margin-top: 10px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .tit_img {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .tit_img img {
+    width: 60px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .date_wrap {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .date {
+    width: 170px;
+    height: 60px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid rgba(168, 165, 165, 0.5);
+    border-radius: 0;
+    box-shadow: 5px 5px 5px rgba(32, 32, 32, 0.2);
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .date2 {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .date+span {
+    margin: 0 10px;
+}
+
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent ul {
+    margin-top: 20px;
+    padding-left: 20px;
+    font-weight: 600;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent ul li {
+    line-height: 25px;
+    text-indent: -15px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent1 ul li::before {
+    content: ' - ';
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .font_col {
+    color:#661e43;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .limit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+    border: 1px solid #BDD600;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 10px 10px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent table {
+    border-collapse: collapse;
+}
+
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent .limit+hr {
+    margin-top: 10px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent h2.font_col {
+    margin-top: 25px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    width: 100%;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product td {
+    height: 60px;
+    background-color: #F7F7F6;
+    text-align: center;
+    padding: 8px;
+    vertical-align: middle;
+    border: 1px solid rgba(168, 165, 165, 0.3);
+}
+
+.select_ins_num {
+    display: none;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product .normal {
+    background: none;
+}
+
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product .bir_date {
+    padding: 2px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product .birth {
+    width: 70px;
+    height: 30px;
+    background-color: #f7f7f6;
+    text-align: center;
+    border: 1px solid rgba(168, 165, 165, 0.3);
+    font-width: 800;
+    font-size: 12px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product .sel_pro {
+    padding: 5px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product .sel_pro select {
+    width: 90px;
+    height: 30px;
+    background-color: #f7f7f6;
+    text-align: center;
+    border: 1px solid rgba(168, 165, 165, 0.3);
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product input {
+    border-radius: 0;
+    width: 12px;
+    height: 12px;
+    margin-right: 3px;
+}
+
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insurance_product select {
+    width: 65px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap table.insurance_price {
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap table.insurance_price .tit {
+    background-color: #F7F7F6;
+    height: 80px;
+    padding: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    border-top: 1px solid black;
+    border-bottom:1px solid black;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap table.insurance_price td {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap table.insurance_price .tit span.cul {
+    margin-left: 55%;
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap table.insurance_price .coverage {
+    width: 250px;
+    height: 50px;
+    margin-top: 15px;
+    border: 1px solid #BDD600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap table.insurance_price .next_butt {
+    position: absolute;
+    margin-top: 30px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 150px;
+    height: 45px;
+    background-color: #BDD600;
+    border: none;
+    font-weight: bold;
+}
+.service_content_wrap2 .select_comp {
+    position: fixed;
+    display: flex;
+    bottom: 100px;
+    left: 56%;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 60px;
+    background-color: #BDD600;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 3px 3px 8px rgba(32, 32, 32, 0.5);
+}
+
+.service_content_wrap3 .service_content .insContent2 h2{
+    margin-top: 30px;
+}
+
+.service_content_wrap3 .service_content .insContent2 ul li {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.service_content_wrap3 .service_content .insContent2 input {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+.service_content_wrap3 .service_content .insContent2 ul li span {
+    text-indent: -25px;
+}
+
+
+.service_content_wrap3 .service_content .insContent2 ul li > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 50px;
+    border: 1px solid #BDD600;
+}
+
+.service_content_wrap3 .service_content .insContent2 ul li > div.agree {
+    width: 270px;
+}
+
+.service_content_wrap3 .service_content .insContent2 .ins_noti {
+    padding-left: 10px;
+    text-indent: -10px;
+}
+
+.service_content_wrap3 .service_content .insContent2 .ins_noti li {
+    margin-bottom: 0px;
+}
+
+.service_content_wrap3 .service_content .insContent2 .ins_noti li a {
+    text-decoration: underline;
+    color: #661e43;
+}
+
+.service_content_wrap3 .service_content .insContent2 .ins_noti li::before {
+    content: " - "
+}
+
+
+.service_content_wrap3 .service_content .insContent2 .ins_butt_wrap {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.service_content_wrap3 .service_content .insContent2 .ins_butt_wrap input {
+    width: 160px;
+    height: 45px;
+    border: 1px solid #BDD600;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.service_content_wrap3 .service_content .insContent2 .ins_butt_wrap .ins_join_butt {
+    width: 160px;
+    height: 45px;
+    background-color: #BDD600;
+    color: #444;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent1 {
+    display: block;
+}
+
+.service_content_wrap3 .service_content .join_insurance_wrap .insurance_content .insContent2 {
+    display: none;
+}
+
+/*서비스 컨텐츠 랩3 끝*/
+
+
+
+/*좌석안내 모달창*/
+.modal_seat_info_wrap {
+    width: 450px;
+    height: 600px;
+    padding: 20px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    border: 1px solid rgba(168, 165, 165, 0.5);
+    z-index: 30;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: none;
+}
+
+.modal_seat_info_wrap .close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 35px;
+}
+
+.modal_seat_info_wrap p {
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.modal_seat_info_wrap p.noti {
+    font-size: 12px;
+}
+
+.modal_seat_info_wrap p > span {
+    border: none;
+    cursor: pointer;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 16px;
+}
+
+.modal_seat_info_wrap .txt1 {
+    color:  #518BBB;
+}
+
+.modal_seat_info_wrap .txt2{
+    color: #72008E;
+}
+.modal_seat_info_wrap .txt3{
+    color: #A82628;
+}
+.modal_seat_info_wrap .txt4 {
+    color: #00103F;
+}
+.modal_seat_info_wrap .txt5 {
+    color: #007074;
+}
+.modal_seat_info_wrap .txt6 {
+    color: #737373;
+}
+
+
+/*좌석안내 모달창 끝*/
+
+
+
+
+
+
+/*무료 수하물/기내식 안내*/
+#modal_free_wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+}
+
+.modal_free_wrap {
+    width: 650px;
+    height: 90%;
+    /*margin: 0 auto 30px;*/
+    background-color: #fff;
+    z-index: 800;
+}
+
+.modal_free_wrap .modal_title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.7em;
+    width: 100%;
+    height: 80px;
+    background-color: #661e43;
+    color: #fff;
+    padding: 20px;
+    font-weight: 600;
+}
+
+.modal_free_wrap .modal_title .close {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+}
+
+.modal_free_wrap .modal_content_wrap {
+    width: 100%;
+    height: 90%;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_menu_wrap {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+    box-shadow: 5px 5px 5px rgba(32, 32, 32, 0.3);
+    border-top: 1px solid #661e43;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_menu_wrap > div {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 40px;
+    justify-content: center;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_menu_wrap > div.menu1 {
+    background-color: #661e43;
+    color: #fff;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_menu_wrap > div.menu2 {
+    background-color: #fff;
+    color: #444;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_menu_wrap .modal_content1 {
+    width: 100%;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 h3 {
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 table {
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 table th {
+    border-bottom: 1px solid rgba(168, 168, 168, 0.5);
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 table th.tit {
+    background-color: #f7f7f6;
+    border-top: 2px solid black;
+    line-height: 40px;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.3);
+}
+
+
+.modal_free_wrap .modal_content_wrap .modal_content1 table th.tit2 {
+    border-top: none;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 table td {
+    height: 50px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.3);
+    color: black;
+    border-left: 1px solid rgba(168, 168, 168, 0.3);
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 .thick{
+    border-bottom: 2px solid black;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 ul {
+    margin: 20px auto;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 ul li {
+    font-size: 15px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 ul li::before {
+    content: " - ";
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 p {
+    margin-top: 10px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content1 p > a {
+    text-decoration: underline;
+    color: #661e43;
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_menu_wrap .modal_content2 {
+    padding: 20px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 h3 {
+    margin: 10px 5px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 p {
+    margin-top: 10px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 35px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 table th{
+    line-height: 50px;
+    background-color: #f7f7f6;
+    border-top: 2px solid black;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 table td {
+    height: 100px;
+    padding: 20px 10px;
+    line-height: 20px;
+    border-top: 1px solid rgba(168, 168, 168, 0.3);
+    border-right: 1px solid rgba(168, 168, 168, 0.3);;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 table td:last-child {
+    border-right: none;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 ul {
+    margin-top: 25px;
+}
+.modal_free_wrap .modal_content_wrap .modal_content2 ul li {
+    padding: 3px;
+    text-indent: -10px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 ul li::before {
+    content: " - ";
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 .thick{
+    border-bottom: 2px solid black;
+}
+.modal_free_wrap .modal_content_wrap .modal_content2 p {
+    margin-top: 15px;
+}
+
+.modal_free_wrap .modal_content_wrap .modal_content2 p > a {
+    text-decoration: underline;
+    color: #661e43;
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.modal_content1 {
+    display: block;
+}
+.modal_content2 {
+    display: none;
+}
+/*무료 수하물/기내식 안내 끝*/
+
+/*비상구 좌석 지정 시 유의 사항 안내 모달창*/
+#modal_notice_wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+    display: none;
+}
+
+#modal_notice_wrap .modal_notice_wrap {
+    font-weight: 600;
+    width: 40%;
+    height: 800px;
+    background-color: #fff;
+    /*margin: 0 auto 30px;*/
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_title {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color: #661e43;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_title .tit_text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+#modal_notice_wrap .modal_notice_wrap .modal_title .close {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    width: 30px;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_title .close img {
+    width: 30px;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_content_wrap {
+    width: 100%;
+    height: 720px;
+    padding: 20px;
+    overflow: scroll;
+}
+
+
+#modal_notice_wrap .modal_notice_wrap .modal_content_wrap .content {
+    margin:20px;
+    padding: 20px;
+    border: 1px solid rgba(168, 168, 168, 0.3);
+    line-height: 30px;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_content_wrap .content .red {
+    color: red;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_content_wrap .content ul {
+    margin-top: 30px;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_content_wrap .content ul li {
+    margin-top: 30px;
+    text-indent: -20px;
+    padding-left: 10px;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_content_wrap .bott {
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_content_wrap .checkbox {
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+#modal_notice_wrap .modal_notice_wrap .modal_content_wrap .butt_ok {
+    position: relative;
+    margin-top: 25px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 130px;
+    height: 45px;
+    border: none;
+    font-weight: bold;
+    background-color: #BDD600;
+}
+
+/*비상구 좌석 지정 시 유의 사항 안내 모달창 끝*/
+/*체크 확인 모달*/
+#modal_conf_check {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+}
+
+#modal_conf_check .modal_conf_check {
+    width: 300px;
+    height: 150px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #661e43
+}
+
+#modal_conf_check  .modal_conf_check .txt{
+    width: 100%;
+}
+
+#modal_conf_check  .modal_conf_check .button_wrap {
+    width: 100%;
+    margin-top: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+#modal_conf_check  .modal_conf_check .button_wrap input {
+    width: 80px;
+    height: 40px;
+    background-color: #BDD600;
+    border: none;
+}
+/*체크 확인 모달 끝*/
+
+/*보험계약 안내사항 모달창*/
+#modal_insurance_info_wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap {
+    position: relative;
+    /*top: 50px;*/
+    /*left: 400px;*/
+    width: 1160px;
+    height: 800px;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .title {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    background-color: #661e43;
+    font-size: 30px;
+    padding: 20px;
+    font-weight: bold;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .title .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .title .close img {
+    width: 100%;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content {
+    background-color: #fff;
+    height: 720px;
+    padding: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table th {
+    background-color: #F7F7F6;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.product_int {
+    text-align: left;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.product_int th {
+    padding: 20px;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.5);
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.product_int td {
+    height: 40px;
+    padding: 20px;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.5);
+}
+
+.borderT {
+    border-top: 1px solid black !important;
+}
+
+.borderB {
+    border-bottom: 1px solid black !important;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.product_int+p {
+    color: black;
+    font-weight: bold;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.product_int+p::before {
+    content: "※"
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap #modal_ins_people {
+    width: 100%;
+    display: flex;
+    height: 60px;
+    margin: 10px;
+    align-items: center;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .nameBox {
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    width: 230px;
+    height: 50px;
+    border: 3px solid rgb(0, 173, 239);
+    color: rgb(0, 173, 239);
+    font-weight: bold;
+    cursor: pointer;
+    margin: 15px;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .nameBox .checkbox {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.Guaranteed th {
+    background-color: #f7f7f6;
+    line-height: 40px;
+    border-right: 1px solid rgba(173, 173, 173, 0.5);
+    border-bottom: 1px solid rgba(173, 173, 173, 0.5);
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.Guaranteed th:last-child {
+    border-right: none;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.Guaranteed td {
+    padding: 20px;
+    text-align: center;
+    border-right: 1px solid rgba(173, 173, 173, 0.5);
+    border-bottom: 1px solid rgba(173, 173, 173, 0.5);
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.Guaranteed td:last-child {
+    border-right: none;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.Guaranteed td.left {
+    display: flex;
+    position: relative;
+    text-align: left;
+    align-items: center;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.Guaranteed td.left span.cursor {
+    position: relative;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content table.Guaranteed td.left span.cursor::before {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 0px 0 0 10px;
+    content: " ";
+    background: url("/userpage/lib/img/ico_ins.png");
+    background-size: 100%;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content li {
+    text-indent: -20px;
+    padding-left: 10px;
+    line-height: 25px;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content li > ul > li {
+    text-indent: 0;
+    padding-left: 0px;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .content ul + p {
+    margin-top: 35px;
+    text-decoration: underline;
+    color: black;
+    margin-bottom: 70px;
+}
+
+#modal_insurance_info_wrap .modal_insurance_info_wrap .butt_ok {
+    width: 150px;
+    bottom: 75px;
+    transform: translate(-50%);
+    height: 45px;
+    border: none;
+    background-color: #BDD600;
+    margin-left: 500px;
+}
+
+table .detail {
+    position: absolute;
+    width: 280px;
+    left: 40px;
+    padding: 10px 20px;
+    bottom: 10px;
+    background-color: #fff;
+    border: 1px solid black;
+    display: none;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.detail .txt {
+    color: #661e43;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.detail .close {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+table .defualt {
+    cursor: default;
+}
+
+table .pointer {
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/*보험계약 안내사항 모달창 끝*/
+
+/*여행자보험 가입규약 및 개인정보 제3자 제공 동의*/
+#modal_agreement_wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap {
+    position: relative;
+    width: 860px;
+    height: 800px;
+    background-color: #fff;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .title {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: #661e43;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    padding: 20px 30px;
+    font-weight: bold;
+}
+
+h2 {
+    margin-left: 8px;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .title img {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    width: 30px;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .content {
+    padding: 20px;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .rule {
+    margin: 20px 0;
+    width: 100%;
+    height: 220px;
+    padding: 20px 25px;
+    border: 1px solid rgba(173, 173, 173, 0.5);
+    line-height: 23px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap label {
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap label input[type=checkbox] {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap label+h2 {
+    margin-top: 20px;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .rule2 {
+    height: 140px;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .rule2 li::before {
+    content: " - ";
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .butt_wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .butt_wrap input {
+    width: 150px;
+    height: 45px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .butt_wrap input.butt_agree {
+    background-color: #BDD600;
+    border: none;
+}
+
+#modal_agreement_wrap .modal_agreement_wrap .butt_wrap input.butt_canc {
+    background-color: #fff;
+    border: 1px solid #BDD600;
+}
+
+
+.modal_agree2 {
+    position: fixed;
+    top: 350px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 350px;
+    height: 200px;
+    padding: 30px;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #661e43;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.modal_join_ins {
+    position: fixed;
+    top: 350px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 350px;
+    height: 200px;
+    padding: 30px;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #661e43;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+
+.modal_agree2 .butt {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modal_agree2 .butt input {
+    width: 100px;
+    height: 45px;
+    margin-top: 30px;
+    background-color: #BDD600;
+    border: none;
+    font-weight: bold;
+}
+
+
+#modal_insurance_info_wrap .modal_agree2 {
+    top: 250px;
+    text-align: center;
+    height: 150px;
+}
+
+#modal_insurance_info_wrap .modal_agree2 .butt input{
+    margin-top: 20px;
+}
+
+#modal_agree_wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+}
+
+#modal_agree_wrap .modal_agree_confirm {
+    position: relative;
+    width: 350px;
+    height: 200px;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #661e43;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.modal_agree_confirm .butt {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modal_agree_confirm .butt input {
+    width: 100px;
+    height: 45px;
+    margin-top: 30px;
+    background-color: #BDD600;
+    border: none;
+    font-weight: bold;
+}
+
+.modal_join_butt {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modal_join_butt input {
+    width: 100px !important;
+    height: 45px !important;
+    margin-top: 30px;
+    background-color: #BDD600;
+    border: none;
+    font-weight: bold;
+}
+
+/*여행자보험 가입규약 및 개인정보 제3자 제공 동의 끝*/
+
+
+/*부가서비스 신청내역 모달창*/
+#modal_service_app_wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap {
+    position: relative;
+    width: 1000px;
+    height: 800px;
+    /*margin-top: 50px;*/
+    /*margin: 30px auto;*/
+    background-color: #fff;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_title {
+    position: relative;
+    padding: 20px;
+    font-size: 34px;
+    background-color: #661e43;
+    height: 80px;
+    color: #fff;
+    width: 100%;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents {
+    padding: 30px 20px;
+    font-weight: 600;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 720px;
+}
+
+.modal_table_wrap {
+    width: 100%;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    table-layout:fixed;
+}
+
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table tr {
+    width: 100%;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table th {
+    background-color: rgb(247, 247, 246);
+    line-height: 50px;
+    width: 100%;
+    border-top: 1px solid rgba(168, 165, 165, 0.3);
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table #modal_option_people_info_0 th {
+    border-top: 1px solid black;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table td {
+    text-align: center;
+    height: 80px;
+    border-top: 1px solid rgba(168, 165, 165, 0.3);
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table td.left {
+    text-align: left;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table .item_wrap1, .item_wrap2 {
+    display: flex;
+    align-items: center;
+}
+
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table .txt {
+    display: inline;
+    text-align: left;
+}
+
+.none_b_t {
+    border-top: none !important;
+}
+
+.b_r {
+    border-right: 1px solid rgba(168, 165, 165, 0.3);
+}
+
+.cell {
+    height: 65px !important;
+}
+
+.left > p {
+    display: inline;
+    width: 200px;
+    font-size: 14px;
+    padding: 15px 25px;
+    border: 1px solid #BDD600;
+    background-color: #fff;
+    margin-left: 60px;
+}
+
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table .img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #00103F;
+    margin-right: 15px;
+    margin-left: 100px;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table .img_seat {
+    background: url(/userpage/lib/img/menu1.png);
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(247, 247, 246);
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table .img_bagg {
+    background: url(/userpage/lib/img/menu2.PNG);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(247, 247, 246);
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .modal_contents table .img_ins {
+    background: url(/userpage/lib/img/menu3.png);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(247, 247, 246);
+}
+
+.li_wrap {
+    width: 100%;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.li_wrap ul > li {
+    font-size: 15px;
+    line-height: 22px;
+    text-indent: -10px;
+    padding-left: 10px;
+}
+
+.li_wrap ul > li::before {
+    content: " - ";
+}
+
+.li_wrap ul > li > ul > li {
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.li_wrap ul > li > ul > li::before {
+    content: " * ";
+}
+
+.li_wrap p {
+    margin: 20px 0;
+    font-weight: 600;
+}
+
+.c_p {
+    color: #661e43;
+}
+
+label.checkbox_wrap {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 26px;
+}
+
+.add_modal {
+    color: #661e43 !important;
+    text-decoration: underline;
+    font-size: 15px;
+    cursor: pointer
+}
+
+
+#modal_service_app_wrap .modal_service_app_wrap .butt_wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .butt_wrap input {
+    width: 150px;
+    height: 45px;
+    margin-right: 10px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid #BDD600;
+}
+
+#modal_service_app_wrap .modal_service_app_wrap .butt_wrap input.modal_butt_ok {
+    background-color: #BDD600;
+    border: none;
+}
+/* 
+#modal_service_app_wrap .modal_agreemmodal_service_app_wrapent_wrap .butt_wrap input.modal_butt_canc {
+} */
+
+
+/*자동 체크인 서비스 유의사항*/
+#addmodal_autoCheck_noti {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti {
+    width: 1000px;
+    height: 650px;
+    margin: 30px auto;
+    background-color: #fff;
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti .modal_title {
+    position: relative;
+    padding: 20px;
+    font-size: 34px;
+    background-color: #661e43;
+    height: 80px;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti .modal_contents {
+    padding: 20px;
+    width: 100%;
+    height: 570px;
+    font-weight: 400;
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti .modal_contents .top {
+    width: 100%;
+    height: 100px;
+    padding: 10px 20px;
+    line-height: 25px;
+    background-color: rgb(247, 247, 246);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti .modal_contents .bott {
+    padding: 10px 20px;
+    border: 1px solid rgba(168, 165, 165, 0.3);
+    margin-top: 30px;
+}
+
+.bott .con {
+    width: 100%;
+    line-height: 22px;
+    font-size: 15px;
+    padding: 10px 0;
+}
+
+.con2 {
+    border-top: 1px solid rgba(168, 165, 165, 0.3);
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti .modal_contents .bott > .con > p {
+    font-size: 14px;
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti .modal_contents .butt_wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti .modal_contents .butt_wrap input {
+    width: 130px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #BDD600;
+}
+
+#addmodal_autoCheck_noti .addmodal_autoCheck_noti .modal_contents .butt_wrap input.add_modal_butt_ok {
+    background-color: #BDD600;
+    margin-right: 10px;
+}
+
+
+
+
+/*자동 체크인 서비스 유의사항 끝*/
+
+
+/*부가서비스 신청내역 모달창 끝*/
+
+/*부가서비스 신청 끝*/
+
+
+/*fix총액 확인*/
+
+.fix_bott_wrap {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 250px;
+    width: 100%;
+    height: 100px;
+    /* display: none; */
+}
+
+.fix_bott {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 1180px;
+    margin: 0 auto;
+    height: 100px;
+    padding: 20px;
+    background-color: rgba(248, 248, 248, 0.7);
+    z-index: 500;
+}
+
+
+.fix_bott .seat_img {
+    background: url('/userpage/lib/img/menu1.png');
+    background-size: 80%;
+}
+.fix_bott .baggage_img {
+    background: url('/userpage/lib/img/menu2.png');
+    background-size: 80%;
+}
+.fix_bott .insurance_img {
+    background: url('/userpage/lib/img/menu3.png');
+    background-size: 70%;
+}
+
+.fix_bott .fix_img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.fix_bott table {
+    position: absolute;
+    right: 140px;
+    width: 400px;
+    border: 1px solid #BDD600;
+    border-collapse: collapse;
+}
+
+.fix_bott table td {
+    height: 60px;
+}
+
+.fix_bott table td.price_tit {
+    padding-left: 20px;
+}
+
+.fix_bott table td.img {
+    background-image: url("/userpage/lib/img/up.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    background-color: #BDD600;
+    display: block;
+}
+
+.fix_bott table td.img2 {
+    background-image: url("/userpage/lib/img/down.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    background-color: #BDD600;
+    display: none;
+}
+
+.price_tit {
+    font-weight: bold;
+    background-color: #fff;
+    padding: 3px;
+}
+
+.price_tit span {
+    font-size: 12px;
+}
+
+.price_tit .price {
+    display: inline;
+    position: absolute;
+    right: 5px;
+    top: 20px;
+    padding-right: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+.fix_bott .fix_next_butt {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    right: 30px;
+    background-color: #BDD600;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+
+/*총액창*/
+/*총액 확인 모달*/
+
+.fix_modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0px;
+    z-index: 500;
+    display: none;
+}
+
+#modal_totP_wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 350px;;
+    z-index: 500;
+    display: none;
+}
+
+.modal_con_wrap {
+    position:absolute;
+    box-sizing: border-box;
+    width: 1180px;
+    height: 480px;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%);
+    padding-top: 40px;
+    background-color: #fff;
+    border-top: 3px solid #BDD600;
+    font-weight: 600;
+}
+
+.modal_con_wrap h2 {
+    color:rgb(102, 30, 67);
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.modal_con_wrap > .jour_wrap {
+    display: flex;
+    width: 100%;
+    height: 90px;
+    justify-content: center
+}
+
+.modal_con_wrap hr {
+    color: rgba(248, 248, 248, 0.5)
+}
+
+.jour_wrap h2, .jour_wrap .flight{
+    display: inline;
+    font-weight: 400;
+}
+
+.jour_wrap .jour_info_wrap{
+    margin-top: 8px;
+    font-size: 16px;
+    width: 500px;
+    height: 20px !important;
+}
+
+.jour1 .jour_info_wrap {
+    margin-right: 60px;
+}
+
+.jour_info_wrap td {
+    padding: 3px;
+    height: 15px;
+}
+
+.jour_info_wrap .area {
+    text-align: left;
+}
+.jour_info_wrap .date {
+    text-align: right;
+}
+
+.info_wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    padding-top: 20px;;
+    font-size: 13px;
+    width: 100%;
+    height: 403px;
+}
+
+.info {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    margin-right: 60px;
+}
+
+.info_table_wrap {
+    margin-top: 20px;
+    width: 500px;
+    height: 240px;
+    overflow: hidden;
+    background-color: rgb(248, 248, 248);
+}
+
+.App {
+    position: relative;
+    width: 500px;
+    height: 300px;
+}
+
+.info_wrap .price_info_wrap {
+    /* display: flex; */
+    width: 490px;
+    font-size: 16px;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 50px;
+    /* background-color: rgb(248, 248, 248); */
+}
+
+
+.info_wrap .price_info_wrap td {
+    width: 100%;
+    height: 30px;
+}
+
+.info_wrap .price_info_wrap .price {
+    text-align: right;
+}
+
+
+.price_info_wrap .price_tit {
+    text-align: left;
+    background: none;
+    padding: 0px;
+}
+
+.table_title {
+    width: 100%;
+}
+
+.table_title .tit {
+    text-align: left;
+}
+
+
+.table_title .curr {
+    text-align: right;
+    padding-right: 15px;
+    font-size: 12px;
+}
+
+
+.mark::before {
+    content: " · ";
+}
+
+.plus {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 20px;
+    color:rgb(102, 30, 67);
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 80px;
+    margin-left: 200px;
+}
+
+.plus_1 {
+    display: inline-block;
+    width: 34px;
+}
+
+.minus_1 {
+    width: 30px;
+    display: none;
+    margin-left: 2px;
+}
+
+.plus_2 {
+    display: inline-block;
+    width: 34px;
+}
+
+.minus_2 {
+    width: 30px;
+    display: none;
+    margin-left: 2px;
+}
+
+
+
+.close {
+    position: absolute;
+    font-size: 2.3em;
+    top: 15px;
+    right: 20px;
+}
+
+/*더보기*/
+.modal_price_info_wrap {
+    width: 100%;
+    height: 250px;
+    margin-top: 0px;
+}
+
+.modal_price_info_wrap table {
+    width: 100%;
+    position: relative;
+    background-color: rgb(248, 248, 248);
+    font-weight: bold;
+    border-collapse: collapse;
+}
+
+.modal_price_info_wrap th {
+    background-color: rgb(102, 30, 67);
+    text-align: left;
+    line-height: 40px;
+    padding-left: 20px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.modal_price_info_wrap td {
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.5);
+    height: 45px;
+}
+
+.modal_price_info_wrap td:first-child {
+    padding:  0px 18px;
+}
+
+.modal_price_info_wrap td.seb {
+    text-align: right;
+    padding-right: 15px;
+}
+
+.modal_price_info_wrap td.per {
+    padding-left: 8px;
+}
+
+.modal_price_info_wrap td span.det {
+    float: right;
+}
+
+.modal_price_info_wrap td.per::before {
+    content: ' · ';
+}
+
+.modal_price_info_wrap p {
+    display: inline;
+    float: right;
+    margin-right: 10px;
+}
+
+.modal_price_info_wrap p.title {
+    float: left;
+}
+
+
+.modal_price_info_wrap th span {
+    font-size: 13px;
+    margin-right: 3px;
+}
+
+.modal_price_info_wrap tr:last-child {
+    font-weight: lighter;
+}
+
+.modal_price_info_wrap td > span.det {
+    font-size: 13px;
+    text-decoration: underline;
+    margin-left: 65px;
+    color: #444;
+}
+
+.modal_price_info_wrap td span > span {
+    text-decoration: none;
+}
+
+.ar {
+    text-decoration: none;
+}
+
+.ar::before {
+    font-size: 10px;
+    content: ' ∧ ';
+    text-decoration: none;
+}
+
+td.cur {
+    height: 80px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+}
+
+td.cur::before {
+    content: ' * ';
+}
+
+
+.detD1 {
+    width: 100%;
+    padding: 0px;
+    background-image: url("/userpage/lib/img/det.PNG");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: rgb(248, 248, 248);
+    display: none;
+}
+
+.detD2 {
+    width: 100%;
+    padding: 0px;
+    background-image: url("/userpage/lib/img/det.PNG");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: rgb(248, 248, 248);
+    display: none;
+}
+
+/*더보기*/
+
+/*총액 확인 모달*/
+
+/*푸터*/
+#footerCont {
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+    z-index: 10;
+    overflow: hidden;
+}
+/*위쪽 푸터*/
+#foot_topwraper{
+    width: 100%;
+    height: 120px;
+    background-color: rgb(248, 248, 248);
+}
+#foot_top {
+    width: 1180px;
+    margin: 0 auto;
+}
+#top_menu {
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    padding-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.menu_wrap {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 900;
+    margin-top: 7px;
+    padding-top: 3px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+.men_tit {
+    font-size: 16px;
+    display: inline-block;
+    width: 70px;
+    height: 20px;
+    padding: 5px;
+    padding-left: 5px !important;
+    white-space: nowrap;
+    margin-right: 87px;
+}
+.horiz {
+    width: 1000px;
+    display: flex;
+    flex-wrap: nowrap;
+    font-weight: 600;
+    color: rgb(80, 80, 80);
+    word-break: keep-all;
+    white-space: nowrap;
+}
+.men_tit a{
+    font-weight: bolder;
+    color: black
+    !important;
+}
+.f_black b{
+    color: black !important;
+    font-weight: bolder;
+    font-size: 15px
+    !important;
+    position: relative;
+    right: 4px;
+}
+.horiz li {
+    margin-right: 27px;
+}
+
+/*아래쪽 푸터*/
+#foot_bottwraper{
+    width: 100%;
+}
+#foot_bott {
+    width: 1180px;
+    height: 225px;
+    margin: 0 auto;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+}
+#bott_menu {
+    width: 100%;
+    height: 100%;
+    padding: 19px 0px 20px 13px;
+    display: inline-block;
+}
+#app_ico {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    width: 730px;
+    white-space: nowrap;
+    line-height: 40px;
+    float: left;
+    margin-left: 7px;
+    padding-top: 5px;
+}
+#app_ico > ul {
+    display: flex;
+    align-content: center;
+}
+#app_ico > ul > li{
+    margin-right: 5px;
+}
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-indent: -9999px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(248, 248, 248);
+}
+.Sicon .twit {
+    background-image: url('/userpage/lib/img/twitter.png');
+    background-size: 70%;    opacity: 0.7;
+    margin-left: 10px
+    !important;
+}
+.Sicon .faceb {
+    background-image: url('/userpage/lib/img/face.png');
+    background-size: 50%;    opacity: 0.8;
+    margin-left: 4px
+}
+.Sicon .youtub {
+    background-image: url('/userpage/lib/img/youtube.png');
+    background-size: 45%;   opacity: 0.6;
+    margin-left: 4px
+}
+.Sicon .insta {
+    background-image: url('/userpage/lib/img/insta.png');
+    background-size: 60%;    opacity: 0.8;
+    margin-left: 4px
+}
+.Sicon .blog {
+    background-image: url('/userpage/lib/img/blog.PNG');
+    background-size: 140%;
+    margin-left: 4px
+}
+.Aicon_txt {
+    font-size: 12px;
+    line-height: 30px;
+    margin-left: 40px;
+}
+.Sicon .site {
+    margin-left: 5px;
+}
+.site .Aicon_txt {
+    margin-left: 0;
+    line-height: 35px;
+    font-weight: 900;
+    font-size: 14px;
+}
+.sit {
+    margin-left: 10px;
+    background-image: url('/userpage/lib/img/site.PNG');
+    background-size: 140%;
+}
+.Aicon img {
+    margin-top: -3px;
+    height: 36px;
+}
+.Aicon img:nth-child(2) {
+    margin-top: -7px;
+    height: 35px;
+}
+#info {
+    padding: 7px;
+    width: 65%;
+    padding-top: 10px;
+    display: inline-block;
+}
+#info ul {
+    width: 100%;
+}
+#info ul li {
+    margin-bottom: 10px;
+}
+#info ul > li:first-child {
+    margin-bottom: 25px;
+}
+.small_txt {
+    font-size: 10px;
+    color: rgb(85, 85, 85);
+    font-weight: bold;
+}
+.sub_txt {
+    font-size: 16px;
+    color: rgb(85, 85, 85);
+    font-weight: bold;
+}
+.pdiv {
+    display: inline-block;
+}
+.pdiv::before {
+    content: " | ";
+    color: rgb(198, 198, 198);
+    margin: 3px;
+    font-weight: bold;
+}
+.small_txt .pdiv::before {
+    content: " | ";
+    color: rgb(198, 198, 198);
+    font-size: 10px;
+    margin: 2px;
+}
+
+/*뉴스레터*/
+#news {
+    margin-top: 15px;
+    float: right;
+    margin-right: 25px;
+}
+.mail_box {
+    display: flex;
+    align-content: center;
+    padding: 0;
+    margin-top: 10px;
+}
+.mail_box input[type="text"] {
+    width: 327px;
+    height: 45px;
+    padding: 13px;
+    padding-top: 15px;
+    border: none;
+    font-size: 20px;
+}
+.mail_box input[type="text"]:focus {
+    outline: none;
+}
+.mail_box input[type="text"]::placeholder {
+    font-size: 20px;
+    color: rgb(170, 179, 194);
+}
+.mail_box input[type="submit"] {
+    position: relative;
+    width: 50px;
+    height: 45px;
+    padding: 13px;
+    left: -15px;
+    background-image: url('/userpage/lib/img/btn_srch.gif');
+    background-position: center;
+    padding-top: 20px;
+    border: none;
+    font-size: 0;
+}
+#news img {
+    margin-left: 79%;
+    margin-top: 16px;
+}
+/*뉴스레터 끝*/
+/*모달*/
+.modal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ******************
+    수정 모달 레이어 모음
+* *******************/
+/*여행일정 수정 모달*/
+#modal_edit_jour_wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 500;
+    display: none;
+}
+
+.edit_jour_wrap {
+    box-sizing: border-box;
+    width: 1150px;
+    height: 450px;
+    margin: 35px auto;
+    background-color: #fff;
+    border: 8px solid rgb(102, 30, 67);
+    font-weight: bold;
+    position: relative;
+}
+
+.edit_jour_wrap .radio_wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.edit_jour_wrap .radio_wrap label {
+    margin-right: 25px;
+    margin-left: 10px;
+}
+.edit_jour_wrap .radio_wrap input[type="radio"] {
+    width: 17px;
+    height: 17px;
+    padding: 0;
+    margin: -1px 0 0;
+    border: 0;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(/userpage/lib/img/ico_radio.png) no-repeat 0 0;
+}
+.edit_jour_wrap .radio_wrap input[type="radio"]:checked {
+    background-position-y: 100%;
+}
+.in_bl {
+    display: inline-block;
+}
+.modal_edit_close {
+    text-align: right;
+}
+.modal_edit_close img {
+    margin-top: 25px;
+    margin-right: 50px;
+    width: 25px;
+}
+.round_wrap,
+.oneway_wrap,
+.multi_wrap {
+    text-align: center;
+}
+.oneway_wrap,
+.multi_wrap {
+    display: none;
+}
+/* 사람 수 */
+.person_layerbtn {
+    margin-right: 2px;
+    margin-left: 2px;
+    width: 220px;
+    height: 60px;
+    background-color: #fff;
+    border: 2px solid #e9e9e9;
+    box-shadow: 2px 2px 3px rgb(150 150 150 / 30%);
+    vertical-align: middle;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    justify-content: space-around;
+}
+.person_layerbtn .person_num {
+    vertical-align: middle;
+    font-size: 17.5px;
+    padding-top: 18px;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    font-weight: bold;
+    padding-right: 30px;
+    background: url(/userpage/lib/img/down2.png) no-repeat;
+    background-size: 10%;
+    background-position: 95% 45%;
+}
+.w_180 {
+    width: 180px;
+    text-align: left;
+}
+.person_pop_layer {
+    width: 300px;
+    padding-top: 20px;
+    display: none;
+    position: absolute;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 10;
+}
+.person_pop_layer li {
+    width: 100%;
+    border-bottom: 0.1px solid rgb(153, 153, 153, 0.2);
+}
+
+.person_pop_layer li .child_modal span,
+.infant_modal span {
+    line-height: 2 !important;
+    margin-left: 0 !important;
+}
+.person_pop_layer li span {
+    width: 100%;
+    line-height: 3;
+    vertical-align: middle;
+}
+.person_pop_layer li .num_font {
+    margin-left: 20px;
+    font-size: 26px;
+    font-weight: 800;
+    color: #7e0049;
+}
+.person_pop_layer li .person_font {
+    margin-left: 10px;
+    font-size: 1.3rem;
+    vertical-align: middle;
+    color: #7e0049;
+    font-weight: 600;
+}
+.person_pop_layer li .child_info_btn,
+.person_pop_layer li .baby_info_btn {
+    border: none;
+    margin-top: 8px;
+    margin-left: 5px;
+    background-color: transparent;
+    vertical-align: middle;
+    text-align: center;
+}
+.person_pop_layer li .person_btn {
+    vertical-align: middle;
+    margin-left: -4px;
+    width: 90px;
+}
+.person_pop_layer li .person_btn a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 35px;
+    cursor: pointer;
+    vertical-align: top;
+    object-fit: cover;
+}
+.person_pop_layer li .person_btn .adult_minus:hover,
+.person_pop_layer li .person_btn .adult_plus:hover,
+.person_pop_layer li .person_btn .child_minus:hover,
+.person_pop_layer li .person_btn .child_plus:hover,
+.person_pop_layer li .person_btn .baby_minus:hover,
+.person_pop_layer li .person_btn .baby_plus:hover {
+    color: #7e0049;
+    border: 3px solid #7e0049;
+}
+.person_pop_layer li .submit_btn {
+    text-align: center;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 15px 0;
+}
+.person_pop_layer li .submit_btn a {
+    width: 90%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #bdd600;
+    cursor: pointer;
+    height: 100%;
+    padding: 10px;
+}
+.person_pop_layer li .cnt_age {
+    padding: 24px 20px;
+    width: 100%;
+    height: 70px;
+    background-color: #f2f2f2;
+    text-align: center;
+    vertical-align: middle;
+}
+.person_pop_layer li .cnt_age a {
+    color: #7e0049;
+    font-size: 15px;
+    font-weight: 300;
+    border-bottom: 1px solid #7e0049;
+}
+.person_pop_layer li .cnt_age a img {
+    width: 15px;
+    vertical-align: middle;
+}
+
+/* 출발지, 도착지, 가는날, 오는날 */
+.round_wrap table.modal_table,
+.oneway_wrap table.modal_table,
+.multi_wrap table.modal_table {
+    margin: 30px auto 0;
+}
+.round_wrap table.modal_table td,
+.oneway_wrap table.modal_table td,
+.multi_wrap table.modal_table td {
+    border: none;
+    padding: 10px 50px;
+}
+
+.go_layerbtn,
+.arrive_layerbtn,
+.go_date_layerbtn,
+.come_date_layerbtn,
+.go_layerbtn2,
+.arrive_layerbtn2,
+.go_date_layerbtn2,
+.come_date_layerbtn2 {
+    margin-right: 2px;
+    margin-left: 2px;
+    width: 220px;
+    height: 60px;
+    background-color: #fff;
+    border: 2px solid #e9e9e9;
+    box-shadow: 2px 2px 3px rgb(150 150 150 / 30%);
+    vertical-align: middle;
+}
+
+.go_layerbtn,
+.go_layerbtn2 {
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    justify-content: space-around;
+}
+.go_layerbtn span,
+.go_layerbtn2 span {
+    font-weight: bold;
+    line-height: 3;
+}
+.go_select_optt,
+.arrive_select_optt,
+.go_date_select_optt,
+.come_date_select_optt,
+.go_select_optt2,
+.arrive_select_optt2,
+.go_date_select_optt2 {
+    width: 220px;
+    font-size: 17px;
+    text-align: left;
+    text-indent: 20px;
+    font-weight: bold;
+    line-height: 3;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    padding-right: 25px;
+    cursor: pointer;
+}
+.go_layerbtn .go_select_opt,
+.arrive_layerbtn .arrive_select_opt,
+.go_date_layerbtn .go_date_select_opt,
+.come_date_layerbtn .come_date_select_opt {
+    font-size: 18px;
+    text-align: center;
+}
+.go_layer{
+    width: 880px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    top: 200px;
+    left: 132px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: left;
+}
+.multi_wrap .go_layer{
+    width: 880px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    top: 280px;
+    left: 132px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: left;
+}
+.multi_wrap .go_layer2 {
+    width: 880px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    top: 362px;
+    left: 132px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: left;
+}
+.go_layer div,
+.go_layer2 div {
+    width: 160px;
+    height: 100%;
+    vertical-align: top;
+    margin: 0 auto;
+    margin-left: 3px;
+}
+.go_layer div h3,
+.go_layer2 div h3 {
+    color: #7e0049;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.go_layer div li a,
+.go_layer2 div li a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.go_layer div li a:hover,
+.go_layer2 div li a:hover {
+    color: #7e0049;
+}
+.go_layer div li a.nonselect,
+.go_layer2 div li a.nonselect {
+    color: #999;
+    cursor: default;
+}
+/* 도착지 */
+.arrive_layerbtn,
+.arrive_layerbtn2 {
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    justify-content: space-around;
+    vertical-align: middle;
+}
+.arrive_layerbtn span,
+.arrive_layerbtn2 span {
+    font-weight: bold;
+    line-height: 3;
+}
+.arrive_layer{
+    width: 880px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    top: 200px;
+    left: 132px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: left;
+}
+.multi_wrap .arrive_layer{
+    width: 880px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    top: 280px;
+    left: 132px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: left;
+}
+.multi_wrap .arrive_layer2 {
+    width: 880px;
+    padding: 40px 20px;
+    position: absolute;
+    display: none;
+    top: 362px;
+    left: 132px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: left;
+}
+.arrive_layer div,
+.arrive_layer2 div {
+    width: 160px;
+    height: 100%;
+    vertical-align: top;
+    margin: 0 auto;
+    margin-left: 3px;
+}
+.arrive_layer div h3,
+.arrive_layer2 div h3 {
+    color: #7e0049;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.arrive_layer div li a,
+.arrive_layer2 div li a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.arrive_layer div li a:hover,
+.arrive_layer2 div li a:hover {
+    color: #7e0049;
+}
+.arrive_layer div li a.nonselect,
+.arrive_layer2 div li a.nonselect {
+    color: #999;
+    cursor: default;
+}
+
+/* 가는 날 */
+.go_date_layerbtn,
+.go_date_layerbtn2 {
+    display: flex;
+    cursor: pointer;
+    vertical-align: middle;
+    justify-content: space-around;
+}
+.go_date_layerbtn span,
+.go_date_layerbtn2 span {
+    font-weight: bold;
+    line-height: 3;
+}
+
+/* 오는날 */
+.come_date_layerbtn {
+    display: flex;
+    cursor: pointer;
+    vertical-align: middle;
+    justify-content: space-around;
+}
+.come_date_layerbtn span {
+    font-weight: bold;
+    line-height: 3;
+}
+
+/* reserve_oneway */
+.reserve_oneway {
+    display: none;
+    height: 100px;
+    vertical-align: middle;
+    padding: 35px 25px;
+}
+
+/* reserve_multi */
+.reserve_multi {
+    display: none;
+    height: 100px;
+    vertical-align: middle;
+    padding: 35px 25px;
+}
+.reserve_multi .multi2 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.go_select_opt,
+.arrive_select_opt,
+.go_date_select_opt,
+.come_date_select_opt,
+.go_select_opt2,
+.arrive_select_opt2,
+.go_date_select_opt2 {
+    width: 100%;
+    text-align: center;
+    padding-right: 30px;
+    background: url(/userpage/lib/img/down2.png) no-repeat;
+    background-size: 10%;
+    background-position: 95% 45%;
+}
+.go_select_opt.on,
+.arrive_select_opt.on,
+.go_date_select_opt.on,
+.come_date_select_opt.on,
+.go_select_opt2.on,
+.arrive_select_opt2.on,
+.go_date_select_opt2.on {
+    width: 100%;
+    text-align: center;
+    background: url(/userpage/lib/img/up.png) no-repeat;
+    background-size: 10%;
+    background-position: 95% 45%;
+}
+
+.update_submit {
+    text-align: center;
+    margin-top: 50px;
+}
+.update_submit a {
+    padding: 15px 50px;
+    background-color: transparent;
+    border: 3px solid #bdd600;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.update_submit a::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 23px;
+    margin: -4px 16px 0 -8px;
+    vertical-align: middle;
+    background: url(/userpage/lib/img/ico_submit_btn.png) no-repeat 0 0;
+}
+
+/* 예약 다음 버튼 */
+.reservate {
+    margin-top: 0.5px;
+    margin-left: -20px;
+    font-weight: bold;
+    vertical-align: middle;
+    width: 120px;
+    height: 60px;
+    border: none;
+    background-color: #bdd600;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* 달력 모달 */
+.cal {
+    z-index: 9998;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    display: none;
+    padding: 20px 0 0 0;
+}
+.cal2 {
+    z-index: 9998;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    display: none;
+    padding: 20px 0 0 0;
+}
+.cal3 {
+    z-index: 9998;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    display: none;
+    padding: 20px 0 0 0;
+}
+.x_box {
+    display: inline-block;
+    z-index: 9999;
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    background-color: #661e43;
+}
+.x_box img {
+    display: block;
+    width: 55px;
+    height: 55px;
+    margin: auto;
+}
+.calwrapper {
+    display: inline-block;
+    width: 1180px;
+    height: 97%;
+    background-color: #fff;
+    border: none;
+    text-align: center;
+}
+.caltop {
+    width: 1180px;
+    height: 70px;
+    display: block;
+}
+.caltop p {
+    display: inline-block;
+    font-size: 46px;
+    font-weight: 600 !important;
+    margin-top: 30px;
+}
+.caltop p.whatday {
+    position: relative;
+    left: 63px;
+}
+.caltop p.cal_right {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 6px 30px 0;
+    position: relative;
+    bottom: 20px;
+    left: 450px;
+    background: url(/userpage/lib/img/down.png) no-repeat;
+    background-size: 15%;
+    background-position: 95% 10%;
+}
+.calwrapper > table {
+    padding-top: 40px;
+    text-align: center;
+    width: 1179px;
+    height: 60px;
+    box-shadow: 0px 2px 3px rgb(185, 185, 185);
+    font-size: 16px;
+    font-weight: 600;
+}
+.calwrapper > table tr td:nth-child(1) {
+    color: rgb(218, 0, 0);
+}
+.calinner {
+    width: 100%;
+    height: 81%;
+    border-bottom: 1px solid rgb(204, 204, 204, 0.3);
+    overflow: hidden;
+}
+.calscroll {
+    height: 100%;
+    overflow: hidden;
+}
+.calscroll > iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/*항공기 화면 구성*/
+/*.seat_info_view1 {*/
+/*    display: none !important;*/
+/*}*/
+/*.seat_view1 {*/
+/*    display: none !important;*/
+/*}*/
+/*.seat_info_view2 {*/
+/*    display: none !important;*/
+/*}*/
+/*.seat_view2 {*/
+/*    display: none !important;*/
+/*}*/
+
+

@@ -1,0 +1,64 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<head><div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/event/evn_view.css">
+    <script src="/adminpage/app/event/evn_view.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="contwrap">
+                    <div class="event_wrap">
+                        <div class="event">
+                            <p class="title">이벤트</p>
+                        </div>
+                        <div class="event_view">
+                            <form action="">
+                                <table>
+                                    <colgroup>
+                                        <col style="width:85%;">
+                                        <col style="width:15%;">
+                                    </colgroup>
+                                    <tr>
+                                        <th class="botbor"><div class="tit" th:text="${eventApiResponse.evTitle}"></div><div class="evndate">
+                                            이벤트 기간 : <p><span th:text="${#strings.substring(eventApiResponse.evStartDay,0, 10)}"></span> ~
+                                            <span th:text="${#strings.substring(eventApiResponse.evEndDay,0, 10)}"></span></p></div></th>
+                                        <th class="right botbor">등록일 <p class="wrdate" th:text="${#strings.substring(eventApiResponse.evRegdate,0,10)}">2022-01-28</p></th>
+                                    </tr>
+                                    <tr>
+                                        <td class="file" colspan="2"><img th:src="@{'\\upload\\' + ${eventApiResponse.evFileName}}" alt="이벤트사진"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="content_txt" colspan="2" ><span th:text="${eventApiResponse.evContent}"></span>
+                                            <p class="bottT">Fly, better fly Jin Air</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="footer">
+                                    <input type="button" value="목록" class="butt list_btn"  onclick="location.href='/pages/admin/evn_ing'">
+                                    <input type="button" value="삭제" class="butt canc_btn">
+                                    <a th:href="@{'/pages/admin/evn_edit/' + ${eventApiResponse.evIndex}}"><input type="button" value="수정" class="butt write_btn"></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modal_isdelete" class="itemList">
+                <div id="modal_isdelete_content">
+                    <div id="modal_isdelete_title"><p class="text">이벤트를 삭제하시겠습니까?</p></div>
+                    <div>
+                        <button class="modal_isdelete_btn uncomplete">취소</button>
+                        <button class="modal_isdelete_btn complete1">삭제</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/mypage/Mypage_coupon.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/userpage/app/mypage/Mypage_coupon.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <input type="hidden" id="memid" th:value="${memberApiResponse.memIndex}">
+            <div class="mypage_main">
+                <div class="mypage_menu">
+                    <p>마이<br>페이지</p>
+                    <ul>
+                        <li class="booking"><a href="/pages/index/mypageMain">예약조회/변경/취소</a></li>
+                        <li class="mypoint"><a href="/pages/index/mypagePoint">나의 나비포인트</a><div class="mypoint_sum"><span><strong id="point"></strong>p</span></div></li>
+                        <li class="coupon">
+                            <a href="/pages/index/mypageCoupons">나의 할인쿠폰</a>
+                            <div class="mycoupon_sum">
+                                <span id="coupon"></span>
+                            </div>
+                        </li>
+                        <li class="qna"><a href="/pages/index/mypageQna">나의 Q&A</a></li>
+                        <li class="edit"><a href="#">회원정보 수정</a></li>
+                    </ul>
+                </div>
+                <div class="menu_title">
+                    <p>나의 할인쿠폰</p>
+                </div>
+                <div class="sub_menu_check">
+                    <ul>
+                        <li class="coupons">지니쿠폰</li>
+                        <li class="bonus_ticket">경품 보너스 항공권</li>
+                    </ul>
+                </div>
+                <div class="coupon_main">
+                    <div class="my_coupon">
+                        <p>나의 지니 쿠폰</p>
+                        <p id="resultCoupon1"></p>
+                    </div>
+                    <div class="add_coupon">
+                        <p>쿠폰등록</p>
+                        <div>
+                            <input type="text" id="codeNum2" placeholder="쿠폰번호 입력">
+                            <input type="button" name="coupon_submit" class="coupon_submit" value="등록">
+                        </div>
+                        <ul>
+                            <li>- 제휴 및 진에어에서 발급 된 쿠폰은 쿠폰 등록을 이용하여 주시기 바랍니다.</li>
+                            <li>- 지니 쿠폰은 등록후에만 해당 쿠폰을 이용하실 수 있습니다.</li>
+                            <li>- 유효기간 만료 시 자동 소멸됩니다.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bonus_ticket_main">
+                    <div class="my_coupon">
+                        <p>경품 보너스 항공권</p>
+                        <p id="resultCoupon2"></p>
+                    </div>
+                    <div class="add_coupon">
+                        <p>쿠폰등록</p>
+                        <div>
+                            <input type="text" id="codeNum1" placeholder="쿠폰번호 입력">
+                            <input type="button" name="coupon_submit" class="coupon_submit" value="등록">
+                        </div>
+                        <ul>
+                            <li>- 제휴 및 진에어에서 발급 된 쿠폰은 쿠폰 등록을 이용하여 주시기 바랍니다.</li>
+                            <li>- 지니 쿠폰은 등록후에만 해당 쿠폰을 이용하실 수 있습니다.</li>
+                            <li>- 유효기간 만료 시 자동 소멸됩니다.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="srh_container">
+                    <div class="srh_box">
+                        <div>
+                            구분
+                            <select name="사용가능" id="enumid">
+                                <option value="Unused">Unused</option>
+                                <option value="Used">Used</option>
+                            </select>
+                        </div>
+                        <div>
+                            기간
+                            <input type="date" class="item_date" id="startDate">
+                            <input type="date" class="item_start_date" id="endDate">
+                        </div>
+                        <div class="btn">
+                                <input type="button" value="조회" id="searchbtn">
+                                <input type="button" value="초기화" class="btn_cancel" onclick="location.reload()">
+                        </div>
+                    </div>
+                    <p><em>* 기간은 종료 날짜를 기준으로 검색</em></p>
+                </div>
+                <div class="couponY" id="itemList">
+                    <table>
+                        <colgroup>
+                            <col width="20%">
+                            <col width="20%">
+                            <col width="20%">
+                            <col width="20%">
+                            <col width="20%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <td scope="col">NO</td>
+                                <td scope="col">구간</td>
+                                <td scope="col">할인율</td>
+                                <td scope="col">사용 만료일</td>
+                                <td scope="col">사용 여부</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="dto in itemList">
+                                <td class="numIndex"></td>
+                                <td>{{dto.ucDesc}}</td>
+                                <td>{{dto.ucDiscount}}%</td>
+                                <td>{{dto.ucEndday.substr(0,10)}}</td>
+                                <td>{{dto.ucIsUse}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <div class="center">
+                            <table>
+                                <tr id="showPage">
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="couponN">
+                    <p>+++ 지니쿠폰 내역이 없습니다. +++</p>
+                </div>
+                <div class="footer_info">
+                    <div class="footer_text">
+                        <p>쿠폰 사용 안내</p>
+                        <p class="subtext">- 지니쿠폰 사용 방법 및 유의사항을 확인하세요.</p>
+                    </div>
+                    <input type="button" value="지니쿠폰 안내" onclick="location.href='/pages/index/jiniCoupon'">
+                </div>
+            </div>
+        </div>
+        <!--container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <!--퀵 메뉴 끝-->
+    <div class="modal">
+    </div>
+    <div class="pwcheck_modal">
+        <form action="#" method="post">
+        <div class="pwcheck_title">
+            <p>비밀번호 확인</p>
+        </div>
+        <div class="pwcheck_box">
+            <p>고객님의 개인정보를 소중하게 보호하려고 노력하고 있으며,<br>회원님의 동의 없이는 회원정보를 제공하지 않습니다.</p>
+            <p>비밀번호 입력 <input type="password"></p>
+            <div class="btn">
+                <input type="button" class="btn_agree" value="확인" onclick="location.href='/pages/index/mypageEdit'">
+                <input type="button" class="btn_cancel" value="취소">
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+
+</html>

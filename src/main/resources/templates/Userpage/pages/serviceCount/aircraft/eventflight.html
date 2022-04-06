@@ -1,0 +1,126 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/serviceCount/aircraft/eventflight.css">
+    <script src="/userpage/app/serviceCount/aircraft/eventflight.js"></script>
+
+<!-- head.html 끝-->
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="discount">
+                    <p class="title_img"></p>
+                    <p class="discount_title">이벤트 플라잇</p>
+                    <p class="title_sub">진에어를 이용하시면,<br>젊고 참신하고 색다른 감각을 느끼실 수 있습니다.</p>
+                </div>
+                <div class="gallery">
+                    <p class="gallery_title">진에어 객실승무원 영상 GALLERY</p>
+                    <p class="gallery_btnp">더 많은 영상을 보고 싶으시다면 <input type="button" class="youtudeofc" onclick="window.open('https://www.youtube.com/user/JinAir0717')" value="진에어 YOUTUBE 공식 채널 바로 가기"></p>
+                    <div class="youtubewrapper">
+                        <div class="youtube1">
+                            <iframe src="https://www.youtube.com/embed/qFg4sz4PxAw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p class="youtube_title">진에어 승무원을 검색해 보았습니다! 무엇이든 물어보세요</p>
+                        </div>
+                        <div class="youtube2">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/Tz7uUl5ww2o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p class="youtube_title">2021 지니 어워즈 | 구독자 이벤트! 내가 뽑는 진에어 최고의 콘텐츠는?</p>
+                        </div>
+                        <div class="youtube3">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/FdlZ92JHJPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p class="youtube_title">객실승무원도 지상근무를 할 수 있을까?</p>
+                        </div>
+                        <div class="youtube4">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/Z33JZgxWF7c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p class="youtube_title">엄마 어디가? 엄마에서 승무원으로! 복직승무원 VLOG</p>
+                        </div>
+                    </div>
+                    <p class="gallery_sub">진에어 이벤트 특화팀 Delight JINI가 추천하는 하늘에서 즐기는 금요일 사용법! 지금 바로 공개합니다.</p>
+                </div>
+                <div class="delight_jini">
+                    <p class="delight_jini_title">Delight JINI 소개</p>
+                    <img src="/userpage/lib/img/img_jini_intro.jpg" alt="">
+                </div>
+                <div class="delight_jini_desc">
+                    <div class="desc_left">
+                        <div class="desc_left_img1"></div>
+                    </div>
+                    <div class="desc_right">
+                        <p class="desc_right_title">아르美</p>
+                        <p class="desc_right_sub">Beauty 전문 특화팀 (매월 첫째 주 금요일 이벤트)</p>
+                        <p class="desc_right_sub">여행의 설렘에 Beauty는 덤! 아르美가 준비한 네일아트, 페이스페인팅 등의 이벤트를 만나보세요.</p>
+                    </div>
+                </div>
+                <div class="delight_jini_desc">
+                    <div class="desc_left">
+                        <div class="desc_left_img2"></div>
+                    </div>
+                    <div class="desc_right">
+                        <p class="desc_right_title">Kids Master</p>
+                        <p class="desc_right_sub">기내 유소아 Care 전문 특화팀 (매월 둘째 주 금요일 이벤트)</p>
+                        <p class="desc_right_sub">기내 유소아 승객은 우리에게 맡기세요!</p>
+                        <p class="desc_right_sub">화려한 마술쇼와 멋있는 풍선아트, 아름다운 구연동화 세계로 여러분들을 초대합니다.</p>
+                    </div>
+                </div>
+                <div class="delight_jini_desc">
+                    <div class="desc_left">
+                        <div class="desc_left_img3"></div>
+                    </div>
+                    <div class="desc_right">
+                        <p class="desc_right_title">Lala Jin’s</p>
+                        <p class="desc_right_sub">Delight 콘서트 전문 특화팀 (매월 첫째 주 금요일 이벤트)</p>
+                        <p class="desc_right_sub">룰루 랄라~ 하늘에서 열리는 Delight 콘서트!</p>
+                        <p class="desc_right_sub">Lala Jin’s가 준비한 노래, 악기연주 리듬에 몸을 맡겨 보세요.</p>
+                    </div>
+                </div>
+                <div class="delight_jini_desc">
+                    <div class="desc_left">
+                        <div class="desc_left_img4"></div>
+                    </div>
+                    <div class="desc_right">
+                        <p class="desc_right_title">JINI Graphy</p>
+                        <p class="desc_right_sub">Drawing 전문 특화팀 (매월 넷째 주 금요일 이벤트)</p>
+                        <p class="desc_right_sub">JINI Graphy가 직접 그려주는 캐릭커쳐와 캘리그라피!</p>
+                        <p class="desc_right_sub">여행의 감동을 선사합니다.</p>
+                    </div>
+                </div>
+                <div class="event_jini">
+                    <p class="event_jini_title">이달의 이벤트 일정</p>
+                    <p class="event_jini_sub">이달의 이벤트 일정은 없습니다. 빠른 시일안에 특별한 기내이벤트로 여러분을 찾아뵙겠습니다.</p>
+                </div>
+                <div class="notice_jini">
+                    <div class="jini_left">
+                        <div class="jini_box_left">
+                            <p>유의</p>
+                        </div>
+                    </div>
+                    <div class="jini_right">
+                        <p class="event_jini_title">유의 사항</p>
+                        <p class="jini_right_sub">기내 이벤트는 기내 상황 및 스케쥴 변동 등으로 인하여 사전 예고 없이 변경 될 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+    <div class="modal"></div>
+</body>
+</html>

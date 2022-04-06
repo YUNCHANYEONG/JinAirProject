@@ -1,0 +1,284 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/mypage/joinForm.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/userpage/app/mypage/joinForm.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function sample6_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+    
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+    
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+    
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if(data.userSelectedType === 'R'){
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if(extraAddr !== ''){
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                        // 조합된 참고항목을 해당 필드에 넣는다.
+                        document.getElementById("sample6_extraAddress").value = extraAddr;
+                    
+                    } else {
+                        document.getElementById("sample6_extraAddress").value = '';
+                    }
+    
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('sample6_postcode').value = data.zonecode;
+                    document.getElementById("sample6_address").value = addr;
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("sample6_detailAddress").focus();
+                }
+            }).open();
+        }
+    </script>
+</head>
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="joinForm_container" id="itemList">
+                <div class="joinForm_top">
+                    <p>회원가입</p>
+                </div>
+                <div class="joinForm_step">
+<!--                    <div class="step1">-->
+<!--                        <p class="step_text">Step1</p>-->
+<!--                        <p class="step_sub">약관동의 및 본인인증</p>-->
+<!--                    </div>-->
+<!--                    <div class="step2">-->
+<!--                        <p class="step_text">Step2</p>-->
+<!--                        <p class="step_sub">정보입력</p>-->
+<!--                    </div>-->
+<!--                    <div class="step3">-->
+<!--                        <p class="step_text">Step3</p>-->
+<!--                        <p class="step_sub">가입완료</p>-->
+<!--                    </div>-->
+                    <img src="/userpage/lib/img/join2.png" class="joinStepImg" alt="회원가입2"
+                         oncontextmenu="return false" ondragstart="return false" onselectstart="return false"/>
+                </div>
+                <h2 class="typeA">정보입력 <span class="text fontTypeA">* 표시 항목은 필수 입력사항 입니다.</span></h2>
+                <form id="joinForm" name="joinForm" method="post" autocomplete="off" action="#">
+                    <table class="fieldForm memberForm">
+                        <colgroup>
+                            <col width="23%">
+                            <col width="">
+                        </colgroup>
+                        <tr>
+                            <th scope="row"><em>*</em>아이디</th>
+                            <td>
+                                <p class="idField" >
+                                    <input type="text" id="id" name="id" maxlength="20"
+                                        style="ime-mode:disabled;text-transform:uppercase;" class="onlyEngUppNum"
+                                        title="아이디">
+                                    <a href="javascript://" role="btn-check-id-duplication" id="duplication"
+                                        class="btnTypeA sizeL">중복확인</a>
+                                </p>
+                                <p class="text">- 영문 또는 숫자 6 ~ 20자로 혼합 가능하며 대소문자 구별 없음</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><em>*</em>비밀번호</th>
+                            <td>
+                                <input type="password" id="pw" name="pw" maxlength="20" title="비밀번호" autocomplete="off">
+                                <p id="pwTest"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><em>*</em>비밀번호 확인</th>
+                            <td>
+                                <input type="password" id="pwCheck" name="pwCheck" maxlength="20" title="비밀번호 확인"
+                                    autocomplete="off">
+                                <a class="btnTypeB" onclick="showPopupLayer('/popup/passwordGuideLayer'); return false;"
+                                    style="margin-top: 10px;">비밀번호 설정 정책</a>
+                            </td>
+                        </tr>
+<!--                        <tr class="divide">-->
+<!--                            <th scope="row"><em>*</em>이름</th>-->
+<!--                            <td>이름<input type="hidden" id="mbrNm" name="mbrNm" value='이름'>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+                        <tr>
+                            <th scope="row"><em>*</em>한글 이름</th>
+                            <td>
+                                <p class="nameField">
+                                    <input type="text" id="mbrLnm" name="mbrLnm" maxlength="30"
+                                        style="ime-mode:active;" placeholder="성(Last Name)" title="한글 성">
+                                    <input type="text" id="mbrFnm" name="mbrFnm" maxlength="60"
+                                        style="ime-mode:active;" placeholder="이름(First Name)" title="한글 이름">
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="bor_tn">
+                            <th scope="row"><em>*</em>영문 성명</th>
+                            <td>
+                                <p class="nameField">
+                                    <input type="text" id="engLnm" name="engLnm" class="onlyEngUpp"
+                                        style="text-transform:uppercase;" maxlength="30"
+                                        placeholder="성(Last Name)" title="영문 성">
+                                    <input type="text" id="engFnm" name="engFnm" class="onlyEngUpp"
+                                        style="text-transform:uppercase;" maxlength="60"
+                                        placeholder="이름(First Name)" title="영문 이름">
+                                </p>
+                                <p class="text">- 한글과 영문 성명은 여권상(또는 여권에 사용할) 성명과 동일하게 정확히 입력하시기 바랍니다. 회원 가입 후 성명 변경은
+                                    증빙자료를 검토하여 제한적으로만 허용됨을 유의하시기 바랍니다.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><em>*</em>생년월일</th>
+                            <td><input type="text" id="bthDt" name="bthDt" maxlength="8" class="onlyNum" :value="bthDt"
+                                    placeholder="YYYYMMDD (예.19820626)" title="생년월일"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><em>*</em>성별</th>
+                            <td>
+                                <div class="fieldArea chkArea">
+                                    <div class="field_gender">
+                                        <span class="field">
+                                            <input type="radio" id="male1" name="gndrCd" value="남자" checked="checked">
+                                            <label for="male1">남자</label>
+                                        </span>
+                                        <span class="field">
+                                            <input type="radio" id="female1" name="gndrCd" value="여자">
+                                            <label for="female1">여자</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><em>*</em>국적(여권)</th>
+                            <td>
+                                <select id="ntnltyCd" name="ntnltyCd" title="국적선택">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><em>*</em>거주 국가</th>
+                            <td>
+                                <select id="residenceIataCountryCode" name="residenceIataCountryCode" title="거주국적선택">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="adbox">주소</th>
+                            <td>
+                                <p class="zipcodeField">
+                                    <input type="text" id="sample6_postcode" name="zipcode" maxlength="10" readonly="readonly" title="우편번호">
+                                        <input type="button" class="btn_agree"value="우편번호 검색" onclick="sample6_execDaumPostcode()">
+                                </p>
+                                <input type="text" id="sample6_address" name="adress1" maxlength="100" readonly="readonly"
+                                    title="주소">
+                                <input type="text" id="sample6_extraAddress" name="adress2" maxlength="150" readonly="readonly"
+                                    title="상세주소">
+                                <input type="text" name="adress3" id="sample6_detailAddress" class="subaddress" title="참고항목"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><em>*</em>연락처</th>
+                            <td>
+                                <div class="mobileField">
+                                    <span class="field">
+                                        <select id="mblFonCtrCd" name="mblFonCtrCd" title="국가번호 선택">
+                                        </select>
+                                    </span>
+                                    <input type="text" id="mblFonNo" name="mblFonNo" class="onlyNum" maxlength="20" placeholder="하이픈(-)을 포함해야합니다"
+                                        value="" title="휴대폰번호">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><em>*</em>이메일</th>
+                            <td>
+                                <input type="text" id="emAdr" name="emAdr" maxlength="100"
+                                    placeholder="예) abcd@gmail.com" title="이메일">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">이메일 수신</th>
+                            <td class="radio_class">
+                                <input type="radio" name="emRcvYn" value="True" id="emailY" checked="checked"><label
+                                    for="emailY"> 동의</label>
+                                <input type="radio" name="emRcvYn" value="False" id="emailN"><label for="emailN"> 동의하지
+                                    않음</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">SMS/앱푸시 수신</th>
+                            <td class="radio_class">
+                                <input type="radio" name="smsRcvYn" value="True" id="snsY" checked="checked"><label
+                                    for="snsY"> 동의</label>
+                                <input type="radio" name="smsRcvYn" value="False" id="snsN"><label for="snsN"> 동의하지
+                                    않음</label>
+                                <p class="text">- 수신동의 하는 경우, 항공권 특가 정보 및 상시 이벤트 등 유용한 정보를 고객님 이메일로 보내 드립니다. 단, 정보성 메일은
+                                    수신 여부와 관계없이 발송됩니다.</p>
+                                <p class="text">- 비정상 운항, 구매 관련 정보 등 필수 안내사항은 수신 여부와 관계 없이 안내 드립니다.</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="btn">
+                    <!-- 차후 submit으로 변경 필요 -->
+                        <input type="button" id="btn_regist" class="btn_agree" value="확인">
+                        <input type="button" class="btn_cancel" value="취소" onclick="history.back()">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <!--퀵 메뉴 끝-->
+    <div class="modal">
+    </div>
+    <div class="policy_box">
+        <div class="policy_main">
+            <div class="policy_text">
+                <p>영어/숫자/특수문자 중 2가지 이상 조합하여 최소 10자리 이상 20자리 이하, 3가지 이상을 조합할 경우에는 최소 8자리 이상 20자리 이하로 구성</p>
+                <p>PW내 동일 또는 연속의 숫자 또는 키보드 상의 연속한 위치의 문자열 4자리 이상 포함 금지</p>
+                <p>ID 중 연속되는 숫자 또는 문자는 6자리 이상 PW로 사용 금지</p>
+                <p>개인 신상 정보와 4자리 이상 중복 (생년월일,전화번호,핸드폰번호) 금지</p>
+            </div>
+            <div class="btn">
+                <input type="button" class="btn_agree" value="확인">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/userpage/lib/css/mypage/joinGate.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/userpage/app/mypage/find_info.js"></script>
+<body>
+    <ul class="skipnavi"><!--책갈피 역할-->
+        <li><a href="#container">본문내용</a></li> 
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!--container-->
+        <div id="container">
+            <div class="joinGate_container">
+                <div class="joinGate_top">
+                    <p>회원가입</p>
+                </div>
+                <div class="joinGate_box">
+                    <div class="confirm_adult">
+                        <input type="button" value="14세 이상 일반회원" onclick="location.href='/pages/index/termsAgree'">
+                    </div>
+                    <div class="confirm_baby">
+                        <input type="button" value="14세 미만 소아회원" onclick="location.href='/pages/index/termsAgree'">
+                    </div>
+                    <p>* 이 페이지는 한국에 거주하는 내국인을 위한 사이트입니다.<br>한국거주 외국인 또는 해외거주 내국인께서는 국가/언어 설정을 변경하시어 알맞은 사이트로 이동하시기 바랍니다.</p>
+                </div>
+            </div>
+        </div>
+        <!--container 끝-->
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <!--퀵 메뉴 끝-->
+    <div class="modal">
+    </div>
+</body>
+</html>

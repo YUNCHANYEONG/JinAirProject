@@ -1,0 +1,52 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/notice/nt_write.css">
+<script src="/adminpage/app/notice/nt_write.js"></script>
+<!-- head.html 끝-->
+<body>
+<form class="file-upload" method="post" id="form" th:action="@{/pages/admin/nt_file/upload}" enctype="multipart/form-data">
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+
+                <div class="con_wrap">
+                    <div class="search">
+                        <p class="title">공지사항 등록</p>
+                    </div>
+                    <table>
+                        <colgroup>
+                            <col width="100%">
+                        </colgroup>
+                        <tr>
+                            <th style="text-align: left;"><input name="title" type="text" placeholder="제목을 입력하세요" id="ntTitle"></th>
+                        </tr>
+                        <tr>
+                            <td style="display: flex; justify-content: right; flex-wrap: wrap; padding: 5px 3px">
+                                <input type="text" placeholder="파일첨부" class="filetext">
+                                <label for="ex_file" class="ex_file">찾아보기</label>
+                                <input name="file" type="file" id="ex_file">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea name="content" style="resize: none;" placeholder="내용을 입력하세요." id="ntContent"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="footer">
+                        <a href="/pages/admin/notice" class="btn_notice btn_cancel"><input type="button" value="취소"></a>
+                        <span class="btn_notice btn_add"><input type="submit" value="등록" id="writeNoti"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

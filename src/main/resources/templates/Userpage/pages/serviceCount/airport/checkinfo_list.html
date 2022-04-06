@@ -1,0 +1,116 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/serviceCount/airport/checkinfo_list.css">
+<script src="/userpage/app/serviceCount/airport/checkinfo.js"></script>
+
+<body>
+    <ul class="skipnavi">
+        <!--책갈피 역할-->
+        <li>
+            <a href="#container">본문내용</a>
+        </li>
+    </ul>
+    <!--wrap-->
+    <div id="wrap">
+        <!--header-->
+        <div th:replace="${loginURL} :: menu"></div>
+        <!--header 끝-->
+        <!-- container -->
+        <div id="container">
+            <div class="contentswrap">
+                <div class="checkinfo">
+                    <p class="checkinfo_title">웹/모바일 체크인</p>
+                </div>
+            </div>
+            <h2 class="typeA">체크인 가능 여정</h2>
+            <div class="checkinList">
+                <table class="bbsForm typeB">
+                    <colgroup>
+                        <col width="13%">
+                        <col width="">
+                    </colgroup>
+                    <tr>
+                        <th scope="row">예약번호</th>
+                        <td>N2CQ2F</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">편명</th>
+                        <td>LJ321</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">탑승구간</th>
+                        <td>
+                            <div class="line">
+                                <p class="img"><strong>서울/김포(GMP)</strong>[출발] 2022-08-03(수) 14:50</p>
+                                <span class="single"></span>
+                                <p><strong>제주(CJU)</strong>[도착] 2022-08-03(수) 16:05</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="lasttr">
+                        <th scope="row">체크인 상태</th>
+                        <td>
+                            불가
+                            (항공기 출발 24시간 전부터 30분 전까지 가능)
+                        </td>
+                    </tr>
+                </table>
+                <table class="bbsForm typeB">
+                    <colgroup>
+                        <col width="13%">
+                        <col width="">
+                    </colgroup>
+                    <tr>
+                        <th scope="row">예약번호</th>
+                        <td>N2CQ2F</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">편명</th>
+                        <td>LJ338</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">탑승구간</th>
+                        <td>
+                            <div class="line">
+                                <p class="img"><strong>제주(CJU)</strong>[출발] 2022-08-05(금) 21:10</p>
+                                <span class="single"></span>
+                                <p><strong>서울/김포(GMP)</strong>[도착] 2022-08-05(금) 22:20</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="lasttr">
+                        <th scope="row">체크인 상태</th>
+                        <td>
+                            불가
+                            (항공기 출발 24시간 전부터 30분 전까지 가능)
+                        </td>
+                    </tr>
+                </table>
+                <ul class="paging">
+                    <li><strong>1</strong></li>
+                </ul>
+            <!-- </div>
+            <div class="footer_text">
+                <div class="fr">
+                    * 비회원/고객센터/여행사/외부채널 예약고객
+                    <a href="" class="btnTypeA">체크인</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+        <!-- 푸터-->
+        <div th:replace="userpage/fragment/footer :: footer"></div>
+        <!--푸터 끝-->
+    </div>
+    <!--wrap 끝-->
+    <!--퀵 메뉴-->
+    <div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+    <!--퀵 메뉴 끝-->
+    <div class="modal"></div>
+</body>
+</html>

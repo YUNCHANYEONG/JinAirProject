@@ -1,0 +1,198 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<head><div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/style.css">
+    <link rel="stylesheet" href="/adminpage/lib/css/point/pointadd.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <p class="title">지니 포인트 등록</p>
+                    <div class="contents_main">
+                        <div class="point_tap">
+                            <div class="left_side">
+                                <div class="point_op">
+                                    <p>구분</p>
+                                    <select class="point_box" id="select_box" name="selectbox">
+                                        <option value="선택" selected="selected">선택</option>
+                                        <option value="이륙 지원 보상">이륙 지연 보상</option>
+                                        <option value="이벤트 당첨">이벤트 당첨</option>
+                                        <option value="우수 회원">우수 회원</option>
+                                        <option value="공모전 수상">공모전 수상</option>
+                                        <option value="직접 입력">직접 입력</option>
+                                    </select>
+                                </div>
+                                <div class="point_category">
+                                    <p>예약자 조회</p>
+                                    <table>
+                                        <tr>
+                                            <td><span>항공기타입</span></td>
+                                            <td>
+                                                <select id="schAirplaneType"></select>
+                                                <input type="button" id="findName" value="조회">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>항공기이름</span></td>
+                                            <td><select id="airplaneName" class="selectbox"></select></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>출발지</span></td>
+                                            <td><select id="departure_point" class="selectbox"></select></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>도착지</span></td>
+                                            <td><select id="arrive_point" class="selectbox"></select></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>출발일</span></td>
+                                            <td><input type="date" name="start" id="start"></td>
+                                        </tr>
+                                    </table>
+                                    <div>
+                                        <input type="button" value="운항일정 조회" id="searchSch" class="btn_search">
+                                    </div>
+                                    <div>
+                                        <select class="airport_box selectbox" id="schList">
+                                            <option value="" selected="selected">운항 일정 선택</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <input type="button" id="reserveUserBtn" value="조회" class="btn_search">
+                                    </div>
+                                </div>
+                                <div class="user_category">
+                                    <p>고객 조회</p>
+                                    <div>
+                                        <p>아이디</p>
+                                        <input type="text" id="userid" placeholder="아이디를 입력하세요">
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="조회" class="btn_usersearch">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table_area">
+                                <!--  이륙 지연 보상  -->
+                                <div class="select_rs" id="resList">
+                                    <table>
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="70">
+                                            <col width="170">
+                                            <col width="170">
+                                            <col width="100">
+                                            <col width="150">
+                                        </colgroup>
+                                        <tr>
+                                            <td>선택</td>
+                                            <td>예약번호</td>
+                                            <td>아이디</td>
+                                            <td>성명</td>
+                                            <td>이메일</td>
+                                            <td>생년월일</td>
+                                            <td>연락처</td>
+                                        </tr>
+                                    </table>
+                                    <div class="wrapper">
+                                        <table>
+                                            <colgroup>
+                                                <col width="50">
+                                                <col width="70">
+                                                <col width="170">
+                                                <col width="170">
+                                                <col width="100">
+                                                <col width="150">
+                                            </colgroup>
+                                            <tr v-for="(dto, i) in resList">
+                                                    <td>
+                                                        <input type="checkbox" :id=`schUser${i}` name="schUser" class="schUser" :value=`${dto.reUserindex}`>
+                                                    </td>
+                                                    <td>{{dto.reReserNum}}</td>
+                                                    <td>{{dto.reMemberId}}</td>
+                                                    <td>{{dto.reFirstName}}{{dto.reLastName}}</td>
+                                                    <td>{{dto.reEmail}}</td>
+                                                    <td>{{dto.reBirth}}</td>
+                                                    <td>{{dto.reHp}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="point_footer">
+                                        <div>
+                                            <span>Point : </span><input type="text" id="pointNumber1">
+                                            <span>Memo : </span><input type="text" id="pointMemo1">
+                                            <input type="button" value="적립" id="updatePointList">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  유저 아이디 검색  -->
+                                <div class="select_user" id="memList" >
+                                    <table>
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="100">
+                                            <col width="170">
+                                            <col width="170">
+                                            <col width="100">
+                                            <col width="150">
+                                        </colgroup>
+                                        <tr>
+                                            <td>선택</td>
+                                            <td>고객번호</td>
+                                            <td>아이디</td>
+                                            <td>성명</td>
+                                            <td>이메일</td>
+                                            <td>생년월일</td>
+                                            <td>연락처</td>
+                                        </tr>
+                                    </table>
+                                    <div class="userwraper">
+                                        <table>
+                                            <colgroup>
+                                                <col width="50">
+                                                <col width="40">
+                                                <col width="100">
+                                                <col width="150">
+                                                <col width="150">
+                                                <col width="100">
+                                                <col width="150">
+                                            </colgroup>
+                                            <tr v-for="dto in memList">
+                                                <td>
+                                                    <input type="checkbox" id="searched" :value=`${dto.memIndex}`>
+                                                    <label for="searched"></label>
+                                                </td>
+                                                <td id="memIndex">{{dto.memIndex}}</td>
+                                                <td>{{dto.memUserid}}</td>
+                                                <td>{{dto.memKorFirstName}}{{dto.memKorLastName}}</td>
+                                                <td>{{dto.memEmail}}</td>
+                                                <td>{{dto.memBirth}}</td>
+                                                <td>{{dto.memHp}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="point_footer">
+                                        <div class="select_user">
+                                            <span>Point : </span><input type="text" id="pointNumber2">
+                                            <span>Memo : </span><input type="text" id="pointMemo2">
+                                            <input type="button" id="updatePoint" value="지급">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/adminpage/app/point/pointadd.js"></script>
+</body>
+</html>

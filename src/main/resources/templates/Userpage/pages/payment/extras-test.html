@@ -1,0 +1,2690 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/userpage/lib/css/payment/extras.css">
+<script src="/userpage/app/payment/extras.js"></script>
+<body>
+<ul class="skipnavi">
+    <!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <form action="#">
+        <div id="container">
+            <div class="contentswrap">
+                <!--상단 고정 여정선택-->
+                <div class="fix_trip_info">
+                    <!--여정1-->
+                    <div class="trip_info">
+                        <div class="schedule">
+                            <p><span>왕복</span> 여정1</p>
+                            <p class="cursor arrow_img"></p>
+                            <p class="cursor arrow_img arrow_up_img"></p>
+                        </div>
+                        <div class="trip_area fs20">
+                            <span class="dep_area" id="go_area1">서울/김포(GMP)</span>
+                            <span class="sm_ft" id="godate">[출발]2022-02-17(목)17:45</span>
+                            <span class="arr_area" id="arr_area1">제주(CJU)</span>
+                            <span class="sm_ft">[도착] 2022-02-17(목) 19:00</span>
+                        </div>
+                    </div>
+                    <!--여정1 끝-->
+                    <!--여정2-->
+                    <div class="trip_info2">
+                        <div class="schedule">
+                            <p><span>왕복</span> 여정2</p>
+                        </div>
+                        <div class="trip_area fs20">
+                            <span class="dep_area">제주(CJU)</span>
+                            <span class="sm_ft">[출발] 2022-02-19(토) 16:00 </span>
+                            <span class="arr_area">서울/김포(GMP)</span>
+                            <span class="sm_ft">[도착] 2022-02-19(토)17:10</span>
+                        </div>
+                    </div>
+                    <!--여정2 끝-->
+                    <!--탑승객 수-->
+                    <div class="nop">
+                        <p>탑승객수</p>
+                        <p class="fs20" id="person_cnt">성인 1</p>
+                    </div>
+                    <!--탑승객 수 끝-->
+                    <!--수정버튼-->
+                    <input type="button" onclick="updateTrip()" value="수정" class="trip_edit_butt fs20 cursor">
+                    <!--수정버튼 끝-->
+                </div>
+                <!--여정선택 끝-->
+                <!--탑승객 정보-->
+                <div class="select_wrap">
+                    <!--탑승객 정보 헤더-->
+                    <div class="title">부가서비스 신청</div>
+                    <div class="select_step">
+                        <p>Step</p><span class="div"> </span>
+                        <p>1 여정선택</p><span class="div"> </span>
+                        <p>2 항공편 선택</p><span class="div"> </span>
+                        <p>3 탑승객 정보</p><span class="div"> </span>
+                        <p class="fcpup bb">4 부가서비스</p><span class="div"> </span>
+                        <p>5 결제</p>
+                    </div>
+                </div>
+            </div>
+            <!--부가서비스 신청-->
+            <div id="optionS_wrap">
+                <!--서비스 메뉴 랩-->
+                <div class="service_menu_wrap">
+                    <!--서비스 메뉴1 사전좌석지정-->
+                    <div class="service_menu">
+                        <table>
+                            <tr>
+                                <td class="cursor menu1">
+                                    <img src="/userpage/lib/img/menu1.png" alt="메뉴1" class="menu1img">
+                                    <img src="/userpage/lib/img/menu1.png" alt="메뉴1색상반전" class="menu1_invert">사전좌석지정
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cursor menu2">
+                                    <img src="/userpage/lib/imgg/menu2.png" alt="메뉴2" class="menu2img">
+                                    <img src="/userpage/lib/img/menu2.png" alt="메뉴2색상반전" class="menu2_invert">초과수하물
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cursor menu3">
+                                    <img src="/userpage/lib/img/menu3.png" alt="메뉴3" class="menu3img">
+                                    <img src="/userpage/lib/img/menu3.png" alt="메뉴3색상반전" class="menu3_invert">여행보험
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td class="cursor menu4">
+                                    바로결제</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--서비스 메뉴 랩 끝-->
+                <!--서비스 컨텐츠 랩-->
+                <div class="service_content_wrap service_content_wrap1">
+                    <!--서비스 타이틀-->
+                    <div class="service_title1">
+                        <div class="section1 cursor"><a href="" class="checkBox_1"></a><a href="#"
+                                                                                          class="checkBox_2"></a>구간1 : 서울/김포(GMP)-제주(CJU)</div>
+                        <div class="section2 cursor"><a href="" class="checkBox_2"></a><a href="#"
+                                                                                          class="checkBox_1"></a></a>구간2 : 제주(CJU)-서울/김포(GMP)</div>
+                    </div>
+                    <!--서비스 타이틀 끝-->
+                    <!--서비스 컨텐츠-->
+                    <div class="service_content">
+                        <!--탑승객 정보 랩-->
+                        <div class="passenger_info_wrap passenger_info_wrap1">
+                            <div class="passenger_info">
+                                <h3>탑승객 1</h3>
+                                <p><img src="/userpage/lib/img/ico-person.png" alt=""><span>유/영은</span></p>
+                                <p class="select_seat_num select_seat_num1">
+                                    <span class="seat_num seat_num1"></span>
+                                    <span class="close cursor">x</span>
+                                </p>
+                                <p class="select_seat_price">
+                                    <span class="seat_P seat_P1">KRW</span>
+                                    <span class="price"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <!--좌석 정보 랩-->
+                        <!-- 좌석 정보랩 1 -->
+                        <div th:replace="userpage/pages/payment/seat_info/B737-800-info1 :: B737-800-info1"></div>
+                        <!-- 좌석 정보랩 1 끝 -->
+                        <!-- 좌석 선택랩 1 -->
+                        <div th:replace="userpage/pages/payment/select_seat/B737-800-1 :: B737-800-1"></div>
+                        <!-- 좌석 선택랩 1 끝 -->
+                        <!--탑승객 정보 랩2-->
+                        <div class="passenger_info_wrap passenger_info_wrap2">
+                            <div class="passenger_info">
+                                <h3>탑승객 1</h3>
+                                <p><img src="/userpage/lib/img/ico-person.png" alt=""><span>유/영은</span></p>
+                                <p class="select_seat_num select_seat_num2">
+                                    <span class="seat_num seat_num2"></span>
+                                    <span class="close cursor">x</span>
+                                </p>
+                                <p class="select_seat_price">
+                                    <span class="seat_P seat_P2">KRW</span>
+                                    <span class="price"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <!--탑승객 정보 랩2 끝-->
+                        <!-- 좌석 정보랩 2 -->
+                        <div th:replace="userpage/pages/payment/seat_info/B737-800-info2 :: B737-800-info2"></div>
+                        <!-- 좌석 정보랩 2 끝 -->
+                        <!-- 좌석 선택랩 2 -->
+                        <div th:replace="userpage/pages/payment/select_seat/B737-800-2 :: B737-800-2"></div>
+                        <!-- 좌석 선택랩 2 끝 -->
+                    </div>
+                    <!--서비스 컨텐츠 끝-->
+                </div>
+                <!--서비스 컨텐츠 랩1 끝-->
+
+
+                <!--서비스 컨텐츠 랩2-->
+                <div class="service_content_wrap service_content_wrap2">
+                    <!--서비스 타이틀2-->
+                    <div class="service_title2">
+                        <div class="section1 cursor">
+                            <span>[Free]</span>무료 수하물 / 기내식 자세히 보기
+                        </div>
+                    </div>
+                    <!--서비스 타이틀 끝-->
+                    <!--서비스 컨텐츠2-->
+                    <div class="service_content">
+                        <!--탑승객 정보 랩-->
+                        <div class="passenger_info_wrap">
+                            <div class="passenger_info">
+                                <h3>탑승객 1</h3>
+                                <p><img src="/userpage/lib/img/ico-person.png" alt=""><span>유/영은</span></p>
+
+                                <p class="section1 section"><img src="/userpage/lib/img/airplane2.png" alt="비행기">구간1</p>
+                                <p class="select_bagg_price select_bagg_price1">
+                                    <span class="select_bagg"></span>
+                                    <span class="close cursor">x</span>
+                                </p>
+                                <p class="bot_bagg_price bot_bagg_price1"><span class="cur">KRW</span><span
+                                        class="price"></span></p>
+
+                                <p class="section2 section"><img src="/userpage/lib/img/airplane2.png" alt="비행기">구간2</p>
+                                <p class="select_bagg_price select_bagg_price2">
+                                    <span class="select_bagg"></span>
+                                    <span class="close cursor">x</span>
+                                </p>
+                                <p class="bot_bagg_price bot_bagg_price2"><span class="cur">KRW</span><span
+                                        class="price"></span></p>
+                            </div>
+                        </div>
+                        <!--탑승객 정보 랩 끝-->
+                        <!--수하물 선택 랩-->
+                        <div class="select_baggage_wrap">
+                            <div class="baggage_wrap">
+                                <div class="baggage_1">
+                                    <p class="section1 section"><img src="/userpage/lib/img/airplane2.png" alt="비행기">구간1(탑승객 1)
+                                    </p>
+                                    <select name="bagg1" id="bagg1">
+                                        <option value="">초과수하물 추가 선택</option>
+                                        <option value="5KG(+KRW 8,000)">5KG(+KRW 8,000)</option>
+                                        <option value="10KG(+KRW 16,000)">10KG(+KRW 16,000)</option>
+                                        <option value="15KG(+KRW 24,000)">15KG(+KRW 24,000)</option>
+                                        <option value="20KG(+KRW 32,000)">20KG(+KRW 32,000)</option>
+                                    </select>
+                                </div>
+                                <div class="baggage_2">
+                                    <p class="section1 section"><img src="/userpage/lib/img/airplane2.png" alt="비행기">구간2(탑승객 1)
+                                    </p>
+                                    <select name="bagg2" id="bagg2">
+                                        <option value="">초과수하물 추가 선택</option>
+                                        <option value="5KG(+KRW 8,000)">5KG(+KRW 8,000)</option>
+                                        <option value="10KG(+KRW 16,000)">10KG(+KRW 16,000)</option>
+                                        <option value="15KG(+KRW 24,000)">15KG(+KRW 24,000)</option>
+                                        <option value="20KG(+KRW 32,000)">20KG(+KRW 32,000)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="button" class="cursor select_comp" value="선택완료">
+                        </div>
+                        <!--수하물 선택 랩 끝-->
+                    </div>
+                    <!--서비스 컨텐츠 끝-->
+                </div>
+                <!--서비스 컨텐츠 랩2 끝-->
+
+
+                <!--서비스 컨텐츠 랩3-->
+                <div class="service_content_wrap service_content_wrap3">
+                    <!--서비스 타이틀3-->
+                    <div class="service_title1">
+                        <div class="section1"><a href="#" class="checkBox_1"></a>구간1 : 서울/김포(GMP)-제주(CJU)</div>
+                        <div class="section2"><a href="#" class="checkBox_1"></a>구간2 : 제주(CJU)-서울/김포(GMP)</div>
+                    </div>
+                    <!--서비스 타이틀 끝-->
+                    <!--서비스 컨텐츠3-->
+                    <div class="service_content">
+                        <div class="passenger_info_wrap">
+                            <!--탑승객 정보 랩-->
+                            <div class="passenger_info_wrap">
+                                <div class="passenger_info">
+                                    <h3>탑승객 1</h3>
+                                    <p><img src="/userpage/lib/img/ico-person.png" alt=""><span>유/영은</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--탑승객 정보 랩 끝-->
+
+                        <!--보험 선택 랩-->
+                        <div class="join_insurance_wrap">
+                            <div class="insurance_title">
+                                에이스손해보험 Chubb <span> 국내여행보험 </span> 간단 가입
+                            </div>
+                            <div class="insurance_content">
+                                <div class="insurance_menu_wrap">
+                                    <p class="ins_menu1 ins_menu">Step 1 가입플랜 선택</p>
+                                    <p class="ins_menu2 ins_menu">Step 2 안내 확인 및 동의</p>
+                                </div>
+                                <div class="insContent1 insContent">
+                                    <p class="tit_img"><img src="/userpage/lib/img/airplane2.png" alt="비행기">
+                                        <span>여행 국가 | 한국</span>
+                                    </p>
+                                    <hr>
+                                    <p class="tit_img"><img src="/userpage/lib/img/airplane2.png" alt="비행기"><span>여행 기간</span>
+                                    </p>
+                                    <div class="date_wrap">
+                                        <input type="text" id="start_date" value="2022-02-16"class="date"/>
+                                        <span>부터</span>
+                                        <input type="date" id="end_date"class="date date2"/>
+                                        <span>까지</span>
+                                    </div>
+                                    <ul>
+                                        <li>보험은 일자 별로 신청 가능하며 1일 적용 기준은 00시~24시 입니다.</li>
+                                        <li>보험기간에 따라 보험료가 변경될 수 있으니 여행기간을 직접 선택하여 주세요.
+                                            (여행 기간 최소 2일 / 국내선 최대1개월 / 국제선 최대3개월)</li>
+                                        <li class="font_col">보험기간은 피보험자가 주거지를 출발하여 여행을 마치고 주거지에 도착할 때까지의 기간 (이하
+                                            “여행기간”)으로 설정하시기 바랍니다.</li>
+                                        <li>피보험자가 입력한 기간의 전부 또는 일부가 여행 기간이 아닌 경우 해당 기간 동안 발생한 사고에 대해서는 보상을 받지 못할 수
+                                            있습니다.</li>
+                                        <li>실제 여행 기간이 피보험자가 설정한 기간 이외의 기간을 포함할 경우 사전에 보험사에 알리고 기간을 변경하셔야 해당 기간에 대한
+                                            보상이 가능합니다.</li>
+                                        <li class="font_col">여행 예정인 국가 중 보험 인수 제한 국가가 포함되어 있을 경우 보험 가입이 불가능 합니다.
+                                        </li>
+                                    </ul>
+                                    <a href="restrictedCountry.html" target="_blank">
+                                        <div class="limit cursor">보험인수 제한 국가</div>
+                                    </a>
+                                    <hr>
+                                    <h2 class="font_col">탑승객별 피보험자 정보 입력 및 가입플랜 선택</h2>
+                                    <table class="insurance_product">
+                                        <colgroup>
+                                            <col width="17%">
+                                            <col width="10%">
+                                            <col width="20%">
+                                            <col width="6%">
+                                            <col width="6%">
+                                            <col width="6%">
+                                            <col width="6%">
+                                            <col width="6%">
+                                            <col width="6%">
+                                            <col width="17%">
+                                        </colgroup>
+                                        <tr>
+                                            <td rowspan="3">가입자명</td>
+                                            <td rowspan="3">성별</td>
+                                            <td rowspan="3">생년월일</td>
+                                            <td colspan="6">가입플랜</td>
+                                            <td rowspan="3">선택</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">실속형</td>
+                                            <td colspan="2">표준형</td>
+                                            <td colspan="2">고급형</td>
+                                        </tr>
+                                        <tr>
+                                            <td>가입금액</td>
+                                            <td>보험료(원)</td>
+                                            <td>가입금액</td>
+                                            <td>보험료(원)</td>
+                                            <td>가입금액</td>
+                                            <td>보험료(원)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="normal"><input type="checkbox" name="check_ins"
+                                                                      id="check_ins">유 영은</td>
+                                            <td class="normal">여</td>
+                                            <td class="normal bir_date"><input type="text" value="19970924"
+                                                                               class="birth" readonly></td>
+                                            <td class="normal">5,000만원</td>
+                                            <td class="normal">1,970</td>
+                                            <td class="normal">7,000만원</td>
+                                            <td class="normal">3,660</td>
+                                            <td class="normal">1억원</td>
+                                            <td class="normal">7,040</td>
+                                            <td class="normal sel_pro"><select name="product" id="select_product"
+                                                                               disabled>
+                                                <option value="실속형">실속형</option>
+                                                <option value="표준형" selected>표준형</option>
+                                                <option value="고급형">고급형</option>
+                                            </select></td>
+                                        </tr>
+                                    </table>
+                                    <table class="insurance_price">
+                                        <tr>
+                                            <td class="tit">총 보험료(1명)<span class="cul">KRW</span><span
+                                                    class="price">7,040</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>피보험자 정보가 정확한 경우에만 보험계약 조회 및 보험금 청구가 가능합니다.
+                                                        (단, 영문 성명은 무관합니다.)</li>
+                                                    <li>상단 가입금액은 "상해사망 및 후유장해" 기준 금액입니다.</li>
+                                                    <li>가입 연령에 따라 담보 및 가입금액의 변경 또는 제한이 있을 수 있습니다. 플랜 구성 및 세부 보장내역을
+                                                        확인 하세요.</li>
+                                                    <li>유아 탑승객의 여행자보험 가입은 불가합니다.</li>
+                                                </ul>
+                                                <div class="coverage cursor"><a
+                                                        href="https://ec.aceinsurance.co.kr/jsp/b2cEZSponsor/contractplan/ContractPlanSHanaCoverageList.jsp?groupId=701241JAIR&productCode=DTA"
+                                                        target="_blank">가입연령따른 플랜 및 보장 내역</a></div>
+                                                <input type="button" value="다음" class="next_butt cursor">
+                                                <div id="modal_agree_wrap">
+                                                    <div class="modal_agree_confirm">
+                                                        보험가입을 희망하시는 경우 여행 기간, 가입자명, 가입플랜을 모두 선택해주세요.
+                                                        <div class="butt">
+                                                            <input type="button" value="확인" class="cursor">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="insContent2 insContent">
+                                    <ul>
+                                        <li><input type="checkbox" id="agree_check0"><span>본인은 본 보험계약의 피보험자로 되는 것에
+                                                    동의하며, 만일 본인이 타 여행객을 대신하여 보험 가입 절차를 이행하는 경우 본인은 여행 계약 체결에 대하여 타
+                                                    여행객으로부터 적법하게 대리권을 수여 받았음을 확인합니다. 만약 대리권이 존재하지 않는 경우, 그 범위 내에서
+                                                    단체보험계약이 일부 무효로 되거나 보험 사고시 보험금 지급이 거절될 수 있다는 점을 충분히 이해하였습니다.</span>
+                                        </li>
+                                        <li><label for="agree_check1"><input type="checkbox"
+                                                                             id="agree_check1"><span>가입 전 보험계약 중요 안내 사항을
+                                                        확인하였습니다.</span></label>
+                                            <div class="noti cursor">보험계약 중요 안내 사항</div>
+                                        </li>
+                                        <li><label for="agree_check2"><input type="checkbox"
+                                                                             id="agree_check2"><span>여행보험 가입규약 및 개인정보 제 3자 제공 동의를
+                                                        확인하였습니다.</span></label>
+                                            <div class="agree cursor">가입 규약 및 제 3자 제공 동의</div>
+                                        </li>
+                                    </ul>
+                                    <h2>유의사항</h2>
+                                    <ul class="ins_noti">
+                                        <li class="font_col">본 계약은 보험계약자를 진에어로, 피보험자 및 보험 수익자를 진에어 여객 탑승객 또는 온라인
+                                            회원으로 하는 단체(취급) 여행보험 계약으로 진에어 여객 탑승객 또는 온라인 회원만 피보험자로 가입 가능합니다.</li>
+                                        <li>기존 보험 계약을 해지하고 새로운 보험 계약을 체결하는 경우 보험인수가 거절되거나 보험료가 인상될 수 있으며, 보장내용 (면책기간
+                                            재적용 등)이 달라질 수 있습니다.</li>
+                                        <li>계약체결 전 약관 및 상품설명서를 반드시 참고하여 주시기 바랍니다.</li>
+                                        <li>이 보험계약은 예금자보호법에 따라 예금보험공사가 보호하되, 보호 한도는 본 보험회사에 있는 귀하의 모든 예금보호 대상 금융상품의
+                                            해약환급금(또는 만기 시 보험금이나 사고보험금)에 기타지급금을 합하여 1인당 “최고 5천만원”이며, 5천만원을 초과하는 나머지
+                                            금액은 보호하지 않습니다. 다만, 보험계약자 및 보험료 납부자가 법인인 보험계약은 예금자보호법에 따라 예금보험공사가 보호하지
+                                            않습니다.
+                                            지급한도, 면책사항 등에 따라 보험금 지급이 제한될 수 있습니다.</li>
+                                        <li>가입 완료 시 대표가입자 이메일로 약관 및 가입내역이 발송됩니다.</li>
+                                        <li>보상에 대한 자세한 사항은 가입 확인서와 약관을 참조하시기 바랍니다. <a href="#">약관 다운로드</a></li>
+                                        <li class="font_col">여행보험의 다수가입은 원칙적으로 허용되지 않으며, 다른 경로를 통해 해당 여행보험을 중복으로
+                                            가입하는 일이 없도록 유의해주시기 바랍니다.</li>
+                                        <li class="font_col">해외여행 중 배상책임, 해외여행 중 휴대품손해, 해외여행 실손의료비 특별약관의 경우 보험금을 지급할
+                                            다수계약이 체결되어 있는 경우에는 약관에 따라 실손 비례 보상합니다.</li>
+                                        <li class="font_col">여행보험 관련문의는 Chubb여행보험 콜센터 (1666-5075)에 문의하시기 바랍니다.
+                                            (평일 업무시간: 9:00~18:00 / 주말, 공휴일 제외)</li>
+                                    </ul>
+                                    <div class="ins_butt_wrap">
+                                        <input type="button" class="ins_before_butt cursor" value="이전">
+                                        <input type="button" class="ins_join_butt cursor" value="여행보험 가입하기" />
+                                    </div>
+                                    <div class="modal_join_ins modal_agree2">
+                                        보험 가입 요청이 완료되었습니다.
+                                        <div class="butt">
+                                            <input type="button" value="확인">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--체크 확인 모달-->
+                            <div id="modal_conf_check">
+                                <div class="modal_conf_check">
+                                    <p class="txt">모든 사항에 동의해주셔야 여행보험 가입이 가능합니다.</p>
+                                    <p class="button_wrap">
+                                        <input type="button" value="확인" class="cursor">
+                                    </p>
+                                </div>
+                            </div>
+                            <!--체크 확인 모달-->
+                            <!--보험계약 안내사항 모달창-->
+                            <div id="modal_insurance_info_wrap">
+                                <div class="modal_insurance_info_wrap">
+                                    <div class="title">
+                                        <span>보험계약 중요 안내사항</span><span class="close cursor"><img
+                                            src="/userpage/lib/img/close.png" alt=""></span>
+                                    </div>
+                                    <div class="content">
+                                        <table class="product_int">
+                                            <colgroup>
+                                                <col width="25%">
+                                                <col width="75%">
+                                            </colgroup>
+                                            <tr>
+                                                <th class="borderT">가입상품</th>
+                                                <td class="borderT">에이스손해보험 Chubb 국내여행보험/표준형</td>
+                                            </tr>
+                                            <tr>
+                                                <th>보험료 납입기간</th>
+                                                <td>일시납</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="borderB">여행기간</th>
+                                                <td class="borderB">2022-02-24 ~ 2022-02-26</td>
+                                            </tr>
+                                        </table>
+                                        <p>가입 전 보험계약 중요 안내사항을 확인 후, 보험 가입자 모두 체크해 주시기 바랍니다.</p>
+                                        <div class="nameBox">
+                                            <input type="checkbox" class="checkbox"><span>유영은</span>
+                                        </div>
+                                        <table class="Guaranteed">
+                                            <congroup>
+                                                <col width="70%">
+                                                <col width="15%">
+                                                <col width="15%">
+                                            </congroup>
+                                            <tr>
+                                                <th class="borderT">담보명</th>
+                                                <th class="borderT">표준형</th>
+                                                <th class="borderT">보험료</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행중 상해사망후유장해<span class="cursor cursor1">
+                                                            <p class="detail detail1">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>7,000만원</td>
+                                                <td>419</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">상해 급여 실손의료비(입원_기본)
+                                                    <span class="cursor cursor2">
+                                                            <p class="detail detail2 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span>
+                                                </td>
+                                                <td>1,000만원</td>
+                                                <td>84</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">상해 급여 실손의료비(통원_기본)<span class="cursor cursor3">
+                                                            <p class="detail detail3 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>10만원</td>
+                                                <td>31</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">상해 비급여 실손의료비(입원_특약)<span class="cursor cursor4">
+                                                            <p class="detail detail4 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>1,000만원</td>
+                                                <td>80</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">상해 비급여 실손의료비(통원_특약)<span class="cursor cursor5">
+                                                            <p class="detail detail5 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>10만원</td>
+                                                <td>24</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">상해질병 3대 비급여 실손의료비(도수,체외충격파,증식치료_특약)<span
+                                                        class="cursor cursor6">
+                                                            <p class="detail detail6 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>350만원</td>
+                                                <td>452</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">상해질병 3대 비급여 실손의료비(주사치료_특약)<span
+                                                        class="cursor cursor7">
+                                                            <p class="detail detail7 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>250만원</td>
+                                                <td>183</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">상해질병 3대 비급여 실손의료비(자기공명영상진단_특약)<span
+                                                        class="cursor cursor8">
+                                                            <p class="detail detail8 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>300만원</td>
+                                                <td>448</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행중 배상책임(자기부담금 1만원)<span class="cursor cursor9">
+                                                            <p class="detail detail9 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>100만원</td>
+                                                <td>11</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행중 휴대품손해(분실제외, 자기부담금1만원, 이동통신단말기 보상제외)<span
+                                                        class="cursor cursor10">
+                                                            <p class="detail detail10 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>20만원</td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행 골절(치아파절제외)진단비<span class="cursor cursor11">
+                                                            <p class="detail detail11 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>10만원</td>
+                                                <td>107</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행 화상진단비<span class="cursor cursor12">
+                                                            <p class="detail detail12 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>10만원</td>
+                                                <td>16</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행 상해입원일당(4일이상 30일한도)<span
+                                                        class="cursor cursor13">
+                                                            <p class="detail detail13 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>2만원</td>
+                                                <td>281</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행 상해응급실내원(응급)치료비<span class="cursor cursor14">
+                                                            <p class="detail detail14 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>3만원</td>
+                                                <td>82</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행 상해응급실내원(비응급)치료비<span class="cursor cursor15">
+                                                            <p class="detail detail15 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>1만원</td>
+                                                <td>6</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행 골절수술비(동일사고당 1회한)<span class="cursor cursor16">
+                                                            <p class="detail detail16 defualt">
+                                                                <span class="txt">국내여행중 상해사망후유장해</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 중 급격하고도 우연한 외래의 사고로 피보험자가 사망하거나 후유장해가 발생하였을 경우,
+                                                                사망시에는 가입금액 전액, 후유장해시에는 약관상의 후유장해지급율표에 따라 가입금액의 3％~100％를
+                                                                지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>20만원</td>
+                                                <td>56
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행 상해수술비(동일사고당 1회한)<span class="cursor cursor17">
+                                                            <p class="detail detail17 defualt">
+                                                                <span class="txt">국내여행 상해수술비(동일사고당 1회한)</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 도중에 상해로 인하여 수술을 받은 경우 1사고당 특약가입금액 지급(동일사고당 1회한) ※
+                                                                하나의 사고로 인하여 두 종류 이상의 상해수술을 받은 경우에는 하나의 상해수술비 보험금만을 지급
+                                                            </p>
+                                                        </span></td>
+                                                <td>20만원</td>
+                                                <td>165</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left">국내여행 깁스치료비(동일사고 또는 질병당 1회한)<span
+                                                        class="cursor cursor18">
+                                                            <p class="detail detail18 defualt">
+                                                                <span class="txt">국내여행 깁스치료비</span>
+                                                                <span class="close pointer">x</span>
+                                                                국내여행 도중에 상해 또는 질병으로 인하여 깁스(Cast)치료를 받은 경우 매사고시마다 특약가입금액
+                                                                지급 ※ 동일한 상해 또는 질병으로 인하여 깁스치료를 2회 이상 받은 경우, 또는 동시에 서로 다른
+                                                                신체부위에 깁스치료를 받은 경우에는 1회에 한하여 깁스치료비 보험금을 지급 ※ 상해라 함은 국내여행
+                                                                도중에 발생한 급격하고도 우연한 외래의 사고로 신체(의수, 의족, 의안, 의치 등 신체보조장구는
+                                                                제외하나, 인공장기나 부분 의치 등 신체에 이식되어 그 기능을 대신할 경우는 포함합니다)에 입은
+                                                                상해를 말합니다.
+                                                            </p>
+                                                        </span></td>
+                                                <td>20만원</td>
+                                                <td>162</td>
+                                            </tr>
+                                        </table>
+                                        <p>알아두실 사항</p>
+                                        <ul>
+                                            <li>1. 보험가입 전 유의사항
+                                                <ul>
+                                                    <li class="detail">- 보험계약자가 기존 보험계약을 해지하고 새로운 보험계약을 체결하는 경우,
+                                                        보험인수가 거절되거나 보험료가 인상될 수 있으며, 보장내용(면책기간 재 적용 등)이 달라질 수 있습니다.
+                                                    </li>
+                                                    <li class="detail">- 보험료를 내신 후에는 회사가 발행한 소정의 양식을 받으시기 바랍니다.</li>
+                                                    <li class="detail">- 보험료가 납입되지 않을 경우 손해발생시 보상을 받을 수 없습니다.</li>
+                                                    <li class="detail">- 보험계약 청약 시 기재사항을 사실대로 빠짐없이 작성하고 자필 서명하셔야
+                                                        합니다.</li>
+                                                    <li class="detail">- 보험기간 중에 발생한 사고 및 질병에 한하여 보상하며, 보상받을 수 있는
+                                                        경우와 보상받을 수 없는 경우를 확인하셔야 합니다.</li>
+                                                    <li class="detail">- 지급한도, 면책사항 등에 따라 보험금 지급이 제한될 수 있습니다.</li>
+                                                    <li class="detail">- 지급한도, 면책사항 등에 따라 보험금 지급이 제한될 수 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>2. 알릴 의무
+                                                <ul>
+                                                    <li>[계약 전 알릴 의무]
+                                                        <ul>
+                                                            <li>→ 계약 전 알릴 의무사항은 회사가 보험계약의 청약을 인수하는데 필요한 자료이므로 보험계약자
+                                                                및 피보험자는 사실대로 알려야 합니다. 위 사항에 대하여 만약 사실대로 알리지 않거나 사실과
+                                                                다르게 알린 경우에는 보험가입이 거절될 수 있으며, 특히 그 내용이 [중요한 사항]에 해당하는
+                                                                경우에는 보험계약자 또는 피보험자의 의사와 관계없이 보험약관상 [계약 전 알릴 의무 위반의
+                                                                효과]조항에 의해 계약이 해지되거나 보장이 제한될 수 있습니다.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>[계약 후 알릴 의무]
+                                                        <ul>
+                                                            <li>→ 보험계약자 또는 피보험자는 보험기간 중 아래와 같은 변경이 발생한 경우 지체 없이 회사에
+                                                                알려야 합니다. 알리지 않은 경우 보험금 지급이 제한될 수 있습니다.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>1. 보험증권 등에 기재된 직업 또는 직무의 변경
+                                                        <ul>
+                                                            <li>가. 현재의 직업 또는 직무가 변경된 경우</li>
+                                                            <li>나. 직업이 없는 자가 취직한 경우</li>
+                                                            <li>다. 현재의 직업을 그만둔 경우</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>2. 보험증권 등에 기재된 피보험자의 운전 목적이 변경된 경우 (자가용에서 영업용으로 변경, 영업용에서
+                                                        자가용으로 변경 등)</li>
+                                                    <li>3. 보험증권 등에 기재된 피보험자의 운전여부가 변경된 경우 (비운전자에서 운전자로 변경, 운전자에서
+                                                        비운전자로 변경 등)</li>
+                                                    <li>4. 이륜자동차 (자동차관리법상 이륜차로 분류되는 삼륜 또는 사륜의 자동차를 포함) 또는 원동기장치
+                                                        자전거(전동킥보드, 전동이륜평행차, 전동기의 동력만으로 움직일 수 있는 자전거 등 개인형 이동장치를 포함)를
+                                                        계속적으로 사용(직업, 직무 또는 동호회 활동과 출퇴근용도 등으로 주로 사용하게 되는 경우에 한함)하게 된
+                                                        경우 (다만, 전동휠체어, 의료용 스쿠터 등 보행보조용 의지차는 제외합니다.) 위험이 감소된 경우 보험료를
+                                                        감액하고 이후 기간 보장을 위한 재원인 책임준비금 등의 차이로 인하여 발생한 정산금액을 환급하여 드립니다.
+                                                        위험이 증가된 경우 보험료의 증액 또는 정산금액의 추가 납입을 요구할 수 있습니다. 또한, 회사는 계약 후
+                                                        알릴 의무를 이행하지 않았을 때 손해의 발생여부와 관계없이 그 사실을 안 날부터 1개월 이내 해당 계약을
+                                                        해지할 수 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>3. 보험료 감액에 관한 사항
+                                                <ul>
+                                                    <li>- 상법 제647조(특별위험의 소멸로 인한 보험료의 감액청구)에 따라 보험계약의 당사자가 특별한 위험을
+                                                        예기하여 보험료의 액을 정한 경우에 보험기간 중 그 예기한 위험이 소멸한 때에는 보험계약자는 그 후의
+                                                        보험료의 감액을 청구할 수 있습니다.</li>
+                                                    <li>- 상법 제669조(초과보험) 제1항·제3항에 따라 보험금액이 보험계약의 목적의 가액을 현저하게 초과하거나,
+                                                        보험가액이 보험기간 중 현저하게 감소한 때, 보험계약자는 보험료와 보험금액의 감액을 청구할 수 있습니다.
+                                                        다만, 보험료의 감액은 장래에 대해서만 그 효력이 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>4. 청약의 철회<br>
+                                                <ul>
+                                                    <li>일반금융소비자인 계약자는 ｢금융소비자 보호에 관한 법률｣ 제46조, 동법 시행령 제37조, 동법 감독규정
+                                                        제30조에서 정하는 바에 따라 보험증권을 받은 날부터 15일 이내(청약을 한 날부터 30일 이내에 한하며 만
+                                                        65세 이상 계약자가 전화를 이용하여 체결한 계약은 45일)에 청약을 철회할 수 있으며, 이 경우 철회를
+                                                        접수한 날부터 3영업일 이내에 보험료를 돌려드립니다. 다만, 회사가 건강상태 진단을 지원하는 계약,
+                                                        보장기간이 90일 이내인 계약 또는 전문금융소비자 체결한 계약은 청약을 철회할 수 없습니다</li>
+                                                </ul>
+                                            </li>
+                                            <li>5. 위법계약을 해지할 수 있는 권리
+                                                <ul>
+                                                    <li>계약자는 보험회사가 ｢금융소비자 보호에 관한 법률｣ 제17조내지 제21조를 위반하여 계약을 체결한 경우,
+                                                        동법 제47조(위법계약의 해지)제1항, 동법 시행령 제38조 및 동법 감독규정 제31조에서 정하는 바에
+                                                        따라, 계약체결일부터 5년을 초과하지 않는 범위 내에서 계약체결에 대한 회사의 위반사항을 안 날부터 1년
+                                                        이내에 서면 등으로 해당 계약의 해지를 요구할 수 있습니다. 이때 계약자는 해지요구서에 위반사실을 증명하는
+                                                        서류를 첨부하여 보험회사에 제출하여야 합니다. 이 경우 보험사에 해지를 요구하신 날부터 10일 이내에
+                                                        수락여부를 통지(거절할 때에는 거절사유를 함께 포함하여 통지)받으실 수 있습니다. 다만, 법률에 따라
+                                                        가입의무가 부과되고, 그 해제 해지도 해당 법률에 따라 가능한 보장성 상품에 대해 계약의 해지를 요구하려는
+                                                        경우에는 동종의 다른 보험에 가입되어 있어야 합니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>6. 보험금을 지급하는 사유<br>
+                                                피보험자가 보험증권에 기재된 여행을 목적으로 주거지를 출발하여 여행을 마치고 주거지에 도착할 때까지의 보험기간 중에 상해의
+                                                직접결과로써 사망한 경우(질병으로 인한 사망은 제외) 사망보험금을 지급하고 장해지급률에 해당하는 장해상태가 되었을 때
+                                                후유장해보험금(장해분류표에서 정한 지급률을 보험가입금액에 곱하여 산출한 금액)을 지급하여 드립니다. 다수계약이 체결되어
+                                                있는 경우에는 회사는 해당약관에 따라 비례 보상합니다.</li>
+                                            <li>7. 보험금을 지급하지 아니하는 사유
+                                                <ul>
+                                                    <li>- 피보험자가 고의로 자신을 해친 경우. 다만, 피보험자가 심신상실 등으로 자유로운 의사결정을 할 수 없는
+                                                        상태에서 자신을 해친 경우에는 보험금을 지급합니다.</li>
+                                                    <li>- 보험수익자의 고의로 피보험자를 해친 경우. 다만, 그 보험수익자가 보험금의 일부 보험수익자인 경우에는
+                                                        다른 보험수익자에 대한 보험금은 지급합니다.</li>
+                                                    <li>- 계약자가 고의로 피보험자를 해친 경우</li>
+                                                    <li>- 피보험자의 임신, 출산(제왕절개를 포함합니다), 산후기. 그러나 회사가 보장하는 보험금 지급사유로 인한
+                                                        경우에는 보험금을 지급합니다.</li>
+                                                    <li>- 전쟁, 외국의 무력행사, 혁명, 내란, 사변, 폭동</li>
+                                                    <li>자세한 내용은 보험약관을 참고하시기 바랍니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>8. 계약의 해지 및 보험료의 환급
+                                                <ul>
+                                                    <li>이 상품은 순수보장형 상품으로 만기시 만기환급금이 없습니다. 또한, 보험계약자는 계약이 소멸하기 전에
+                                                        언제든지 계약을 해지할 수 있으며 계약해지 시 보험기간 중 남은 미경과 기간에 대해 단기요율을 적용하여
+                                                        해지환급금을 돌려 드리므로 납입하신 보험료보다 적거나 없을 수 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>9. 계약의 무효
+                                                <ul>
+                                                    <li>- 다음 중 한 가지에 해당되는 경우에는 계약을 무효로 하며 이미 납입한 보험료를 돌려드립니다.</li>
+                                                    <li>- 만 15세 미만자, 심신상실자 또는 심신박약자의 사망을 보험금 지급사유로 한 경우</li>
+                                                    <li>- 타인의 사망을 보험금 지급사유로 하는 계약에서 계약을 체결할 때까지 피보험자의 서면에 의한 동의를 얻지
+                                                        않은 경우</li>
+                                                    <li>- 계약을 체결할 때 계약에서 정한 피보험자의 나이에 미달되었거나 초과되었을 경우</li>
+                                                </ul>
+                                            </li>
+                                            <li>10. 품질보증제도
+                                                <ul>
+                                                    <li>회사가 보험약관 및 계약자 보관용 청약서를 청약할 때 보험계약자에게 전달하지 않거나 약관의 중요한 내용을
+                                                        설명하지 않은 때 또는 계약을 체결할 때 계약자가 청약서에 자필서명 (날인 (도장을 찍음) 및 전자서명법
+                                                        제2조 제2호에 따른 전자서명을 포함합니다)을 하지 않은 때 (전화를 이용하여 계약을 체결하는 경우
+                                                        자필서명을 생략할 수 있음)에는 계약자는 계약이 성립한 날부터 3개월 이내 계약을 취소할 수 있습니다. 이
+                                                        경우 회사는 계약자에게 이미 납입한 보험료를 돌려드리며, 보험료를 받은 기간에 대하여 보험계약대출이율을
+                                                        연단위 복리로 계산한 금액을 더하여 지급합니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>11. 예금자보호 안내
+                                                <ul>
+                                                    <li>이 보험계약은 예금자보호법에 따라 예금보험공사가 보호하되, 보호 한도는 본 보험회사에 있는 귀하의 모든
+                                                        예금보호대상 금융상품의 해약환급금(또는 만기 시 보험금이나 사고보험금)에 기타지급금을 합하여 1인당 “최고
+                                                        5천만원”이며, 5천만원을 초과하는 나머지 금액은 보호하지 않습니다. 다만, 보험계약자 및 보험료 납부자가
+                                                        법인인 보험계약은 예금자보호법에 따라 예금보험공사가 보호하지 않습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>12. 개인정보 보호안내
+                                                <ul>
+                                                    <li>보험계약자에게는 법에서 정한 경우를 제외하고 본인의 동의없이 본인의 개인정보가 제3자에게 제공 이용되지 않을
+                                                        권리가 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>13. 의료급여 수급권자 보험료 할인안내
+                                                <ul>
+                                                    <li>- 의료급여 수급권자에 해당하는 피보험자가 실손의료보험(담보) 가입시 보험료 10%할인 적용됩니다.
+                                                    </li>
+                                                    <li>* 단, 의료급여 수급권자를 증명할 수 있는 서류를 제출한 경우에 한함</li>
+                                                </ul>
+                                            </li>
+                                            <li>14. 전환 계약 시 유의사항
+                                                <ul>
+                                                    <li>보험계약자에게는 법에서 정한 경우를 제외하고 본인의 동의없이 본인의 개인정보가 제3자에게 제공 이용되지 않을
+                                                        권리가 있습니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>15. 비례보상
+                                                <ul>
+                                                    <li>실손의료보험은 실제 의료비를 보상하는 상품으로서 2개 이상의 보험에 가입하더라도 그 계약과 보험금을 분담하여
+                                                        비례보상되므로 유사한 보험가입 여부 및 보상한도를 반드시 확인하시기 바랍니다.</li>
+                                                </ul>
+                                            </li>
+                                            <li>16. 비급여 진료비 비교 관련 안내
+                                                <ul>
+                                                    <li>- 비급여 진료비 가격은 의료기관별로 상이하므로 가격비교를 통해 실손의료보험에서 고객님이 부담하시는 비용을
+                                                        절감하실 수 있습니다. 의료기관별 비급여 진료비 가격은 건강보험심사평가원 홈페이지에서 확인 가능합니다.
+                                                    </li>
+                                                    <li>- 인터넷 : www.hira.or.kr > 정보 > 비급여 진료비 정보</li>
+                                                </ul>
+                                            </li>
+                                            <li>17. 분쟁조정절차에 관한 사항
+                                                <ul>
+                                                    <li>이 보험계약과 관련하여 의문사항 또는 불만(민원)이 있을 경우 해당 모집자나 에이스손해보험(홈페이지:
+                                                        www.chubb.com/kr 전화: 1566-5800) 또는 손해보험협회
+                                                        상담센터(02-3702-8500)에 문의할 수 있습니다. 또한 분쟁이 발생한 경우 금융감독원(국번없이
+                                                        1332, www.fss.or.kr), 한국소비자원(국번없이 1372) 등에 도움을 요청할 수 있고, 다만
+                                                        분쟁조정의 신청 이후 또는 조정신청 사건의 처리절차 진행 중에 일방 당사자가 소를 제기한 경우에는 그 조정의
+                                                        처리를 중지하고 이를 당사자 쌍방에게 통보합니다.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <p>※ 위 사항은 약관 내용을 요약 발췌한 것으로 세부 내용은 약관을 참조하시기 바랍니다.</p>
+                                        <input type="button" class="butt_ok cursor" value="확인">
+                                        <div class="modal_agree2">
+                                            보험 가입자 모두 체크해 주시기 바랍니다.
+                                            <div class="butt">
+                                                <input type="button" value="확인" class="cursor">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--보험계약 안내사항 모달창 끝-->
+                            <!--여행자보험 가입규약 및 개인정보 제3자 제공 동의 모달창-->
+                            <div id="modal_agreement_wrap">
+                                <div class="modal_agreement_wrap">
+                                    <div class="title">
+                                        <span class="txt">여행자보험 가입규약 및 개인정보 제3자 제공 동의</span>
+                                        <span class="close cursor"><img src="/userpage/lib/img/close.png" alt="닫기"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h2>단체(취급)여행보험 가입규약</h2>
+                                        <div class="rule rule1">
+                                            <ul>
+                                                <li>1. 진에어는 보험 계약자를 진에어로, 피보험자 및 보험 수익자를 여객 탑승객 혹은 진에어 온라인회원으로 하는
+                                                    단체(취급) 여행보험계약을 체결할 수 있습니다. 단, 보험금의 종류가 사망보험금인 경우에는 그 보험수익자를
+                                                    피보험자의 법적 상속인으로 합니다.</li>
+                                                <li>2. 탑승객은 제1항의 보험계약에 따른 담보항목 및 내용을 진에어가 제공하는 정보를 통해 확인할 수 있으며 보험료는
+                                                    진에어를 통해 보험회사에 납부됩니다.</li>
+                                                <li>3. 제2항에 따라 보험료를 납부한 회원은 피보험자의 권리를 행사할 수 있습니다.</li>
+                                                <li>4. 보험 계약에 관한 세부 내용은 보험사가 제공하는 보험 약관에 따릅니다.</li>
+                                            </ul>
+                                        </div>
+                                        <label for="agree1"><input type="checkbox" name="agree1"
+                                                                   id="agree1">동의</label>
+                                        <h2>단체 여행보험계약의 체결 및 이행을 위한 개인정보 제3자 제공</h2>
+                                        <div class="rule rule2">
+                                            <ul>
+                                                <li>제공받는자: 에이스아메리칸화재해상보험주식회사 한국지점</li>
+                                                <li>제공목적: 단체 여행보험계약의 체결 및 이행</li>
+                                                <li>제공항목: 예약번호, 여행일, 여행지, 영문 성함, 생년월일, 성별, 전화번호, 이메일</li>
+                                                <li>보유기간: 개인정보를 제공받는 자의 이용목적을 달성할 때까지(최대 거래종료 후 5년까지)</li>
+                                            </ul>
+                                        </div>
+                                        <label for="agree2"><input type="checkbox" name="agree2"
+                                                                   id="agree2">동의</label>
+                                    </div>
+                                    <div class="butt_wrap">
+                                        <input type="button" value="동의" class="butt_agree cursor"><input
+                                            type="button" value="취소" class="butt_canc cursor">
+                                    </div>
+                                    <div class="modal_agree2" id="modal_agree">
+                                        모든 사항에 동의해주셔야 여행보험 가입이 가능합니다.
+                                        <div class="butt">
+                                            <input type="button" value="확인">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--여행자보험 가입규약 및 개인정보 제3자 제공 동의 모달창 끝-->
+
+                            <!--자동 체크인 서비스 유의사항-->
+                            <div id="addmodal_autoCheck_noti">
+                                <div class="addmodal_autoCheck_noti">
+                                    <div class="modal_title">
+                                            <span class="tit_txt">
+                                                자동 체크인 서비스 유의사항
+                                            </span>
+                                        <span class="tit_close cursor">
+                                                <img src="/userpage/lib/img/close.png" alt="닫기" width="30px">
+                                            </span>
+                                    </div>
+                                    <div class="modal_contents">
+                                        <div class="top">
+                                            사전좌석을 구매하신 고객님을 위한 특별한 혜택! 자동 체크인 서비스를 사용해보세요.<br>
+                                            서비스를 신청하시면 항공편 출발 22시간 전 자동으로 체크인 진행 후 탑승권을 제공해 드립니다.<br>
+                                            국내선 자동 체크인 서비스는 전 항공편을 대상으로 신청하실 수 있습니다.
+                                        </div>
+                                        <div class="bott">
+                                            <div class="con1 con">
+                                                <h4>자동 체크인 신청 및 진행 절차</h4>
+                                                <p>
+                                                    항공편 출발 22시간 전 자동으로 체크인이 진행됩니다.<br>
+                                                    예약 시 입력하신 연락처로 체크인 완료 안내 알림톡 및 모바일 탑승권을 발송해 드립니다.<br>
+                                                    체크인 완료 후 발급되는 탑승권을 반드시 인쇄 혹은 소지 부탁 드립니다.<br>
+                                                    수속 마감 시간을 고려하여 여유롭게 공항에 도착하시기 바라며 항공기 출발 20분전까지 공항 보안 검색대를 통과하지
+                                                    않을 경우 항공기 탑승이 불가할 수 있는 점 양지 바랍니다.
+                                                </p>
+                                            </div>
+                                            <div class="con2 con">
+                                                <h4>기타 안내사항</h4>
+                                                <p>
+                                                    자동체크인 서비스는 최초 예약 발권 시에만 신청 가능하며, 사전좌석지정 서비스를 취소하신 경우에는 자동체크인
+                                                    서비스도 함께 취소됩니다.<br>
+                                                    홈페이지/APP 내 마이페이지 예약조회 화면에서 자동체크인 서비스를 취소하실 수 있습니다.<br>
+                                                    자동 체크인 서비스 신청 이후 반려동물이나 휠체어 등 직원 확인이 필요한 서비스를 추가 신청하신 승객께서는 자동
+                                                    체크인 서비스 이용이 제한됩니다.<br>
+                                                    공항 사정, 항공기 교체, 기상 악화 등의 부득이한 사유로 사전 고지 없이 배정된 좌석 및 탑승구가 변경될 수
+                                                    있습니다.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="butt_wrap">
+                                            <input type="button" value="확인" class="add_modal_butt_ok cursor">
+                                            <input type="button" value="닫기" class="add_modal_butt_canc cursor">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--자동 체크인 서비스 유의사항-->
+                        </div>
+                        <!--보험 선택 랩 끝-->
+                    </div>
+                    <!--서비스 컨텐츠 끝-->
+                </div>
+                <!--서비스 컨텐츠 랩3 끝-->
+            </div>
+            <!--부가서비스 신청 끝-->
+            <!--부가서비스 신청내역 모달창-->
+            <div id="modal_service_app_wrap">
+                <div class="modal_service_app_wrap">
+                    <div class="modal_title">
+                            <span class="tit_txt">
+                                부가 서비스 신청내역
+                            </span>
+                        <span class="tit_close">
+                                <img src="/userpage/lib/img/close.png" alt="닫기" width="30px">
+                            </span>
+                    </div>
+                    <div class="modal_contents">
+                        <table>
+                            <colgroup>
+                                <col width="15%">
+                                <col width="45%">
+                                <col width="40%">
+                            </colgroup>
+                            <tr>
+                                <th colspan="3">유/영은</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="b_r cell">구간1</td>
+                                <td class="cell">
+                                    <div class="item_wrap1">
+                                        <p class="img img_seat">
+
+                                        </p>
+                                        <p class="txt">
+                                            사전좌석지정 29A (지니패스트)
+                                        </p>
+                                    </div>
+                                </td>
+                                <td class="left cell">KRW 5,000
+                                    <p>자동 체크인 신청 가능</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="none_b_t cell">
+                                    <div class="item_wrap1">
+                                        <p class="img img_bagg">
+                                        </p>
+                                        <p class="txt">
+                                            초과수하물 10KG
+                                        </p>
+                                    </div>
+                                </td>
+                                <td class="left none_b_t cell">KRW 16,000</td>
+                            </tr>
+                            <tr>
+                                <td class="b_r">구간2</td>
+                                <td>
+                                    <div class="item_wrap1">
+                                        <p class="img img_bagg">
+                                        </p>
+                                        <p class="txt">
+                                            초과수하물 15KG
+                                        </p>
+                                    </div>
+                                </td>
+                                <td class="left">KRW 24,000</td>
+                            </tr>
+                            <tr>
+                                <td class="b_r">전 구간</td>
+                                <td>
+                                    <div class="item_wrap1">
+                                        <p class="img img_ins">
+                                        </p>
+                                        <p class="txt">
+                                            여행보험 (고급형)
+                                        </p>
+                                    </div>
+                                </td>
+                                <td class="left">KRW 5,030</td>
+                            </tr>
+                        </table>
+                        <div class="li_wrap">
+                            <ul>
+                                <li><b>카테고리별 부가서비스 선택 후 ‘선택완료’ 한 내용만 신청됩니다.</b></li>
+                                <li>만 19세 미만의 승객이 포함된 경우 자동체크인 서비스 이용이 불가합니다.</li>
+                                <li>결제 페이지로 이동 후에는 뒤로 이동이 불가합니다.</li>
+                                <li>결제 완료 후 마이페이지를 통해 부가서비스를 추가로 구매하실 수 있습니다.<br>(단, 스마트플러스번들 및 초과수하물 기 구매 고객께서는
+                                    고객서비스센터를 통해서만 초과수하물 추가 구매가 가능합니다.)</li>
+                                <li>항공기 기종과 스케줄은 사전예고 없이 변경될 수 있으며, 이 경우 사전구매하신 좌석이 변경될 수 있습니다.</li>
+                                <li>좌석 전면 격벽 유무는 환불 사유로 인정되지 않으니 구매 시 유의하시기 바랍니다.</li>
+                                <li>번들의 '수하물 우선하기' 및 '전용체크인카운터'의 경우, 추가로 제공되는 서비스로 출발 당일 현장 상황에 따라 미제공 될 수 있으며,
+                                    이에 따른 일부 금액 환불은 불가합니다.</li>
+                                <li>신청하신 부가서비스의 변경은 불가하오니 취소 후 재구매 하시기 바랍니다.<br>
+                                    (단, 번들의 경우 항공권과 동시 구매되기 때문에 별도로 취소 후 재구매가 불가합니다.)</li>
+                                <li>사전좌석지정 서비스와 함께 자동체크인을 신청하신 경우, 사전좌석지정 서비스 취소 시 해당 구간의 자동체크인 서비스도 함께 취소됩니다.</li>
+                                <li>부가서비스 신청 및 취소 가능 기간은 다음과 같습니다.<br>
+                                    (단, 번들의 경우 10월 25일 이후 탑승편 부, 이전 탑승편은 안내페이지 참조)
+                                    <ul>
+                                        <li>신청<br>
+                                            사전좌석지정/초과수하물/번들 : 출발 24시간 전까지<br>
+                                            기내식/유상판매 : 출발 72시간 전까지<br>
+                                            여행보험:<br>
+                                            출발 24시간 전 까지: [마이페이지]-[상세 조회]-[부가서비스 구매/취소] 또는 [여행보험 가입/조회]<br>
+                                            출발 24시간 전 부터: [마이페이지]-[상세 조회]-[여행보험 가입/조회]<br>
+                                            Chubb여행보험 콜센터 (1666-5075) 통해 변경 문의 및 취소 가능<br>
+                                            단, 특정 노선/항공편의 경우 항공사 사정으로 서비스 제공이 불가할 수 있습니다.
+                                        </li>
+                                        <li>취소<br>
+                                            사전좌석지정/초과수하물/번들 : 출발 24시간 이내 환불 불가<br>
+                                            기내식/유상판매 : 72시간 이내 환불 불가<br>
+                                            여행보험 :<br>
+                                            항공 여정 출발 24시간 전 까지: [마이페이지]-[상세 조회]-[부가서비스 구매/취소] 또는 [여행보험 취소]<br>
+                                            항공 여정 출발 24시간 전 부터: Chubb여행보험 콜센터 (1666-5075) 통해 변경 문의 및 환불 가능<br>
+                                            (평일 업무시간: 09:00~18:00 / 주말, 공휴일 제외)<br>
+                                            ※ 여행보험 관련 보다 자세한 문의는 여행보험 관련문의는 Chubb여행보험 콜센터 1666-5075에 문의하시기 바랍니다<br>
+                                            ※ 기존 보험 계약을 해지하고 새로운 보험 계약을 체결하는 경우 보험인수가 거절되거나, 보험료가 인상될 수 있으며, 보장내용
+                                            (면책기간 재적용 등)이 달라질 수 있습니다.<br>
+                                            <b>단, 이벤트 기간내에 할인이 적용된 부가서비스 요금은 환불이 불가합니다.</b>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>고객님은 <span class="c_p">자동 체크인 서비스</span> 대상자입니다. 출발 전 별도의 수속 절차 없이 자동으로 탑승권이 발급되는
+                                <span class="c_p">자동 체크인</span> 서비스 이용 시<br>
+                                아래 박스에 체크해 주시기 바랍니다.
+                            </p>
+                            <label for="auto_check" class="checkbox_wrap  cursor">
+                                <input type="checkbox" name="auto_check" id="auto_check">
+                                <span class="c_p">[선택]</span> 자동 체크인 서비스를 신청하며, <span class="c_p add_modal">자동 체크인
+                                        서비스 유의사항 </span>관련 내용을 확인하였으며 이에 동의 합니다.
+                            </label>
+                            <div class="butt_wrap">
+                                <input type="button" value="확인" class="modal_butt_ok cursor">
+                                <input type="button" value="닫기" class="modal_butt_canc cursor">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--부가서비스 신청내역 모달창 끝-->
+            <!--무료 수하물/기내식 안내-->
+            <div id="modal_free_wrap">
+                <div class="modal_free_wrap">
+                    <div class="modal_title">
+                        <div class="tit_text">
+                            무료 수하물 / 무료 기내식 안내
+                        </div>
+                        <div class="close"><img src="/userpage/lib/img/close.png" alt="닫기" width="30px" class="cursor"></div>
+                    </div>
+                    <div class="modal_content_wrap">
+                        <div class="modal_menu_wrap">
+                            <div class="menu1 cursor">무료 위탁 수하물 허용량</div>
+                            <div class="menu2 cursor">무료 기내식</div>
+                        </div>
+                        <div class="modal_content1">
+                            <h3>무료 위탁 수하물 허용량</h3>
+                            <table>
+                                <colgroup>
+                                    <col width="20%">
+                                    <col width="75%">
+                                </colgroup>
+                                <tr>
+                                    <th colspan="2" class="thick tit">성인 및 소아 (만 2세 이상)</th>
+                                </tr>
+                                <tr>
+                                    <th>국내선</th>
+                                    <td>15kg</td>
+                                </tr>
+                                <tr>
+                                    <th>동남아/일본/<br>홍콩/마카오/대만</th>
+                                    <td>15kg</td>
+                                </tr>
+                                <tr>
+                                    <th>중국</th>
+                                    <td>20kg</td>
+                                </tr>
+                                <tr>
+                                    <th>괌</th>
+                                    <td>1개, 23KG 이하 (최대 세변의 합이 각 158cm 이내)</td>
+                                </tr>
+                                <tr>
+                                    <th>하와이</th>
+                                    <td>2개, 23KG 이하 (최대 세변의 합이 각 158cm 이내, 2개의 합이 273cm 이하)</td>
+                                </tr>
+                                <tr>
+                                    <th class="last">케언스</th>
+                                    <td class="last">1개, 23kg 이하 (최대 세변의 합이 158cm 이내)</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" class="tit tit2">유아 (만 2세 미만)</th>
+                                </tr>
+                                <tr>
+                                    <th>케언스</th>
+                                    <td>접는 유모차, 유아용 카시트 중 1개</td>
+                                </tr>
+                                <tr>
+                                    <th class="thick">국제선</th>
+                                    <td class="thick">세변의 합이 115cm, 10Kg 이하의 수하물 1개 및 접는 유모차 1개 또는 유아용 카시트 1개(총2개)
+                                    </td>
+                                </tr>
+                            </table>
+                            <h3>무료 수하물 허용량 합산</h3>
+                            <ul>
+                                <li>함께 탑승하는 동승자간 수하물 허용량 합산이 가능합니다.</li>
+                                <li>한 가방의 무게는 32kg 이하로 제한됩니다.</li>
+                                <li><b>미주 노선(괌, 호놀룰루 등)의 경우, '개수' 합산만 가능</b>하며 각 수하물의 무게와 크기는 무료 수하물 허용량을 초과할 수
+                                    없습니다.</li>
+                            </ul>
+                            <p style="font-weight: bold; font-size: 15px;">* 참고</p>
+                            <p><a href="../serviceCount/airport/baggage/baggage.html" target='_blank'>수하물 안내</a><a
+                                    href="../index/mypage/faq_list.html" target='_blank'>자주 묻는 질문(FAQ)</a></p>
+                        </div>
+                        <div class="modal_content2">
+                            <h3>무료 기내식</h3>
+                            <table>
+                                <colgroup>
+                                    <col width="26%">
+                                    <col width="40%">
+                                    <col width="18%">
+                                    <col width="18%">
+                                </colgroup>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>노선</th>
+                                    <th>한국 출발편</th>
+                                    <th>한국 도착편</th>
+                                </tr>
+                                <tr>
+                                    <td>단거리<br>(4시간 미만)</td>
+                                    <td>
+                                        괌(GUM)<br>
+                                        도쿄/나리타(NRT)<br>
+                                        마카오(MFM)<br>
+                                        보라카이/칼리보(KLO)<br>
+                                        삿포로(CTS)<br>
+                                        오키나와(OKA)<br>
+                                        클락(CRK)<br>
+                                        타이베이/타오위안(TPE)
+                                    </td>
+                                    <td>
+                                        삼각김밥<br>
+                                        머핀<br>
+                                        염지란<br>
+                                    </td>
+                                    <td>
+                                        요거트<br>
+                                        대니쉬<br>
+                                        쿠키
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>중거리<br>(4시간 ~ 7시간)</td>
+                                    <td>
+                                        다낭(DAD)<br>
+                                        방콕(BKK)<br>
+                                        비엔티안(VTE)<br>
+                                        세부(CEB)<br>
+                                        조호르바루(JHB)<br>
+                                        코타키나발루(BKI)<br>
+                                        푸껫(HKT)<br>
+                                        하노이(HAN)<br>
+                                        홍콩(HKG)
+                                    </td>
+                                    <td>
+                                        참치롤<br>
+                                        동그랑땡<br>
+                                        불갈비차슈<br>
+                                        파스타 샐러드
+                                    </td>
+                                    <td>
+                                        샌드위치<br>
+                                        요거트
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="thick">장거리<br>(7시간 이상)</td>
+                                    <td class="thick">하와이/호놀룰루(HNL)</td>
+                                    <td class="thick">
+                                        라조 치킨<br>
+                                        코코넛 케이크<br>
+                                        머핀<br>
+                                        요거트
+                                    </td>
+                                    <td class="thick">
+                                        쉬림프 굴라쉬<br>
+                                        과일<br>
+                                        스팸 무스비
+                                    </td>
+                                </tr>
+                            </table>
+                            <h3>* 유의사항</h3>
+                            <div class="notice">
+                                <ul>
+                                    <li>상기 메뉴는 2019년 7월 1일 기준이며, 상기 외 노선은 무료기내식이 제공되지 않습니다.</li>
+                                    <li>노선, 계절, 운항 상황에 따라 사전 고지 없이 메뉴가 변경될 수 있는 점 양지 바랍니다.</li>
+                                    <li>특정 식품에 대한 알레르기 또는 유사 증상이 있으신 경우 고객서비스센터 또는 객실승무원에게 문의 및 의사와 상담 후 취식 여부를 결정하여
+                                        주시기 바랍니다. [고객서비스센터 대표번호 : 1600-6200, 02-6099-1200]</li>
+                                    <li>진에어에서 제공하는 기내식은 실제 땅콩을 사용하지 않았더라도 조리 과정에서 땅콩 성분이 함유된 식용유, 식재료 등이 포함될 수 있으며,
+                                        다른 승객의 소지 및 취식을 제한할 수 없습니다. 이에 땅콩 알레르기 혹은 유사 증상이 있으신 승객께서는 여행 가능 여부를 의사와
+                                        상의하여 주시기 바랍니다.</li>
+                                </ul>
+                                <p style="font-weight: bold; font-size: 15px;">* 참고</p>
+                                <p><a href="../serviceCount/airport/baggage/baggage.html"
+                                      target='_blank'>지니키친(사전주문기내식)</a><a href="../index/mypage/faq_list.html"
+                                                                          target='_blank'>자주 묻는 질문(FAQ)</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--무료 수하물/기내식 안내 끝-->
+            <!--비상구 좌석 지정 시 유의 사항 안내-->
+            <div id="modal_notice_wrap">
+                <div class="modal_notice_wrap">
+                    <div class="modal_title">
+                        <p class="tit_text">비상구 좌석 지정 시 유의 사항 안내</p>
+                        <span class="close cursor"><img src="/userpage/lib/img/close.png" alt="닫기"></span>
+                    </div>
+                    <div class="modal_content_wrap">
+                        <div class="content">
+                            국토교통부의 운항기술기준(고시)에 의거하여, 비상 상황 발생 시 비상구 개방 등 임무 수행이 가능한 승객에 한해 비상구 좌석을 이용할 수 있사오니 <span
+                                class="red">하기 규정을 반드시 확인 후 좌석 지정해 주시기 바랍니다.</span><br>
+                            * 비상구 좌석 구매 승객은 웹/모바일 체크인 서비스 이용이 제한됩니다.<br>
+                            <span class="red">* 출발지 공항 또는 객실 현장에서 착석 불가한 승객이라 판단될 경우 임의로 이용 취소 될 수 있으며 좌석 비용은 환불되지
+                                    않습니다.</span><br>
+                            <span class="red">* 비상구는 반드시 승무원의 신호에 따라 개방되어야 하며, 임의로 비상구를 개방할 경우 항공보안법에 따라 형사 처벌을 받을 수
+                                    있습니다.</span>
+                            <ul>
+                                <li><span class="red">1. 만15세 미만</span>이거나 동반자의 도움 없이 비상 상황에서의 역할을 수행하기에 불충분한 승객
+                                </li>
+                                <li>2. 승객의 상태나 책임(유소아 동반승객, 임산부 승객, 노약자등)으로 인하여, 비상 상황에서의 역할을 수행하는데 방해가 되거나 수행할 경우
+                                    해를 입게 되는 승객</li>
+                                <li>3. 활동성,체력 또는 양팔이나 손 및 다리의 민첩성이 비상 상황에서의 역할을 수행하기 어려운승객<br>
+                                    - 비상구나 탈출용 슬라이드 조작장치에 대한 접근<br>
+                                    - 탈출용 슬라이드 조작장치를 잡고 밀거나 당기고 돌리는 동작, 슬라이드의 전개 또는 팽창 후 안정 유지 및 탈출용 슬라이드로 탈출한 승객이
+                                    슬라이드로부터 벗어날 수 있도록 하는 동작<br>
+                                    - 비상구 작동 손잡이를 상하좌우로 잡고 당기거나 돌리거나 밀어서 비상구를 여는 동작 및 OVERWING WINDOW EXIT 작동 손잡이를
+                                    잡아 당겨서 EXIT를 여는 동작<br>
+                                    - 날개 위의 OVERWING WINDOW EXIT와 비슷한 크기와 무게의 장애물 제거 및 장애물 제거 시 균형의 유지<br>
+                                    - 신속한 비상구로의 접근 및 탈출</li>
+                                <li>4. 글 또는 그림의 형태로 제공된 비상탈출에 관한 지시를 읽고 이해하지 못하거나 승무원의 구두 지시를 이해하지 못하는 승객</li>
+                                <li>5. 콘텍트 렌즈나 안경을 제외한 다른 시력보조장비 없이는 비상 상황에서의 역할을 수행할 수 없는 승객</li>
+                                <li>6. 일반적인 보청기를 제외한 다른 청력보조장비 없이는 승무원의 탈출지시를 듣고 이해 할 수 없는 승객</li>
+                                <li>7. 다른 승객들에게 정보를 적절하게 전달할 수 있는 능력이 부족한 승객</li>
+                            </ul>
+                        </div>
+                        <p class="bott">
+                            <input type="checkbox" id="checkbox_m" class="checkbox cursor"><label
+                                for="checkbox_m"><span>비상구 좌석배정 내용을 확인하고 동의합니다</span></label>
+                        </p>
+                        <input type="button" value="확인" class="butt_ok cursor">
+
+                    </div>
+                </div>
+            </div>
+            <!--비상구 좌석 지정 시 유의 사항 안내 끝-->
+            <!--총액 모달창-->
+            <div class="fix_modal"></div>
+            <div id="modal_totP_wrap">
+                <div class="modal_con_wrap">
+                    <div class="jour_wrap">
+                        <div class="jour1">
+                            <h2>여정1</h2>
+                            <p class="flight">LJ411</p>
+                            <table class="jour_info_wrap">
+                                <colgroup>
+                                    <col width="40%">
+                                    <col width="60%">
+                                </colgroup>
+                                <tr>
+                                    <td class="dep_area area">[출발]서울/김포(GMP)</td>
+                                    <td class="dep_date date">2022-02-09(수) 20:20</td>
+                                </tr>
+                                <tr>
+                                    <td class="arr_area area">[도착]제주(CJU)</td>
+                                    <td class="arr_date date">2022-02-09(수) 21:30</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="jour2">
+                            <h2>여정2</h2>
+                            <p class="flight">LJ411</p>
+                            <table class="jour_info_wrap">
+                                <colgroup>
+                                    <col width="40%">
+                                    <col width="60%">
+                                </colgroup>
+                                <tr>
+                                    <td class="dep_area area">[출발]제주(CJU)</td>
+                                    <td class="dep_date date">2022-02-12(토) 16:00</td>
+                                </tr>
+                                <tr>
+                                    <td class="arr_area area">[도착]서울/김포(GMP)</td>
+                                    <td class="arr_date date">2022-02-12(토) 17:10</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="info_wrap">
+                        <div class="info">
+                            <table class="table_title">
+                                <colgroup>
+                                    <col width="80%">
+                                    <col width="20%">
+                                </colgroup>
+                                <tr>
+                                    <td class="tit">
+                                        <h2>운임정보</h2>
+                                    </td>
+                                    <td class="curr">(통화:KRW)</td>
+                                </tr>
+                            </table>
+                            <div class="info_table_wrap">
+                                <table class="price_info_wrap price_info_wrap1">
+                                    <colgroup>
+                                        <col width="80%">
+                                        <col width="20%">
+                                    </colgroup>
+                                    <tr>
+                                        <td class="mark price_tit">항공운임</td>
+                                        <td class="price">210,600</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="mark price_tit">유류할증료</td>
+                                        <td class="price">11,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="mark price_tit">세금</td>
+                                        <td class="price">8,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="plus cursor">
+                                                더보기<img src="/userpage/lib/img/curr.PNG" alt="" class="plus_1"><img
+                                                    src="/userpage/lib/img/min.PNG" alt="" class="minus_1">
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="modal_price_info_wrap">
+                                    <table>
+                                        <colgroup>
+                                            <col width="60%">
+                                            <col width="40%">
+                                        </colgroup>
+                                        <tr>
+                                            <th colspan="2">
+                                                <p class="title">항공운임</p>
+                                                <p><span>KRW</span>215,000</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">구간 1 : GMP-CJU</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per">성인 1</td>
+                                            <td>70,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">구간 2 : CJU-GMP</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per">성인 1</td>
+                                            <td>145,000</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">
+                                                <p class="title">유류할증료</p>
+                                                <p><span>KRW</span>11,000</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">구간 1 : GMP-CJU</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per">성인 1</td>
+                                            <td>5,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">구간 2 : CJU-GMP</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per">성인 1</td>
+                                            <td>5,500</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">
+                                                <p class="title">세금</p>
+                                                <p><span>KRW</span>8,000</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">구간 1 : GMP-CJU</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per">성인 1<span class="cursor det det1">자세히 보기<span
+                                                    class="ar"></span></span></td>
+                                            <td class="seb">4,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="detD detD1" colspan="2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">구간 2 : CJU-GMP</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="per">성인 1<span class="cursor det det2">자세히 보기<span
+                                                    class="ar"></span></span></td>
+                                            <td class="seb">4,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="detD detD2" colspan="2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="cur">국제선 한국 출발 세금(BP)에는 국제여객공항이용료,
+                                                출국납부금,<br />국제빈곤퇴치기여금이 포함되어 있습니다.</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="App">
+                            <table class="table_title">
+                                <colgroup>
+                                    <col width="80%">
+                                    <col width="20%">
+                                </colgroup>
+                                <tr>
+                                    <td class="tit">
+                                        <h2>부가서비스 신청 내역</h2>
+                                    </td>
+                                    <td class="curr">(통화:KRW)</td>
+                                </tr>
+                            </table>
+                            <div class="info_table_wrap">
+                                <table class="price_info_wrap">
+                                    <colgroup>
+                                        <col width="80%">
+                                        <col width="20%">
+                                    </colgroup>
+                                    <tr>
+                                        <td class="price_tit"></td>
+                                        <td class="price"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="price_tit"></td>
+                                        <td class="price"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="price_tit"></td>
+                                        <td class="price"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p class="plus cursor">
+                                                더보기<img src="/userpage/lib/img/curr.PNG" alt="" class="plus_2"><img
+                                                    src="/userpage/lib/img/min.PNG" alt="" class="minus_2">
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="close cursor">⨉</span>
+                </div>
+            </div>
+            <!--총액 모달창 끝-->
+            <!--fix_bott 총액 확인-->
+            <div class="fix_bott_wrap">
+                <div class="fix_bott">
+                    <div class="seat_img fix_img"></div>
+                    <div class="baggage_img fix_img"></div>
+                    <div class="insurance_img fix_img"></div>
+                    <table>
+                        <colgroup>
+                            <col width="13%">
+                            <col width="87%">
+                        </colgroup>
+                        <tr>
+                            <td class="img cursor"></td>
+                            <td class="img2 cursor"></td>
+                            <td class="price_tit">
+                                <p>항공운임 등 총액<br /><span>(KRW)</span></p>
+                                <p class="price">234,000</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="button" value="바로결제" class="fix_next_butt">
+                </div>
+            </div>
+            <!--fix_bott 총액 확인 끝-->
+        </div>
+    </form>
+    <!--container 끝-->
+</div>
+<!--wrap 끝-->
+
+<div class="modal"></div>
+<!-- 푸터-->
+<div th:replace="userpage/fragment/footer :: footer"></div>
+<!--푸터 끝-->
+
+<div class="modal">
+</div>
+<!--퀵 메뉴-->
+<!--퀵 메뉴 끝-->
+<!--일정 수정 모달창-->
+<div id="modal_edit_jour_wrap">
+    <div class="edit_jour_wrap">
+        <div class="modal_edit_close">
+            <img class="modal_edit_close_btn cursor" src="/userpage/lib/img/x_icon.png" alt="닫기">
+        </div>
+        <div class="radio_wrap">
+            <input type="radio" value="왕복" id="round" class="cursor" name="tripType" checked>
+            <label for="round" class="cursor">왕복</label>
+            <input type="radio" value="편도" id="oneway" class="cursor" name="tripType">
+            <label for="oneway" class="cursor">편도</label>
+            <input type="radio" value="다구간" id="multi" class="cursor" name="tripType">
+            <label for="multi" class="cursor">다구간</label>
+        </div>
+        <!-- 왕복 레이어 -->
+        <div class="round_wrap">
+            <table class="modal_table">
+                <tr>
+                    <td>
+                        <div class="person_type w_120 in_bl">
+                            <div class="person_layerbtn">
+                                <strong class="person_num" name="person_num">성인 1</strong>
+                            </div>
+                            <ul class="person_pop_layer in_bl">
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="1" class="adultPaxCnt">
+                                        <strong class="num_font" name="adultPaxCnt">1</strong>
+                                        <span role="person-type-option" class="person_type1 person_font">성인
+                                            </span>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="adultPaxCntDown"
+                                           onclick="fnSetPaxCountDown('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="adultPaxCntUp"
+                                           onclick="fnSetPaxCountUp('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="childPaxCnt">
+                                        <strong class="num_font" name="childPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type2 person_font">소아
+                                            </span>
+                                        <button class="child_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="child_modal">
+                                            <p>소아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 만 2세 - 만 13세 미만</li>
+                                                <li>[국제선] 만 2세 - 만 12세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" onclick="fnSetPaxCountDown('CHILD',this);"
+                                           class="disable"><img src="//images.jinair.com/images/btn/btn_minus.png"
+                                                                alt="-"></a>
+                                        <a href="javascript://" onclick="fnSetPaxCountUp('CHILD',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="infantPaxCnt">
+                                        <strong class="num_font" name="infantPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type3 person_font">유아
+                                            </span>
+                                        <button class="baby_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="infant_modal">
+                                            <p>유아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 생후 7일 이상 - 만 2세 미만</li>
+                                                <li>[국제선] 생후 7일 이상 - 만 2세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="infantPaxCntDown"
+                                           onclick="fnSetPaxCountDown('INFANT',this);" class="disable"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="infantPaxCntUp"
+                                           onclick="fnSetPaxCountUp('INFANT',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="submit_btn">
+                                        <a href="javascript://" onclick="submit()">확인</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="go_select in_bl">
+                            <div class="go_layerbtn">
+                                    <span class="go_select_opt"><input type="text" value="출발지" readonly
+                                                                       class="go_select_optt go_default"></span>
+                            </div>
+                            <div class="go_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="arrive_select in_bl">
+                            <div class="arrive_layerbtn">
+                                    <span class="arrive_select_opt">
+                                        <input type="text" value="도착지" readonly
+                                               class="arrive_select_optt arrive_default">
+                                    </span>
+                            </div>
+                            <div class="arrive_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="go_date in_bl">
+                            <div class="go_date_layerbtn">
+                                    <span class="go_date_select_opt"><input type="text" value="가는날" readonly
+                                                                            class="go_date_select_optt go_date_default"></span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="come_date in_bl">
+                            <div class="come_date_layerbtn">
+                                    <span class="come_date_select_opt"><input type="text" value="오는날" readonly
+                                                                              class="come_date_select_optt"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- 편도 레이어 -->
+        <div class="oneway_wrap">
+            <table class="modal_table">
+                <tr>
+                    <td>
+                        <div class="person_type w_120 in_bl">
+                            <div class="person_layerbtn">
+                                <strong class="person_num" name="person_num">성인 1</strong>
+                            </div>
+                            <ul class="person_pop_layer in_bl">
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="1" class="adultPaxCnt">
+                                        <strong class="num_font" name="adultPaxCnt">1</strong>
+                                        <span role="person-type-option" class="person_type1 person_font">성인
+                                            </span>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="adultPaxCntDown"
+                                           onclick="fnSetPaxCountDown('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="adultPaxCntUp"
+                                           onclick="fnSetPaxCountUp('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="childPaxCnt">
+                                        <strong class="num_font" name="childPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type2 person_font">소아
+                                            </span>
+                                        <button class="child_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="child_modal">
+                                            <p>소아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 만 2세 - 만 13세 미만</li>
+                                                <li>[국제선] 만 2세 - 만 12세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" onclick="fnSetPaxCountDown('CHILD',this);"
+                                           class="disable"><img src="//images.jinair.com/images/btn/btn_minus.png"
+                                                                alt="-"></a>
+                                        <a href="javascript://" onclick="fnSetPaxCountUp('CHILD',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="infantPaxCnt">
+                                        <strong class="num_font" name="infantPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type3 person_font">유아
+                                            </span>
+                                        <button class="baby_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="infant_modal">
+                                            <p>유아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 생후 7일 이상 - 만 2세 미만</li>
+                                                <li>[국제선] 생후 7일 이상 - 만 2세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="infantPaxCntDown"
+                                           onclick="fnSetPaxCountDown('INFANT',this);" class="disable"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="infantPaxCntUp"
+                                           onclick="fnSetPaxCountUp('INFANT',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="submit_btn">
+                                        <a href="javascript://" onclick="submit()">확인</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="go_select in_bl">
+                            <div class="go_layerbtn">
+                                    <span class="go_select_opt"><input type="text" value="출발지" readonly
+                                                                       class="go_select_optt go_default"></span>
+                            </div>
+                            <div class="go_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="arrive_select in_bl">
+                            <div class="arrive_layerbtn">
+                                    <span class="arrive_select_opt">
+                                        <input type="text" value="도착지" readonly
+                                               class="arrive_select_optt arrive_default">
+                                    </span>
+                            </div>
+                            <div class="arrive_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="go_date2 in_bl">
+                            <div class="go_date_layerbtn">
+                                    <span class="go_date_select_opt"><input type="text" value="가는날" readonly
+                                                                            class="go_date_select_optt go_date_default"></span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- 다구간 레이어 -->
+        <div class="multi_wrap">
+            <table class="modal_table">
+                <tr>
+                    <td>
+                        <div class="person_type w_120 in_bl">
+                            <div class="person_layerbtn">
+                                <strong class="person_num" name="person_num">성인 1</strong>
+                            </div>
+                            <ul class="person_pop_layer in_bl">
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="1" class="adultPaxCnt">
+                                        <strong class="num_font" name="adultPaxCnt">1</strong>
+                                        <span role="person-type-option" class="person_type1 person_font">성인
+                                            </span>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="adultPaxCntDown"
+                                           onclick="fnSetPaxCountDown('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="adultPaxCntUp"
+                                           onclick="fnSetPaxCountUp('ADULT', this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="childPaxCnt">
+                                        <strong class="num_font" name="childPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type2 person_font">소아
+                                            </span>
+                                        <button class="child_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="child_modal">
+                                            <p>소아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 만 2세 - 만 13세 미만</li>
+                                                <li>[국제선] 만 2세 - 만 12세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" onclick="fnSetPaxCountDown('CHILD',this);"
+                                           class="disable"><img src="//images.jinair.com/images/btn/btn_minus.png"
+                                                                alt="-"></a>
+                                        <a href="javascript://" onclick="fnSetPaxCountUp('CHILD',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="w_180 in_bl">
+                                        <input type="hidden" value="0" class="infantPaxCnt">
+                                        <strong class="num_font" name="infantPaxCnt">0</strong>
+                                        <span role="person-type-option" class="person_type3 person_font">유아
+                                            </span>
+                                        <button class="baby_info_btn">
+                                            <img src="/userpage/lib/img/ico_question.png" alt="질문">
+                                        </button>
+                                        <div class="infant_modal">
+                                            <p>유아<em>(탑승일 기준)</em></p>
+                                            <ul>
+                                                <li>[국내선] 생후 7일 이상 - 만 2세 미만</li>
+                                                <li>[국제선] 생후 7일 이상 - 만 2세 미만</li>
+                                            </ul>
+                                            <span class="des">* 국내선의 경우 각 구간별 탑승일 기준으로 나이 계산,<br>국제선의 경우 첫구간 탑승일
+                                                    기준으로 나이 계산
+                                                    <br>* 탑승 수속 시 생년월일 확인 가능한 서류 지참 필수
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="person_btn in_bl">
+                                        <a href="javascript://" name="infantPaxCntDown"
+                                           onclick="fnSetPaxCountDown('INFANT',this);" class="disable"><img
+                                                src="//images.jinair.com/images/btn/btn_minus.png" alt="-"></a>
+                                        <a href="javascript://" name="infantPaxCntUp"
+                                           onclick="fnSetPaxCountUp('INFANT',this);"><img
+                                                src="//images.jinair.com/images/btn/btn_plus.png" alt="+"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="submit_btn">
+                                        <a href="javascript://" onclick="submit()">확인</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="go_select in_bl">
+                            <div class="go_layerbtn">
+                                    <span class="go_select_opt"><input type="text" value="출발지" readonly
+                                                                       class="go_select_optt"></span>
+                            </div>
+                            <div class="go_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="arrive_select in_bl">
+                            <div class="arrive_layerbtn">
+                                    <span class="arrive_select_opt">
+                                        <input type="text" value="도착지" readonly class="arrive_select_optt">
+                                    </span>
+                            </div>
+                            <div class="arrive_layer">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="go_date2 in_bl">
+                            <div class="go_date_layerbtn">
+                                    <span class="go_date_select_opt"><input type="text" value="가는날" readonly
+                                                                            class="go_date_select_optt"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="go_select in_bl">
+                            <div class="go_layerbtn2">
+                                    <span class="go_select_opt2"> <input type="text" value="출발지" readonly
+                                                                         class="go_select_optt2"></span>
+                            </div>
+                            <div class="go_layer2">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="arrive_select2 in_bl">
+                            <div class="arrive_layerbtn2">
+                                    <span class="arrive_select_opt2"><input type="text" value="도착지" readonly
+                                                                            class="arrive_select_optt2"></span>
+                            </div>
+                            <div class="arrive_layer2">
+                                <div class="KOR in_bl">
+                                    <h3>한국</h3>
+                                    <ul>
+                                        <li><a>서울/인천(ICN)</a></li>
+                                        <li><a>서울/김포(GMP)</a></li>
+                                        <li><a>부산(PUS)</a></li>
+                                        <li><a>제주(CJU)</a></li>
+                                        <li><a>청주(CJJ)</a></li>
+                                        <li><a>광주(KWJ)</a></li>
+                                        <li><a>대구(TAE)</a></li>
+                                        <li><a>여수(RSU)</a></li>
+                                        <li><a>울산(USN)</a></li>
+                                        <li><a>포항(KPO)</a></li>
+                                        <li><a>원주(WJU)</a></li>
+                                        <li><a>군산(KUV)</a></li>
+                                        <li><a>사천(HIN)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ENA in_bl">
+                                    <h3>동북아</h3>
+                                    <ul>
+                                        <li><a>도쿄/나리타(NRT)</a></li>
+                                        <li><a>오사카/간사이(KIX)</a></li>
+                                        <li><a>후쿠오카(FUK)</a></li>
+                                        <li><a>삿포로(CTS)</a></li>
+                                        <li><a>오키나와(OKA)</a></li>
+                                        <li><a>기타큐슈(KKJ)</a></li>
+                                        <li><a>상하이/푸동(PVG)</a></li>
+                                        <li><a>시안(XIY)</a></li>
+                                        <li><a>홍콩(HKG)</a></li>
+                                        <li><a>마카오(MFM)</a></li>
+                                        <li><a>타이베이/타오위안(TPE)</a></li>
+                                        <li><a>칭다오(TAO)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="ESA in_bl">
+                                    <h3>동남아</h3>
+                                    <ul>
+                                        <li><a>방콕(BKK)</a></li>
+                                        <li><a>푸껫(HKT)</a></li>
+                                        <li><a>치앙마이(CNX)</a></li>
+                                        <li><a>세부(CEB)</a></li>
+                                        <li><a>클락(CRK)</a></li>
+                                        <li><a>보라카이/칼리보(KLO)</a></li>
+                                        <li><a>다낭(DAD)</a></li>
+                                        <li><a>하노이(HAN)</a></li>
+                                        <li><a>비엔티안(VTE)</a></li>
+                                        <li><a>코타 키나발루(BKI)</a></li>
+                                        <li><a>조호르바루(JHB)</a></li>
+                                        <li><a class="nonselect" onclick="return false;">다카(DAC)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="OCE in_bl">
+                                    <h3>대양주</h3>
+                                    <ul>
+                                        <li><a>괌(GUM)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="USA in_bl">
+                                    <h3>미주</h3>
+                                    <ul>
+                                        <li><a>하와이, 호놀룰루(HNL)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="go_date3 in_bl">
+                            <div class="go_date_layerbtn2">
+                                    <span class="go_date_select_opt2"> <input type="text" value="가는날" readonly
+                                                                              class="go_date_select_optt2"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="update_submit">
+            <a href="" onclick="">조회</a>
+        </div>
+    </div>
+</div>
+<!--일정 수정 모달창 끝-->
+<!-- 달력 -->
+<div class="cal">
+    <div class="calwrapper">
+        <div class="caltop">
+            <p class="whatday">가는날</p>
+            <p class="cal_right">다음 3개월</p>
+        </div>
+        <table>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </table>
+        <div class="calinner">
+            <div class="calscroll">
+                <iframe src="/pages/index/cal" frameborder="0" id="ifm"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+</div>
+<div class="cal2">
+    <div class="calwrapper">
+        <div class="caltop">
+            <p class="whatday">가는날</p>
+            <p class="cal_right">다음 3개월</p>
+        </div>
+        <table>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </table>
+        <div class="calinner">
+            <div class="calscroll">
+                <iframe src="/pages/index/onewaycal" frameborder="0" id="ifm1"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+</div>
+<div class="cal3">
+    <div class="calwrapper">
+        <div class="caltop">
+            <p class="whatday">가는날</p>
+            <p class="cal_right">다음 3개월</p>
+        </div>
+        <table>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </table>
+        <div class="calinner">
+            <div class="calscroll">
+                <iframe src="/pages/index/multical" frameborder="0" id="ifm2"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="x_box"><img src="/userpage/lib/img/image-removebg-preview.png" alt=""></div>
+</div>
+</body>
+
+</html>

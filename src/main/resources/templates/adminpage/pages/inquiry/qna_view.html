@@ -1,0 +1,69 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/inquiry/qna_main.css">
+<script src="/adminpage/app/inquiry/qna_view.js"></script>
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="con_wrap">
+                    <div class="title">
+                        <p>Q&A 세부내용</p>
+                    </div>
+                    <div class="qustion_table">
+                        <table>
+                            <tr>
+                                <td th:text="${qnaApiResponses.qnaTitle}"></td>
+                                <td class="user_name">작성자 : <span th:text="${qnaApiResponses.qnaUserName}"></span></td>
+                                <td>등록일 : <span th:text="${#strings.substring(qnaApiResponses.qnaRegdate,0, 10)}"></span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><textarea name="" readonly th:text="${qnaApiResponses.qnaContent}"></textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="answer_table">
+                    <table id="itemList">
+                            <tr>
+                                <td id="qaTitle">{{itemList.qaTitle}}</td>
+                                <td>답변일 : {{itemList.qaRegdate.substr(0,10)}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><textarea name="" id="qaContent" readonly>{{itemList.qaContent}}</textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="footer_btn">
+                        <a th:href="@{'/pages/admin/qna_main'}" class="list"><input type="button" value="목록"></a>
+                        <a><input type="button" value="답변하기" class="reply qa_btn"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_user_container">
+                <div class="btn_user_info">
+                    <p class="btn_user">작성자 정보 보기</p>
+                </div>
+            </div>
+            <div class="user_container">
+                <div class="user_info">
+                    <p>고객정보</p>
+                    <p>이름 : <span th:text="${qnaApiResponses.qnaUserName}"></span></p>
+                    <p>아이디 : <span th:text="${qnaApiResponses.qnaUserId}"></span></p>
+                    <p>연락처 : <span th:text="${qnaApiResponses.qnaUserHp}"></span></p>
+                    <p>이메일 : <span th:text="${qnaApiResponses.qnaUserEmail}"></span></p>
+                    <p>외신 불요 여부 문의 : <span th:text="${qnaApiResponses.qnaUserEmailIsagree}"></span></p>
+                    <p>개인정보 수집 동의 : <span th:text="${qnaApiResponses.qnaUserSnsIsagree}"></span></p>
+                    <input type="button" value="확인" class="btn_check">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

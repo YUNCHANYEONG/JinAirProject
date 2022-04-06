@@ -1,0 +1,78 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+    <!-- head.html -->
+    <div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/schedule/sc_regist.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <body>
+        <div id="wrap">
+            <div th:replace="/adminpage/fragment/header :: header"></div>
+            <div id="container">
+                <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+                <div class="contents">
+                    <div class="contwrap">
+                        <p class="title">상세정보</p>
+                        <div class="btn_top">
+                        </div>
+                        <div class="contents_main" id="apList">
+                            <table>
+                                <tr>
+                                    <td>항공기타입</td>
+                                    <td>항공기이름</td>
+                                    <td>출발 일자</td>
+                                    <td>출발지</td>
+                                    <td>출발 시간</td>
+                                    <td>도착지</td>
+                                    <td>도착 시간</td>
+                                </tr>
+                                <tr>
+                                    <td>{{apList.schAirplaneType}}</td>
+                                    <td>{{apList.schAirplaneName}}</td>
+                                    <td>{{apList.schDepartureDate.substr(0,10)}}</td>
+                                    <td>{{apList.schDeparturePoint}}</td>
+                                    <td>{{apList.schStartTime.substr(11,16)}}</td>
+                                    <td>{{apList.schArrivalPoint}}</td>
+                                    <td>{{apList.schArrivalDate.substr(11,16)}}</td>
+                                </tr>
+                                <tr>
+                                    <td>수용 좌석수</td>
+                                    <td>예약된 좌석</td>
+                                    <td>예약 가능 좌석 수</td>
+                                    <td>비행시간</td>
+                                    <td colspan="2">가격</td>
+                                    <td>나비포인트</td>
+                                </tr>
+                                <tr>
+                                    <td>{{apList.schAirplaneSeat}}</td>
+                                    <td>148</td>
+                                    <td>32</td>
+                                    <td>{{apList.schFlyingTime.substr(11,16)}}</td>
+                                    <td colspan="2">{{apList.schBasicPrice}}</td>
+                                    <td>{{apList.schPoint}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="btn_box">
+                            <input type="button" value="삭제" class="del_modal">
+                            <input type="button" value="목록" class="list" onclick="location.href='/pages/admin/scheduleList'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal_container">
+                <div class="modal">
+                    <p>※ 주의</p>
+                    <p>이미 예약자가 있을 경우 삭제가
+                        <span>불가능</span>합니다.</p>
+                    <div>
+                        <input type="button" value="취소" onclick="location.href='/pages/admin/scheduleList'" id="cnl_btn">
+                        <input type="button" value="삭제" id="del_btn" onclick="location.href='/pages/admin/scheduleList'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/adminpage/app/schedule/sc_resultinfo.js"></script>
+</html>

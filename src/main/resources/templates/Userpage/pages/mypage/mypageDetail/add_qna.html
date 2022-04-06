@@ -1,0 +1,566 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/userpage/lib/css/mypage/add_qna.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/UserPage/quickmenu/quickmenu.css">
+<script src="/UserPage/quickmenu/quickmenu.js"></script>
+<body>
+<ul class="skipnavi">
+    <!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+    <!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+    <!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <form class="file-upload" id="qnaForm" method="post" th:action="@{/pages/qna_file/upload}" enctype="multipart/form-data">
+            <input type="hidden" id="memid" name="qnaUserindex" th:value="${memberApiResponse.memIndex}">
+            <div class="mypage_main">
+                <div class="menu_title">
+                    <p>고객의 말씀(Q&A)</p>
+                    <p>소중한 의견을 반영해 더 발전하는 진에어가 되겠습니다.</p>
+                </div>
+                <div class="info_text">
+                    <p>이용 중 도움이 필요한 사항을 고객의 말씀에 남겨주시면 친절히 안내해 드리겠습니다.</p>
+                    <ul class="caution">
+                        <li>- 고객님께서 남겨 주신 문의는 접수 순서에 따라 최대한 신속히 안내해 드리고 있습니다. <br><span class="pbr">단, 주말, 공휴일에 접수된 문의 그리고 관계기관의 사실 확인이 필요한 문의는 처리 결과 회신이 다소 지체될 수 있는 점 양해 부탁 드립니다. </span></li>
+                        <li>- 여행사, 온라인 여행 사이트 등을 통해 구매한 항공권의 조회, 취소, 변경, 환불은 해당 구매처를 통해 문의 부탁 드립니다.
+                            <br><span class="pbr">진에어  웹사이트/App 및 고객서비스센터 예매 항공권은 홈페이지의 [마이페이지] - [예약조회/변경/취소] 에서 직접 변경 및 환불이 가능합니다.</span>
+                        </li>
+                        <li>- 정확하고 신속한 답변을 위해 예매 및 탑승 정보를 함께 전달해 주시면 보다 빠른 처리가 가능합니다.
+                            <br><span class="pbr">특히 항공권의 변경, 환불 또는 나비포인트 관련 문의사항은 ‘예약번호, 출발지, 도착지, 탑승자명’ 정보를 기입해 주시기 바랍니다.</span></li>
+                    </ul>
+                </div>
+                <div class="info_main">
+                    <div class="footer_text">
+                        <p>자주 묻는 질문(FAQ)</p>
+                        <p class="subtext">다양한 문의를 빠르게 확인할 수 있는 FAQ 먼저 확인해보셨나요?
+                        <p class="subtext">기내 유실물 관련 문의는'기내 유실물 찾기' 메뉴에서 가능합니다.</p>
+                    </div>
+                    <div class="qna_info">
+                        <a href="/pages/point">나비포인트 안내</a>
+                        <a href="/pages/index/baggage?directId=findbaggage">기내 유실물 찾기</a>
+                        <a href="/pages/index/mypageQna">나의 Q&A 조회하기</a>
+                    </div>
+                </div>
+                <div class="qna_date">
+                    <form accept="#" method="post">
+                        <table id="userInfo">
+                            <tr>
+                                <th>이름</th>
+                                <td id="name">{{userInfo.memKorFirstName}}{{userInfo.memKorLastName}}</td>
+                            </tr>
+                            <tr>
+                                <th>연락처</th>
+                                <td id="phone">{{userInfo.memHp}}</td>
+                            </tr>
+                            <tr>
+                                <th>이메일</th>
+                                <td><input type="email" readonly id="email"></td>
+                            </tr>
+                            <tr>
+                                <th>예약번호</th>
+                                <td><input type="text" id="res_num" name="qnaResNum"></td>
+                            </tr>
+                            <tr>
+                                <th>출발일</th>
+                                <td><input type="date" id="start_date" name="qnaStartDate"></td>
+                            </tr>
+                            <tr>
+                                <th>출발지</th>
+                                <td>
+                                    <select name="qnaStarting" id="qnaStarting">
+                                        <option value="">출발지를 선택하세요.</option>
+                                        <option data-value="1" value="ICN">서울/인천(ICN)</option>
+                                        <option data-value="2" value="GMP">서울/김포(GMP)</option>
+                                        <option data-value="4" value="PUS">부산(PUS)</option>
+                                        <option data-value="3" value="CJU">제주(CJU)</option>
+                                        <option data-value="5" value="CJJ">청주(CJJ)</option>
+                                        <option data-value="154" value="KWJ">광주(KWJ)</option>
+                                        <option data-value="167" value="TAE">대구(TAE)</option>
+                                        <option data-value="168" value="RSU">여수(RSU)</option>
+                                        <option data-value="169" value="USN">울산(USN)</option>
+                                        <option data-value="170" value="KPO">포항(KPO)</option>
+                                        <option data-value="171" value="WJU">원주(WJU)</option>
+                                        <option data-value="172" value="KUV">군산(KUV)</option>
+                                        <option data-value="176" value="HIN">사천(HIN)</option>
+                                        <option data-value="8" value="NRT">도쿄/나리타(NRT)</option>
+                                        <option data-value="161" value="KIX">오사카/간사이(KIX)</option>
+                                        <option data-value="9" value="FUK">후쿠오카(FUK)</option>
+                                        <option data-value="10" value="CTS">삿포로(CTS)</option>
+                                        <option data-value="11" value="OKA">오키나와(OKA)</option>
+                                        <option data-value="12" value="KKJ">기타큐슈(KKJ)</option>
+                                        <option data-value="13" value="PVG">상하이/푸동(PVG)</option>
+                                        <option data-value="16" value="XIY">시안(XIY)</option>
+                                        <option data-value="14" value="HKG">홍콩(HKG)</option>
+                                        <option data-value="15" value="MFM">마카오(MFM)</option>
+                                        <option data-value="26" value="TPE">타이베이/타오위안(TPE)</option>
+                                        <option data-value="173" value="TAO">칭다오(TAO)</option>
+                                        <option data-value="165" value="BKK">방콕(BKK)</option>
+                                        <option data-value="19" value="HKT">푸껫(HKT)</option>
+                                        <option data-value="175" value="CNX">치앙마이(CNX)</option>
+                                        <option data-value="20" value="CEB">세부(CEB)</option>
+                                        <option data-value="21" value="CRK">클락(CRK)</option>
+                                        <option data-value="157" value="KLO">보라카이/칼리보(KLO)</option>
+                                        <option data-value="24" value="DAD">다낭(DAD)</option>
+                                        <option data-value="25" value="HAN">하노이(HAN)</option>
+                                        <option data-value="22" value="VTE">비엔티안(VTE)</option>
+                                        <option data-value="23" value="BKI">코타 키나발루(BKI)</option>
+                                        <option data-value="164" value="JHB">조호르바루(JHB)</option>
+                                        <option data-value="174" value="DAC">다카(DAC)</option>
+                                        <option data-value="27" value="GUM">괌(GUM)</option>
+                                        <option data-value="29" value="HNL">하와이, 호놀룰루(HNL)</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>도착지</th>
+                                <td>
+                                    <select name="qnaDestination" id="qnaDestination">
+                                        <option value="">도착지를 선택하세요.</option>
+                                        <option data-value="1" value="ICN">서울/인천(ICN)</option>
+                                        <option data-value="2" value="GMP">서울/김포(GMP)</option>
+                                        <option data-value="4" value="PUS">부산(PUS)</option>
+                                        <option data-value="3" value="CJU">제주(CJU)</option>
+                                        <option data-value="5" value="CJJ">청주(CJJ)</option>
+                                        <option data-value="154" value="KWJ">광주(KWJ)</option>
+                                        <option data-value="167" value="TAE">대구(TAE)</option>
+                                        <option data-value="168" value="RSU">여수(RSU)</option>
+                                        <option data-value="169" value="USN">울산(USN)</option>
+                                        <option data-value="170" value="KPO">포항(KPO)</option>
+                                        <option data-value="171" value="WJU">원주(WJU)</option>
+                                        <option data-value="172" value="KUV">군산(KUV)</option>
+                                        <option data-value="176" value="HIN">사천(HIN)</option>
+                                        <option data-value="8" value="NRT">도쿄/나리타(NRT)</option>
+                                        <option data-value="161" value="KIX">오사카/간사이(KIX)</option>
+                                        <option data-value="9" value="FUK">후쿠오카(FUK)</option>
+                                        <option data-value="10" value="CTS">삿포로(CTS)</option>
+                                        <option data-value="11" value="OKA">오키나와(OKA)</option>
+                                        <option data-value="12" value="KKJ">기타큐슈(KKJ)</option>
+                                        <option data-value="13" value="PVG">상하이/푸동(PVG)</option>
+                                        <option data-value="16" value="XIY">시안(XIY)</option>
+                                        <option data-value="14" value="HKG">홍콩(HKG)</option>
+                                        <option data-value="15" value="MFM">마카오(MFM)</option>
+                                        <option data-value="26" value="TPE">타이베이/타오위안(TPE)</option>
+                                        <option data-value="173" value="TAO">칭다오(TAO)</option>
+                                        <option data-value="165" value="BKK">방콕(BKK)</option>
+                                        <option data-value="19" value="HKT">푸껫(HKT)</option>
+                                        <option data-value="175" value="CNX">치앙마이(CNX)</option>
+                                        <option data-value="20" value="CEB">세부(CEB)</option>
+                                        <option data-value="21" value="CRK">클락(CRK)</option>
+                                        <option data-value="157" value="KLO">보라카이/칼리보(KLO)</option>
+                                        <option data-value="24" value="DAD">다낭(DAD)</option>
+                                        <option data-value="25" value="HAN">하노이(HAN)</option>
+                                        <option data-value="22" value="VTE">비엔티안(VTE)</option>
+                                        <option data-value="23" value="BKI">코타 키나발루(BKI)</option>
+                                        <option data-value="164" value="JHB">조호르바루(JHB)</option>
+                                        <option data-value="174" value="DAC">다카(DAC)</option>
+                                        <option data-value="27" value="GUM">괌(GUM)</option>
+                                        <option data-value="29" value="HNL">하와이, 호놀룰루(HNL)</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>질문구분</th>
+                                <td>
+                                    <select name="qnaType" id="qnaType">
+                                        <option value="">질문 구분을 선택하세요.</option>
+                                        <option value="HomeShopping">기내홈쇼핑</option>
+                                        <option value="Praise">칭송</option>
+                                        <option value="Complaint">불만</option>
+                                        <option value="Inquiry">문의요청</option>
+                                        <option value="Proposal">제언</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>제목</th>
+                                <td><input type="text" id="title" name="qnaTitle"></td>
+                            </tr>
+                            <tr>
+                                <th>회신 불요 여부 문의</th>
+                                <td>
+                                    <input type="checkbox" value="false" name="qnaNeedAnswer" id="no_answer">
+                                    <label for="no_answer">
+                                        답변을 원치 않을 경우 체크해 주세요.
+                                    </label>
+                                    <input type="hidden" value="true" name="qnaNeedAnswer" id="hiddenTrue">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>파일첨부</th>
+                                <td>
+                                    <p class="file_box">
+                                        <label for="file_add">
+                                            파일첨부
+                                        </label>
+                                        <input name="file" type="file" id="file_add"><span>
+                                    여기에 파일을 드래그 & 드롭하세요.(최대 파일: 1개)</span>
+                                    <div class="addfilecontent">
+                                        <p class="addfilecontenttext"></p>
+                                        <input type="button" value="삭제" class="addfilecontentbtn">
+                                    </div>
+                                    </p>
+                                    <ul>
+                                        <li>- 파일은 최대 3MB 이하까지 첨부 가능합니다.</li>
+                                        <li>- 첨부 가능한 파일 형식은 txt, pdf, jpg, jpeg, gif, png 입니다.</li>
+                                        <li>- 개인정보가 포함된 신분증/서류(여권, 주민등록증 등) 제출 시, 주민번호 뒷자리는 반드시 마스킹 처리 후 첨부 부탁 드립니다.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>내용</th>
+                                <td><textarea name="qnaContent" id="content" maxlength="500"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th>개인정보 수집동의</th>
+                                <td>
+                                    <p class="last_text">연락처 및 이메일 정보는 문의 접수 및 불만 해결을 위해 수집 후 <br>전자상거래 등에서의 소비자 보호에 관한 법률에 따라 '3년간' 보관할 수 있습니다.<br>(문의 종류에 따라 추가 증빙 서류 및 기타 개인 정보를 요청할 수 있습니다.)</p>
+                                    <input type="checkbox" value="agree" name="agree" id="agree">
+                                    <label for="agree">
+                                        동의합니다.
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="btn">
+                            <input type="button" class="btn_agree" id="addQna" value="저장">
+                            <input type="button" class="btn_cancel" value="취소" onclick="location.href='Mypage_qna.html'">
+                        </div>
+                    </form>
+                </div>
+                <div class="info_main">
+                    <div class="footer_text">
+                        <p>지점안내</p>
+                        <p class="subtext">- 진에어의 국내외 각 취항지별 지점을 안내해 드립니다.</p>
+                    </div>
+                    <div class="point_info">
+                        <a >자세히 보기</a>
+                    </div>
+                </div>
+                <div class="info_main">
+                    <div class="footer_text">
+                        <p>마케팅 제휴 문의</p>
+                        <p class="subtext">-마케팅 제휴 문의에 한해 담당자 확인 후 연락 드리겠습니다.</p>
+                    </div>
+                    <div class="mkt_info">
+                        <a >마케팅 제휴 문의</a>
+                    </div>
+                </div>
+                <div class="info_main">
+                    <div class="footer_text">
+                        <p>고객서비스센터</p>
+                        <p class="subtext">- 전화번호:1600-6200 / 02-6099-1200</p>
+                        <p class="subtext">- 상담 가능시간 : 오전 08:00 ~ 오후 19:00</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--container 끝-->
+<!-- 푸터-->
+<div th:replace="userpage/fragment/footer :: footer"></div>
+<!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+<div class="pointInfo_modal" style="display: none;">
+    <div class="title">
+        <h2>지점안내 <p class="close"></p></h2>
+    </div>
+    <div class="modal_content">
+        <table class="table">
+            <tr>
+                <th>지점</th>
+                <th>주소</th>
+            </tr>
+            <tr>
+                <td>본사</td>
+                <td>서울특별시 강서구 공항대로 453 대한항공 교육훈련센터 3층 ㈜진에어</td>
+            </tr>
+            <tr>
+                <td>인천</td>
+                <td>인천광역시 중구 공항로 272 인천국제공항 여객터미널 2층 2100A호 ㈜<br>진에어 인천국제공항지점 여객운송사무실
+                    <br>+82-32-743-1504
+                </td>
+            </tr>
+            <tr>
+                <td>김포</td>
+                <td>서울특별시 강서구 하늘길 112 김포국제공항 국내선청사 2층 사무동 ㈜진에어 김포공항지점
+                    <br>+82-2-2665-1572
+                </td>
+            </tr>
+            <tr>
+                <td>제주</td>
+                <td>제주특별자치도 제주시 공항로 2 제주국제공항 여객청사 3층 ㈜진에어 제주국제공항지점 여객운송사무실
+                    <br>+82-64-713-9422
+                </td>
+            </tr>
+            <tr>
+                <td>부산</td>
+                <td>부산광역시 중구 중앙대로 146 대한항공 빌딩 3층
+                    <br>
+                    부산광역시 강서구 공항진입로 108 김해국제공항 국제선청사 3층 ㈜진에어 부산공항지점
+                    <br>+82-51-905-9301
+                </td>
+            </tr>
+            <tr>
+                <td>청주</td>
+                <td>충청북도 청주시 청원구 내수읍 오창대로 980 청주국제공항 2층
+                    <br>+82-43-241-3557
+                </td>
+            </tr>
+            <tr>
+                <td>광주</td>
+                <td>광주광역시 광산구 상무대로 420-25, 광주공항 화물청사 1층 진에어 광주공항지점
+                    <br>+82-62-435-9092
+                </td>
+            </tr>
+            <tr>
+                <td>대구</td>
+                <td>대구광역시 동구 공항로 221 대구국제공항 2층 진에어 사무실
+                    <br> +82-53-293-0452
+                </td>
+            </tr>
+            <tr>
+                <td>울산</td>
+                <td>울산광역시 북구 산업로 1103 울산공항 여객청사 2층 진에어
+                    <br> +82-52-900-0217
+                </td>
+            </tr>
+            <tr>
+                <td>원주</td>
+                <td>강원도 횡성군 횡성읍 횡성로 38 원주공항 1층 진에어 사무실</td>
+            </tr>
+            <tr>
+                <td>방콕</td>
+                <td>Room No. G1-060A, Passenger Terminal 1st Floor, Concourse G, Suvarnabhumi Airport, 999 Moo 1,
+                    Nong prue, Bangphli, Samut prakarn 10540, Thailand
+                    <br> <br>+66-2-134-0761
+                </td>
+            </tr>
+            <tr>
+                <td>세부</td>
+                <td>International Arrival Level, Terminal 2, Mactan-Cebu International Airport, Lapu-Lapu City 6015,
+                    Cebu, Philippines
+                    <br> +63-32-494-7666
+                </td>
+            </tr>
+            <tr>
+                <td>클락</td>
+                <td>JIN AIR AO17, Mezzanine Level, Clark International Airport, Passenger Terminal Building, Clark
+                    Free Zone, Philipines
+                    <br> +63-45-499-1625
+                </td>
+            </tr>
+            <tr>
+                <td>비엔티안</td>
+                <td>Wattay-Vientiane International Airport P.O. BOX :">+ 9429. Vientiane, Lao P.D.R. Room 102
+                    <br> +856-21-520-840
+                </td>
+            </tr>
+
+            <tr>
+                <td>코타키나발루</td>
+                <td>Lot L2L 05(B), Level 2 (landside), Terminal Building, Kota Kinabalu International Airport,
+                    88740, Sabah
+                    <br> +60-(0)88-413-470
+                </td>
+            </tr>
+            <tr>
+                <td>다낭</td>
+                <td>Room O.1.17, 1 floor, Da Nang international airport, Danang
+                    <br> +84-236-3664-565
+                </td>
+            </tr>
+            <tr>
+                <td>하노이</td>
+                <td>2-E06D3, Terminal 2, Noibai International Airport, Hanoi
+                    <br> +84-4-3587-6648
+                </td>
+            </tr>
+            <tr>
+                <td>조호르바루</td>
+                <td>JIN AIR Lot GL19-2, Public Concourse, Passenger Terminal Building, Senai International Airport
+                    81250
+                    <br> +60 (0)14 201 4889
+                </td>
+            </tr>
+            <tr>
+                <td>타이베이</td>
+                <td>Room B-O-277, Terminal 1, No.15, Hangzhan S. Rd., Dayuan Township Taoyuan County 33758, Taiwan
+                    (R.O.C.)
+                    <br> +886-3-398-2003 (Airport Office)
+                    <br> +886-2-2571-1139 (Ticketing Office)
+                </td>
+            </tr>
+            <tr>
+                <td>홍콩</td>
+                <td>FLAT/RM 10-12, 2/F AIRPORT WORLD TRADE CENTRE, 1 SKY PLAZA ROAD, HONG KONG INTERNATIONAL
+                    AIRPORT, LANTAU, HONG KONG
+                    <br> +852-3756-3512
+                </td>
+            </tr>
+            <tr>
+                <td>마카오</td>
+                <td>Macau International Airport Passenger Terminal Mezzanine Level Room 12045
+                    <br> +853-8898-2032
+                </td>
+            </tr>
+            <tr>
+                <td>상하이</td>
+                <td>#18-201，2nd Floor, Terminal 1, Pudong International Airport, Shanghai 201207
+                    <br> +86-21-6835-5033
+                </td>
+            </tr>
+            <tr>
+                <td>시안</td>
+                <td>#18-201，2nd Floor, Terminal 1, Pudong International Airport, Shanghai 201207
+                    <br> +86-21-6835-5033
+                </td>
+            </tr>
+            <tr>
+                <td>우시</td>
+                <td>I-D-19, T1, WUXI SUNAN SHUOFANG INTERNATIONAL AIRPORT NO1 AIRPORT STREET, BINHU DISTRICT, WUXI ,
+                    JIANGSU
+                    <br> 0510-8532-0185
+                </td>
+            </tr>
+            <tr>
+                <td>도쿄</td>
+                <td>N3042, Terminal 1, Narita International Airport, Narita City, Chiba, 282-0011
+                    <br> +81-0476-32-5612
+                </td>
+            </tr>
+            <tr>
+                <td>오사카</td>
+                <td>0122, 3rd FL, South Airline BLDG, Kansai International Airport, 1 Senshu kukonaka, Tajiri-cho,
+                    Sennan-gun, Osaka-fu, Japan 549-0011
+                    <br> +81-72-456-8081
+                </td>
+            </tr>
+            <tr>
+                <td>후쿠오카</td>
+                <td>#42031, Fukuoka Airport International Terminal Building, 739, Oaza-Aoki, Hakata-ku,
+                    Fukuoka-city, Fukuoka
+                    <br> +81-92-260-8073
+                </td>
+            </tr>
+            <tr>
+                <td>기타큐슈</td>
+                <td>6 KUKOKITAMACHI, MINAMIKU, KOKURA, KITAKYUSHU CITY, JAPAN
+                    <br> +81-93-473-3800
+                </td>
+            </tr>
+            <tr>
+                <td>삿포로</td>
+                <td>International Terminal Bldg.3F, New Chitose Airport, Bibi Chitose, Hokkaido, JAPAN
+                    <br> +81-123-25-8871
+                </td>
+            </tr>
+            <tr>
+                <td>오키나와</td>
+                <td>Okinawa Naha Airport Passenger Terminal Bldg., 150 Kagamizu, Naha-city, Okinawa Pref., Japan
+                    <br> +81-98-840-1474
+                </td>
+            </tr>
+            <tr>
+                <td>괌</td>
+                <td>Guam International Airport Suite B-226 355 Chalan Pasaheru Tamuning Guam 96913
+                    <br>+1-671-642-2800
+                </td>
+            </tr>
+            <tr>
+                <td>호놀룰루</td>
+                <td>00 Rodgers Blvd. P.O Box #70, Honolulu, HI 96819
+                    <br>+1-808-834-5846
+                </td>
+            </tr>
+            <tr>
+                <td>케언스</td>
+                <td>Tenancy 8 Level1, International Building, Cairns international Airport, QLD, Australia
+                    <br>+61-7-4035-9722
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="mkt_modal" style="display: none;">
+    <div class="title">
+        <h2>마케팅 제휴 문의 <p class="close"></p></h2>
+    </div>
+    <form name="editProForm" id="editProForm" novalidate="novalidate">
+        <table class="fieldForm">
+            <caption>마케팅 제휴 문의</caption>
+            <colgroup>
+                <col width="25%"><col width="">
+            </colgroup>
+            <tbody><tr>
+                <th scope="row">회사명</th>
+                <td><input type="text" name="comNm" id="comNm" title="회사명" maxlength="50"></td>
+            </tr>
+            <tr>
+                <th scope="row">담당자 이름</th>
+                <td><input type="text" name="ctcPrsnNm" id="ctcPrsnNm" title="담당자 이름" maxlength="40"></td>
+            </tr>
+            <tr>
+                <th scope="row">연락처</th>
+                <td><input type="text" name="fonNo" id="fonNo" title="연락처" placeholder="0101234567" maxlength="20" class="placeholder"></td>
+            </tr>
+            <tr>
+                <th scope="row">회신 이메일</th>
+                <td><input type="text" name="emAdr" id="emAdr" title="회신 이메일" placeholder="예) abcd@gmail.com" maxlength="50" class="placeholder"></td>
+            </tr>
+            <tr>
+                <th scope="row">제목</th>
+                <td><input type="text" name="titl" id="titl" title="제목" maxlength="500"></td>
+            </tr>
+            <tr>
+                <th scope="row">파일첨부</th>
+                <td>
+                    <p class="fileBox">
+                    </p><div id="fileUploader"><div class="ajax-upload-dragdrop" style="vertical-align: top; width: inherit;"><div><label for="ajax-upload-id-1645432417690" class="ajax-file-upload" style="width: inherit;">파일찾기...</label><span style="font-size: 12px; padding-left: 10px;"><b>여기에 파일을 드래그 &amp; 드롭하세요. &nbsp; (Max file count : 5)</b></span><form method="POST" action="/file/upload" enctype="multipart/form-data" style="margin: 0px; padding: 0px;"><input type="file" id="ajax-upload-id-1645432417690" name="file[]" accept=".txt,.rtf,.doc,.docx,.hwp,.pdf,.ppt,.pptx,.xls,.xlsx,.gif,.jpg,.jpeg,.bmp,.psd,.png,.avi,.mov,.mpg,.mpeg,.asf,.mp3,.wav,.mid,.zip,.rar,.csv" multiple="" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0; display: none;"></form></div></div><div></div></div><div class="ajax-file-upload-container"></div>
+                    <p></p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">내용</th>
+                <td><textarea name="ctn" id="ctn" style="width: 100%; height: 200px;"></textarea></td>
+            </tr>
+            </tbody></table>
+    </form>
+    <div class="btnArea">
+        <span><a id="btnProposalReg" class="btnTypeA">확인</a></span>
+        <span><a class="btnTypeB">취소</a></span>
+    </div>
+</div>
+<div class="modal">
+</div>
+<div class="covid_info">
+    <div class="info_title">
+        <p>안내
+        <p class="close"></p>
+        </p>
+    </div>
+    <div class="info_box">
+        <p>현재 코로나19(COVID-19) 관련 문의사항의 급격한 증가로 고객서비스센터 <br>연결이 지연되고 있습니다.</p>
+        <p>또한 고객의 말씀(Q&A)에 대한 회신도 다소 지연될 수 있는 점에 대해 양해를 구하며, <br>조속히 안내 드릴 수 있도록 노력하겠습니다.</p>
+        <p>스케줄이 변경 또는 취소된 항공편 관련 문의는 홈페이지 공지사항을 참조해주시기 바랍니다.</p>
+        <div class="btn">
+            <input type="button" class="btn_agree" value="확인">
+        </div>
+    </div>
+</div>
+</body>
+<script src="/userpage/app/mypage/add_qna.js"></script>
+</html>

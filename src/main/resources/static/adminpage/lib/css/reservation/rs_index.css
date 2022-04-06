@@ -1,0 +1,178 @@
+#container > .contents > .contwrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.contents > .contwrap > .search{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+.contents > .contwrap > .search > .title{
+    font-size: 1.4rem; 
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+.contents > .contwrap > .searchwrap {
+    position: relative;
+    background-color: #f2f2f2;
+    /* border-radius: 10px; */
+    padding: 15px;
+    width: 100%;
+    height: 90px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bolder;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    background-color: #fff;
+}
+
+.contents > .contwrap > .searchwrap table {
+    width: 95%;
+    height: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    
+}
+
+
+.contents > .contwrap > .searchwrap table th {
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.contents > .contwrap > .searchwrap table td {
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+}
+
+
+.contents > .contwrap input+span {
+    display: inline-block;
+}
+
+#findApName {
+    width: 40px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #BDD600;
+}
+
+.contents > .contwrap input.searchbutt{
+    border-radius: 2px;
+    outline: none;
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: #bdd600;
+    border: none;
+    margin-top: 23px;
+    color: #444;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+.contents > .contwrap .searchbox {
+    width: 150px; 
+    height: 30px;
+    font-size: 14px;
+    text-indent: 8px;
+    font-weight: bolder;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+
+.contents > .contwrap >.searchwrap p{
+    display: inline-block;
+    margin: 0 10px;
+}
+.contents > .contwrap >.searchwrap > p:nth-child(1) input[type="text"]{
+    width: 150px;
+    height: 30px;
+}
+
+.searchbox{
+    color: #444;
+}
+
+.mg_top {
+    margin-top: 20px;
+}
+.rs_list {
+    margin: 0 auto;
+    width: 100%;
+    display: none;
+}
+.rs_list > table {
+    margin: 0 auto;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+.rs_list > table thead{
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f2f2f2;
+}
+.rs_list > table td{
+    height: 40px;
+}
+
+.footer{
+    margin-top: 40px;
+    width: 100%;
+    height: 30px;
+}
+.footer > .center{
+    display: flex;
+    justify-content: center;
+}
+.footer table{
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+}
+.footer table td{
+    width: 35px;
+    height: 40px;
+    border: 1px solid rgb(187, 187, 187);
+    background-color: #fff;
+    padding-top: 8px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.pages {
+    background-color : #fff;
+    color : #444;
+    cursor : pointer;
+}
+
+#showPage > td:hover {
+    background-color: #BDD600;
+    color: white;
+}
+
+.firstPage1, .firstPage2, .lastPage1, .lastPage2 {
+    cursor: pointer;
+}

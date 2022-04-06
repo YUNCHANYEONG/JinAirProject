@@ -1,0 +1,195 @@
+#container > .contents > .contwrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#container > .contents > .contwrap > .title{ 
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+#container > .contents > .contwrap > .btn_top{
+    display: flex;
+    justify-content: right;
+    height: 30px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#container > .contents > .contwrap > .btn_top input{
+    width: 100px;
+    height: 30px;
+    background-color:#BDD600;
+    border-radius: 2px;
+    border: 0;
+    font-size: 0.8rem;
+    margin-right: 15px;
+    margin-bottom: 120px;
+    font-weight: 600;
+}
+
+#container > .contents >.contwrap > .contents_main{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+#container > .contents >.contwrap > .contents_main table{
+    border-collapse: collapse;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    text-align: center;
+}
+#container > .contents >.contwrap > .contents_main tr:nth-child(2n+1){
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #ccc;
+}
+
+#container > .contents >.contwrap > .contents_main tr {
+    height: 40px;
+}
+
+#container > .contents >.contwrap > .contents_main tr:first-child td{
+    width: 333px;
+}
+
+#container > .contents >.contwrap > .contents_main tr:nth-child(3) td{
+    border-top: 1px solid #ccc;
+}
+
+#container > .contents >.contwrap > .btn_box{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+#container > .contents >.contwrap > .btn_box input[type="button"]{ 
+    width: 80px;
+    height: 30px;
+    background-color:#BDD600;
+    border-radius: 2px;
+    clear: both;
+    border: 0;
+    font-size: 0.8rem;
+    margin: 0 5px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+#container > .contents >.contwrap > .btn_box input[type="button"]:first-child{ 
+    width: 80px;
+    height: 30px;
+    border: 3px solid #BDD600;
+    background-color: white;
+}
+#container > .contents >.contwrap > .btn_box input[type="button"].list{
+    width: 80px;
+}
+#container > .contents  >.contwrap input[type="text"]{
+    width: 100px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 900;
+    text-align: center;
+}
+#container > .contents  >.contwrap input[type="date"]{
+    outline: none;
+    font-size: 13px;
+    font-weight: 900;
+    text-align: center;
+}
+#container > .contents  >.contwrap select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 900;
+    text-align: center;
+}
+#container > .contents >.contwrap input[type="text"].jinipoint{
+    width: 70px;
+}
+#container > .contents >.contwrap input[type="text"].percent{
+    width: 20px;
+    border: none;
+}
+.modal_container{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+}
+.modal {
+    position: absolute;
+    left: 620px;
+    top: 250px;
+}
+.modal_container .modal p{
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 900;
+}
+.modal_container .modal p span{
+    color : red;
+    font-size: 17px;
+    font-weight: 900;
+}
+.modal_container .modal p:nth-child(1){
+    margin-top: 26px;
+    font-size: 20px;
+    font-weight: 900;
+}
+.modal_container .modal div{
+    display: flex;
+    justify-content: center;
+}
+.modal_container .modal{
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    border: 3px solid #BDD600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal_container .modal .btn_modal{
+    display: flex;
+    justify-content: center;
+}
+.modal_container .modal input[type="submit"]{
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 40px 10px 0;
+}
+.modal_container > .modal input[type="button"].btn_cancel{
+    background-color: white;
+    border: 3px solid #BDD600;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 40px 10px 0;
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+}
+
+.modal_container .modal #cnl_btn, #del_btn{
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 40px 10px 0;
+}

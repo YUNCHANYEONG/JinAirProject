@@ -1,0 +1,291 @@
+/* container */
+.cursor {
+    cursor: pointer;
+}
+#container {
+    position: relative;
+    top: 100px;
+    height: 1650px;
+}
+#container > .contentswrap {
+    width: 1180px;
+    padding: 30px;
+    margin: auto;
+    letter-spacing: .8px;
+}
+#container > .contentswrap > .discount {
+    letter-spacing: 1.2px;
+    padding: 20px;
+    height: 180px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+#container > .contentswrap > .discount > .discount_title {
+    font-size: 2.8em;
+    font-weight: 600;
+    color: rgb(102, 30, 67);
+}
+#container > .contentswrap > .discount > .title_sub {
+    font-size: 1.45em;
+    font-weight: 600;
+    margin-top: 25px;
+    line-height: 30px;
+    letter-spacing: 1.2px;
+}
+#container > .contentswrap > .discount > .title_img {
+    background: url(/userpage/lib/img/icon_top_jinipass.png) no-repeat center;
+    background-size: 93%;
+    display: inline;
+    width: 170px;
+    height: 130px;
+    float: right;
+    position: relative;
+    right: 26px;
+    bottom: 20px;
+}
+#container > .contentswrap .discount_kind .meal_title{
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+.meal_title{
+    margin-left: 20px;
+    font-size: 32px;
+    font-weight: 900;
+}
+#container > .contentswrap table {
+    border-collapse: collapse;
+    /* border-spacing: 0px; */
+    width: 100%;
+    margin-top: 15px;
+    box-shadow:  3px 5px 3px rgb(185, 185, 185);
+    line-height: 1.6;
+    font-size: 13px;
+    color: #444;
+    border-top: 1px solid rgb(102, 30, 67);
+}
+
+#container > .contentswrap > .discount_kind .cursor {
+    cursor:pointer;
+}
+
+#container > .contentswrap > .discount_kind th {
+    border-spacing: 0px;
+    padding: 10px;
+    height: 100%;
+    font-weight: bold;
+    vertical-align: middle;
+    width: 250px;
+    text-align: center;
+}
+
+#container > .contentswrap .discount_kind th.dis_kor {
+    color: #fff;
+    background-color: rgb(102, 30, 67);
+}
+
+/* kor */
+.kor{
+    width: 100%;
+    margin-top: 30px;
+}
+.korwrap{
+    padding: 20px;
+}
+.textcontent::before{
+    content: "- ";
+}
+.textcontent{
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.textcontent2{
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-left: 14px;
+}
+.img_content{
+    width: 100%;
+    height: 700px;
+}
+.imgcontent1{
+    display: inline-block;
+    margin: 0;
+    width: 33%;
+    vertical-align: middle;
+}
+.imgcontent1 p{
+    margin-left: 8px;
+}
+.imgcontent5_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass01.jpg) no-repeat top;
+}
+.imgcontent4_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass02.jpg) no-repeat top;
+}
+.imgcontent1_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass03.jpg) no-repeat top;
+}
+.imgcontent3_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass04.jpg) no-repeat top;
+}
+.imgcontent2_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass08.jpg) no-repeat top;
+}
+.imgcontent1_text{
+    font-size: 15px;
+    font-weight: 600;
+}
+/* eastnorth */
+.eastnorth{
+    width: 100%;
+    margin-top: 30px;
+    display: none;
+}
+.eastnorthwrap{
+    padding: 20px;
+}
+.imgcontent6_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass07.jpg) no-repeat top;
+}
+.imgcontent7_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass08.jpg) no-repeat top;
+}
+.imgcontent8_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass05.jpg) no-repeat top;
+}
+.imgcontent9_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass02.jpg) no-repeat top;
+}
+.imgcontent10_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass06.jpg) no-repeat top;
+}
+.imgcontent11_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass09.jpg) no-repeat top;
+}
+
+
+/* eastsouth */
+.eastsouth{
+    width: 100%;
+    margin-top: 30px;
+    display: none;
+}
+.eastsouthwrap{
+    padding: 20px;
+}
+.imgcontent12_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass07.jpg) no-repeat top;
+}
+.imgcontent13_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass03.jpg) no-repeat top;
+}
+.imgcontent14_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass05.jpg) no-repeat top;
+}
+/* poli */
+.poli{
+    width: 100%;
+    margin-top: 30px;
+    display: none;
+}
+.poliwrap{
+    padding: 20px;
+}
+.imgcontent15_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass07.jpg) no-repeat top;
+}
+.imgconten16_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass03.jpg) no-repeat top;
+}
+.imgcontent17_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass08.jpg) no-repeat top;
+}
+.imgcontent18_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass01.jpg) no-repeat top;
+}
+.imgcontent19_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass02.jpg) no-repeat top;
+}
+
+/* usa */
+.usa{
+    width: 100%;
+    margin-top: 30px;
+    display: none;
+}
+.usawrap{
+    padding: 20px;
+}
+.imgcontent20_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass07.jpg) no-repeat top;
+}
+.imgcontent21_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass05.jpg) no-repeat top;
+}
+.imgcontent22_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass06.jpg) no-repeat top;
+}
+.imgcontent23_img{
+    width: 100%;
+    height: 220px;
+    background: url(/userpage/lib/img/jiniPass02.jpg) no-repeat top;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}

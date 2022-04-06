@@ -1,0 +1,295 @@
+#container > .contents{
+    position: fixed;
+    margin-top: 66px;
+    left: 225px;
+    float: left;
+    width: 88%;
+    height: 100%;
+    align-items: stretch;
+    /* 배경 입시 선정 */
+    background-color: #bdd6000c;
+    padding: 10px;
+    overflow: auto;
+    box-shadow: 0px 2px 10px -3px rgba(0, 0, 0, 0.3) inset;
+}
+/* 차트 */
+.chartcontainer{
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ccc;
+    padding:20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+
+}
+/* 내용 */
+.contents > .contwrap{
+    width: 95%;
+    padding: 10px;
+    height: 930px;
+}
+.contents > .contwrap > .topcont{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-content: space-between;
+    margin-bottom: 20px;
+}
+.contents > .contwrap .korea{
+    width: 25%;
+    height: 100px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    border-radius: 3px;
+    display: inline-block;
+    background-color: white;
+}
+.contents > .contwrap .korea p{
+    line-height: 30px;
+}
+.contents > .contwrap .korea .korea_name{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #ccc;
+    line-height: 10px;
+}
+.contents > .contwrap .korea #korea_time{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    padding-top: 20px;
+    line-height: 14px;
+}
+.contents > .contwrap .other{
+    width: 25%;
+    height: 100px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    border-radius: 3px;
+    display: inline-block;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    margin: 0 0 0 10px;
+}
+.contents > .contwrap .other .other_name{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #ccc;
+}
+.contents > .contwrap .other .other_select{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    padding-top: 5px;
+    width: 90%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.001);
+}
+.contents > .contwrap .other #other_time{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    padding-top: 20px;
+}
+.contents > .contwrap .totalair{
+    text-align: center;
+    width: 25%;
+    height: 100px;
+    border: 1px solid rgb(127, 197, 255);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    background-color: white;
+    border-radius: 3px;
+    display: inline-block;
+    margin-left: 5px;
+    margin: 0 0px 0 10px;
+    /*background: url(/adminpage/lib/img/weather1.jpg) no-repeat;*/
+    /*background-position: 50% 60%;*/
+    /*background-size: 100%;*/
+    background-color: rgb(127, 197, 255);
+}
+.contents > .contwrap .totalair p{
+    font-weight: 900;
+    font-size: 15px;
+}
+.contents > .contwrap .totalair > .totalair_top{
+    width: 100%;
+    height: 30px;
+    display: inline-block;
+    padding-top: 10px;
+    border-bottom: 1px solid rgb(169, 216, 255);
+}
+.contents > .contwrap > .bottcont{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-content: space-between;
+}
+.contents > .contwrap .QnA{
+    width: 30%;
+    height: 300px;
+    border-radius: 3px;
+    display: block;
+    text-align: center;
+    margin-right: 20px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    border: 1px solid #ccc;
+    background-color: white;
+    padding-top: 20px;
+}
+.contents > .contwrap .QnA a{
+    color: #444;
+    font-weight: bold;
+}
+.contents > .contwrap .QnA p:nth-child(1){
+    font-size: 18px;
+    font-weight: 900;
+    padding: 1px 0 1px 0;
+}
+.contents > .contwrap .QnA p:nth-child(2){
+    font-size: 13px;
+    font-weight: 900;
+    padding: 3px 0 1px 0;
+}
+.contents > .contwrap .QnA table{
+    width: 90%;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 5px auto 5px;
+    border-collapse: collapse;
+    border-bottom: 1px solid #e2e2e2;
+}
+.contents > .contwrap .QnA table tr{
+    border-top: 1px solid #e2e2e2;
+    height: 20px;
+}
+.contents > .contwrap .QnA table td:nth-child(1){
+    width: 70%;
+}
+.contents > .contwrap .QnA table td:nth-child(2){
+    width: 30%;
+    text-align: center;
+    white-space: nowrap;
+}
+.contents > .contwrap .QnA > table a{
+    text-indent: 5px;
+    width: 90%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    color: #444;
+    text-align: center;
+}
+.contents > .contwrap .QnA > table a :visited{
+    color:#444;
+}
+.contents > .contwrap .QnA > table a :link{
+    color:rgb(56, 245, 204);
+}
+.contents > .contwrap .QnA > table a:hover{
+    text-decoration: underline; 
+    color: #737373;
+}
+.contents > .contwrap .QnA p:last-child{
+    font-size: 14px;
+    font-weight: 900;
+}
+.contents > .contwrap .QnA p:last-child:hover{
+    text-decoration: underline; 
+    color: #737373;
+}
+.contents > .contwrap .notice{
+    text-align: center;
+    width: 70%;
+    height: 300px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+    border-radius: 3px;
+    padding-top: 20px;
+    display: block;
+    white-space: nowrap;
+}
+.contents > .contwrap .notice table{
+    width: 100%;
+    font-size: 13px;
+    font-weight: 900;
+    margin: 5px auto 5px;
+    border-collapse: collapse;
+    border-bottom: 1px solid #e2e2e2;
+}
+.contents > .contwrap .notice a{
+    color: #444;
+    font-weight: bold;
+}
+.contents > .contwrap .notice p:nth-child(1){
+    font-size: 18px;
+    font-weight: 900;
+    padding: 1px 0 1px 0;
+    margin-bottom: 17px;
+}
+.contents > .contwrap .notice table tr{
+    border-top: 1px solid #e2e2e2;
+    height: 30px;
+    text-align: center;
+}
+.contents > .contwrap .notice table tr:nth-child(1){
+    background-color: #f2f2f2;
+}
+.contents > .contwrap .notice table td{
+    width: 10%;
+}
+.contents > .contwrap .notice > table a{
+    text-indent: 5px;
+    width: 90%;
+    color: #444;
+    text-align: center;
+}
+.contents > .contwrap .notice > table a :visited{
+    color:#444;
+}
+.contents > .contwrap .notice > table a :link{
+    color:rgb(56, 245, 204);
+}
+.contents > .contwrap .notice > table a:hover{
+    text-decoration: underline; 
+    color: #737373;
+}
+.contents > .contwrap .notice p:last-child{
+    font-size: 14px;
+    font-weight: 900;
+    margin: 5px auto;
+}
+.contents > .contwrap .notice p:last-child:hover{
+    text-decoration: underline; 
+    color: #737373;
+}
+.weather_weather{
+    text-align: center;
+}
+.weather_weather table{
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 auto;
+}
+.weather_weather table td{
+    margin: 0px 5px;
+    height: 10px;
+}
+.weather_weather img{
+    width: 33px;
+    height: 30px;
+}

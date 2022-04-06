@@ -1,0 +1,64 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/item/itemadd.css">
+<!-- head.html 끝-->
+<body>
+<div id="wrap">
+    <div th:replace="/adminpage/fragment/header :: header"></div>
+    <div id="container">
+        <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+        <div class="contents">
+            <div class="contents_box">
+                <div id="itemadd_title">유실물 등록</div>
+                <div id="itemadd_contents">
+                    <form th:action="@{/pages/admin/item/itemadd/file}" method="post" enctype="multipart/form-data">
+                        <table>
+                            <tr>
+                                <td>항공편</td>
+                                <td>
+                                    <select name="losAirplane" id="airplane_list"></select>
+                                </td>
+                                <td>물품 유형</td>
+                                <td>
+                                    <select name="losType" id="item_list">
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>도착 날짜</td>
+                                <td>
+                                    <input type="date" name="losArrivedate" id="arrival_date"/>
+                                </td>
+                                <td>도착지 공항</td>
+                                <td>
+                                    <select name="losAirportArea" id="arrival_airport_list">
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    이미지 첨부
+                                    <label for="item_img">
+                                        첨부파일
+                                        <input type="file" name="losImg" id="item_img"/>
+                                    </label>
+                                    <input class="item_img_upload" value="파일이름" readonly/>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="form_btn">
+                            <a href="/pages/admin/item"><input type="button" value="목록" /></a>
+                            <input type="button" id="createBtn" value="등록"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/adminpage/app/item/itemadd.js"></script>
+</body>
+</html>

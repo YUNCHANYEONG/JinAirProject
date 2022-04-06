@@ -1,0 +1,224 @@
+/* contents */
+#container{
+    height: 800px;
+}
+
+
+/* 모달 */
+.modal{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.email_modal{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+.modal_title{
+    width: 645px;
+    height: 70px;
+    background-color: #661E43;
+    text-indent: 20px;
+    display: flex;
+    align-items: center;
+}
+.modal_title p{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.modal_main_id{
+    padding: 30px;
+    background-color: white;
+    height: 450px;
+}
+.modal_main_id table{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.modal_main_id table th{
+    margin-right: 30px;
+    font-size: 0.8rem;
+    padding-right: 15px;
+    line-height: 25px;
+    text-align: left;
+}
+.modal_main_id p{
+    margin-bottom: 20px;
+}
+.modal_main_id input[type="text"]{
+    border: 1px solid #EDEDED;
+    background-color: #F7F7F7;
+    width: 230px;
+    height: 50px;
+    text-indent: 20px;
+}
+.modal_main_id input[class="modal_input"]{
+    width: 465px;
+    margin-top: 20px;
+}
+.modal_main_id .btn{
+    margin: 20px;
+    text-align: center;
+}
+.modal_main_id .btn input[class="btn_confirm"]{
+    width: 150px;
+    height: 50px;
+    background-color:#BDD600;
+    border: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.modal_main_id .btn input[class="btn_cancel"]{
+    width: 150px;
+    height: 50px;
+    background-color:white;
+    border: 2px solid #BDD600;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.modal_main_pw{
+    padding: 30px;
+    background-color: white;
+    height: 530px;
+}
+.modal_main_pw table{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.modal_main_pw table th{
+    margin-right: 30px;
+    font-size: 0.8rem;
+    padding-right: 15px;
+    line-height: 25px;
+    text-align: left;
+}
+.idtextbox > input[type="text"]{
+    margin-bottom: 20px;
+    width: 100%;
+}
+.modal_main_pw p{
+    margin-bottom: 20px;
+}
+.modal_main_pw input[type="text"]{
+    border: 1px solid #EDEDED;
+    background-color: #F7F7F7;
+    width: 230px;
+    height: 50px;
+    text-indent: 20px;
+}
+.modal_main_pw input[class="modal_input"]{
+    width: 465px;
+    margin-top: 20px;
+}
+.modal_main_pw .btn{
+    margin: 20px;
+    text-align: center;
+}
+.modal_main_pw .btn input[class="btn_confirm"]{
+    width: 150px;
+    height: 50px;
+    background-color:#BDD600;
+    border: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.modal_main_pw .btn input[class="btn_cancel"]{
+    width: 150px;
+    height: 50px;
+    background-color:white;
+    border: 2px solid #BDD600;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+/* 아이디 비밀번호 찾기 */
+.find_container{
+    display: flex;
+    max-width: 550px;
+    height: 750px;
+    margin: 0 auto;
+    margin-top: 60px;
+    flex-direction: column;
+}
+.find_container > .find_top{
+    padding-top: 75px;
+    width: 100%;
+    height: 165px;
+    border-bottom: 2px solid #F5F5F5;
+}
+.find_container > .find_top p{
+    font-size: 3.5rem;
+    text-align: center;
+    color: #661E43;
+    font-weight: 600;
+}
+.find_container > .find_radio{
+    margin: 20px auto;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.find_container > .find_radio input[type="radio"]{
+    display: none;
+}
+.find_container > .find_radio input[type="radio"] + label{
+    display: inline-block;
+    margin-right: 40px;
+    background: url(/userpage/lib/img/ico_radio.png) no-repeat 0 0;
+    cursor: pointer;
+    vertical-align: middle;
+    padding-left: 20px !important;
+}
+.find_container > .find_radio input[type="radio"].ckbox:checked + label{
+background-position: 0 -18px;
+}
+.find_container > .confirm_box .confirm_email{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 180px;
+    border: 1px solid #EDEDED;
+    background-color: #F7F7F7;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.find_container > .confirm_box .confirm_kakao{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 180px;
+    border: 1px solid #EDEDED;
+    background-color: #F7F7F7;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+.find_container > .confirm_box .title_text{
+    color: #661E43;
+    margin: 10px auto;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.find_container > .confirm_box .sub{
+    font-size: 0.9rem;
+    font-weight: 700;
+}

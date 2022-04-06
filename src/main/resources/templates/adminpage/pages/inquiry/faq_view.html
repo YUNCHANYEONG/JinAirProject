@@ -1,0 +1,54 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/inquiry/faq_view.css">
+<link rel="stylesheet" href="/adminpage/lib/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container" >
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents" >
+                <div class="con_wrap" id="tableBoard">
+                    <div class="title">
+                        <p>FAQ 세부내용</p>
+                    </div>
+                        <table>
+                            <tr>
+                                <td>{{tableBoard.faqType}}</td>
+                                <td class="user_name">{{tableBoard.faqTitle}}</td>
+                                <td>등록일 : {{tableBoard.faqRegdate.substr(0,10)}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><textarea name="" readonly> {{tableBoard.faqContent}}</textarea></td>
+                            </tr>
+                        </table>
+                    <div class="contents_bottom">
+                        <div class="faq_btn_add">
+                            <a href="/pages/admin/faq_main"><input type="button" value="목록"></a>
+                            <input type="button" value="삭제" class="btn_del" onclick="delBtn()">
+                            <a :href=`/pages/admin/faq_edit/${tableBoard.faqIndex}`><input type="button" value="수정"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="del_container">
+            <div class="del_info">
+                <p>게시글을 정말 삭제하시겠습니까?</p>
+                <div class="del_modal">
+                    <input type="button" value="취소" class="btn_cancel">
+                    <a><input type="button" value="삭제" id="delete"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/adminpage/app/inquiry/faq_view.js"></script>
+</body>
+
+</html>

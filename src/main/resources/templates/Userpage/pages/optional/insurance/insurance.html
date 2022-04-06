@@ -1,0 +1,52 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head -->
+<div th:replace="userpage/fragment/head :: head"></div>
+<script src="/userpage/app/optional/insurance/insurance.js"></script>
+<link rel="stylesheet" href="/userpage/lib/css/optional/insurance/insurance.css"/>
+<link rel="stylesheet" href="/userpage/lib/css/index/index.css"/>   // 메뉴
+<!-- head 끝 -->
+<body>
+<ul class="skipnavi"><!--책갈피 역할-->
+    <li><a href="#container">본문내용</a></li>
+</ul>
+<!--wrap-->
+<div id="wrap">
+<!--header-->
+    <div th:replace="${loginURL} :: menu"></div>
+<!--header 끝-->
+    <!--container-->
+    <div id="container">
+        <div class="contentswrap">
+            <div class="discount">
+                <p class="title_img"></p>
+                <p class="discount_title">여행 안심 서비스</p>
+                <p class="title_sub">안전한 여행을 위한 필수품<br>해외 여행 보험 가입하고 가세요.</p>
+            </div>
+            <div class="img_jinitv"></div>
+            <div class="activity_wrap">
+                <div class="activity_box">
+                    <div class="korea">해외</div>
+                    <div class="img_sk"></div>
+                    <p class="activity_boxtitle">ASSISTCARD</p>
+                    <div class="notice_box">
+                        <p>전 세계 1,000만명의 선택,<br>ASSISTCARD! 여행자보험+프리미엄<br>서비스로 안전하고 즐거운 여행하세요.</p>
+                    </div>
+                    <a href="/pages/optional/insurance3" target="_blank"><input type="button" value="바로가기"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container 끝-->
+    <!-- 푸터-->
+    <div th:replace="userpage/fragment/footer :: footer"></div>
+    <!--푸터 끝-->
+</div>
+<!--wrap 끝-->
+<div class="modal"></div>
+<!--퀵 메뉴-->
+<div th:replace="userpage/fragment/quickmenu :: quickmenu"></div>
+<!--퀵 메뉴 끝-->
+</body>
+</html>

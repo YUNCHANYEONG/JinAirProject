@@ -1,0 +1,74 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+    <link rel="stylesheet" href="/adminpage/lib/css/magazine/genieList_view.css">
+    <script src="/adminpage/app/magazine/genieList_view.js"></script>
+<!-- head.html 끝-->
+<body>
+    <div id="wrap">
+        <div th:replace="/adminpage/fragment/header :: header"></div>
+        <div id="container">
+            <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+            <div class="contents">
+                <div class="contwrap" id="itemList">
+                    <div class="search">
+                        <p class="title">지니매거진 세부</p>
+                    </div>
+                    <table>
+                        <colgroup>
+                            <col width="100">
+                            <col width="460">
+                            <col width="180">
+                        </colgroup>
+                        <tr>
+                            <td>제목</td>
+                            <td>{{itemList.mzTitle}}</td>
+                            <td>등록일 {{itemList.mzRegdate.substr(0,10)}}</td>
+                        </tr>
+                        <tr>
+                            <td  colspan="3" class="file_id">
+                                <div class="file-upload">
+                                    메인 페이지 파일 첨부
+                                    <a :href=`/api/magazine/downloadImg/${itemList.mzIndex}` download="">
+                                        <input type="text" class="filetext1" id="filetext1" name="filetext1" readonly :value="itemList.mzImgOriname">
+                                    </a>
+                                </div>
+                                <div class="file-upload">
+                                    퀴즈 파일 첨부
+                                    <a :href=`/api/magazine/downloadAns/${itemList.mzIndex}` download="">
+                                        <input type="text" class="filetext2" id="filetext2" name="filetext2" readonly :value="itemList.mzAnswerOriname">
+                                    </a>
+                                </div>
+                                <div class="file-upload">
+                                    매거진 파일 첨부
+                                    <a :href=`/api/magazine/downloadPdf/${itemList.mzIndex}` download="">
+                                        <input type="text" class="filetext3" id="filetext3" name="filetext3" readonly :value="itemList.mzPdfOriname">
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="footer">
+                        <a href="/pages/admin/genielist" class="notice_write"><input type="button" value="목록"></a>
+                        <input type="button" value="삭제" class="del_btn" onclick="delBtn()"/>
+                        <a :href=`/pages/admin/genielist_edit/${itemList.mzIndex}` class="notice_write"><input type="button" value="수정"></a>
+                    </div>
+                </div>  
+            </div>
+            <div class="modal_isfind">
+                <div class="modal">
+                    <p>※ 주의</p>
+                    <p>지니 매거진을 삭제합니다.</p>
+                    <p>삭제된 경우 <span>데이터</span> 복구가 어려우니 유의바랍니다.</p>
+                    <form action="">
+                        <input type="button" class="btn_cancel" value="취소">
+                        <input type="button" value="삭제" id="add_btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

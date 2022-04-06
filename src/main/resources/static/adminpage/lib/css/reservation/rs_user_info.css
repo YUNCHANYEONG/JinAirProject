@@ -1,0 +1,163 @@
+#container > .contents > .contwrap{
+    width: 88%;
+    margin-left: 50px;
+    margin-top: 50px;
+    height: 800px;
+}
+.contents > .contwrap > .search{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+.contents > .contwrap > .search > .title{
+    font-size: 1.4rem; 
+    font-weight: 700;
+    display: inline;
+    align-self: flex-start;
+}
+
+.searchName p {
+    margin-bottom: 5px;;
+}
+
+.search_butt {
+    width: 40px;
+    background-color: #fff;
+    border: 1px solid #BDD600;
+}
+
+.searchbox {
+    margin: 0 5px;
+    height: 20px;
+}
+
+.rs_list {
+    width: 100%;
+}
+.rs_list > table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+.rs_list > table th {
+    height: 50px;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+.rs_list > table td {
+    height: 40px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+.rs_list > table td > .firstN {
+    padding: 0px;
+    text-align: center;
+}
+.rs_list > table td > .kfirstN {
+    margin-right: 150px;
+    font-weight: 400;
+}
+.rs_list > table td > .efirstN {
+    margin-right: 100px;
+    font-weight: 400;
+}
+.rs_list > table:nth-child(2) {
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.rs_list > table:nth-child(2) th {
+    vertical-align: middle;
+    border-top: 1px solid #ccc;
+}
+.rs_list > table:nth-child(2) td {
+    height: 33px;
+    border-top: 1px solid #ccc;
+}
+.rs_list > table:nth-child(2) .lefttd {
+    border-right: 1px solid #ccc;
+}
+.rs_list > table:nth-child(2) td input[type=radio] {
+    margin: 5px;
+}
+
+.rs_list > .btnarea{
+    width: 100%;
+    height: 40px;
+    text-align: right;
+}
+.rs_list .cancbutt {
+    margin-top: 5px;
+    right: 0px;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    font-weight: 900;
+    background-color: #BDD600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+.rs_list .golist{
+    background-color: white;
+    border: 1px solid #BDD600;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.37);
+}
+
+
+/* 모달창 예약취소 */
+#modal_iscancel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0; right: 0; top: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#modal_iscancel > #modal_iscancel_content {
+    width: 500px;
+    height: 300px;
+    margin: 0 auto 30px;
+    padding-top: 30px;
+    border-radius: 5px;
+    border: 3px solid #BDD600;
+    background-color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+#modal_iscancel_title {
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+#modal_iscancel > #modal_iscancel_content button {
+    font-size: 14px;
+    font-weight: 900;
+    width: 100px;
+    height: 40px;
+    background-color:#BDD600;
+    border: none;
+    border-radius: 2px ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    margin: 0 5px;
+    cursor: pointer;
+}
+#modal_iscancel > #modal_iscancel_content button.uncomplete {
+    border: 3px solid #BDD600;
+    background-color: #fff;
+}
+#modal_iscancel h3 {
+    margin-bottom: 10px;
+}
+.tcolr {
+    color: red;
+}

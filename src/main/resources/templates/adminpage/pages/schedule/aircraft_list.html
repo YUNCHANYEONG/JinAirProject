@@ -1,0 +1,49 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!-- head.html -->
+<div th:replace="/adminpage/fragment/head :: head"></div>
+<link rel="stylesheet" href="/adminpage/lib/css/schedule/aircraft_list.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <body>
+        <div id="wrap">
+            <div th:replace="/adminpage/fragment/header :: header"></div>
+            <div id="container">
+                <div th:replace="/adminpage/fragment/leftmenu :: leftmenu(${code}, ${menuList})"></div>
+                <div class="contents">
+                    <div class="contwrap">
+                        <p class="title">항공기 조회</p>
+                        <div class="contents_main">
+                            <table id="itemList">
+                                <tr>
+                                    <td>항공기타입</td>
+                                    <td>항공기명</td>
+                                    <td>좌석수</td>
+                                </tr>
+                                <tr v-for="dto in itemList">
+                                    <td>{{dto.apType}}</td>
+                                    <td>{{dto.apName}}</td>
+                                    <td>{{dto.apSeatSum}}</td>
+                                </tr>
+                            </table>
+                            <div class="btn_box">
+                                <input type="button" value="항공기 신규 등록" onclick="location.href='/pages/admin/aircraftRegist'">
+                            </div>
+                            <div class="footer">
+                                <div class="center">
+                                    <table>
+                                        <tr id="showPage">
+
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+<script src="/adminpage/app/schedule/aircraft_list.js"></script>
+</html>
